@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Publish DungeonsAndSpires to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
+    <riderPublish configuration="ExportRelease" platform="Any CPU" target_folder="$USER_HOME$/.local/share/Steam/steamapps/common/Slay the Spire 2/mods/DungeonsAndSpires" target_framework="net9.0" uuid_high="-132792410202944973" uuid_low="-7596403791955818182" />
+    <method v="2">
+      <option name="Publish Solution" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -1,0 +1,28 @@
+Dungeons and Spires: a mod that takes DND and turns it into a card game for Slay the spire.
+
+Core features (WIP)
+    - Save DC. a core feature in dnd is the saving throws for effects. since sts2, rng on damage shouldnt be a thing. i have to come up with a way to scale the player through a combat
+    perhaps, when in dnd a save is needed. in this sts2 mod, your "ability save DC" can increase (like focus/strength) and increase the damage you deal with ability damage.
+    - subclasses: a big part of dnd is customization, i think, adding a way to 'subclass' is a fun idea. after defeating a boss for example, you can choose boons to develop the character
+    - for character core mechanics, a lot dnd classes have 2 core mechanics and a subclass. idk how to do that yet. i think the best way is to let the player choose their starting subclass as their "3rd archetype" 
+    - reactions: i think these will be relegated to powers... things like 'spell: shield' can be a "when hit, gain 5 block". 
+    - Spells: What i think i want to do for spells, is that spell cards can be played with energy, but are free to play when you have a spell slot of the level available
+    with other cards or effects, spell slots can be regained in combat. characters gain status effects when casting without a spellslot. 
+    not every character has access to spell slots, but martial classes also dont really get spell cards, unless theyre some subclass that allows it.
+
+Characters:
+    Sorcerer:
+    - a magic caster, [CORE]: spell slots, MetaMagic (points),  [Draconic bloodline, wild magic, Lunar sorcerer]
+    - starting relic: gain 2 sorcery points whenever you kill an enemy.
+    - [Spell slots]: see 'Spells'
+    - [MetaMagic]: Sorcery points can be spend when casting spells, for example, twin spell can turn a firebolt (single target) to a (target all). 
+    or (heigthened spell) can be used to increase the damage of spell that deal Ability damage. these points can be gained from card effects and a potion or two.
+    - [Draconic bloodline]: (act1) increased max HP, (act2) strength is twice as effective on single target, ability damage, (act3) gain 1 "fly anwhere" after defeating an elite
+    - [Wild Magic]: (act1) once per combat, when an attack didnt break the enemy shield, deal that damage again, but gain frail and vulnerable, 
+    (act2) ability damage is increased by the amount of status cards in all your piles, (act3) when you generate a status effect card, gain 1 energy. 
+    - [Lunar Sorcerer]: (act1) gain 1 energy whenever you spend 2 sorcery points. (act2) heal 5hp when the last kill in an encounter is from ability damage. 
+    (act3) if your last played card a turn is a spell, gain 1 sorcery point. otherwise, gain 1 energy next turn.
+    
+    [QUICK NOTES BEFORE I FORGOR]
+    - Artificer (gain strength at the start of combat for each relic you have) 
+    - Barbarian (cannot get spells in cardpool. rage: token card, rage as a powers gives strength which is removed when rage ends)
