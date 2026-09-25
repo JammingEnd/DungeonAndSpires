@@ -1,6 +1,6 @@
 {
   "DUNGEONSANDSPIRES-POTENT.title": "Potent",
-  "DUNGEONSANDSPIRES-POTENT.description": "Uses your Ability Potency for some of its stats. Values higher than 1 indicate the step size for the stat change.",
+  "DUNGEONSANDSPIRES-POTENT.description": "Potent 2+: every X Ability Potency, some of this card's stats or effects are increased.\nPotent 1: some of this card's stats or effects are affected equal to your Ability Potency.",
   "DUNGEONSANDSPIRES-RITUAL.title": "Ritual",
   "DUNGEONSANDSPIRES-RITUAL.description": "Ritual spells do not consume a Spellslot when your energy is above 50%.",
   "DUNGEONSANDSPIRES-SCROLLED.title": "Scrolled",
