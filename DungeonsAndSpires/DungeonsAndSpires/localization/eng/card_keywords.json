@@ -1,3 +1,26 @@
 {
-  
+  "DUNGEONSANDSPIRES-POTENT.title": "Potent",
+  "DUNGEONSANDSPIRES-POTENT.description": "Uses your Ability Potency for some of its stats.",
+  "DUNGEONSANDSPIRES-RITUAL.title": "Ritual",
+  "DUNGEONSANDSPIRES-RITUAL.description": "Ritual spells do not consume a Spellslot when your energy is above 50%.",
+  "DUNGEONSANDSPIRES-SCROLLED.title": "Scrolled",
+  "DUNGEONSANDSPIRES-SCROLLED.description": "Scrolled spells gain Exhaust and are free to play.",
+  "DUNGEONSANDSPIRES-FINESSE.title": "Finesse",
+  "DUNGEONSANDSPIRES-FINESSE.description": "Finesse weapons use Dexterity to add to their damage, whichever is highest.",
+  "DUNGEONSANDSPIRES-TWOHANDED.title": "Two-Handed",
+  "DUNGEONSANDSPIRES-TWOHANDED.description": "Two-handed weapons deal 20% more damage on subsequent attacks with the same weapon.",
+  "DUNGEONSANDSPIRES-FIRE.title": "Fire",
+  "DUNGEONSANDSPIRES-FIRE.description": "Fire damage type.",
+  "DUNGEONSANDSPIRES-COLD.title": "Cold",
+  "DUNGEONSANDSPIRES-COLD.description": "Cold damage type.",
+  "DUNGEONSANDSPIRES-THUNDER.title": "Thunder",
+  "DUNGEONSANDSPIRES-THUNDER.description": "Thunder damage type.",
+  "DUNGEONSANDSPIRES-LIGHTNING.title": "Lightning",
+  "DUNGEONSANDSPIRES-LIGHTNING.description": "Lightning damage type.",
+  "DUNGEONSANDSPIRES-PIERCING.title": "Piercing",
+  "DUNGEONSANDSPIRES-PIERCING.description": "Piercing damage type.",
+  "DUNGEONSANDSPIRES-SLASHING.title": "Slashing",
+  "DUNGEONSANDSPIRES-SLASHING.description": "Slashing damage type.",
+  "DUNGEONSANDSPIRES-BLUDGEONING.title": "Bludgeoning",
+  "DUNGEONSANDSPIRES-BLUDGEONING.description": "Bludgeoning damage type."
 }

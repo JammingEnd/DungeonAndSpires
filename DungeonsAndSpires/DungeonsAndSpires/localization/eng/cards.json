@@ -1,3 +1,24 @@
 {
-  
+  "DUNGEONSANDSPIRES-FIREBOLT.description": "Deal {Damage:diff()} damage.",
+  "DUNGEONSANDSPIRES-FIREBOLT.title": "Firebolt",
+  "DUNGEONSANDSPIRES-RAY_OF_FROST.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].",
+  "DUNGEONSANDSPIRES-RAY_OF_FROST.title": "Ray of Frost",
+  "DUNGEONSANDSPIRES-PRESTIDIGITATION.description": "Gain {AbilityPotency:diff()} Ability Potency.",
+  "DUNGEONSANDSPIRES-PRESTIDIGITATION.title": "Prestidigitation",
+  "DUNGEONSANDSPIRES-SHOCKING_GRASP.description": "Deal {Damage:diff()} damage.\nYour next non-spell attack deals extra damage equal to your Ability Potency.",
+  "DUNGEONSANDSPIRES-SHOCKING_GRASP.title": "Shocking Grasp",
+  "DUNGEONSANDSPIRES-GREEN_FLAME_BLADE.description": "Deal {Damage:diff()} damage.\nA different random enemy takes {Potency:diff()} damage.",
+  "DUNGEONSANDSPIRES-GREEN_FLAME_BLADE.title": "Green-Flame Blade",
+  "DUNGEONSANDSPIRES-ELDRITCH_BLAST.description": "Deal {Damage:diff()} damage.",
+  "DUNGEONSANDSPIRES-ELDRITCH_BLAST.title": "Eldritch Blast",
+  "DUNGEONSANDSPIRES-MAGE_HAND.description": "Draw {Cards:diff()} cards.\nIf one of the drawn cards is a non-spell, gain {AbilityPotency:diff()} Ability Potency.",
+  "DUNGEONSANDSPIRES-MAGE_HAND.title": "Mage Hand",
+  "DUNGEONSANDSPIRES-POISON_SPRAY.description": "Deal {Damage:diff()} damage to all enemies.\nApply {Poison:diff()} [gold]Poison[/gold] to all enemies.",
+  "DUNGEONSANDSPIRES-POISON_SPRAY.title": "Poison Spray",
+
+  "DUNGEONSANDSPIRES-QUART_STAFF_SWEEP.description": "Deal {Damage:diff()} damage to all enemies.",
+  "DUNGEONSANDSPIRES-QUART_STAFF_SWEEP.title": "Quarterstaff Sweep"
+
+
+
 }

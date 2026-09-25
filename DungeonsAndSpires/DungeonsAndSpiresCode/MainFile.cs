@@ -7,7 +7,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode;
 [ModInitializer(nameof(Initialize))]
 public partial class MainFile : Node
 {
-    public const string ModId = "SorcererCharacter"; //Used for resource filepath
+    public const string ModId = "DungeonsAndSpires"; //Used for resource filepath
     public const string ResPath = $"res://{ModId}";
 
     public static MegaCrit.Sts2.Core.Logging.Logger Logger { get; } =

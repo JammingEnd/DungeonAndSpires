@@ -3,12 +3,32 @@ Dungeons and Spires: a mod that takes DND and turns it into a card game for Slay
 Core features (WIP)
     - Save DC. a core feature in dnd is the saving throws for effects. since sts2, rng on damage shouldnt be a thing. i have to come up with a way to scale the player through a combat
     perhaps, when in dnd a save is needed. in this sts2 mod, your "ability save DC" can increase (like focus/strength) and increase the damage you deal with ability damage.
+    THIS IS NOT NAMED 'Ability Potency'
     - subclasses: a big part of dnd is customization, i think, adding a way to 'subclass' is a fun idea. after defeating a boss for example, you can choose boons to develop the character
     - for character core mechanics, a lot dnd classes have 2 core mechanics and a subclass. idk how to do that yet. i think the best way is to let the player choose their starting subclass as their "3rd archetype" 
     - reactions: i think these will be relegated to powers... things like 'spell: shield' can be a "when hit, gain 5 block". 
     - Spells: What i think i want to do for spells, is that spell cards can be played with energy, but are free to play when you have a spell slot of the level available
     with other cards or effects, spell slots can be regained in combat. characters gain status effects when casting without a spellslot. 
     not every character has access to spell slots, but martial classes also dont really get spell cards, unless theyre some subclass that allows it.
+    Max Spellslots naturally increase as you play
+    FULL CASTER: [lvl: act1 - act2 - act3]
+    LVL1 3 - 6 - 9
+    LVL2 3 - 5 - 8
+    LVL3 3 - 5 - 8
+    LVL4 2 - 4 - 7
+    LVL5 2 - 4 - 6
+    LVL6 2 - 3 - 5
+    LVL7 1 - 3 - 5
+    LVL8 1 - 3 - 4
+    LVL9 1 - 2 - 3
+    
+    HALF CASTER
+    LVL1 2 - 4 - 6
+    LVL2 2 - 3 - 5
+    LVL3 2 - 3 - 4
+    LVL4 1 - 2 - 4
+    LVL5 1 - 2 - 3
+    
 
 Characters:
     Sorcerer:

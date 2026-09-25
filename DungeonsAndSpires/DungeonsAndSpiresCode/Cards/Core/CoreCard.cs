@@ -1,14 +1,11 @@
-﻿using BaseLib.Abstracts;
+using BaseLib.Abstracts;
 using BaseLib.Extensions;
-using BaseLib.Utils;
-using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using MegaCrit.Sts2.Core.Entities.Cards;
 
-namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards;
+namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 
-[Pool(typeof(SorcererCardPool))]
-public abstract class SorcererCard(int cost, CardType type, CardRarity rarity, TargetType target) :
+public abstract class CoreCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     CustomCardModel(cost, type, rarity, target)
 {
     //Image size:

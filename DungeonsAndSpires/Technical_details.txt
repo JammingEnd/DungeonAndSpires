@@ -1,0 +1,7 @@
+[Spells]:
+Spells are defined by level. this int represent the cost for a spellslot, spells with a cost 0 should be marked with the cardtag 'Cantrip'.
+when a spellslot is available, 
+How are spellslots restored in combat? i think thats up to the character. warlock gets 2 of the highest missing one back each turn, wizard can convert arcane exhausting into spellslots 
+and sorcerer can spend sorcery points 
+
+[Ability Damage], a new Dynamicvar 'AbilityDamage' and 'AbilityBlock' are created, these are used in calculations with Spell Power (equivelant of Saving throws)

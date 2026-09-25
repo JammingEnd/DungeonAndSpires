@@ -66,13 +66,17 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="DungeonsAndSpiresCode\DynamicVars\" />
+        <Folder Include="DungeonsAndSpiresCode\Hooks\" />
         <Folder Include="DungeonsAndSpires\images\card_portraits\big\"/>
+        <Folder Include="DungeonsAndSpires\images\charui\Sorcerer\" />
         <Folder Include="DungeonsAndSpires\images\powers\big\"/>
         <Folder Include="DungeonsAndSpires\images\relics\big\"/>
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="Notes.txt" />
+      <Content Include="Technical_details.txt" />
     </ItemGroup>
 
     <Target Name="CheckDependencyPaths">
