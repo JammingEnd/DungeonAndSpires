@@ -5,3 +5,4 @@ How are spellslots restored in combat? i think thats up to the character. warloc
 and sorcerer can spend sorcery points 
 
 [Ability Damage], a new Dynamicvar 'AbilityDamage' and 'AbilityBlock' are created, these are used in calculations with Spell Power (equivelant of Saving throws)
+

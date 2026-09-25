@@ -59,4 +59,12 @@ public static class CoreKeywords
     [CustomEnum("Bludgeoning")] 
     [KeywordProperties(AutoKeywordPosition.After)]
     public static CardKeyword Bludgeoning;
+    
+    [CustomEnum("Acid")] 
+    [KeywordProperties(AutoKeywordPosition.After)]
+    public static CardKeyword Acid;
+    
+    [CustomEnum("Poison")] 
+    [KeywordProperties(AutoKeywordPosition.After)]
+    public static CardKeyword Poison;
 }

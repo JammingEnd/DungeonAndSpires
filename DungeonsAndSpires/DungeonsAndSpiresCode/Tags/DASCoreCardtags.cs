@@ -6,4 +6,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 public static class DASCoreCardtags
 {
     [CustomEnum] public static CardTag Cantrip;
+    [CustomEnum] public static CardTag Weapon;
+    [CustomEnum] public static CardTag Unarmed;
+    [CustomEnum] public static CardTag Spell;
 }

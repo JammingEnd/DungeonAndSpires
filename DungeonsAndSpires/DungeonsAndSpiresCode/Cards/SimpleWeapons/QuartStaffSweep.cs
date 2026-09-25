@@ -16,7 +16,7 @@ public class QuartStaffSweep() : SimpleWeaponCard(1, CardType.Attack, CardRarity
         CoreKeywords.Bludgeoning
     ];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    protected override IEnumerable<DynamicVar> CardVars =>
     [
         new DamageVar(6, ValueProp.Unpowered)
     ];

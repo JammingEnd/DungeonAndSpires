@@ -12,9 +12,9 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 public class Prestidigitation() : SpellCard(0, 0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [DASCoreCardtags.Cantrip];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    protected override IEnumerable<DynamicVar> CardVars =>
     [
         new IntVar("AbilityPotency", 2)
     ];

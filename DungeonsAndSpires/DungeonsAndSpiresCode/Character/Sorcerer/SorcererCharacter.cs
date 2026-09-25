@@ -1,5 +1,6 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Basic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
@@ -16,21 +17,21 @@ public class SorcererCharacter : PlaceholderCharacterModel
     public static readonly Color Color = new("ffffff");
 
     public override Color NameColor => Color;
-    public override CharacterGender Gender => CharacterGender.Neutral;
+    public override CharacterGender Gender => CharacterGender.Feminine;
     public override int StartingHp => 70;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>()
+        ModelDb.Card<ClubStrike>(),
+        ModelDb.Card<ClubStrike>(),
+        ModelDb.Card<ClubStrike>(),
+        ModelDb.Card<ClubStrike>(),
+        ModelDb.Card<ClubStrike>(),
+        ModelDb.Card<ClubDefend>(),
+        ModelDb.Card<ClubDefend>(),
+        ModelDb.Card<ClubDefend>(),
+        ModelDb.Card<ClubDefend>(),
+        ModelDb.Card<ClubDefend>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
@@ -60,4 +61,5 @@ public class SorcererCharacter : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "Sorcerer/char_select_sorcerer.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "Sorcerer/char_select_sorcerer_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "Sorcerer/map_marker_sorcerer.png".CharacterUiPath();
+    public override string CustomEnergyCounterPath => "res://DungeonsAndSpires/Scenes/Core/DAS_energy_counter.tscn";
 }

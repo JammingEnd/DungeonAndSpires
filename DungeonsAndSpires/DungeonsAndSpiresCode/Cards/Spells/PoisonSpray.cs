@@ -19,14 +19,16 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 public class PoisonSpray() : SpellCard(0, 1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
 {
-    protected override HashSet<CardTag> CanonicalTags => [DASCoreCardtags.Cantrip];
+    public override Dictionary<string, (int step, int mult)> PotencyVars => new()
+    {
+        { "Damage", (3, 3) },
+        { "Poison", (3, 1) }
+    };
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new PotencyVar(),
-        new IntVar("PotencyStep", 3m),
-        ..MakeCalculatedVar("Damage", 3, static (model, creature) => Math.Floor(model.Owner.PlayerCombatState.GetPotency() / 3m), 3),
-        ..MakeCalculatedVar("Poison", 2, static (model, creature) => Math.Floor(model.Owner.PlayerCombatState.GetPotency() / 3m), 1)
+        new DamageVar(3, ValueProp.Unpowered),
+        new IntVar("Poison", 2)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

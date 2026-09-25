@@ -9,6 +9,7 @@ Core features (WIP)
     - reactions: i think these will be relegated to powers... things like 'spell: shield' can be a "when hit, gain 5 block". 
     - Spells: What i think i want to do for spells, is that spell cards can be played with energy, but are free to play when you have a spell slot of the level available
     with other cards or effects, spell slots can be regained in combat. characters gain status effects when casting without a spellslot. 
+    This status effect is [Arcane Exhaustion], this is an unplayable, ethereal card that lowers potency by its lvl amount.
     not every character has access to spell slots, but martial classes also dont really get spell cards, unless theyre some subclass that allows it.
     Max Spellslots naturally increase as you play
     FULL CASTER: [lvl: act1 - act2 - act3]
@@ -29,6 +30,7 @@ Core features (WIP)
     LVL4 1 - 2 - 4
     LVL5 1 - 2 - 3
     
+   
 
 Characters:
     Sorcerer:

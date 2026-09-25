@@ -8,6 +8,6 @@ public class SorcererRelicPool : CustomRelicPoolModel
 {
     public override Color LabOutlineColor => SorcererCharacter.Color;
 
-    public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
-    public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
+    public override string BigEnergyIconPath => "charui/Core/big_energy.png".ImagePath();
+    public override string TextEnergyIconPath => "charui/Core/text_energy.png".ImagePath();
 }

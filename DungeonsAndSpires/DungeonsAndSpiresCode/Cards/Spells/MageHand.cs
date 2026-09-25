@@ -14,9 +14,8 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 public class MageHand() : SpellCard(0, 1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [DASCoreCardtags.Cantrip];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    protected override IEnumerable<DynamicVar> CardVars =>
     [
         new CardsVar(2),
         new IntVar("AbilityPotency", 1)

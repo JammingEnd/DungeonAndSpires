@@ -22,5 +22,9 @@
   "DUNGEONSANDSPIRES-SLASHING.title": "Slashing",
   "DUNGEONSANDSPIRES-SLASHING.description": "Slashing damage type.",
   "DUNGEONSANDSPIRES-BLUDGEONING.title": "Bludgeoning",
-  "DUNGEONSANDSPIRES-BLUDGEONING.description": "Bludgeoning damage type."
+  "DUNGEONSANDSPIRES-BLUDGEONING.description": "Bludgeoning damage type.",
+  "DUNGEONSANDSPIRES-ACID.title": "Acid",
+  "DUNGEONSANDSPIRES-ACID.description": "Acid damage type.",
+  "DUNGEONSANDSPIRES-POISON.title": "Poison",
+  "DUNGEONSANDSPIRES-POISON.description": "Poison damage type."
 }

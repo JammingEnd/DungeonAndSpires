@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdwsudetp62vb"
-path="res://.godot/imported/text_energy.png-1b8ad498dea87864910782ce62349e9a.ctex"
+uid="uid://bugte73pr3r0j"
+path="res://.godot/imported/interloper_orb_layer_1.png-cc76c6208965e96e0d928750c38736d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DungeonsAndSpires/images/charui/text_energy.png"
-dest_files=["res://.godot/imported/text_energy.png-1b8ad498dea87864910782ce62349e9a.ctex"]
+source_file="res://DungeonsAndSpires/images/combat/energy_counters/interloper_orb_layer_1.png"
+dest_files=["res://.godot/imported/interloper_orb_layer_1.png-cc76c6208965e96e0d928750c38736d1.ctex"]
 
 [params]
 

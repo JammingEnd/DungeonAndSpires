@@ -13,14 +13,13 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 public class ShockingGrasp() : SpellCard(0, 1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
-    protected override HashSet<CardTag> CanonicalTags => [DASCoreCardtags.Cantrip];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CoreKeywords.Lightning
     ];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    protected override IEnumerable<DynamicVar> CardVars =>
     [
         new DamageVar(5, ValueProp.Unpowered)
     ];
