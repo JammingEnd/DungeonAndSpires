@@ -13,7 +13,7 @@
   "DUNGEONSANDSPIRES-ELDRITCH_BLAST.title": "Eldritch Blast",
   "DUNGEONSANDSPIRES-MAGE_HAND.description": "Draw {Cards:diff()} cards.\nIf one of the drawn cards is a non-spell, gain {AbilityPotency:diff()} Ability Potency.",
   "DUNGEONSANDSPIRES-MAGE_HAND.title": "Mage Hand",
-  "DUNGEONSANDSPIRES-POISON_SPRAY.description": "Deal {Damage:diff()} damage to all enemies.\nApply {Poison:diff()} [gold]Poison[/gold] to all enemies.",
+  "DUNGEONSANDSPIRES-POISON_SPRAY.description": "{Potency:cond:Potent {PotencyStep:diff()}.\n|}Deal {Damage:diff()} damage to all enemies.\nApply {Poison:diff()} [gold]Poison[/gold] to all enemies.",
   "DUNGEONSANDSPIRES-POISON_SPRAY.title": "Poison Spray",
 
   "DUNGEONSANDSPIRES-QUART_STAFF_SWEEP.description": "Deal {Damage:diff()} damage to all enemies.",

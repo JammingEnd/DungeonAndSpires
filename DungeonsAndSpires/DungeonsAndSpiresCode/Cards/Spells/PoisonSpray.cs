@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -20,13 +21,10 @@ public class PoisonSpray() : SpellCard(0, 1, CardType.Attack, CardRarity.Common,
 {
     protected override HashSet<CardTag> CanonicalTags => [DASCoreCardtags.Cantrip];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CoreKeywords.Potent
-    ];
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new PotencyVar(),
+        new IntVar("PotencyStep", 3m),
         ..MakeCalculatedVar("Damage", 3, static (model, creature) => Math.Floor(model.Owner.PlayerCombatState.GetPotency() / 3m), 3),
         ..MakeCalculatedVar("Poison", 2, static (model, creature) => Math.Floor(model.Owner.PlayerCombatState.GetPotency() / 3m), 1)
     ];
@@ -40,6 +38,11 @@ public class PoisonSpray() : SpellCard(0, 1, CardType.Attack, CardRarity.Common,
         await CreatureCmd.Damage(choiceContext, enemies, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature);
         await PowerCmd.Apply<PoisonPower>(choiceContext, enemies, DynamicVars["Poison"].GetCalculatedValue(), Owner.Creature, this);
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(CoreKeywords.Potent)
+    ];
 
     protected override void OnUpgrade()
     {
