@@ -17,6 +17,6 @@ public class BorrowedKnowledgePower : DungeonsAndSpiresPower
             return;
         }
 
-        await PotencyCmd.Add(choiceContext, player, (int)Amount);
+        await PotencyCmd.Add(choiceContext, player, Amount);
     }
 }

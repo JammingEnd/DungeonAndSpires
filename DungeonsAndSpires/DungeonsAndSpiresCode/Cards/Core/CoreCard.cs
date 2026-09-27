@@ -54,6 +54,8 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         return [];
     }
     
+    //does the card contains a valid Imbued element. logic is used for Chromatic orb and future weapon attacks that allows 
+    // dipping weapon in poison or fire or somethingg
     public CardKeyword? ImbuedElement => ElementOptions.FirstOrDefault(Keywords.Contains);
     
     public void Imbue(CardKeyword keyword)
@@ -96,20 +98,20 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
             result.Add(new IntVar("PotencyStep", PotencyVars.Values.First().step));
         }
 
-        foreach (var v in CardVars)
+        foreach (var item in CardVars)
         {
-            if (PotencyVars.TryGetValue(v.Name, out var potency) && potency.step > 0)
+            if (PotencyVars.TryGetValue(item.Name, out var potency) && potency.step > 0)
             {
-                decimal baseValue = v.BaseValue;
+                decimal baseValue = item.BaseValue;
                 result.AddRange(MakeCalculatedVar(
-                    v.Name,
+                    item.Name,
                     (int)baseValue,
                     (model, creature) => Math.Floor((decimal)(model.Owner.PlayerCombatState?.GetPotency() ?? 0) / potency.step),
                     potency.mult));
             }
             else
             {
-                result.Add(v);
+                result.Add(item);
             }
         }
         
@@ -124,6 +126,7 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         return varName != null && DynamicVars.TryGetValue(varName, out var v) ? v.GetCalculatedValue() : 0;
     }
     
+    // this shows when playing chromatic orb or when dipping a weapon
     public async Task<CardKeyword?> ChooseElement(PlayerChoiceContext choiceContext)
     {
         if (!ElementOptions.Any())
@@ -153,6 +156,7 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         return keyword;
     }
     
+    // so acid and poison arent a damage type, they apply something (poison and vulnerable), this is the method for that
     public async Task ApplyImbuedElementEffect(PlayerChoiceContext choiceContext, Creature target)
     {
         if (ImbuedElement is not CardKeyword element)
@@ -189,6 +193,7 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         return null;
     }
     
+    //teehee big token energy
     private CardModel CreateElementToken(CardKeyword element)
     {
         CardModel canonical;

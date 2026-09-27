@@ -2,40 +2,45 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
-using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
-public class WitchBolt() : SpellCard(1, 1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class Disintegrate() : SpellCard(6, 3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CoreKeywords.Lightning
-    ];
-
     public override Dictionary<string, (int step, int mult)> PotencyVars => new()
     {
-        { "Damage", (3, 4) }
+        { "Damage", (1, 1) }
     };
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(9, ValueProp.Unpowered)
+        new DamageVar(23, ValueProp.Unpowered),
+        new CardsVar("Exhaust", 3)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        decimal damage = DynamicVars["Damage"].GetCalculatedValue();
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, damage, ValueProp.Unpowered, Owner.Creature, this, cardPlay);
-        await PowerCmd.Apply<WitchBoltPower>(choiceContext, cardPlay.Target, damage, Owner.Creature, this);
+        await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+
+        var drawPile = PileType.Draw.GetPile(Owner);
+        var prefs = new CardSelectorPrefs(new LocString("cards", "DUNGEONSANDSPIRES-DISINTEGRATE.selectionPrompt"), 0, DynamicVars["Exhaust"].IntValue);
+        Func<CardModel, bool> filter = c => c is not SpellCard;
+        var selected = await CardSelectCmd.FromCombatPile(choiceContext, drawPile, Owner, prefs, filter);
+        foreach (var card in selected)
+        {
+            await CardCmd.Exhaust(choiceContext, card);
+        }
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -45,7 +50,6 @@ public class WitchBolt() : SpellCard(1, 1, CardType.Attack, CardRarity.Common, T
 
     protected override void OnUpgrade()
     {
-        DynamicVars["DamageBase"].UpgradeValueBy(3m);
-        DynamicVars["DamageExtra"].UpgradeValueBy(2m);
+        DynamicVars["DamageBase"].UpgradeValueBy(7m);
     }
 }

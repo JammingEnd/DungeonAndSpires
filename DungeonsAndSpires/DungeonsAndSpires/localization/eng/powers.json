@@ -73,5 +73,17 @@
   "DUNGEONSANDSPIRES-LESSER_RESTORATION_POWER.smartDescription": "Prevent the next [gold]Weak[/gold] or [gold]Frail[/gold] from being applied to you.\nAfterwards, gain {Strength} [gold]Strength[/gold] and {Dexterity} [gold]Dexterity[/gold].",
   "DUNGEONSANDSPIRES-BORROWED_KNOWLEDGE_POWER.title": "Borrowed Knowledge",
   "DUNGEONSANDSPIRES-BORROWED_KNOWLEDGE_POWER.description": "At the start of each turn, gain {Amount} Ability Potency.",
-  "DUNGEONSANDSPIRES-BORROWED_KNOWLEDGE_POWER.smartDescription": "At the start of each turn, gain {Amount} Ability Potency."
+  "DUNGEONSANDSPIRES-BORROWED_KNOWLEDGE_POWER.smartDescription": "At the start of each turn, gain {Amount} Ability Potency.",
+  "DUNGEONSANDSPIRES-CROWN_OF_STARS_POWER.title": "Crown of Stars",
+  "DUNGEONSANDSPIRES-CROWN_OF_STARS_POWER.description": "At the start of each of the next {Amount} turns, add 2 [gold]Star Strike[/gold] to your hand.",
+  "DUNGEONSANDSPIRES-CROWN_OF_STARS_POWER.smartDescription": "At the start of each of the next {Amount} turns, add 2 [gold]Star Strike[/gold] to your hand.",
+  "DUNGEONSANDSPIRES-TELEPORT_POWER.title": "Teleport",
+  "DUNGEONSANDSPIRES-TELEPORT_POWER.description": "Next turn, gain double [gold]Block[/gold].",
+  "DUNGEONSANDSPIRES-TELEPORT_POWER.smartDescription": "Next turn, gain double [gold]Block[/gold].",
+  "DUNGEONSANDSPIRES-SIMULACRUM_POWER.title": "Simulacrum",
+  "DUNGEONSANDSPIRES-SIMULACRUM_POWER.description": "At the start of your turn, regain {Amount} random Spellslot.",
+  "DUNGEONSANDSPIRES-SIMULACRUM_POWER.smartDescription": "At the start of your turn, regain {Amount} random Spellslot.",
+  "DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.title": "Vitriolic Sphere",
+  "DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.description": "At the start of your next turn, takes {Amount} damage.",
+  "DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.smartDescription": "At the start of your next turn, takes {Amount} damage."
 }

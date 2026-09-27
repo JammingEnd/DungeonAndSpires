@@ -19,7 +19,7 @@ public class BlessPower : DungeonsAndSpiresPower
             return;
         }
 
-        await PotencyCmd.Remove(choiceContext, Owner.Player, (int)Amount);
+        await PotencyCmd.Remove(choiceContext, Owner.Player, Amount);
         await PowerCmd.Remove(this);
     }
 }

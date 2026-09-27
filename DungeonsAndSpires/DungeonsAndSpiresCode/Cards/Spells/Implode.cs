@@ -8,44 +8,46 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
-public class WitchBolt() : SpellCard(1, 1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class Implode() : SpellCard(6, 1, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CoreKeywords.Lightning
-    ];
-
     public override Dictionary<string, (int step, int mult)> PotencyVars => new()
     {
-        { "Damage", (3, 4) }
+        { "Damage", (1, 1) }
     };
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(9, ValueProp.Unpowered)
+        new DamageVar(7, ValueProp.Unpowered),
+        new IntVar("FrostbiteBonus", 4)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        decimal damage = DynamicVars["Damage"].GetCalculatedValue();
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, damage, ValueProp.Unpowered, Owner.Creature, this, cardPlay);
-        await PowerCmd.Apply<WitchBoltPower>(choiceContext, cardPlay.Target, damage, Owner.Creature, this);
+        decimal baseDamage = DynamicVars["Damage"].GetCalculatedValue();
+        decimal bonusPerStack = DynamicVars["FrostbiteBonus"].GetCalculatedValue();
+
+        foreach (var enemy in CombatState!.HittableEnemies)
+        {
+            decimal total = baseDamage + bonusPerStack * enemy.GetPowerAmount<FrostbitePower>();
+            await CreatureCmd.Damage(choiceContext, enemy, total, ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+            await PowerCmd.Remove<FrostbitePower>(enemy);
+        }
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CoreKeywords.Potent)
+        HoverTipFactory.FromKeyword(CoreKeywords.Potent),
+        HoverTipFactory.FromPower<FrostbitePower>()
     ];
 
     protected override void OnUpgrade()
     {
-        DynamicVars["DamageBase"].UpgradeValueBy(3m);
-        DynamicVars["DamageExtra"].UpgradeValueBy(2m);
+        DynamicVars["FrostbiteBonus"].UpgradeValueBy(2m);
     }
 }

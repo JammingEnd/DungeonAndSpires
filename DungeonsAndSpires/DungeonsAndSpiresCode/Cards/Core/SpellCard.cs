@@ -15,7 +15,8 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
 {
     public int Level { get; } = Level;
 
-    // Decided during cost resolution (before energy is deducted) so Ritual can check pre-play energy.
+    // Some card (primarily cards that apply powers) should not consume a spellslot
+    // the power 'Shield' Consumes a spellslot, the card who applies should not
     private bool _shouldConsumeSpellslot = true;
 
     /// <summary>
@@ -64,8 +65,7 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
         }
     }
 
-    // Ritual spells don't consume a spellslot when your energy is above half its maximum
-    // (for 3 max energy, you need above 2).
+    // Ritual spells don't consume a spellslot when your energy is above half its maximum. when 3 is max, you need more than 2
     private bool ShouldConsumeSpellslot()
     {
         if (Keywords.Contains(CoreKeywords.Ritual))

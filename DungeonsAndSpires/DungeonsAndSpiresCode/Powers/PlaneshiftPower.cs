@@ -32,6 +32,6 @@ public class PlaneshiftPower : DungeonsAndSpiresPower
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
-        await PowerCmd.Remove(this);
+        await PowerCmd.Decrement(this);
     }
 }
