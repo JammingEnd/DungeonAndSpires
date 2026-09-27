@@ -22,6 +22,19 @@ public static class PotencyHook
         }
     }
 
+    public static async Task OnChanged(ICombatState combatState, PlayerChoiceContext choiceContext, Player player,
+        int current, int currentAfterChange)
+    {
+        foreach (var model in combatState.IterateHookListeners().OfType<IOnPotencyChanged>())
+        {
+            var abstractModel = (AbstractModel)(object)model;
+            choiceContext.PushModel(abstractModel);
+            await model.OnPotencyChanged(choiceContext, player, current, currentAfterChange);
+            abstractModel.InvokeExecutionFinished();
+            choiceContext.PopModel(abstractModel);
+        }
+    }
+
     public static decimal ModifyPotencyGain(ICombatState combatState, Player player, decimal originalAmount,
         ValueProp props, CardModel? cardSource,
         out IEnumerable<AbstractModel> modifiers)

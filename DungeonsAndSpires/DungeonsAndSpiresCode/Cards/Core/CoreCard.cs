@@ -71,7 +71,7 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
     // For Potentcy. only when potentcy is 1+ should it be visible and not dissapear
     protected override void AddExtraArgsToDescription(LocString description)
     {
-        description.Add("HasPotencyStep", PotencyVars.Count > 0);
+        description.Add("HasPotencyStep", PotencyVars.Count > 0 || DynamicVars.ContainsKey("PotencyStep"));
     }
 
     /// <summary>

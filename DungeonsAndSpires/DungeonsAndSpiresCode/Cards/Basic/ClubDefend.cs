@@ -10,7 +10,10 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Basic;
 public class ClubDefend() : SimpleWeaponCard(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
 {
     public override bool GainsBlock => true;
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
+    protected override HashSet<CardTag> CanonicalTags => [
+        ..base.CanonicalTags,
+        CardTag.Defend
+    ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5, ValueProp.Move)];
     
 

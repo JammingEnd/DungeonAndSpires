@@ -33,7 +33,7 @@ public class BurningHands() : SpellCard(1, 2, CardType.Attack, CardRarity.Common
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature);
+        await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature, this, cardPlay);
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

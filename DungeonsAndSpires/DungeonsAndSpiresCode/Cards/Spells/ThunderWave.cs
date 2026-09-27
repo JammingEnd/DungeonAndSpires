@@ -36,7 +36,7 @@ public class ThunderWave() : SpellCard(1, 1, CardType.Attack, CardRarity.Common,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var enemies = CombatState!.HittableEnemies.ToArray();
-        await CreatureCmd.Damage(choiceContext, enemies, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature);
+        await CreatureCmd.Damage(choiceContext, enemies, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature, this, cardPlay);
         await PowerCmd.Apply<FrailPower>(choiceContext, enemies, DynamicVars["Frail"].GetCalculatedValue(), Owner.Creature, this);
     }
 

@@ -1,16 +1,16 @@
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
-using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 // Choice-token cards used by Chromatic Orb's element selection screen. They are never played
 // or generated in combat; they only represent the selectable element.
-[Pool(typeof(DASSpellCardPool))]
+[Pool(typeof(TokenCardPool))]
 public abstract class ElementChoiceCard : CoreCard
 {
     protected ElementChoiceCard() : base(0, CardType.Status, CardRarity.Token, TargetType.None)

@@ -33,7 +33,7 @@ public class WitchBolt() : SpellCard(1, 1, CardType.Attack, CardRarity.Common, T
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         decimal damage = DynamicVars["Damage"].GetCalculatedValue();
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, damage, ValueProp.Unpowered, Owner.Creature);
+        await CreatureCmd.Damage(choiceContext, cardPlay.Target, damage, ValueProp.Unpowered, Owner.Creature, this, cardPlay);
         await PowerCmd.Apply<WitchBoltPower>(choiceContext, cardPlay.Target, damage, Owner.Creature, this);
     }
 

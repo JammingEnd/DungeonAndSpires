@@ -16,7 +16,7 @@ public abstract class SimpleWeaponCard(int cost, CardType type, CardRarity rarit
 {
     protected override HashSet<CardTag> CanonicalTags => [DASCoreCardtags.Weapon];
 
-    // Weapons imbued with Potent (e.g. by Catapult) add their owner's Ability Potency to the damage
+    // Weapons imbued with Potent add their owner's Ability Potency to the damage
     // they deal, until they have been played once.
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {

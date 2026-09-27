@@ -37,7 +37,7 @@ public class PoisonSpray() : SpellCard(0, 1, CardType.Attack, CardRarity.Common,
         if (enemies.Length == 0)
             return;
 
-        await CreatureCmd.Damage(choiceContext, enemies, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature);
+        await CreatureCmd.Damage(choiceContext, enemies, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature, this, cardPlay);
         await PowerCmd.Apply<PoisonPower>(choiceContext, enemies, DynamicVars["Poison"].GetCalculatedValue(), Owner.Creature, this);
     }
 

@@ -1,7 +1,9 @@
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
@@ -13,6 +15,9 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
 {
     public int Level { get; } = Level;
 
+    // Decided during cost resolution (before energy is deducted) so Ritual can check pre-play energy.
+    private bool _shouldConsumeSpellslot = true;
+
     /// <summary>
     /// Whether playing this spell consumes a spellslot (and gets the -1 energy discount when one
     /// is available). False for spells that shouldn't interact with spellslots (cards like Shield, since only the powers itself consumed spellslots).
@@ -22,11 +27,23 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
     // Spells with a spell level of 0 are cantrips.
     protected override HashSet<CardTag> CanonicalTags => Level == 0 ? [DASCoreCardtags.Spell, DASCoreCardtags.Cantrip] : [DASCoreCardtags.Spell];
 
-    // Spells cost 1 less energy while a spellslot of their level is available.
+    // Spells cost 1 less energy while a spellslot of their level is available. Scrolled spells are free.
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
         modifiedCost = originalCost;
-        if (card == this && Level > 0 && UsesSpellSlot && Owner.PlayerCombatState?.HasAvailableSlotForLevel(Level) == true)
+        if (card != this)
+        {
+            return false;
+        }
+        // So like.... apparently TryModify is literally BeforeCardPlay
+        // pre-play energy for Ritual's spellslot decision.
+        _shouldConsumeSpellslot = ShouldConsumeSpellslot();
+        if (Keywords.Contains(CoreKeywords.Scrolled))
+        {
+            modifiedCost = 0;
+            return true;
+        }
+        if (Level > 0 && UsesSpellSlot && Owner.PlayerCombatState?.HasAvailableSlotForLevel(Level) == true)
         {
             modifiedCost = originalCost - 1;
             return true;
@@ -37,7 +54,7 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
     // Consume the spellslot when a leveled spell is cast.
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card == this && Level > 0 && UsesSpellSlot && Owner.PlayerCombatState?.HasAvailableSlotForLevel(Level) == true)
+        if (cardPlay.Card == this && Level > 0 && UsesSpellSlot && _shouldConsumeSpellslot && Owner.PlayerCombatState?.HasAvailableSlotForLevel(Level) == true)
         {
             await SpellslotsCmd.ConsumeSpellSlotForLevel(choiceContext, Owner, Level);
         }
@@ -45,5 +62,21 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
         {
             // Generate Arcane exhaustion of the spell's level
         }
+    }
+
+    // Ritual spells don't consume a spellslot when your energy is above half its maximum
+    // (for 3 max energy, you need above 2).
+    private bool ShouldConsumeSpellslot()
+    {
+        if (Keywords.Contains(CoreKeywords.Ritual))
+        {
+            int energy = Owner.PlayerCombatState?.Energy ?? 0;
+            int maxEnergy = Owner.PlayerCombatState?.MaxEnergy ?? 0;
+            if (energy > Math.Ceiling(maxEnergy / 2m))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
