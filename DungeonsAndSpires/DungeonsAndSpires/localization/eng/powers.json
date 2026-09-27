@@ -83,7 +83,19 @@
   "DUNGEONSANDSPIRES-SIMULACRUM_POWER.title": "Simulacrum",
   "DUNGEONSANDSPIRES-SIMULACRUM_POWER.description": "At the start of your turn, regain {Amount} random Spellslot.",
   "DUNGEONSANDSPIRES-SIMULACRUM_POWER.smartDescription": "At the start of your turn, regain {Amount} random Spellslot.",
-  "DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.title": "Vitriolic Sphere",
-  "DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.description": "At the start of your next turn, takes {Amount} damage.",
-  "DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.smartDescription": "At the start of your next turn, takes {Amount} damage."
+"DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.title": "Vitriolic Sphere",
+  "DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.description": "At the start of its next turn, takes {Amount} damage.",
+  "DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.smartDescription": "At the start of its next turn, takes {Amount} damage.",
+  "DUNGEONSANDSPIRES-WALL_OF_ICE_POWER.title": "Wall of Ice",
+  "DUNGEONSANDSPIRES-WALL_OF_ICE_POWER.description": "At the start of your turn, gain [gold]Temporary Dexterity[/gold] equal to total [gold]Frostbite[/gold] on screen.",
+  "DUNGEONSANDSPIRES-WALL_OF_ICE_POWER.smartDescription": "At the start of your turn, gain [gold]Temporary Dexterity[/gold] equal to total [gold]Frostbite[/gold] on screen.",
+  "DUNGEONSANDSPIRES-WALL_OF_ICE_DEXTERITY_POWER.title": "Wall of Ice",
+  "DUNGEONSANDSPIRES-WALL_OF_ICE_DEXTERITY_POWER.description": "Gain {Amount} [gold]Temporary Dexterity[/gold] until the end of your turn.",
+  "DUNGEONSANDSPIRES-WALL_OF_ICE_DEXTERITY_POWER.smartDescription": "Gain {Amount} [gold]Temporary Dexterity[/gold] until the end of your turn.",
+  "DUNGEONSANDSPIRES-TIME_STOP_POWER.title": "Time Stop",
+  "DUNGEONSANDSPIRES-TIME_STOP_POWER.description": "Take an extra turn.",
+  "DUNGEONSANDSPIRES-TIME_STOP_POWER.smartDescription": "Take an extra turn.",
+  "DUNGEONSANDSPIRES-ASTRAL_GATE_POWER.title": "Astral Gate",
+  "DUNGEONSANDSPIRES-ASTRAL_GATE_POWER.description": "At the start of your turn, {Amount} random spell is free to play and consumes no Spellslot.",
+  "DUNGEONSANDSPIRES-ASTRAL_GATE_POWER.smartDescription": "At the start of your turn, {Amount} random spell is free to play and consumes no Spellslot."
 }

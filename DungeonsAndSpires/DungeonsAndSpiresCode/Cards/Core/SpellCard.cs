@@ -17,7 +17,7 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
 
     // Some card (primarily cards that apply powers) should not consume a spellslot
     // the power 'Shield' Consumes a spellslot, the card who applies should not
-    private bool _shouldConsumeSpellslot = true;
+    internal bool _shouldConsumeSpellslot = true;
 
     /// <summary>
     /// Whether playing this spell consumes a spellslot (and gets the -1 energy discount when one
