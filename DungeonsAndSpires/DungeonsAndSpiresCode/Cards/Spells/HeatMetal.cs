@@ -45,6 +45,6 @@ public class HeatMetal() : SpellCard(2, 2, CardType.Attack, CardRarity.Uncommon,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["DamageBase"].UpgradeValueBy(2m);
+        DynamicVars["Damage"].UpgradeValueBy(2m);
     }
 }
