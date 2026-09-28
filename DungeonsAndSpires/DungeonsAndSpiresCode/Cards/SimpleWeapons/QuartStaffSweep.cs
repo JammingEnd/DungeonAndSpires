@@ -18,7 +18,7 @@ public class QuartStaffSweep() : SimpleWeaponCard(1, CardType.Attack, CardRarity
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(6, ValueProp.Unpowered)
+        new DamageVar(6, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

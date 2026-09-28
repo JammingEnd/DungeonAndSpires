@@ -4,7 +4,9 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 
@@ -32,6 +34,8 @@ public class AstralGatePower : DungeonsAndSpiresPower
             _marked.Add(card);
             hand.Remove(card);
         }
+
+        var guh = this.DynamicVars.Values.Where(x => x.GetType().GetField("_amount") != null);
     }
 
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)

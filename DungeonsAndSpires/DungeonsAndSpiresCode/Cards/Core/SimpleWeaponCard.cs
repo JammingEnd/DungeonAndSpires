@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
@@ -16,19 +17,25 @@ public abstract class SimpleWeaponCard(int cost, CardType type, CardRarity rarit
 {
     protected override HashSet<CardTag> CanonicalTags => [DASCoreCardtags.Weapon];
 
-    // Weapons imbued with Potent add their owner's Ability Potency to the damage
-    // they deal, until they have been played once.
+    // handles the 'next weapon attack does potent damage'. copying this to MartialWeaponCard frfr
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
-        if (cardSource == this && dealer == Owner.Creature && Keywords.Contains(CoreKeywords.Potent))
+        if (cardSource != this || dealer != Owner.Creature)
         {
-            return Owner.PlayerCombatState?.GetPotency() ?? 0;
+            return 0;
         }
-        return 0;
+        decimal bonus = base.ModifyDamageAdditive(target, amount, props, dealer, cardSource, cardPlay);
+        if (Keywords.Contains(CoreKeywords.Potent))
+        {
+            bonus += Owner.PlayerCombatState?.GetPotency() ?? 0;
+        }
+        return bonus;
     }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.AfterCardPlayed(choiceContext, cardPlay);
+
         if (cardPlay.Card == this && Keywords.Contains(CoreKeywords.Potent))
         {
             RemoveKeyword(CoreKeywords.Potent);

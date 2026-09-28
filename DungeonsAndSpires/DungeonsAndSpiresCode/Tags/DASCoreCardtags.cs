@@ -9,4 +9,6 @@ public static class DASCoreCardtags
     [CustomEnum] public static CardTag Weapon;
     [CustomEnum] public static CardTag Unarmed;
     [CustomEnum] public static CardTag Spell;
+
+    [CustomEnum] public static CardTag Bow;
 }

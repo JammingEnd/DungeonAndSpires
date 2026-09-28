@@ -7,8 +7,8 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Nodes;
 
 public class AddLevelToCards
 {
-    private static AddedNode<NCard, SpellLevelControl> AddedNode => new(
-        "res://DungeonsAndSpires/images/cards/spellLevel.tscn",  
+    private static readonly AddedNode<NCard, SpellLevelControl> _addedNode = new(
+        "res://DungeonsAndSpires/images/cards/spellLevel.tscn",
         (card, display) =>
         {
             display.Visible = false;
@@ -19,18 +19,19 @@ public class AddLevelToCards
                 label.Text = ToNumeral(spellCard.Level);
                 display.Visible = true;
             }
-        
+
             var cardContainer = card.GetChild(0)!;
             cardContainer.AddChild(display);
 
             //Changing position to before the star icon node.
             cardContainer.MoveChild(display, cardContainer.GetNode("%StarIcon").GetIndex());
         });
-    private static string ToNumeral(int level)
+
+    internal static string ToNumeral(int level)
     {
         switch (level)
         {
-            case 0: return "Cantrip";
+            case 0: return "0";
             case 1: return "I";
             case 2: return "II";
             case 3: return "III";

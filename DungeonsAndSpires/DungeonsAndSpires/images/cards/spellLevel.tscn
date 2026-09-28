@@ -1,25 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpidirrfv6e7g"]
+[gd_scene load_steps=5 format=3 uid="uid://bpidirrfv6e7g"]
 
 [ext_resource type="Script" uid="uid://dqt1yotdgmjn" path="res://DungeonsAndSpiresCode/Nodes/SpellLevelControl.cs" id="1_501ts"]
 [ext_resource type="Texture2D" uid="uid://by3dgys8frcfi" path="res://DungeonsAndSpires/images/cards/level_banner.png" id="1_pnqgv"]
+[ext_resource type="FontFile" uid="uid://cyf0sdexigbj5" path="res://DungeonsAndSpires/other/NotoSansSyriacWestern-VariableFont_wght.ttf" id="3_x570c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x570c"]
+line_spacing = 1.0
+font = ExtResource("3_x570c")
+font_size = 34
+font_color = Color(0.98039216, 0.94509804, 0.8627451, 1)
+outline_size = 4
+outline_color = Color(0.30129585, 0.28443113, 0.23688585, 1)
 
 [node name="SpellLevel" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = -64.0
+offset_top = -164.0
+offset_right = -64.0
+offset_bottom = -164.0
+scale = Vector2(0.735, 0.735)
 script = ExtResource("1_501ts")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -1.0
-offset_top = -2.0
-offset_right = 176.0
-offset_bottom = 55.0
+offset_left = 32.65306
+offset_top = 4.0816345
+offset_right = 239.65306
+offset_bottom = 98.081635
+scale = Vector2(0.61904764, 0.5102041)
 texture = ExtResource("1_pnqgv")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 43.0
-offset_top = 17.0
-offset_right = 134.0
-offset_bottom = 40.0
+offset_left = 40.816326
+offset_top = 9.523817
+offset_right = 131.81633
+offset_bottom = 64.52382
+text = "VIII"
+label_settings = SubResource("LabelSettings_x570c")
 horizontal_alignment = 1

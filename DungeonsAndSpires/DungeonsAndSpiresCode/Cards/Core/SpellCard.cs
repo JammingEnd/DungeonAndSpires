@@ -41,6 +41,7 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
         _shouldConsumeSpellslot = ShouldConsumeSpellslot();
         if (Keywords.Contains(CoreKeywords.Scrolled))
         {
+            _shouldConsumeSpellslot = false;
             modifiedCost = 0;
             return true;
         }
@@ -55,6 +56,8 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
     // Consume the spellslot when a leveled spell is cast.
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.AfterCardPlayed(choiceContext, cardPlay);
+
         if (cardPlay.Card == this && Level > 0 && UsesSpellSlot && _shouldConsumeSpellslot && Owner.PlayerCombatState?.HasAvailableSlotForLevel(Level) == true)
         {
             await SpellslotsCmd.ConsumeSpellSlotForLevel(choiceContext, Owner, Level);

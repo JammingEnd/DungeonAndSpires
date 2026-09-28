@@ -14,6 +14,7 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 
@@ -74,6 +75,15 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
     protected override void AddExtraArgsToDescription(LocString description)
     {
         description.Add("HasPotencyStep", PotencyVars.Count > 0 || DynamicVars.ContainsKey("PotencyStep"));
+    }
+
+    // Scrolled cards are free to play and exhaust after being played.
+    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card == this && Keywords.Contains(CoreKeywords.Scrolled))
+        {
+            await CardCmd.Exhaust(choiceContext, this);
+        }
     }
 
     /// <summary>
@@ -239,5 +249,23 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         }
 
         return token;
+    }
+
+    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource,
+        CardPlay? cardPlay)
+    {
+        if (cardSource != this || dealer != Owner.Creature)
+        {
+            return 0;
+        }
+        // finesse weapons use dex for damage instead of str+vigor, whichever is higher.
+        if (Keywords.Contains(CoreKeywords.Finesse) && props.IsPoweredAttack())
+        {
+            int strength = Owner.Creature.GetPowerAmount<StrengthPower>();
+            int vigor = Owner.Creature.GetPowerAmount<VigorPower>();
+            int dexterity = Owner.Creature.GetPowerAmount<DexterityPower>();
+            return Math.Max(0, dexterity - (strength + vigor));
+        }
+        return 0;
     }
 }
