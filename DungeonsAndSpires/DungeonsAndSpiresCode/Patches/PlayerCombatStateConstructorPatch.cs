@@ -1,5 +1,6 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.AbilityPotency;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Metamagic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -15,8 +16,14 @@ internal class PlayerCombatStateConstructorPatch
     {
         PotencyField.State[__instance] = new PotencyState();
         
-        
+        AssignForSorcerer(player, __instance);
+     
+    }
+
+    private static void AssignForSorcerer(Player player, PlayerCombatState __instance)
+    {
         bool isHalfCaster = player.Character.CardPool is not SorcererCardPool;
         SpellslotsField.State[__instance] = new SpellslotsState(isHalfCaster);
+        MetamagicField.State[__instance] = new MetamagicState();
     }
 }

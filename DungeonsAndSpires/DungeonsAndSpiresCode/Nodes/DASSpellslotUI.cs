@@ -3,12 +3,6 @@ using Godot;
 using MegaCrit.Sts2.Core.Entities.Players;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Nodes;
-
-/// <summary>
-/// Vertical list of spellslot blocks shown on the left edge of the combat screen. One row per
-/// spell level (level 1 at the bottom), showing a Roman numeral and the slots remaining, which
-/// turn red when they hit 0.
-/// </summary>
 public partial class DASSpellslotUI : Control
 {
     private static readonly string[] RomanNumerals = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };

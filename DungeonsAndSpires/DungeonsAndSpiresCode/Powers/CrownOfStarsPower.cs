@@ -38,10 +38,6 @@ public class CrownOfStarsPower : DungeonsAndSpiresPower
             await CardPileCmd.AddGeneratedCardToCombat(strike, PileType.Hand, player);
         }
 
-        decimal newAmount = await PowerCmd.ModifyAmount(choiceContext, this, -1, null, null);
-        if (newAmount <= 0)
-        {
-            await PowerCmd.Remove(this);
-        }
+        await PowerCmd.Decrement(this);
     }
 }

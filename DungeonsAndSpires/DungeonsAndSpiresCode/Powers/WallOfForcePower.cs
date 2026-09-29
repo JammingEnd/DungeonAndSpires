@@ -62,10 +62,6 @@ public class WallOfForcePower : DungeonsAndSpiresPower, IOnPotencyChanged
 
         await CreatureCmd.GainBlock(Owner, DynamicVars["Block"].IntValue, ValueProp.Unpowered, null);
 
-        decimal newAmount = await PowerCmd.ModifyAmount(choiceContext, this, -1, null, null);
-        if (newAmount <= 0)
-        {
-            await PowerCmd.Remove(this);
-        }
+        await PowerCmd.Decrement(this);
     }
 }
