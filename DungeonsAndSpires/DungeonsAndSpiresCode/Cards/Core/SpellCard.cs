@@ -1,6 +1,8 @@
 using BaseLib.Utils;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Statusses;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Metamagic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using MegaCrit.Sts2.Core.Commands;
@@ -57,14 +59,22 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.AfterCardPlayed(choiceContext, cardPlay);
-
+        int Metamagic = cardPlay.Player.PlayerCombatState.GetMetamagic();
         if (cardPlay.Card == this && Level > 0 && UsesSpellSlot && _shouldConsumeSpellslot && Owner.PlayerCombatState?.HasAvailableSlotForLevel(Level) == true)
         {
             await SpellslotsCmd.ConsumeSpellSlotForLevel(choiceContext, Owner, Level);
         }
-        else
+        else if(cardPlay.Card == this && Level > 0 && UsesSpellSlot && _shouldConsumeSpellslot &&  Owner.PlayerCombatState?.HasAvailableSlotForLevel(Level) == false && Metamagic > 0)
         {
-            // Generate Arcane exhaustion of the spell's level
+            await MetamagicCmd.Remove(choiceContext, cardPlay.Player, 1);
+        }
+        else if (cardPlay.Card == this && Level > 0 && _shouldConsumeSpellslot)
+        {
+                var card = (ArcaneExhaustion)CombatState.CreateCard(ModelDb.Card<ArcaneExhaustion>(), cardPlay.Player);
+                SpellCard thisCard = cardPlay.Card as SpellCard;
+                card.SetLevel(thisCard.Level);
+                var cardview = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, cardPlay.Player);
+                CardCmd.PreviewCardPileAdd(cardview, 0.5f);
         }
     }
 

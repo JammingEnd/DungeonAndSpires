@@ -1,3 +1,6 @@
 {
-  
+  "DUNGEONSANDSPIRES-METAMAGIC.title": "Metamagic",
+  "DUNGEONSANDSPIRES-METAMAGIC.description": "Your current Metamagic.",
+  "DUNGEONSANDSPIRES-POTENCY.title": "Ability Potency",
+  "DUNGEONSANDSPIRES-POTENCY.description": "Your current Ability Potency.\nAffects [color=#42edce]Potent[/color] Cards"
 }

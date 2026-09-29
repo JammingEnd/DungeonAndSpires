@@ -173,6 +173,8 @@
   "DUNGEONSANDSPIRES-ELEMENT_ACID.description": "Apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
   "DUNGEONSANDSPIRES-ELEMENT_POISON.title": "Poison",
   "DUNGEONSANDSPIRES-ELEMENT_POISON.description": "Apply {PoisonPower:diff()} [gold]Poison[/gold].",
+  "DUNGEONSANDSPIRES-ARCANE_EXHAUSTION.description": "While this is in your hand, lose {Level} Ability Potency",
+  "DUNGEONSANDSPIRES-ARCANE_EXHAUSTION.title": "Arcane Exhaustion",
 
   "DUNGEONSANDSPIRES-CLUB_STRIKE.description": "Deal {Damage:diff()} damage.",
   "DUNGEONSANDSPIRES-CLUB_STRIKE.title": "Club Strike",

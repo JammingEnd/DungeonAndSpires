@@ -34,8 +34,6 @@ public class AstralGatePower : DungeonsAndSpiresPower
             _marked.Add(card);
             hand.Remove(card);
         }
-
-        var guh = this.DynamicVars.Values.Where(x => x.GetType().GetField("_amount") != null);
     }
 
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
