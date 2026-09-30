@@ -77,15 +77,6 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         description.Add("HasPotencyStep", PotencyVars.Count > 0 || DynamicVars.ContainsKey("PotencyStep"));
     }
 
-    // Scrolled cards are free to play and exhaust after being played.
-    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
-        if (cardPlay.Card == this && Keywords.Contains(CoreKeywords.Scrolled))
-        {
-            await CardCmd.Exhaust(choiceContext, this);
-        }
-    }
-
     /// <summary>
     /// Maps a DynamicVar name to its potency scaling: (step, mult). Every <c>step</c> Ability
     /// Potency, the var increases by <c>mult</c>. A step of 1 is "Potent 1".
@@ -116,7 +107,17 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
                 result.AddRange(MakeCalculatedVar(
                     item.Name,
                     (int)baseValue,
-                    (model, creature) => Math.Floor((decimal)(model.Owner.PlayerCombatState?.GetPotency() ?? 0) / potency.step),
+                    (model, creature) =>
+                    {
+                        decimal playerPotency = model.Owner.PlayerCombatState?.GetPotency() ?? 0;
+                        decimal level = Math.Floor(playerPotency / potency.step);
+                        // Heightened cards have their potency level met by 1 (or gain 3 if their potency step is 1).
+                        if (model.Keywords.Contains(CoreKeywords.Heightened))
+                        {
+                            level += potency.step == 1 ? 3 : 1;
+                        }
+                        return level;
+                    },
                     potency.mult));
             }
             else

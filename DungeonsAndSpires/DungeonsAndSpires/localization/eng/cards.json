@@ -175,6 +175,12 @@
   "DUNGEONSANDSPIRES-ELEMENT_POISON.description": "Apply {PoisonPower:diff()} [gold]Poison[/gold].",
   "DUNGEONSANDSPIRES-ARCANE_EXHAUSTION.description": "While this is in your hand, lose {Level} Ability Potency",
   "DUNGEONSANDSPIRES-ARCANE_EXHAUSTION.title": "Arcane Exhaustion",
+  "DUNGEONSANDSPIRES-QUICKEND_SPELL.description": "Choose a spell card.\nIt gains [gold]Quickened[/gold].",
+  "DUNGEONSANDSPIRES-QUICKEND_SPELL.title": "Quicken Spell",
+  "DUNGEONSANDSPIRES-QUICKEND_SPELL.selectionPrompt": "Choose a spell card to quicken.",
+  "DUNGEONSANDSPIRES-HEIGHTENED_SPELL.description": "Choose a [color=#42edce]Potent[/color] spell.\nIt gains [gold]Heightened[/gold].",
+  "DUNGEONSANDSPIRES-HEIGHTENED_SPELL.title": "Heightened Spell",
+  "DUNGEONSANDSPIRES-HEIGHTENED_SPELL.selectionPrompt": "Choose a Potent spell to heighten.",
 
   "DUNGEONSANDSPIRES-CLUB_STRIKE.description": "Deal {Damage:diff()} damage.",
   "DUNGEONSANDSPIRES-CLUB_STRIKE.title": "Club Strike",
@@ -244,6 +250,7 @@
   "DUNGEONSANDSPIRES-SHORTSWORD_BLOODRITE.title": "Shortsword Bloodrite",
   "DUNGEONSANDSPIRES-SHORTBOW_DRILL_TIP.description": "At the start of your next 3 turns, deal X×3 damage to the enemy.",
   "DUNGEONSANDSPIRES-SHORTBOW_DRILL_TIP.title": "Shortbow Drill Tip"
+
 
 
 

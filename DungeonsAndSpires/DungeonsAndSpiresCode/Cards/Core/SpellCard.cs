@@ -5,8 +5,10 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Metamagic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Enchantments;
@@ -78,7 +80,55 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
                 var cardview = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, cardPlay.Player);
                 CardCmd.PreviewCardPileAdd(cardview, 0.5f);
         }
+        if (cardPlay.Card == this && Keywords.Contains(CoreKeywords.Heightened))
+        {
+            this.RemoveKeyword(CoreKeywords.Heightened);
+        }
+        // Quickened cards also deal their effects to a random enemy (or ally).
+        if (cardPlay.Card == this && Keywords.Contains(CoreKeywords.Quickened))
+        {
+            this.RemoveKeyword(CoreKeywords.Quickened);
+
+            if (cardPlay.Card.TargetType == TargetType.Self)
+            {
+                var otherPlayers = CombatState.Players.Where(p => p != Owner).ToArray();
+                if (otherPlayers.Length > 0)
+                {
+                    var ally = otherPlayers[Owner.RunState.Rng.CombatTargets.NextInt(otherPlayers.Length)];
+                    await CardCmd.AutoPlay(choiceContext, this, ally.Creature, skipXCapture: true);
+                }
+            }
+            else
+            {
+                var enemy = Owner.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
+                if (enemy != null)
+                {
+                    await CardCmd.AutoPlay(choiceContext, this, enemy);
+                }
+            }
+        }
+        // Scrolled cards are free to play and exhaust after being played.
+        if (cardPlay.Card == this && Keywords.Contains(CoreKeywords.Scrolled))
+        {
+            await CardCmd.Exhaust(choiceContext, this);
+        }
     }
+
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
+    {
+        if (side != CombatSide.Player)
+            return;
+        
+        if (Keywords.Contains(CoreKeywords.Heightened))
+        {
+            this.RemoveKeyword(CoreKeywords.Heightened);
+        }
+        if (Keywords.Contains(CoreKeywords.Quickened))
+        {
+            this.RemoveKeyword(CoreKeywords.Quickened);
+        }
+    }
+
 
     // Ritual spells don't consume a spellslot when your energy is above half its maximum. when 3 is max, you need more than 2
     private bool ShouldConsumeSpellslot()

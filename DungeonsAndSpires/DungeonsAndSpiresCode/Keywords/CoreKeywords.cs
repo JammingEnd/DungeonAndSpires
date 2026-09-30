@@ -11,6 +11,16 @@ public static class CoreKeywords
     [KeywordProperties(AutoKeywordPosition.Before)]
     public static CardKeyword Potent;
     
+    //Heightened cards have their potency level met by 1. cards with potency 1 gain 3 potency 
+    [CustomEnum("Heightened")] 
+    [KeywordProperties(AutoKeywordPosition.Before)]
+    public static CardKeyword Heightened;
+    
+    // Quickened cards also deal their effects to a random enemy (or ally).
+    [CustomEnum("Quickened")] 
+    [KeywordProperties(AutoKeywordPosition.Before)]
+    public static CardKeyword Quickened;
+    
     // Ritual spells do not consume a spellslot when your energy is above 50% (when max is 3, its above 2)
     [CustomEnum("Ritual")] 
     [KeywordProperties(AutoKeywordPosition.Before)]
