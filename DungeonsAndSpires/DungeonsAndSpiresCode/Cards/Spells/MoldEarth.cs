@@ -27,8 +27,8 @@ public class MoldEarth() : SpellCard(1, 1, CardType.Skill, CardRarity.Common, Ta
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new BlockVar(4, ValueProp.Unpowered),
-        new IntVar("Weak", 1)
+        new BlockVar(5, ValueProp.Unpowered),
+        new IntVar("Weak", 2)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
