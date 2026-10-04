@@ -21,7 +21,7 @@ public class ShortswordScrapeOff() : SimpleWeaponCard(2, CardType.Attack, CardRa
     protected override IEnumerable<DynamicVar> CardVars =>
     [
         new DamageVar(7, ValueProp.Move),
-        ..MakeCalculatedVar("Hits", 0, (card, target) =>
+        ..MakeCalculatedVar("Hits", 1, (card, target) =>
             PileType.Hand.GetPile(card.Owner).Cards.Count(c => c.Type == CardType.Curse || c.Type == CardType.Status), 1)
     ];
 

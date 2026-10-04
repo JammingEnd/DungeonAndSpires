@@ -26,6 +26,9 @@ public class AddMetamagic
 
             if (player.Character.CardPool is not SorcererCardPool)
             {
+                // AddedNode attaches this display to every energy counter regardless of character;
+                // hide it so Metamagic is only visible to the Sorcerer.
+                display.Visible = false;
                 return;
             }
 

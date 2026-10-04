@@ -25,6 +25,9 @@ public class AddPotency
 
             if (player.Character.CardPool is not SorcererCardPool)
             {
+                // AddedNode attaches this display to every energy counter regardless of character;
+                // hide it so Potency is only visible to the Sorcerer.
+                display.Visible = false;
                 return;
             }
 

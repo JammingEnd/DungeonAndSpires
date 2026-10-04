@@ -14,7 +14,7 @@ public class DaggerBleed() : SimpleWeaponCard(0, CardType.Skill, CardRarity.Comm
 {
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new PowerVar<VulnerablePower>("Vulnerable", 1)
+        new PowerVar<VulnerablePower>("Vulnerable", 2)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
