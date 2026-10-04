@@ -27,7 +27,7 @@ public class SpiritOfDeath() : SpellCard(4, 2, CardType.Attack, CardRarity.Uncom
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+        await DamageCmd.Attack(DynamicVars["Damage"].GetCalculatedValue()).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
 
         var power = await PowerCmd.Apply<SpiritOfDeathPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
         power?.SetCard(this);

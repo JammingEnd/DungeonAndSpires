@@ -11,12 +11,6 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 public class DaggerOffhand() : SimpleWeaponCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CoreKeywords.Piering,
-        CoreKeywords.Finesse
-    ];
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var power = await PowerCmd.Apply<DaggerOffhandPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);

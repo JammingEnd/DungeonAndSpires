@@ -24,10 +24,7 @@ public class BladeOfDisaster() : SpellCard(8, 2, CardType.Attack, CardRarity.Rar
     {
         int hits = DynamicVars["Hits"].IntValue;
         decimal damage = DynamicVars["Damage"].GetCalculatedValue();
-        for (int i = 0; i < hits; i++)
-        {
-            await CreatureCmd.Damage(choiceContext, cardPlay.Target, damage, ValueProp.Unpowered, Owner.Creature, this, cardPlay);
-        }
+        await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(cardPlay.Target).WithHitCount(hits).Execute(choiceContext);
     }
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)

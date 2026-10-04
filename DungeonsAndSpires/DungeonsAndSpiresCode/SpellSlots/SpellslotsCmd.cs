@@ -18,12 +18,17 @@ public static class SpellslotsCmd
         if (CombatManager.Instance.IsOverOrEnding)
             return;
 
+        int oldAmount = slot.GetCurrent();
         slot.Add(amount);
+        int currentAmount = slot.GetCurrent();
         OnChanged?.Invoke(player);
 
         var combatState = player.Creature.CombatState;
         if (combatState != null)
+        {
             await SpellslotsHook.OnGained(combatState, context, player, level, amount);
+            await SpellslotsHook.OnAmountChanged(combatState, context, player, level, oldAmount, currentAmount);
+        }
     }
 
     public static async Task ConsumeSpellSlotForLevel(PlayerChoiceContext context, Player player, int level, int amount = 1)
@@ -36,12 +41,17 @@ public static class SpellslotsCmd
         if (CombatManager.Instance.IsOverOrEnding)
             return;
 
+        int oldAmount = slot.GetCurrent();
         slot.Consume(amount);
+        int currentAmount = slot.GetCurrent();
         OnChanged?.Invoke(player);
 
         var combatState = player.Creature.CombatState;
         if (combatState != null)
+        {
             await SpellslotsHook.OnConsumed(combatState, context, player, level, amount);
+            await SpellslotsHook.OnAmountChanged(combatState, context, player, level, oldAmount, currentAmount);
+        }
     }
     
     public static Task SetMaxForLevel(PlayerChoiceContext context, Player player, int level, int max)

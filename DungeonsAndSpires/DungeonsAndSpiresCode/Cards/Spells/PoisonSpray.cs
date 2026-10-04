@@ -37,13 +37,14 @@ public class PoisonSpray() : SpellCard(0, 1, CardType.Attack, CardRarity.Common,
         if (enemies.Length == 0)
             return;
 
-        await CreatureCmd.Damage(choiceContext, enemies, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+        await DamageCmd.Attack(DynamicVars["Damage"].GetCalculatedValue()).FromCard(this, cardPlay).TargetingAllOpponents(CombatState).Execute(choiceContext);
         await PowerCmd.Apply<PoisonPower>(choiceContext, enemies, DynamicVars["Poison"].GetCalculatedValue(), Owner.Creature, this);
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CoreKeywords.Potent)
+        HoverTipFactory.FromKeyword(CoreKeywords.Potent),
+        HoverTipFactory.FromPower<PoisonPower>()
     ];
 
     protected override void OnUpgrade()

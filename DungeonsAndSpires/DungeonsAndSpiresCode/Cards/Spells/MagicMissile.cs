@@ -26,6 +26,7 @@ public class MagicMissile() : SpellCard(1, 0, CardType.Attack, CardRarity.Uncomm
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Hits"].UpgradeValueBy(2);
+        this.AddKeyword(CardKeyword.Retain);
+        this.DynamicVars.Damage.UpgradeValueBy(1);
     }
 }

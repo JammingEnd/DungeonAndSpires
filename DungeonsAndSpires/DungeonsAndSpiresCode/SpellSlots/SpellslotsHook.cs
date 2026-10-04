@@ -30,4 +30,16 @@ public static class SpellslotsHook
             choiceContext.PopModel(abstractModel);
         }
     }
+
+    public static async Task OnAmountChanged(ICombatState combatState, PlayerChoiceContext choiceContext, Player player, int level, int oldAmount, int currentAmount)
+    {
+        foreach (var model in combatState.IterateHookListeners().OfType<IOnSpellSlotAmountChanged>())
+        {
+            var abstractModel = (AbstractModel)(object)model;
+            choiceContext.PushModel(abstractModel);
+            await model.OnSpellSlotAmountChanged(choiceContext, player, level, oldAmount, currentAmount);
+            abstractModel.InvokeExecutionFinished();
+            choiceContext.PopModel(abstractModel);
+        }
+    }
 }

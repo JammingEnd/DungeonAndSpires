@@ -23,18 +23,20 @@ public class WitchBolt() : SpellCard(1, 1, CardType.Attack, CardRarity.Common, T
 
     public override Dictionary<string, (int step, int mult)> PotencyVars => new()
     {
-        { "Damage", (3, 4) }
+        { "Damage", (3, 4) },
+        { "AfterDamage", (3, 2) }
     };
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(9, ValueProp.Unpowered)
+        new DamageVar(9, ValueProp.Unpowered),
+        new DamageVar("AfterDamage", 4, ValueProp.Unpowered)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         decimal damage = DynamicVars["Damage"].GetCalculatedValue();
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, damage, ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+        await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
         await PowerCmd.Apply<WitchBoltPower>(choiceContext, cardPlay.Target, damage, Owner.Creature, this);
     }
 
@@ -47,5 +49,7 @@ public class WitchBolt() : SpellCard(1, 1, CardType.Attack, CardRarity.Common, T
     {
         DynamicVars["DamageBase"].UpgradeValueBy(3m);
         DynamicVars["DamageExtra"].UpgradeValueBy(2m);
+        DynamicVars["AfterDamageBase"].UpgradeValueBy(2m);
+        DynamicVars["AfterDamageExtra"].UpgradeValueBy(1m);
     }
 }

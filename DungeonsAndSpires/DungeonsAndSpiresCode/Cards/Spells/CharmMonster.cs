@@ -34,7 +34,8 @@ public class CharmMonster() : SpellCard(1, 2, CardType.Skill, CardRarity.Common,
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CoreKeywords.Potent)
+        HoverTipFactory.FromKeyword(CoreKeywords.Potent),
+        HoverTipFactory.FromPower<StrengthPower>()
     ];
 
     protected override void OnUpgrade()

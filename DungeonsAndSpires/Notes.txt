@@ -40,11 +40,15 @@ Characters:
     - [MetaMagic]: Sorcery points can be spend when casting spells, for example, twin spell can turn a firebolt (single target) to a (target all). 
     or (heigthened spell) can be used to increase the damage of spell that deal Ability damage. these points can be gained from card effects and a potion or two.
     - [Draconic bloodline]: (act1) increased max HP, (act2) strength is twice as effective on single target, ability damage, (act3) gain 1 "fly anwhere" after defeating an elite
-    - [Wild Magic]: (act1) once per combat, when an attack didnt break the enemy shield, deal that damage again, but gain frail and vulnerable, 
-    (act2) ability damage is increased by the amount of status cards in all your piles, (act3) when you generate a status effect card, gain 1 energy. 
+    - [Wild Magic]: (act1) when a spellslot reaches 0 uses, put a random spellcard from your draw pile in your hand, 
+    (act2) ability potency is increased by the amount of status cards in all your piles, (act3) when you generate a status effect card, gain 1 energy. 
     - [Lunar Sorcerer]: (act1) gain 1 energy whenever you spend 2 sorcery points. (act2) heal 5hp when the last kill in an encounter is from ability damage. 
     (act3) if your last played card a turn is a spell, gain 1 sorcery point. otherwise, gain 1 energy next turn.
     
     [QUICK NOTES BEFORE I FORGOR]
     - Artificer (gain strength at the start of combat for each relic you have) 
     - Barbarian (cannot get spells in cardpool. rage: token card, rage as a powers gives strength which is removed when rage ends)
+    
+    
+BUGGGSSS:
+disengage uses it for cantrips like prestifgidation

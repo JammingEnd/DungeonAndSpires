@@ -37,7 +37,7 @@ public class LightningBolt() : SpellCard(3, 1, CardType.Attack, CardRarity.Uncom
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var enemies = CombatState!.HittableEnemies.ToArray();
-        await CreatureCmd.Damage(choiceContext, enemies, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+        await DamageCmd.Attack(DynamicVars["Damage"].GetCalculatedValue()).FromCard(this, cardPlay).TargetingAllOpponents(CombatState).Execute(choiceContext);
         await PowerCmd.Apply<ShockedPower>(choiceContext, enemies, DynamicVars["Shocked"].GetCalculatedValue(), Owner.Creature, this);
     }
 

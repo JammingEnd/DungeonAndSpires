@@ -14,6 +14,7 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using System.Text.RegularExpressions;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
@@ -24,15 +25,19 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
     //Image size:
     //Normal art: 1000x760 (Using 500x380 should also work, it will simply be scaled.)
     //Full art: 606x852
-    public override string CustomPortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigCardImagePath();
+    private static readonly Regex SnakeRegex = new("([a-z0-9])([A-Z])");
+
+    private string CardName() => SnakeRegex.Replace(GetType().Name, "$1_$2").ToLowerInvariant();
+
+    public override string CustomPortraitPath => $"{CardName()}.png".BigCardImagePath();
 
     //Smaller variants of card images for efficiency:
     //Smaller variant of fullart: 250x350
     //Smaller variant of normalart: 250x190
 
     //Uses card_portraits/card_name.png as image path. These should be smaller images.
-    public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-    public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
+    public override string PortraitPath => $"{CardName()}.png".CardImagePath();
+    public override string BetaPortraitPath => $"beta/{CardName()}.png".CardImagePath();
     
     //so this is in corecard because i want to have stuff like "dip your sword in fire" or stuff like that. 
     public virtual IEnumerable<CardKeyword> ElementOptions => [];
@@ -268,5 +273,24 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
             return Math.Max(0, dexterity - (strength + vigor));
         }
         return 0;
+    }
+
+    // Potent attack spells are unpowered, so Weak normally skips them; apply the reduction here.
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
+    {
+        if (cardSource != this || dealer != Owner.Creature || target == null)
+        {
+            return 1m;
+        }
+        // Weak already handles powered attacks; avoid double-applying.
+        if (props.IsPoweredAttack())
+        {
+            return 1m;
+        }
+        if (Type == CardType.Attack && Owner.Creature.GetPowerAmount<WeakPower>() > 0)
+        {
+            return 0.75m;
+        }
+        return 1m;
     }
 }

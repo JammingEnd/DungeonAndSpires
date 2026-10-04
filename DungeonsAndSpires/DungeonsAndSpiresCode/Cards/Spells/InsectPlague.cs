@@ -43,7 +43,8 @@ public class InsectPlague() : SpellCard(5, 1, CardType.Skill, CardRarity.Uncommo
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CoreKeywords.Potent)
+        HoverTipFactory.FromKeyword(CoreKeywords.Potent),
+        HoverTipFactory.FromPower<PoisonPower>()
     ];
 
     protected override void OnUpgrade()

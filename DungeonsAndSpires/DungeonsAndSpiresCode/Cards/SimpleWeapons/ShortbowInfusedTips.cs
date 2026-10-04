@@ -6,6 +6,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -42,7 +43,7 @@ public class ShortbowInfusedTips() : SimpleWeaponCard(1, CardType.Attack, CardRa
         {
             damage += 4;
         }
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, damage, ValueProp.Move, Owner.Creature, this, cardPlay);
+        await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
         
         if (element == CoreKeywords.Poison)
         {
@@ -53,6 +54,12 @@ public class ShortbowInfusedTips() : SimpleWeaponCard(1, CardType.Attack, CardRa
             await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, GetElementEffectAmount(element.Value) * 2, Owner.Creature, this);
         }
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<PoisonPower>(),
+        HoverTipFactory.FromPower<VulnerablePower>()
+    ];
 
     protected override void OnUpgrade()
     {

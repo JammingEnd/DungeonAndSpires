@@ -35,7 +35,7 @@ public class Implode() : SpellCard(6, 1, CardType.Attack, CardRarity.Rare, Targe
         foreach (var enemy in CombatState!.HittableEnemies)
         {
             decimal total = baseDamage + bonusPerStack * enemy.GetPowerAmount<FrostbitePower>();
-            await CreatureCmd.Damage(choiceContext, enemy, total, ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+            await DamageCmd.Attack(total).FromCard(this, cardPlay).Targeting(enemy).Execute(choiceContext);
             await PowerCmd.Remove<FrostbitePower>(enemy);
         }
     }

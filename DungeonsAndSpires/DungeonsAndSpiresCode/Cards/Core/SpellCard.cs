@@ -100,7 +100,22 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
             }
             else
             {
-                var enemy = Owner.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
+                var hittable = CombatState.HittableEnemies.ToList();
+                if (hittable.Count == 0)
+                {
+                    return;
+                }
+
+                // Prefer a different enemy when there are multiple; otherwise hit the same one.
+                var candidates = hittable.Count > 1
+                    ? hittable.Where(e => e != cardPlay.Target).ToArray()
+                    : hittable.ToArray();
+                if (candidates.Length == 0)
+                {
+                    candidates = hittable.ToArray();
+                }
+
+                var enemy = Owner.RunState.Rng.CombatTargets.NextItem(candidates);
                 if (enemy != null)
                 {
                     await CardCmd.AutoPlay(choiceContext, this, enemy);

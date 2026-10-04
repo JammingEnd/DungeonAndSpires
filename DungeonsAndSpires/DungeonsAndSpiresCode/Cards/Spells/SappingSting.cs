@@ -40,7 +40,9 @@ public class SappingSting() : SpellCard(0, 1, CardType.Skill, CardRarity.Common,
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CoreKeywords.Potent)
+        HoverTipFactory.FromKeyword(CoreKeywords.Potent),
+        HoverTipFactory.FromPower<PoisonPower>(),
+        HoverTipFactory.FromPower<WeakPower>()
     ];
 
     protected override void OnUpgrade()

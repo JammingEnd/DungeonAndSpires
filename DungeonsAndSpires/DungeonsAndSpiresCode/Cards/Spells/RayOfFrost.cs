@@ -10,6 +10,8 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
+using MegaCrit.Sts2.Core.HoverTips;
+
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
@@ -22,7 +24,7 @@ public class RayOfFrost() : SpellCard(0, 1, CardType.Attack, CardRarity.Common, 
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(7, ValueProp.Unpowered),
+        new DamageVar(6, ValueProp.Unpowered),
         new PowerVar<WeakPower>("WeakPower", 1)
     ];
 
@@ -31,6 +33,11 @@ public class RayOfFrost() : SpellCard(0, 1, CardType.Attack, CardRarity.Common, 
         await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
         await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars["WeakPower"].IntValue, Owner.Creature, this);
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<WeakPower>()
+    ];
 
     protected override void OnUpgrade()
     {

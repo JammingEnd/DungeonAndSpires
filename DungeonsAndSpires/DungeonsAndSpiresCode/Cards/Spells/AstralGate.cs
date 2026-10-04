@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
-public class AstralGate() : SpellCard(9, 3, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class AstralGate() : SpellCard(9, 5, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CardVars =>
     [
@@ -19,5 +19,10 @@ public class AstralGate() : SpellCard(9, 3, CardType.Power, CardRarity.Rare, Tar
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PowerCmd.Apply<AstralGatePower>(choiceContext, Owner.Creature, DynamicVars["Spells"].IntValue, Owner.Creature, this);
+    }
+
+    protected override void OnUpgrade()
+    {
+        EnergyCost.UpgradeBy(-1);
     }
 }

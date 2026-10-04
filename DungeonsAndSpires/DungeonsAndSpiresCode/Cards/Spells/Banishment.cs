@@ -29,7 +29,7 @@ public class Banishment() : SpellCard(4, 2, CardType.Attack, CardRarity.Uncommon
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+        await DamageCmd.Attack(DynamicVars["Damage"].GetCalculatedValue()).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
         await PowerCmd.Apply<PlaneshiftPower>(choiceContext, cardPlay.Target, DynamicVars["Planeshift"].IntValue, Owner.Creature, this);
     }
 

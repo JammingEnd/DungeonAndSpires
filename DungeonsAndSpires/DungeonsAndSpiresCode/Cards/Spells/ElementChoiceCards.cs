@@ -2,6 +2,7 @@ using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -48,6 +49,11 @@ public class ElementAcid : ElementChoiceCard
     [
         new PowerVar<VulnerablePower>("VulnerablePower", 1)
     ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<VulnerablePower>()
+    ];
 }
 
 public class ElementPoison : ElementChoiceCard
@@ -57,5 +63,10 @@ public class ElementPoison : ElementChoiceCard
     protected override IEnumerable<DynamicVar> CardVars =>
     [
         new PowerVar<PoisonPower>("PoisonPower", 2)
+    ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<PoisonPower>()
     ];
 }

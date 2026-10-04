@@ -7,6 +7,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 
+using MegaCrit.Sts2.Core.HoverTips;
+
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
@@ -23,6 +25,11 @@ public class Haste() : SpellCard(3, 3, CardType.Power, CardRarity.Uncommon, Targ
         await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, amount, Owner.Creature, this);
         await PowerCmd.Apply<HastePower>(choiceContext, Owner.Creature, amount, Owner.Creature, this);
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<DexterityPower>()
+    ];
 
     protected override void OnUpgrade()
     {

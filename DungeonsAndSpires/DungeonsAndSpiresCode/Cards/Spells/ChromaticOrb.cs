@@ -5,6 +5,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -38,6 +39,12 @@ public class ChromaticOrb() : SpellCard(1, 1, CardType.Attack, CardRarity.Common
         await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
         await ApplyImbuedElementEffect(choiceContext, cardPlay.Target);
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<PoisonPower>(),
+        HoverTipFactory.FromPower<VulnerablePower>()
+    ];
 
     protected override void OnUpgrade()
     {

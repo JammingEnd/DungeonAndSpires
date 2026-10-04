@@ -46,7 +46,7 @@ public class ScorchingRay() : SpellCard(2, 2, CardType.Attack, CardRarity.Uncomm
             var enemy = Owner.RunState.Rng.CombatTargets.NextItem<Creature>(enemies);
             if (enemy != null)
             {
-                await CreatureCmd.Damage(choiceContext, enemy, damage, ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+                await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(enemy).Execute(choiceContext);
             }
         }
     }

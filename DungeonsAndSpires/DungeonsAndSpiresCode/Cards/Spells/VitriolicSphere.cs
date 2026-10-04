@@ -41,7 +41,9 @@ public class VitriolicSphere() : SpellCard(6, 2, CardType.Skill, CardRarity.Rare
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(CoreKeywords.Potent),
-        HoverTipFactory.FromPower<VitriolicSpherePower>()
+        HoverTipFactory.FromPower<VitriolicSpherePower>(),
+        HoverTipFactory.FromPower<PoisonPower>(),
+        HoverTipFactory.FromPower<VulnerablePower>()
     ];
 
     protected override void OnUpgrade()

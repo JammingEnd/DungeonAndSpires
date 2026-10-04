@@ -57,7 +57,7 @@ public class DelayedFireball() : SpellCard(8, 3, CardType.Attack, CardRarity.Rar
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         decimal total = DynamicVars["CurrentDamage"].GetCalculatedValue(cardPlay.Target);
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, total, ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+        await DamageCmd.Attack(total).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

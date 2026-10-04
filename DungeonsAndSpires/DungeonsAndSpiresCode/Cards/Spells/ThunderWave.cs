@@ -36,13 +36,15 @@ public class ThunderWave() : SpellCard(1, 1, CardType.Attack, CardRarity.Common,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var enemies = CombatState!.HittableEnemies.ToArray();
-        await CreatureCmd.Damage(choiceContext, enemies, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+        await DamageCmd.Attack(DynamicVars["Damage"].GetCalculatedValue()).FromCard(this, cardPlay).TargetingAllOpponents(CombatState).Execute(choiceContext);
         await PowerCmd.Apply<FrailPower>(choiceContext, enemies, DynamicVars["Frail"].GetCalculatedValue(), Owner.Creature, this);
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CoreKeywords.Potent)
+        HoverTipFactory.FromKeyword(CoreKeywords.Potent),
+        HoverTipFactory.FromPower<WeakPower>(),
+        HoverTipFactory.FromPower<FrailPower>()
     ];
 
     protected override void OnUpgrade()

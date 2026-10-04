@@ -37,10 +37,7 @@ public class PsychicLance() : SpellCard(4, 2, CardType.Attack, CardRarity.Uncomm
         }
 
         decimal damage = DynamicVars["Damage"].GetCalculatedValue();
-        for (int i = 0; i < hits; i++)
-        {
-            await CreatureCmd.Damage(choiceContext, cardPlay.Target, damage, ValueProp.Unpowered, Owner.Creature, this, cardPlay);
-        }
+        await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(cardPlay.Target).WithHitCount(hits).Execute(choiceContext);
 
         await PowerCmd.Remove<ShockedPower>(cardPlay.Target);
     }

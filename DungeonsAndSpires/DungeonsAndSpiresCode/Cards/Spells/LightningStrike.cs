@@ -18,7 +18,8 @@ public class LightningStrike() : SpellCard(0, 0, CardType.Attack, CardRarity.Tok
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CoreKeywords.Lightning
+        CoreKeywords.Lightning,
+        CardKeyword.Exhaust
     ];
 
     protected override IEnumerable<DynamicVar> CardVars =>
@@ -29,7 +30,7 @@ public class LightningStrike() : SpellCard(0, 0, CardType.Attack, CardRarity.Tok
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars["Damage"].IntValue, ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+        await DamageCmd.Attack(DynamicVars["Damage"].IntValue).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
         await PowerCmd.Apply<ShockedPower>(choiceContext, cardPlay.Target, DynamicVars["Shocked"].IntValue, Owner.Creature, this);
     }
 

@@ -33,7 +33,8 @@ public class ModifyMemory() : SpellCard(5, 2, CardType.Skill, CardRarity.Uncommo
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CoreKeywords.Potent)
+        HoverTipFactory.FromKeyword(CoreKeywords.Potent),
+        HoverTipFactory.FromPower<StrengthPower>()
     ];
 
     protected override void OnUpgrade()

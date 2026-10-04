@@ -40,7 +40,9 @@ public class PrayerOfHealing() : SpellCard(2, 2, CardType.Skill, CardRarity.Comm
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CoreKeywords.Potent)
+        HoverTipFactory.FromKeyword(CoreKeywords.Potent),
+        HoverTipFactory.FromPower<PrayerOfHealingStrengthPower>(),
+        HoverTipFactory.FromPower<PrayerOfHealingDexterityPower>()
     ];
 
     protected override void OnUpgrade()

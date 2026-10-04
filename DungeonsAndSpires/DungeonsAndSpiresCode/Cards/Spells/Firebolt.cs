@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
-public class Firebolt() : SpellCard(0, 1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class Firebolt() : SpellCard(0, 1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CardVars =>
     [

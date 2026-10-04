@@ -31,7 +31,7 @@ public class Disintegrate() : SpellCard(6, 3, CardType.Attack, CardRarity.Rare, 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+        await DamageCmd.Attack(DynamicVars["Damage"].GetCalculatedValue()).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
 
         var drawPile = PileType.Draw.GetPile(Owner);
         var prefs = new CardSelectorPrefs(new LocString("cards", "DUNGEONSANDSPIRES-DISINTEGRATE.selectionPrompt"), 0, DynamicVars["Exhaust"].IntValue);

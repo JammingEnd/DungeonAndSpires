@@ -34,7 +34,8 @@ public class QuarterstaffHeadhit() : SimpleWeaponCard(0, CardType.Attack, CardRa
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CoreKeywords.Bludgeoning)
+        HoverTipFactory.FromKeyword(CoreKeywords.Bludgeoning),
+        HoverTipFactory.FromPower<QuarterstaffHeadhitDexterityPower>()
     ];
 
     protected override void OnUpgrade()

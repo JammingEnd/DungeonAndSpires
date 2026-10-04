@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
@@ -41,5 +42,17 @@ public class WallOfWater() : SpellCard(3, 2, CardType.Skill, CardRarity.Uncommon
                 await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, poison, Owner.Creature, this);
             }
         }
+    }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<FrostbitePower>(),
+        HoverTipFactory.FromPower<ShockedPower>(),
+        HoverTipFactory.FromPower<PoisonPower>()
+    ];
+
+    protected override void OnUpgrade()
+    {
+        EnergyCost.UpgradeBy(-1);
     }
 }

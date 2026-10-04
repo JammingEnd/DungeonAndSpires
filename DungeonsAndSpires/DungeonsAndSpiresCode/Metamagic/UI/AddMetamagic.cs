@@ -1,4 +1,5 @@
 using BaseLib.Utils;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Metamagic;
 using Godot;
 using HarmonyLib;
@@ -19,6 +20,11 @@ public class AddMetamagic
             // NEnergyCounter._player is private; grab it via reflection.
             var player = AccessTools.Field(typeof(NEnergyCounter), "_player").GetValue(nEnergyCounter) as Player;
             if (player == null)
+            {
+                return;
+            }
+
+            if (player.Character.CardPool is not SorcererCardPool)
             {
                 return;
             }

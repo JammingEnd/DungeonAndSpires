@@ -1,7 +1,9 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Basic;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Sorcerer;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
@@ -26,17 +28,17 @@ public class SorcererCharacter : PlaceholderCharacterModel
         ModelDb.Card<ClubStrike>(),
         ModelDb.Card<ClubStrike>(),
         ModelDb.Card<ClubStrike>(),
-        ModelDb.Card<ClubStrike>(),
         ModelDb.Card<ClubDefend>(),
         ModelDb.Card<ClubDefend>(),
         ModelDb.Card<ClubDefend>(),
         ModelDb.Card<ClubDefend>(),
-        ModelDb.Card<ClubDefend>()
+        ModelDb.Card<Firebolt>(),
+        ModelDb.Card<WitchBolt>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningBlood>()
+        ModelDb.Relic<DraconicBloodlineRelic>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<SorcererCardPool>();
@@ -60,6 +62,7 @@ public class SorcererCharacter : PlaceholderCharacterModel
     public override string CustomIconTexturePath => "Sorcerer/character_icon_sorcerer.png".CharacterUiPath();
     public override string CustomCharacterSelectIconPath => "Sorcerer/char_select_sorcerer.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "Sorcerer/char_select_sorcerer_locked.png".CharacterUiPath();
+    public override string CustomCharacterSelectBg => "Sorcerer/char_select_bg_sorcerer.tscn".CharacterUiPath();
     public override string CustomMapMarkerPath => "Sorcerer/map_marker_sorcerer.png".CharacterUiPath();
     public override string CustomEnergyCounterPath => "res://DungeonsAndSpires/Scenes/Core/DAS_energy_counter.tscn";
 }

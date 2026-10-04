@@ -13,12 +13,6 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 public class DaggerLastResort() : SimpleWeaponCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CoreKeywords.Piering,
-        CoreKeywords.Finesse
-    ];
-
     protected override IEnumerable<DynamicVar> CardVars =>
     [
         new PowerVar<VigorPower>("Vigor", 4)

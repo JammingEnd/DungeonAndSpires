@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
@@ -17,7 +18,8 @@ public class ShortswordBloodrite() : SimpleWeaponCard(3, CardType.Power, CardRar
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<ShortswordBloodritePower>()
+        HoverTipFactory.FromPower<ShortswordBloodritePower>(),
+        HoverTipFactory.FromPower<StrengthPower>()
     ];
 
     protected override void OnUpgrade()

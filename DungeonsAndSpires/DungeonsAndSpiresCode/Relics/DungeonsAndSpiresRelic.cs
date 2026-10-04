@@ -3,6 +3,7 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
+using System.Text.RegularExpressions;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics;
 
@@ -18,10 +19,13 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics;
 [Pool(typeof(SorcererRelicPool))]
 public abstract class DungeonsAndSpiresRelic : CustomRelicModel
 {
-    public override string PackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".RelicImagePath();
+    private static readonly Regex SnakeRegex = new("([a-z0-9])([A-Z])");
 
-    protected override string PackedIconOutlinePath =>
-        $"{Id.Entry.RemovePrefix().ToLowerInvariant()}_outline.png".RelicImagePath();
+    private string RelicName() => SnakeRegex.Replace(GetType().Name, "$1_$2").ToLowerInvariant();
 
-    protected override string BigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigRelicImagePath();
+    public override string PackedIconPath => $"{RelicName()}.png".RelicImagePath();
+
+    protected override string PackedIconOutlinePath => $"{RelicName()}_outline.png".RelicImagePath();
+
+    protected override string BigIconPath => $"{RelicName()}.png".BigRelicImagePath();
 }

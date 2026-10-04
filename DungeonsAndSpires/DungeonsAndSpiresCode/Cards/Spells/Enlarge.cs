@@ -7,6 +7,8 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
+using MegaCrit.Sts2.Core.HoverTips;
+
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
@@ -23,6 +25,11 @@ public class Enlarge() : SpellCard(2, 2, CardType.Power, CardRarity.Uncommon, Ta
         await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, DynamicVars["Strength"].IntValue, Owner.Creature, this);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars["Block"].IntValue, ValueProp.Unpowered, cardPlay);
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<StrengthPower>()
+    ];
 
     protected override void OnUpgrade()
     {

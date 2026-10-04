@@ -14,16 +14,19 @@ internal class PlayerCombatStateConstructorPatch
     [HarmonyPostfix]
     private static void Postfix(Player player, PlayerCombatState __instance)
     {
-        PotencyField.State[__instance] = new PotencyState();
-        
         AssignForSorcerer(player, __instance);
-     
     }
 
     private static void AssignForSorcerer(Player player, PlayerCombatState __instance)
     {
         bool isHalfCaster = player.Character.CardPool is not SorcererCardPool;
         SpellslotsField.State[__instance] = new SpellslotsState(isHalfCaster);
-        MetamagicField.State[__instance] = new MetamagicState();
+
+        // Potency and Metamagic are Sorcerer-only.
+        if (!isHalfCaster)
+        {
+            PotencyField.State[__instance] = new PotencyState();
+            MetamagicField.State[__instance] = new MetamagicState();
+        }
     }
 }

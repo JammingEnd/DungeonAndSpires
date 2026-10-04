@@ -38,7 +38,7 @@ public class RealityBreak() : SpellCard(8, 0, CardType.Attack, CardRarity.Rare, 
             AddKeyword(CoreKeywords.Cold);
         }
 
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, damage, ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+        await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
 
         if (energyX >= 4)
         {
@@ -52,7 +52,8 @@ public class RealityBreak() : SpellCard(8, 0, CardType.Attack, CardRarity.Rare, 
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<PlaneshiftPower>()
+        HoverTipFactory.FromPower<PlaneshiftPower>(),
+        HoverTipFactory.FromPower<PoisonPower>()
     ];
 
     protected override void OnUpgrade()

@@ -31,7 +31,7 @@ public class StarStrike() : SpellCard(0, 0, CardType.Attack, CardRarity.Rare, Ta
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars["Damage"].GetCalculatedValue(), ValueProp.Unpowered, Owner.Creature, this, cardPlay);
+        await DamageCmd.Attack(DynamicVars["Damage"].GetCalculatedValue()).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
         await PowerCmd.Apply<FrostbitePower>(choiceContext, cardPlay.Target, DynamicVars["Frostbite"].IntValue, Owner.Creature, this);
     }
 

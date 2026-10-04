@@ -14,26 +14,34 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 public class Divination() : SpellCard(4, 2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
+
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new IntVar("AbilityPotency", 3)
+        new IntVar("AbilityPotency", 2)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PotencyCmd.Add(choiceContext, Owner, DynamicVars["AbilityPotency"].IntValue);
 
-        var drawPile = PileType.Draw.GetPile(Owner).Cards.ToList();
+        var drawPile = PileType.Draw.GetPile(Owner).Cards.Where(x => x.Type is not CardType.Status or CardType.Curse or CardType.Quest).ToList();
         if (drawPile.Count == 0)
         {
             return;
         }
 
-        var card = Owner.RunState.Rng.CombatCardSelection.NextItem(drawPile);
-        if (card != null)
+        for (int i = 0; i < 3; i++)
         {
-            CardCmd.Upgrade(card, CardPreviewStyle.HorizontalLayout);
-            CardCmd.Preview(card);
+            var card = Owner.RunState.Rng.CombatCardSelection.NextItem(drawPile);
+            if (card != null)
+            {
+                CardCmd.Upgrade(card, CardPreviewStyle.HorizontalLayout);
+                CardCmd.Preview(card);
+            }
         }
         
     }
@@ -41,6 +49,6 @@ public class Divination() : SpellCard(4, 2, CardType.Skill, CardRarity.Uncommon,
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);
-        DynamicVars["AbilityPotency"].UpgradeValueBy(2m);
+        DynamicVars["AbilityPotency"].UpgradeValueBy(3m);
     }
 }

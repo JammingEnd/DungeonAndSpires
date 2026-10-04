@@ -12,12 +12,6 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 public class DaggerParry() : SimpleWeaponCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CoreKeywords.Piering,
-        CoreKeywords.Finesse
-    ];
-
     protected override IEnumerable<DynamicVar> CardVars =>
     [
         new PowerVar<DaggerParryDexterityPower>("Dexterity", 4)
