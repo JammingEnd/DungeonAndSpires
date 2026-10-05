@@ -29,7 +29,8 @@ public class Scrying() : SpellCard(5, 2, CardType.Skill, CardRarity.Uncommon, Ta
 
     protected override void OnUpgrade()
     {
-        DynamicVars["AbilityPotency"].UpgradeValueBy(2m);
+        DynamicVars["AbilityPotency"].UpgradeValueBy(1m);
         DynamicVars["Scry"].UpgradeValueBy(1);
+        DynamicVars["Draw"].UpgradeValueBy(1);
     }
 }

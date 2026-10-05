@@ -45,10 +45,9 @@ public class WildMagicRelic : SubclassRelic, IOnSpellSlotAmountChanged
     {
         if (cardPlay.Card.Owner != Owner && Act2Active)
             return;
-
-        await PotencyCmd.Remove(choiceContext, Owner, previous);
+        
         int statuses = Owner.PlayerCombatState.AllCards.Count(x => x.Type == CardType.Status && x.Pile.Type != PileType.Exhaust);
-        await PotencyCmd.Add(choiceContext, Owner, statuses);
+        await PotencyCmd.SetTemp(choiceContext, Owner, statuses);
         previous = statuses;
     }
 
@@ -81,7 +80,7 @@ public class WildMagicRelic : SubclassRelic, IOnSpellSlotAmountChanged
     {
         if (oldAmount > 0 && currentAmount == 0)
         {
-            var pile = player.PlayerCombatState.DiscardPile.Cards;
+            var pile = player.PlayerCombatState.DrawPile.Cards;
             var spellCards = pile.Where(c => c is SpellCard).ToArray();
             var selected = player.Creature.CombatState.RunState.Rng.CombatCardSelection.NextItem(spellCards);
             if (selected != null)

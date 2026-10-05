@@ -31,6 +31,13 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
     /// </summary>
     public virtual bool UsesSpellSlot => true;
 
+    /// <summary>
+    /// Animation the caster plays when this spell makes an attack. Applied to the spell's
+    /// <c>AttackCommand</c>, overriding the default "Attack" animation. Override per-card if a
+    /// different cast animation is wanted.
+    /// </summary>
+    public virtual string AttackAnimName => "cast_2";
+
     // Spells with a spell level of 0 are cantrips.
     protected override HashSet<CardTag> CanonicalTags => Level == 0 ? [DASCoreCardtags.Spell, DASCoreCardtags.Cantrip] : [DASCoreCardtags.Spell];
 
@@ -158,5 +165,13 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
             }
         }
         return true;
+    }
+
+    public override async Task OnEnqueuePlayVfx(Creature? target)
+    {
+        if (this.Type != CardType.Attack)
+        {
+            await CreatureCmd.TriggerAnim(Owner.Creature, "cast", 0);
+        }
     }
 }

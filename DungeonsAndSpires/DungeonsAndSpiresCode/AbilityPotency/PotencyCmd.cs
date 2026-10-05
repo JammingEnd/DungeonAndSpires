@@ -55,4 +55,32 @@ public static class PotencyCmd
         if (combatState != null)
             await PotencyHook.OnChanged(combatState, context, player, before, after);
     }
+
+    public static async Task SetTemp(PlayerChoiceContext context, Player player, int amount)
+    {
+        var state = player.PlayerCombatState?.GetPotencyState();
+        if (state == null || amount <= 0)
+            return;
+
+        if (CombatManager.Instance.IsOverOrEnding)
+            return;
+        
+        int before = state.Current;
+        int temp = state.Temp;
+        state.Current -= temp;
+
+        state.Temp = amount;
+        state.Current += amount;
+        int after = state.Current;
+        
+
+        OnChanged?.Invoke(player);
+
+        var combatState = player.Creature.CombatState;
+        if (combatState != null)
+        {
+            await PotencyHook.OnGained(combatState, context, player, amount);
+            await PotencyHook.OnChanged(combatState, context, player, before, after);
+        }
+    }
 }

@@ -1,8 +1,11 @@
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -82,6 +85,7 @@ public class DraconicBloodlineRelic : SubclassRelic
         unlockBlock = true;
     }
 
+    public override bool ShowCounter => unlockBlock;
     public override int DisplayAmount => ElementsPlayed;
 
     private bool unlockBlock = false;
@@ -103,5 +107,34 @@ public class DraconicBloodlineRelic : SubclassRelic
             this._elementsPlayed = value;
             this.InvokeDisplayAmountChanged();
         }
+    }
+
+    private bool _blockedThisTurn = false;
+
+    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner != Owner)
+            return;
+        if(_blockedThisTurn)
+            return;
+        
+        if (cardPlay.Card.HasElementKeyword())
+        {
+            ElementsPlayed++;
+        }
+
+        if (_elementsPlayed >= 4)
+        {
+            CreatureCmd.GainBlock(Owner.Creature, 12m, ValueProp.Unpowered, null);
+            ElementsPlayed = 0;
+            _blockedThisTurn  = true;
+        }
+        this.InvokeDisplayAmountChanged();
+    }
+
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
+    {
+        if (side == CombatSide.Player)
+            _blockedThisTurn = false;
     }
 }

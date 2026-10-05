@@ -14,7 +14,7 @@ public class Bless() : SpellCard(1, 1, CardType.Skill, CardRarity.Uncommon, Targ
 {
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new IntVar("AbilityPotency", 6)
+        new IntVar("AbilityPotency", 4)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

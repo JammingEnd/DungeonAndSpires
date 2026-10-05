@@ -65,4 +65,6 @@ public class SorcererCharacter : PlaceholderCharacterModel
     public override string CustomCharacterSelectBg => "Sorcerer/char_select_bg_sorcerer.tscn".CharacterUiPath();
     public override string CustomMapMarkerPath => "Sorcerer/map_marker_sorcerer.png".CharacterUiPath();
     public override string CustomEnergyCounterPath => "res://DungeonsAndSpires/Scenes/Core/DAS_energy_counter.tscn";
+    public override string CustomVisualPath => "res://DungeonsAndSpires/Scenes/Sorcerer/sorcerer_visuals.tscn";
+    public override string? CustomRestSiteAnimPath => "res://DungeonsAndSpires/Scenes/Sorcerer/sorcerer_rest_site.tscn";
 }

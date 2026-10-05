@@ -11,7 +11,9 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 public class PrayerOfHealingPower : DungeonsAndSpiresPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
+
+    public override int DisplayAmount => DynamicVars["Strength"].IntValue;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         base.CanonicalVars.Concat([
@@ -21,8 +23,9 @@ public class PrayerOfHealingPower : DungeonsAndSpiresPower
 
     public void SetAmounts(decimal strength, decimal dexterity)
     {
-        DynamicVars["Strength"].BaseValue = strength;
-        DynamicVars["Dexterity"].BaseValue = dexterity;
+        DynamicVars["Strength"].BaseValue += strength;
+        DynamicVars["Dexterity"].BaseValue += dexterity;
+        this.InvokeDisplayAmountChanged();
     }
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)

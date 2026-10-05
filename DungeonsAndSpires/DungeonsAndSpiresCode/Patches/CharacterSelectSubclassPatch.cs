@@ -22,12 +22,14 @@ internal static class CharacterSelectSubclassPatch
         _picker = new SubclassRelicPicker
         {
             Name = "SubclassRelicPicker",
-            AnchorLeft = 1,
-            AnchorRight = 1,
-            OffsetLeft = -782,
-            OffsetRight = -510,
-            OffsetTop = 550,
-            OffsetBottom = 700
+            AnchorLeft = 0,
+            AnchorTop = 0,
+            AnchorRight = 0,
+            AnchorBottom = 0,
+            OffsetLeft = 220,
+            OffsetTop = 720,
+            OffsetRight = 810,
+            OffsetBottom = 850
         };
         _picker.Visible = false;
         _picker.RelicSelected += relic => UpdateDisplayedRelic(__instance, relic);

@@ -83,7 +83,7 @@
   "DUNGEONSANDSPIRES-SIMULACRUM_POWER.title": "Simulacrum",
   "DUNGEONSANDSPIRES-SIMULACRUM_POWER.description": "At the start of your turn, regain {Amount} random Spellslot.",
   "DUNGEONSANDSPIRES-SIMULACRUM_POWER.smartDescription": "At the start of your turn, regain {Amount} random Spellslot.",
-"DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.title": "Vitriolic Sphere",
+  "DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.title": "Vitriolic Sphere",
   "DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.description": "At the start of its next turn, takes {Amount} damage.",
   "DUNGEONSANDSPIRES-VITRIOLIC_SPHERE_POWER.smartDescription": "At the start of its next turn, takes {Amount} damage.",
   "DUNGEONSANDSPIRES-WALL_OF_ICE_POWER.title": "Wall of Ice",

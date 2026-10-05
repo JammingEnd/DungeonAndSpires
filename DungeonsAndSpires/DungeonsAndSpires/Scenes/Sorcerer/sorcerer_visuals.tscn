@@ -1,0 +1,233 @@
+[gd_scene load_steps=13 format=3 uid="uid://kfbecv1bv88a"]
+
+[ext_resource type="Texture2D" uid="uid://bfgt4ha4elavf" path="res://DungeonsAndSpires/images/charui/Sorcerer/sorcerer_attack.png" id="1_g2hvh"]
+[ext_resource type="Texture2D" uid="uid://sh4er5xqelbw" path="res://DungeonsAndSpires/images/charui/Sorcerer/sorcerer_cast.png" id="2_sp7qd"]
+[ext_resource type="Texture2D" uid="uid://c3j3fnbjyge2g" path="res://DungeonsAndSpires/images/charui/Sorcerer/sorcerer_idle.png" id="3_hxala"]
+[ext_resource type="Texture2D" uid="uid://iaueotfalwwv" path="res://DungeonsAndSpires/images/charui/Sorcerer/cast_2.png" id="3_l3mh2"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://b0355ccx00mo" path="res://DungeonsAndSpires/Scenes/Sorcerer/sorcerer_visualtree.tres" id="4_sp7qd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ti736"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g2hvh")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sp7qd")
+}],
+"loop": true,
+"name": &"cast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_l3mh2")
+}],
+"loop": true,
+"name": &"cast_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hxala")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ilr08"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_ti736"]
+resource_name = "attack"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/AnimatedSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_v7j5w"]
+resource_name = "cast"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"cast"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/AnimatedSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_x2okk"]
+resource_name = "cast_2"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"cast_2"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/AnimatedSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lo51d"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/AnimatedSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7j5w"]
+_data = {
+&"RESET": SubResource("Animation_ilr08"),
+&"attack": SubResource("Animation_ti736"),
+&"cast": SubResource("Animation_v7j5w"),
+&"cast_2": SubResource("Animation_x2okk"),
+&"idle": SubResource("Animation_lo51d")
+}
+
+[node name="Frigil" type="Node2D"]
+
+[node name="Visuals" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -29)
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Visuals"]
+position = Vector2(11, -134)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_ti736")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_v7j5w")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Visuals"]
+root_node = NodePath("%Visuals/..")
+tree_root = ExtResource("4_sp7qd")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -77.0
+offset_top = -190.0
+offset_right = 78.0
+offset_bottom = -4.0
+scale = Vector2(1.44, 1.0800006)
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(36, -125)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(68, -220)
+
+[node name="TalkPos" type="Marker2D" parent="."]
+position = Vector2(92, -209)
+
+[node name="OrbPos" type="Marker2D" parent="."]
+position = Vector2(10, -203)

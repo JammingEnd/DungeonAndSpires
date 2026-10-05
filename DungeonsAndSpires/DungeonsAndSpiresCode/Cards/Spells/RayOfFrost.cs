@@ -33,7 +33,6 @@ public class RayOfFrost() : SpellCard(0, 1, CardType.Attack, CardRarity.Common, 
         await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
         await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars["WeakPower"].IntValue, Owner.Creature, this);
     }
-
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<WeakPower>()

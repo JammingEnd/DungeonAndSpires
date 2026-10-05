@@ -181,6 +181,8 @@
   "DUNGEONSANDSPIRES-HEIGHTENED_SPELL.description": "Choose a [color=#42edce]Potent[/color] spell.\nIt gains [gold]Heightened[/gold].",
   "DUNGEONSANDSPIRES-HEIGHTENED_SPELL.title": "Heightened Spell",
   "DUNGEONSANDSPIRES-HEIGHTENED_SPELL.selectionPrompt": "Choose a Potent spell to heighten.",
+  "DUNGEONSANDSPIRES-LIGHT_OF_THE_NEW_AGE.description": "",
+  "DUNGEONSANDSPIRES-LIGHT_OF_THE_NEW_AGE.title": "Light of the New Age",
 
   "DUNGEONSANDSPIRES-CLUB_STRIKE.description": "Deal {Damage:diff()} damage.",
   "DUNGEONSANDSPIRES-CLUB_STRIKE.title": "Club Strike",
