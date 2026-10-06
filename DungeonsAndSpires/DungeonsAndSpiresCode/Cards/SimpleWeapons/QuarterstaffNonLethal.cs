@@ -39,5 +39,6 @@ public class QuarterstaffNonLethal() : SimpleWeaponCard(1, CardType.Attack, Card
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
+        AddKeyword(CardKeyword.Retain);
     }
 }

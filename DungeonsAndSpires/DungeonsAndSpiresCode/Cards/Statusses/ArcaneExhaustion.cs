@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Statusses;
+
 [Pool(typeof(StatusCardPool))]
 public class ArcaneExhaustion() : CoreCard(0, CardType.Status, CardRarity.Status, TargetType.Self)
 {
@@ -29,19 +30,24 @@ public class ArcaneExhaustion() : CoreCard(0, CardType.Status, CardRarity.Status
         DynamicVars["Level"].BaseValue = level;
     }
     
-    public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
-    {
-        if (card == this)
-        {
-            await PotencyCmd.Remove(choiceContext, this.Owner, Level);
-        }
-    }
-
+    // applies and removes the temp potency 
     public override async Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
     {
-        if (card == this)
+        if (card != this)
         {
-            this.Owner.PlayerCombatState.GetPotencyState().Current += Level;
+            return;
+        }
+
+        bool wasInHand = oldPileType == PileType.Hand;
+        bool nowInHand = Pile?.Type == PileType.Hand;
+
+        if (nowInHand && !wasInHand)
+        {
+            await PotencyCmd.SetTemp(null, Owner, -Level);
+        }
+        else if (wasInHand && !nowInHand)
+        {
+            await PotencyCmd.SetTemp(null, Owner, Level);
         }
     }
 }

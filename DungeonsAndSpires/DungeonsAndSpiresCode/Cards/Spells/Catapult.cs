@@ -23,7 +23,7 @@ public class Catapult() : SpellCard(1, 2, CardType.Skill, CardRarity.Common, Tar
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var weapons = PileType.Hand.GetPile(Owner).Cards
-            .Where(c => c.Tags.Contains(DASCoreCardtags.Weapon))
+            .Where(c => c.Tags.Contains(DASCoreCardtags.Weapon) && c.Type == CardType.Attack)
             .ToList();
         if (weapons.Count == 0)
         {

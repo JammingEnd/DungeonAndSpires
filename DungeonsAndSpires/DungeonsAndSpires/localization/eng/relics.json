@@ -4,5 +4,8 @@
   "DUNGEONSANDSPIRES-DRACONIC_BLOODLINE_RELIC.title": "Draconic Bloodline",
   "DUNGEONSANDSPIRES-WILD_MAGIC_RELIC.description": "ACT1: When a spellslot reaches 0, add a random spell \nfrom your draw pile into your hand.\nACT2: Gain Potency based on the amount of status cards in your deck.\nACT3: Generating a status grants 1 energy.",
   "DUNGEONSANDSPIRES-WILD_MAGIC_RELIC.flavor": "The power of the weave cannot be mastered, it is unpredictable",
-  "DUNGEONSANDSPIRES-WILD_MAGIC_RELIC.title": "Wild Magic"
+  "DUNGEONSANDSPIRES-WILD_MAGIC_RELIC.title": "Wild Magic",
+  "DUNGEONSANDSPIRES-LUNAR_SORCERER_RELIC.description": "ACT1: once per combat, when metamagic reaches 0, gain 2 energy.\nACT2: heal 5hp when the last kill in an encounter is from spell attack damage.\nACT3: playing a scrolled spell or a spell affected by your metamagic you draw 1 card. ",
+  "DUNGEONSANDSPIRES-LUNAR_SORCERER_RELIC.flavor": "Power from the heavens, right in your veins!",
+  "DUNGEONSANDSPIRES-LUNAR_SORCERER_RELIC.title": "Lunar Sorcerer"
 }

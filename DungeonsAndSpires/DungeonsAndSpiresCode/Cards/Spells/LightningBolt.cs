@@ -24,14 +24,14 @@ public class LightningBolt() : SpellCard(3, 1, CardType.Attack, CardRarity.Uncom
 
     public override Dictionary<string, (int step, int mult)> PotencyVars => new()
     {
-        { "Damage", (3, 4) },
-        { "Shocked", (3, 2) }
+        { "Damage", (3, 2) },
+        { "Shocked", (3, 3) }
     };
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(9, ValueProp.Unpowered),
-        new PowerVar<ShockedPower>("Shocked", 2)
+        new DamageVar(5, ValueProp.Unpowered),
+        new PowerVar<ShockedPower>("Shocked", 4)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -49,9 +49,9 @@ public class LightningBolt() : SpellCard(3, 1, CardType.Attack, CardRarity.Uncom
 
     protected override void OnUpgrade()
     {
-        DynamicVars["DamageBase"].UpgradeValueBy(4m);
-        DynamicVars["DamageExtra"].UpgradeValueBy(2m);
+        DynamicVars["DamageBase"].UpgradeValueBy(2m);
+        DynamicVars["DamageExtra"].UpgradeValueBy(3m);
         DynamicVars["ShockedBase"].UpgradeValueBy(1m);
-        DynamicVars["ShockedExtra"].UpgradeValueBy(1m);
+        DynamicVars["ShockedExtra"].UpgradeValueBy(2m);
     }
 }

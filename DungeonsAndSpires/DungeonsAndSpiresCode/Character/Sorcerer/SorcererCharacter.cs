@@ -20,7 +20,7 @@ public class SorcererCharacter : PlaceholderCharacterModel
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Feminine;
-    public override int StartingHp => 70;
+    public override int StartingHp => 65;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [

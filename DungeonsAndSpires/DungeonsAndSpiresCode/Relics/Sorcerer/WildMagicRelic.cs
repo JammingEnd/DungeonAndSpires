@@ -4,7 +4,9 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -43,12 +45,22 @@ public class WildMagicRelic : SubclassRelic, IOnSpellSlotAmountChanged
     
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner != Owner && Act2Active)
+        if (!Act2Active || cardPlay.Card.Owner != Owner)
             return;
         
         int statuses = Owner.PlayerCombatState.AllCards.Count(x => x.Type == CardType.Status && x.Pile.Type != PileType.Exhaust);
-        await PotencyCmd.SetTemp(choiceContext, Owner, statuses);
+        // Temps stack, so applying the delta recomputes this relic's contribution on each play.
+        await PotencyCmd.SetTemp(choiceContext, Owner, statuses - previous);
         previous = statuses;
+    }
+
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
+    {
+        if (side != CombatSide.Player)
+            return;
+
+        // Temp potency is flushed at turn end; reset so the proven contribution recomputes next turn.
+        previous = 0;
     }
 
     public override async Task Act3Bonus()

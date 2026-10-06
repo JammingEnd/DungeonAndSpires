@@ -70,7 +70,7 @@ public partial class SubclassRelicPicker : Control
             _background.AddChild(icon);
             _background.AddChild(label);
             _options.Add((icon, relic));
-            x += 138f;
+            x += 145f;
         }
     }
 

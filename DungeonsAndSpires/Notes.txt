@@ -42,8 +42,8 @@ Characters:
     - [Draconic bloodline]: (act1) increased max HP, (act2) strength is twice as effective on single target, ability damage, (act3) gain 1 "fly anwhere" after defeating an elite
     - [Wild Magic]: (act1) when a spellslot reaches 0 uses, put a random spellcard from your draw pile in your hand, 
     (act2) ability potency is increased by the amount of status cards in all your piles, (act3) when you generate a status effect card, gain 1 energy. 
-    - [Lunar Sorcerer]: (act1) gain 1 energy whenever you spend 2 sorcery points. (act2) heal 5hp when the last kill in an encounter is from ability damage. 
-    (act3) if your last played card a turn is a spell, gain 1 sorcery point. otherwise, gain 1 energy next turn.
+    - [Lunar Sorcerer]: (act1) once per combat, when metamagic reaches 0, gain 2 energy. (act2) heal 5hp when the last kill in an encounter is from spell damage. 
+    (act3) playing a scrolled spell or a spell affected by your metamagic draw 1 card. 
     
     [QUICK NOTES BEFORE I FORGOR]
     - Artificer (gain strength at the start of combat for each relic you have) 

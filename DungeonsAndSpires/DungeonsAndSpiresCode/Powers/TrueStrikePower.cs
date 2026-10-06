@@ -1,4 +1,5 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -16,20 +17,29 @@ public class TrueStrikePower : DungeonsAndSpiresPower
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
-        if (Amount > 0 && dealer == Owner && cardSource is CardModel && cardSource is not SpellCard)
+        if (Amount > 0 && dealer == Owner && isValid(cardSource))
         {
-            return 2m;
+            return 1.5m;
         }
         return 1m;
     }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (Amount <= 0 || cardPlay.Card.Type != CardType.Attack || cardPlay.Card is SpellCard)
+        if (!isValid(cardPlay.Card))
         {
             return;
         }
 
         await PowerCmd.Decrement(this);
+    }
+
+    private bool isValid(CardModel card)
+    {
+        if (card.Type == CardType.Attack && card.Tags.Any(x => x == DASCoreCardtags.Cantrip || x == DASCoreCardtags.Weapon))
+        {
+            return true;
+        }
+        return false;
     }
 }

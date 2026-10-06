@@ -56,30 +56,55 @@ public static class PotencyCmd
             await PotencyHook.OnChanged(combatState, context, player, before, after);
     }
 
-    public static async Task SetTemp(PlayerChoiceContext context, Player player, int amount)
+    public static async Task SetTemp(PlayerChoiceContext? context, Player player, int amount)
     {
         var state = player.PlayerCombatState?.GetPotencyState();
-        if (state == null || amount <= 0)
+        if (state == null || amount == 0)
             return;
 
         if (CombatManager.Instance.IsOverOrEnding)
             return;
         
         int before = state.Current;
-        int temp = state.Temp;
-        state.Current -= temp;
-
-        state.Temp = amount;
+        state.Temp += amount;
         state.Current += amount;
         int after = state.Current;
-        
+
+        MainFile.Logger.Info($"Potency temp: {(amount > 0 ? "+" : "")}{amount}, temp: {state.Temp}, current: {after}");
+
+        OnChanged?.Invoke(player);
+
+        if (context != null)
+        {
+            var combatState = player.Creature.CombatState;
+            if (combatState != null)
+            {
+                if (amount > 0)
+                    await PotencyHook.OnGained(combatState, context, player, amount);
+                await PotencyHook.OnChanged(combatState, context, player, before, after);
+            }
+        }
+    }
+
+    // Removes all temporary potency at the end of the player's turn. 
+    public static async Task FlushTurnTemp(PlayerChoiceContext context, Player player)
+    {
+        var state = player.PlayerCombatState?.GetPotencyState();
+        if (state == null || state.Temp == 0)
+            return;
+
+        int before = state.Current;
+        state.Current -= state.Temp;
+        state.Temp = 0;
+        int after = state.Current;
+
+        MainFile.Logger.Info($"Potency temp flushed: current {before} -> {after}");
 
         OnChanged?.Invoke(player);
 
         var combatState = player.Creature.CombatState;
         if (combatState != null)
         {
-            await PotencyHook.OnGained(combatState, context, player, amount);
             await PotencyHook.OnChanged(combatState, context, player, before, after);
         }
     }
