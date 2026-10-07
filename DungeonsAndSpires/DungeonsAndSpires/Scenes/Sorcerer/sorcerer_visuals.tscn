@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://kfbecv1bv88a"]
+[gd_scene load_steps=15 format=3 uid="uid://kfbecv1bv88a"]
 
 [ext_resource type="Texture2D" uid="uid://bfgt4ha4elavf" path="res://DungeonsAndSpires/images/charui/Sorcerer/sorcerer_attack.png" id="1_g2hvh"]
 [ext_resource type="Texture2D" uid="uid://sh4er5xqelbw" path="res://DungeonsAndSpires/images/charui/Sorcerer/sorcerer_cast.png" id="2_sp7qd"]
 [ext_resource type="Texture2D" uid="uid://c3j3fnbjyge2g" path="res://DungeonsAndSpires/images/charui/Sorcerer/sorcerer_idle.png" id="3_hxala"]
 [ext_resource type="Texture2D" uid="uid://iaueotfalwwv" path="res://DungeonsAndSpires/images/charui/Sorcerer/cast_2.png" id="3_l3mh2"]
+[ext_resource type="Texture2D" uid="uid://dyrhh55ecp50o" path="res://DungeonsAndSpires/images/charui/Sorcerer/sorcerer_death.png" id="4_l3mh2"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://b0355ccx00mo" path="res://DungeonsAndSpires/Scenes/Sorcerer/sorcerer_visualtree.tres" id="4_sp7qd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ti736"]
@@ -30,6 +31,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"cast_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_l3mh2")
+}],
+"loop": true,
+"name": &"die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -176,12 +185,42 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_hxala"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"die"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/AnimatedSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v7j5w"]
 _data = {
 &"RESET": SubResource("Animation_ilr08"),
 &"attack": SubResource("Animation_ti736"),
 &"cast": SubResource("Animation_v7j5w"),
 &"cast_2": SubResource("Animation_x2okk"),
+&"die": SubResource("Animation_hxala"),
 &"idle": SubResource("Animation_lo51d")
 }
 

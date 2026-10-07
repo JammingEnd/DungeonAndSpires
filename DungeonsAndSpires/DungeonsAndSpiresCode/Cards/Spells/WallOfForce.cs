@@ -28,7 +28,8 @@ public class WallOfForce() : SpellCard(5, 3, CardType.Power, CardRarity.Uncommon
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var power = await PowerCmd.Apply<WallOfForcePower>(choiceContext, Owner.Creature, 3, Owner.Creature, this);
-        power?.SetAmount(DynamicVars["BlockBase"].BaseValue, DynamicVars["BlockExtra"].BaseValue);
+        power?.SetAmount(DynamicVars["BlockBase"].BaseValue, DynamicVars["BlockExtra"].BaseValue,
+            HeightenedLevelBonus(PotencyVars["Block"].step));
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

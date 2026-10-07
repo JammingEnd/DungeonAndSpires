@@ -89,6 +89,13 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
     public virtual Dictionary<string, (int step, int mult)> PotencyVars => [];
 
     /// <summary>
+    /// The extra potency level granted to a <c>step</c> var by the Heightened keyword, matching
+    /// the bonus applied in <see cref="BuildCanonicalVars"/>.
+    /// </summary>
+    protected int HeightenedLevelBonus(int step) =>
+        Keywords.Contains(CoreKeywords.Heightened) ? (step == 1 ? 3 : 1) : 0;
+
+    /// <summary>
     /// The card's base (unscaled) vars. Potency scaling is applied automatically to any var whose
     /// name appears in <see cref="PotencyVars"/>.
     /// </summary>

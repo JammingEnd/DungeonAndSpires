@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
-public class MirrorImage() : SpellCard(2, 1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class MirrorImage() : SpellCard(2, 2, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     public override Dictionary<string, (int step, int mult)> PotencyVars => new()
     {

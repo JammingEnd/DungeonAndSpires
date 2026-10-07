@@ -79,7 +79,7 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
         {
             await MetamagicCmd.Remove(choiceContext, cardPlay.Player, 1);
         }
-        else if (cardPlay.Card == this && Level > 0 && _shouldConsumeSpellslot)
+        else if (cardPlay.Card == this && Level > 0 && _shouldConsumeSpellslot && !UsesSpellSlot)
         {
                 var card = (ArcaneExhaustion)CombatState.CreateCard(ModelDb.Card<ArcaneExhaustion>(), cardPlay.Player);
                 SpellCard thisCard = cardPlay.Card as SpellCard;

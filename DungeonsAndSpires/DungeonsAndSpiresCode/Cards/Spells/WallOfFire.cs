@@ -31,7 +31,8 @@ public class WallOfFire() : SpellCard(4, 2, CardType.Power, CardRarity.Uncommon,
         var power = await PowerCmd.Apply<WallOfFirePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
         power?.SetAmounts(
             DynamicVars["HitDamageBase"].BaseValue, DynamicVars["HitDamageExtra"].BaseValue,
-            DynamicVars["EndDamageBase"].BaseValue, DynamicVars["EndDamageExtra"].BaseValue);
+            DynamicVars["EndDamageBase"].BaseValue, DynamicVars["EndDamageExtra"].BaseValue,
+            HeightenedLevelBonus(PotencyVars["HitDamage"].step));
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

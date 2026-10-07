@@ -30,17 +30,19 @@ public class WallOfFirePower : DungeonsAndSpiresPower, IOnPotencyChanged
         public decimal HitMult;
         public decimal EndBase;
         public decimal EndMult;
+        public decimal HeightenBonus;
     }
 
     protected override object InitInternalData() => new Data();
 
-    public void SetAmounts(decimal hitBase, decimal hitMult, decimal endBase, decimal endMult)
+    public void SetAmounts(decimal hitBase, decimal hitMult, decimal endBase, decimal endMult, decimal heightenBonus = 0)
     {
         var data = GetInternalData<Data>();
         data.HitBase = hitBase;
         data.HitMult = hitMult;
         data.EndBase = endBase;
         data.EndMult = endMult;
+        data.HeightenBonus = heightenBonus;
         Recalculate();
     }
 
@@ -57,8 +59,9 @@ public class WallOfFirePower : DungeonsAndSpiresPower, IOnPotencyChanged
     {
         int potency = Owner.Player?.PlayerCombatState?.GetPotency() ?? 0;
         var data = GetInternalData<Data>();
-        DynamicVars["HitDamage"].BaseValue = (data.HitBase + data.HitMult * Math.Floor(potency / (decimal)Step)) * Amount;
-        DynamicVars["EndDamage"].BaseValue = (data.EndBase + data.EndMult * Math.Floor(potency / (decimal)Step)) * Amount;
+        decimal levels = Math.Floor(potency / (decimal)Step) + data.HeightenBonus;
+        DynamicVars["HitDamage"].BaseValue = (data.HitBase + data.HitMult * levels) * Amount;
+        DynamicVars["EndDamage"].BaseValue = (data.EndBase + data.EndMult * levels) * Amount;
     }
 
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)

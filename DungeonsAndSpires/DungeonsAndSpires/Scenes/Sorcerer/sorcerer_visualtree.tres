@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=13 format=3 uid="uid://b0355ccx00mo"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=16 format=3 uid="uid://b0355ccx00mo"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rb55e"]
 animation = &"attack"
@@ -8,6 +8,9 @@ animation = &"cast"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uamge"]
 animation = &"cast_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_plktw"]
+animation = &"die"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c27xp"]
 animation = &"idle"
@@ -35,16 +38,23 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_plktw"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g0aud"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_puct1"]
+switch_mode = 2
+
 [resource]
 states/End/position = Vector2(906, 100)
 states/Start/position = Vector2(196, 100)
 states/attack/node = SubResource("AnimationNodeAnimation_rb55e")
 states/attack/position = Vector2(318, -30)
 states/cast/node = SubResource("AnimationNodeAnimation_koype")
-states/cast/position = Vector2(499, 41)
+states/cast/position = Vector2(473, 19)
 states/cast_2/node = SubResource("AnimationNodeAnimation_uamge")
 states/cast_2/position = Vector2(177, -30)
+states/die/node = SubResource("AnimationNodeAnimation_plktw")
+states/die/position = Vector2(488, 100)
 states/idle/node = SubResource("AnimationNodeAnimation_c27xp")
 states/idle/position = Vector2(318, 100)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_tbs8u"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_u27da"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_7d6uu"), "idle", "cast", SubResource("AnimationNodeStateMachineTransition_p472l"), "cast", "idle", SubResource("AnimationNodeStateMachineTransition_3f1yy"), "idle", "cast_2", SubResource("AnimationNodeStateMachineTransition_phmqn"), "cast_2", "idle", SubResource("AnimationNodeStateMachineTransition_hid6s"), "attack", "cast_2", SubResource("AnimationNodeStateMachineTransition_plktw")]
-graph_offset = Vector2(-314, -107)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_tbs8u"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_u27da"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_7d6uu"), "idle", "cast", SubResource("AnimationNodeStateMachineTransition_p472l"), "cast", "idle", SubResource("AnimationNodeStateMachineTransition_3f1yy"), "idle", "cast_2", SubResource("AnimationNodeStateMachineTransition_phmqn"), "cast_2", "idle", SubResource("AnimationNodeStateMachineTransition_hid6s"), "attack", "cast_2", SubResource("AnimationNodeStateMachineTransition_plktw"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_g0aud"), "die", "idle", SubResource("AnimationNodeStateMachineTransition_puct1")]
+graph_offset = Vector2(-146, 29)

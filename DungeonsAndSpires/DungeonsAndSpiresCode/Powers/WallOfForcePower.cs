@@ -25,15 +25,17 @@ public class WallOfForcePower : DungeonsAndSpiresPower, IOnPotencyChanged
     {
         public decimal BlockBase;
         public decimal BlockMult;
+        public decimal HeightenBonus;
     }
 
     protected override object InitInternalData() => new Data();
 
-    public void SetAmount(decimal blockBase, decimal blockMult)
+    public void SetAmount(decimal blockBase, decimal blockMult, decimal heightenBonus = 0)
     {
         var data = GetInternalData<Data>();
         data.BlockBase = blockBase;
         data.BlockMult = blockMult;
+        data.HeightenBonus = heightenBonus;
         Recompute();
     }
 
@@ -50,7 +52,7 @@ public class WallOfForcePower : DungeonsAndSpiresPower, IOnPotencyChanged
     {
         int potency = Owner.Player?.PlayerCombatState?.GetPotency() ?? 0;
         var data = GetInternalData<Data>();
-        DynamicVars["Block"].BaseValue = data.BlockBase + data.BlockMult * Math.Floor(potency / (decimal)Step);
+        DynamicVars["Block"].BaseValue = data.BlockBase + data.BlockMult * (Math.Floor(potency / (decimal)Step) + data.HeightenBonus);
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)

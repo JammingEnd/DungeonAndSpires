@@ -28,15 +28,17 @@ public class MoonbeamPower : DungeonsAndSpiresPower, IOnPotencyChanged
     {
         public decimal DamageBase;
         public decimal DamageMult;
+        public decimal HeightenBonus;
     }
 
     protected override object InitInternalData() => new Data();
 
-    public void SetAmounts(decimal damageBase, decimal damageMult)
+    public void SetAmounts(decimal damageBase, decimal damageMult, decimal heightenBonus = 0)
     {
         var data = GetInternalData<Data>();
         data.DamageBase = damageBase;
         data.DamageMult = damageMult;
+        data.HeightenBonus = heightenBonus;
         Recalculate();
     }
 
@@ -53,7 +55,7 @@ public class MoonbeamPower : DungeonsAndSpiresPower, IOnPotencyChanged
     {
         int potency = Owner.Player?.PlayerCombatState?.GetPotency() ?? 0;
         var data = GetInternalData<Data>();
-        DynamicVars["Damage"].BaseValue = (data.DamageBase + data.DamageMult * Math.Floor(potency / (decimal)Step)) * Amount;
+        DynamicVars["Damage"].BaseValue = (data.DamageBase + data.DamageMult * (Math.Floor(potency / (decimal)Step) + data.HeightenBonus)) * Amount;
     }
 
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)

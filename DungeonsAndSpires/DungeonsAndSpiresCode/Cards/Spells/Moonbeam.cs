@@ -29,7 +29,8 @@ public class Moonbeam() : SpellCard(2, 2, CardType.Power, CardRarity.Uncommon, T
     {
         var power = await PowerCmd.Apply<MoonbeamPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
         power?.SetAmounts(
-            DynamicVars["DamageBase"].BaseValue, DynamicVars["DamageExtra"].BaseValue);
+            DynamicVars["DamageBase"].BaseValue, DynamicVars["DamageExtra"].BaseValue,
+            HeightenedLevelBonus(PotencyVars["Damage"].step));
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
