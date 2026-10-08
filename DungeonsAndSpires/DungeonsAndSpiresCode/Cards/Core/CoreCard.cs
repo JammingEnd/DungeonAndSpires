@@ -29,7 +29,7 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
 
     private string CardName() => SnakeRegex.Replace(GetType().Name, "$1_$2").ToLowerInvariant();
 
-    public override string CustomPortraitPath => $"{CardName()}.png".BigCardImagePath();
+    public override string CustomPortraitPath => $"{CardName()}.png".CardImagePath();
 
     //Smaller variants of card images for efficiency:
     //Smaller variant of fullart: 250x350

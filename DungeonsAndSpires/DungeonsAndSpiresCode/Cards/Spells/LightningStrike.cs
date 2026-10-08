@@ -6,6 +6,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -39,4 +40,8 @@ public class LightningStrike() : SpellCard(0, 0, CardType.Attack, CardRarity.Tok
         DynamicVars.Damage.UpgradeValueBy(3m);
         DynamicVars["Shocked"].UpgradeValueBy(1m);
     }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<ShockedPower>()
+    ];
 }

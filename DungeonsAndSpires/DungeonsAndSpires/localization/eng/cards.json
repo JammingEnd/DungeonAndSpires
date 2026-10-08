@@ -8,7 +8,7 @@
   "DUNGEONSANDSPIRES-RAY_OF_FROST.title": "Ray of Frost",
   "DUNGEONSANDSPIRES-PRESTIDIGITATION.description": "Gain {AbilityPotency:diff()} Ability Potency.",
   "DUNGEONSANDSPIRES-PRESTIDIGITATION.title": "Prestidigitation",
-  "DUNGEONSANDSPIRES-SHOCKING_GRASP.description": "Deal {Damage:diff()} damage.\nApply {Shocked:diff()} Shocking.",
+  "DUNGEONSANDSPIRES-SHOCKING_GRASP.description": "Deal {Damage:diff()} damage.\nApply {Shocked:diff()} [gold]Shocking[/gold].",
   "DUNGEONSANDSPIRES-SHOCKING_GRASP.title": "Shocking Grasp",
   "DUNGEONSANDSPIRES-CURE_WOUNDS.description": "Discard {Discard:diff()} cards.\nIf you have a [gold]Status[/gold] or [gold]Curse[/gold] in your hand, discard double and draw {Draw:diff()}.",
   "DUNGEONSANDSPIRES-CURE_WOUNDS.title": "Cure Wounds",
