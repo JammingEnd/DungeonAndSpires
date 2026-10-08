@@ -148,5 +148,8 @@
   "DUNGEONSANDSPIRES-SHORTBOW_DRILL_TIP_POWER.smartDescription": "At the start of each of the next {Amount} turns, takes {Damage} damage.",
   "DUNGEONSANDSPIRES-ASTRAL_GATE_POWER.title": "Astral Gate",
   "DUNGEONSANDSPIRES-ASTRAL_GATE_POWER.description": "At the start of your turn, {Amount} random spell is free to play and consumes no Spellslot.",
-  "DUNGEONSANDSPIRES-ASTRAL_GATE_POWER.smartDescription": "At the start of your turn, {Amount} random spell is free to play and consumes no Spellslot."
+  "DUNGEONSANDSPIRES-ASTRAL_GATE_POWER.smartDescription": "At the start of your turn, {Amount} random spell is free to play and consumes no Spellslot.",
+  "DUNGEONSANDSPIRES-WISH_POWER.title": "Wish",
+  "DUNGEONSANDSPIRES-WISH_POWER.description": "While you hold this power, you may open the Compendium and select any card to add a copy to your hand.",
+  "DUNGEONSANDSPIRES-WISH_POWER.smartDescription": "While you hold this power, you may open the Compendium and select any card to add a copy to your hand."
 }

@@ -1,5 +1,6 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -10,7 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
-public class Wish() : SpellCard(9, 4, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy)
+public class Wish() : SpellCard(9, 6, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -19,14 +20,8 @@ public class Wish() : SpellCard(9, 4, CardType.Skill, CardRarity.Rare, TargetTyp
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int strength = cardPlay.Target.GetPowerAmount<StrengthPower>();
-        await PowerCmd.Apply<StrengthPower>(choiceContext, cardPlay.Target, -strength, Owner.Creature, this);
+        await PowerCmd.Apply<WishPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<StrengthPower>()
-    ];
 
     protected override void OnUpgrade()
     {

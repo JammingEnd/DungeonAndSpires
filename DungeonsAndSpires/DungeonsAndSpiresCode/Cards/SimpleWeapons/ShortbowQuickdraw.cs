@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 
-public class ShortbowQuickdraw() : SimpleWeaponCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class ShortbowQuickdraw() : SimpleWeaponCard(2, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags =>
     [
