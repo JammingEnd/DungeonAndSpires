@@ -37,6 +37,7 @@ public class Divination() : SpellCard(4, 2, CardType.Skill, CardRarity.Uncommon,
         for (int i = 0; i < 3; i++)
         {
             var card = Owner.RunState.Rng.CombatCardSelection.NextItem(drawPile);
+            drawPile.Remove(card);
             if (card != null)
             {
                 CardCmd.Upgrade(card, CardPreviewStyle.HorizontalLayout);

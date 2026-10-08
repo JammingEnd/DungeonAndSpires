@@ -51,5 +51,6 @@ public class PoisonSpray() : SpellCard(0, 1, CardType.Attack, CardRarity.Common,
     {
         DynamicVars["DamageExtra"].UpgradeValueBy(2m);
         DynamicVars["PoisonExtra"].UpgradeValueBy(1m);
+        EnergyCost.UpgradeBy(-1);
     }
 }
