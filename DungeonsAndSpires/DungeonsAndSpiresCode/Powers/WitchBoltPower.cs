@@ -25,6 +25,6 @@ public class WitchBoltPower : DungeonsAndSpiresPower
             await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Unpowered, player.Creature);
         }
 
-        await PowerCmd.Remove(this);
+        await PowerCmd.Apply<WitchBoltPower>(choiceContext, Owner, -Amount, null, null);
     }
 }

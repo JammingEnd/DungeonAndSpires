@@ -2,5 +2,7 @@
   "DUNGEONSANDSPIRES-METAMAGIC.title": "Metamagic",
   "DUNGEONSANDSPIRES-METAMAGIC.description": "Your current Metamagic.\nGenerate [gold]Heightened Spell[/gold] or [gold]Quickened Spell[/gold] with leftover Metamagic.\nAdd a random with less than 4, create both with 4 leftover metamagic next turn.",
   "DUNGEONSANDSPIRES-POTENCY.title": "Ability Potency",
-  "DUNGEONSANDSPIRES-POTENCY.description": "Your current Ability Potency.\nAffects [color=#42edce]Potent[/color] Cards"
+  "DUNGEONSANDSPIRES-POTENCY.description": "Your current Ability Potency.\nAffects [color=#42edce]Potent[/color] Cards",
+  "DUNGEONSANDSPIRES-SPELLS.title": "Spells and Spellslots",
+  "DUNGEONSANDSPIRES-SPELLS.description": "The Spell level of cards is depicted by the Roman Numerals.\nWhen there is a spellslot available for said level, spell cards gain -1 cost and consume said spell slot when played.\nPlaying a spell without an available spellslot will generate an Arcane Exhaustion, lower Ability Potency."
 }

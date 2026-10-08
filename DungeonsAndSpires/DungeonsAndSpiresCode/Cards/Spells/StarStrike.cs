@@ -20,7 +20,8 @@ public class StarStrike() : SpellCard(0, 0, CardType.Attack, CardRarity.Rare, Ta
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CoreKeywords.Cold
+        CoreKeywords.Cold,
+        CardKeyword.Exhaust
     ];
 
     protected override IEnumerable<DynamicVar> CardVars =>

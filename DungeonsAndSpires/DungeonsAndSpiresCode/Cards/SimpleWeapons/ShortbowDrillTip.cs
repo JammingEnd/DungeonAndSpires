@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
@@ -17,6 +18,11 @@ public class ShortbowDrillTip() : SimpleWeaponCard(0, CardType.Skill, CardRarity
         DASCoreCardtags.Bow
     ];
 
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new IntVar("turns", 3)
+    ];
+
     protected override bool HasEnergyCostX => true;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -27,7 +33,7 @@ public class ShortbowDrillTip() : SimpleWeaponCard(0, CardType.Skill, CardRarity
             return;
         }
 
-        var power = await PowerCmd.Apply<ShortbowDrillTipPower>(choiceContext, cardPlay.Target, 3, Owner.Creature, this);
+        var power = await PowerCmd.Apply<ShortbowDrillTipPower>(choiceContext, cardPlay.Target, DynamicVars["turns"].IntValue, Owner.Creature, this);
         power?.SetDamage(energyX * 3);
     }
 
@@ -35,4 +41,9 @@ public class ShortbowDrillTip() : SimpleWeaponCard(0, CardType.Skill, CardRarity
     [
         HoverTipFactory.FromPower<ShortbowDrillTipPower>()
     ];
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars["turns"].UpgradeValueBy(1m);   
+    }
 }

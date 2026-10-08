@@ -1,5 +1,6 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
@@ -13,7 +14,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
-public class LeamundsSecretChest() : SpellCard(4, 0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class LeamundsSecretChest() : SpellCard(4, 2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CardVars =>
     [
@@ -48,5 +49,6 @@ public class LeamundsSecretChest() : SpellCard(4, 0, CardType.Skill, CardRarity.
     protected override void OnUpgrade()
     {
         DynamicVars["MaxLevel"].UpgradeValueBy(1);
+        AddKeyword(CoreKeywords.Ritual);
     }
 }

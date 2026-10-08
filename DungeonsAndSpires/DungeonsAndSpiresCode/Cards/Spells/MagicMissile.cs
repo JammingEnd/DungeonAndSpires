@@ -14,7 +14,7 @@ public class MagicMissile() : SpellCard(1, 0, CardType.Attack, CardRarity.Uncomm
 {
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(2, ValueProp.Move | ValueProp.Unblockable),
+        new DamageVar(2, ValueProp.Unpowered | ValueProp.Unblockable),
     ];
 
     protected override bool HasEnergyCostX => true;

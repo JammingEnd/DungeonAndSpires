@@ -1,10 +1,10 @@
 {
   "DUNGEONSANDSPIRES-POTENT.title": "Potent",
-  "DUNGEONSANDSPIRES-POTENT.description": "Potent 2+: every X Ability Potency, some of this card's stats or effects are increased.\nPotent 1: some of this card's stats or effects are affected equal to your Ability Potency.",
+  "DUNGEONSANDSPIRES-POTENT.description": "Every Potent X, some stats increase.",
   "DUNGEONSANDSPIRES-HEIGHTENED.title": "Heightened",
   "DUNGEONSANDSPIRES-HEIGHTENED.description": "Heightened cards have their potency requirement met by 1.\nCards with potency 1 gain 3 Ability Potency.",
   "DUNGEONSANDSPIRES-QUICKENED.title": "Quickened",
-  "DUNGEONSANDSPIRES-QUICKENED.description": "Quickened cards also deal their effects to a random enemy (or ally).",
+  "DUNGEONSANDSPIRES-QUICKENED.description": "Quickened cards also deal their effects to a random enemy (or ally when self).",
   "DUNGEONSANDSPIRES-RITUAL.title": "Ritual",
   "DUNGEONSANDSPIRES-RITUAL.description": "Ritual spells do not consume a Spellslot when your energy is above 50%.",
   "DUNGEONSANDSPIRES-SCROLLED.title": "Scrolled",

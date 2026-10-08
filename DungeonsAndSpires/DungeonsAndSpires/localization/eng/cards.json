@@ -76,7 +76,7 @@
   "DUNGEONSANDSPIRES-ILLUSORY_SCRIPT.title": "Illusory Script",
   "DUNGEONSANDSPIRES-BLESS.description": "Gain {AbilityPotency:diff()} Ability Potency this turn.",
   "DUNGEONSANDSPIRES-BLESS.title": "Bless",
-  "DUNGEONSANDSPIRES-MAGIC_MISSILE.description": "Deal {Damage:diff()} Unblockable damage X*2 times.",
+  "DUNGEONSANDSPIRES-MAGIC_MISSILE.description": "Deal {Damage:diff()} Unblockable damage X*2 times. Does not scale with [gold]Strength[/gold]",
   "DUNGEONSANDSPIRES-MAGIC_MISSILE.title": "Magic Missile",
   "DUNGEONSANDSPIRES-HEAT_METAL.description": "{HasPotencyStep:cond:[color=#42edce]Potent[/color] {PotencyStep:diff()}.\n|}Deal {Damage:diff()} damage 2 times.\nIf the target has [gold]Block[/gold], hit [color=#42edce]{ExtraHits:diff()}[/color] extra times.",
   "DUNGEONSANDSPIRES-HEAT_METAL.title": "Heat Metal",
@@ -94,7 +94,7 @@
   "DUNGEONSANDSPIRES-IMMOLATION.title": "Immolation",
   "DUNGEONSANDSPIRES-INSECT_PLAGUE.description": "{HasPotencyStep:cond:[color=#42edce]Potent[/color] {PotencyStep:diff()}.\n|}For every power on the target, apply [color=#42edce]{Poison:diff()}[/color] [gold]Poison[/gold].",
   "DUNGEONSANDSPIRES-INSECT_PLAGUE.title": "Insect Plague",
-  "DUNGEONSANDSPIRES-MAELSTROM.description": "Deal {Damage:diff()} damage 2 times.\nIf this kills the target, attack a random enemy again.",
+  "DUNGEONSANDSPIRES-MAELSTROM.description": "Deal {Damage:diff()} damage 2 times.\nIf this kills the target, attack a random enemy again.\nScales with [gold]Strength[/gold]",
   "DUNGEONSANDSPIRES-MAELSTROM.title": "Maelstrom",
   "DUNGEONSANDSPIRES-STORM_SPHERE.description": "At the start of your turn, add a [gold]Lightning Strike[/gold] to your hand.",
   "DUNGEONSANDSPIRES-STORM_SPHERE.title": "Storm Sphere",
@@ -175,7 +175,7 @@
   "DUNGEONSANDSPIRES-ELEMENT_POISON.description": "Apply {PoisonPower:diff()} [gold]Poison[/gold].",
   "DUNGEONSANDSPIRES-ARCANE_EXHAUSTION.description": "While this is in your hand, lose {Level} Ability Potency",
   "DUNGEONSANDSPIRES-ARCANE_EXHAUSTION.title": "Arcane Exhaustion",
-  "DUNGEONSANDSPIRES-QUICKEND_SPELL.description": "Choose a spell card.\nIt gains [gold]Quickened[/gold].",
+  "DUNGEONSANDSPIRES-QUICKEND_SPELL.description": "Choose a non-ALL spell card.\nIt gains [gold]Quickened[/gold].",
   "DUNGEONSANDSPIRES-QUICKEND_SPELL.title": "Quicken Spell",
   "DUNGEONSANDSPIRES-QUICKEND_SPELL.selectionPrompt": "Choose a spell card to quicken.",
   "DUNGEONSANDSPIRES-HEIGHTENED_SPELL.description": "Choose a [color=#42edce]Potent[/color] spell.\nIt gains [gold]Heightened[/gold].",
@@ -251,7 +251,7 @@
   "DUNGEONSANDSPIRES-SHORTSWORD_CURSED.title": "Shortsword Cursed",
   "DUNGEONSANDSPIRES-SHORTSWORD_BLOODRITE.description": "At the start of your turn, gain [gold]Strength[/gold] equal to twice the [gold]Curses[/gold] and [gold]Statusses[/gold] in your draw pile.\nDrawing a [gold]Curse[/gold] or [gold]Status[/gold] removes 1 [gold]Strength[/gold].",
   "DUNGEONSANDSPIRES-SHORTSWORD_BLOODRITE.title": "Shortsword Bloodrite",
-  "DUNGEONSANDSPIRES-SHORTBOW_DRILL_TIP.description": "At the start of your next 3 turns, deal X*3 damage to the enemy.",
+  "DUNGEONSANDSPIRES-SHORTBOW_DRILL_TIP.description": "At the start of your next {turns:diff()} turns, deal X*3 damage to the enemy.",
   "DUNGEONSANDSPIRES-SHORTBOW_DRILL_TIP.title": "Shortbow Drill Tip"
 
 

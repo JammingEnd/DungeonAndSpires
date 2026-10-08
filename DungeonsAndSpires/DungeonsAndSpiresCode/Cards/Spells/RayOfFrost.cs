@@ -30,7 +30,7 @@ public class RayOfFrost() : SpellCard(0, 1, CardType.Attack, CardRarity.Common, 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
+        await DamageCmd.Attack(DynamicVars.Damage.IntValue).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
         await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars["WeakPower"].IntValue, Owner.Creature, this);
     }
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

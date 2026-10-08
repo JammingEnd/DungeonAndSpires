@@ -39,8 +39,6 @@ public class MirrorImage() : SpellCard(2, 2, CardType.Skill, CardRarity.Common, 
 
     protected override void OnUpgrade()
     {
-        DynamicVars["BlockBase"].UpgradeValueBy(4m);
-        DynamicVars["BlockExtra"].UpgradeValueBy(2m);
         DynamicVars["CardsBase"].UpgradeValueBy(1m);
     }
 }

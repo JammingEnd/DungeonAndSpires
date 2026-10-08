@@ -21,7 +21,7 @@ public class MindSliver() : SpellCard(1, 1, CardType.Attack, CardRarity.Common, 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await DamageCmd.Attack(DynamicVars.Damage.IntValue).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
+        await DamageCmd.Attack(DynamicVars.Damage.IntValue).FromCard(this, cardPlay).TargetingRandomOpponents(Owner.Creature.CombatState).Execute(choiceContext);
         await PotencyCmd.Add(choiceContext, Owner, DynamicVars["AbilityPotency"].IntValue);
     }
 

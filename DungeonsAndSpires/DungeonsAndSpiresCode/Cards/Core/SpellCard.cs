@@ -125,7 +125,7 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
                 var enemy = Owner.RunState.Rng.CombatTargets.NextItem(candidates);
                 if (enemy != null)
                 {
-                    await CardCmd.AutoPlay(choiceContext, this, enemy);
+                    await CardCmd.AutoPlay(choiceContext, this, enemy, AutoPlayType.Default, true);
                 }
             }
         }

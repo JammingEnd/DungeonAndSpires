@@ -1,6 +1,9 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Nodes.HoverTips;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Nodes;
 public partial class DASSpellslotUI : Control
@@ -40,6 +43,13 @@ public partial class DASSpellslotUI : Control
         }
 
         Size = new Vector2(80f, y);
+        
+        var hoverTip = new HoverTip(
+            new LocString("static_hover_tips", "DUNGEONSANDSPIRES-SPELLS.title"),
+            new LocString("static_hover_tips", "DUNGEONSANDSPIRES-SPELLS.description"));
+        this.MouseEntered += () =>
+            NHoverTipSet.CreateAndShow(this, hoverTip)?.SetGlobalPosition(this.GlobalPosition + new Vector2(50f, -50f));
+        this.MouseExited += () => NHoverTipSet.Remove(this);
 
         SpellslotsCmd.OnChanged += OnSpellslotsChanged;
     }

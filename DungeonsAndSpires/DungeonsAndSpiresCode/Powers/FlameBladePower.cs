@@ -18,13 +18,11 @@ public class FlameBladePower : DungeonsAndSpiresPower
     public override bool TryModifyKeywordsInCombat(CardModel card, ISet<CardKeyword> keywords)
     {
         if (card.Owner != Owner.Player)
-        {
             return false;
-        }
+        if (card.Type != CardType.Attack)
+            return false;
         if (!card.Tags.Contains(DASCoreCardtags.Weapon))
-        {
             return false;
-        }
         return keywords.Add(CoreKeywords.Fire);
     }
 

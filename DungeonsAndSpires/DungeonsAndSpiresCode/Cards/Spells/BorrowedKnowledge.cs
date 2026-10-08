@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
-public class BorrowedKnowledge() : SpellCard(2, 2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class BorrowedKnowledge() : SpellCard(2, 2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CardVars =>
     [
