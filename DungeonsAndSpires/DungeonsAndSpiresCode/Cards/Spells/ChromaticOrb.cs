@@ -3,6 +3,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -36,7 +37,7 @@ public class ChromaticOrb() : SpellCard(1, 1, CardType.Attack, CardRarity.Common
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await ChooseElement(choiceContext);
-        await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
+        await DamageCmd.Attack(DynamicVars.Damage.IntValue).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
         await ApplyImbuedElementEffect(choiceContext, cardPlay.Target);
     }
 

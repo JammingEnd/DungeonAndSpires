@@ -38,4 +38,5 @@ public class ShockingGrasp() : SpellCard(0, 1, CardType.Attack, CardRarity.Commo
         DynamicVars.Damage.UpgradeValueBy(2m);
         DynamicVars["Shocked"].UpgradeValueBy(2m);
     }
+    
 }

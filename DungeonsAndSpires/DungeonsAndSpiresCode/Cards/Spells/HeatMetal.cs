@@ -3,6 +3,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -34,8 +35,7 @@ public class HeatMetal() : SpellCard(2, 2, CardType.Attack, CardRarity.Uncommon,
         {
             hits += (int)DynamicVars["ExtraHits"].GetCalculatedValue();
         }
-
-        await CommonActions.CardAttack(this, cardPlay, hits).Execute(choiceContext);
+        await DamageCmd.Attack(DynamicVars.Damage.IntValue).FromCard(this, cardPlay).WithHitCount(hits).Targeting(cardPlay.Target).Execute(choiceContext);
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

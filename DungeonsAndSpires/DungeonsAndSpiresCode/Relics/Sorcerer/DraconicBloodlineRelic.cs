@@ -57,6 +57,9 @@ public class DraconicBloodlineRelic : SubclassRelic
 
     public override async Task AfterRestSiteHeal(Player player, bool isMimicked)
     {
+        if(!unlockedFlight)
+            return;
+        
         if(!isMimicked)
             CanFly = true;
         this.Status = RelicStatus.Active;

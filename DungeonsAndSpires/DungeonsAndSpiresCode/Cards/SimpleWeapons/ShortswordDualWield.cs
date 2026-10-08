@@ -16,7 +16,8 @@ public class ShortswordDualWield() : SimpleWeaponCard(1, CardType.Attack, CardRa
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CoreKeywords.Slashing
+        CoreKeywords.Piering,
+        CoreKeywords.Finesse
     ];
 
     protected override IEnumerable<DynamicVar> CardVars =>

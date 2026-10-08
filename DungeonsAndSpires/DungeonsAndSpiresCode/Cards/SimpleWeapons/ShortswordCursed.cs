@@ -16,7 +16,8 @@ public class ShortswordCursed() : SimpleWeaponCard(1, CardType.Attack, CardRarit
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CoreKeywords.Slashing
+        CoreKeywords.Piering,
+        CoreKeywords.Finesse
     ];
 
     protected override IEnumerable<DynamicVar> CardVars =>

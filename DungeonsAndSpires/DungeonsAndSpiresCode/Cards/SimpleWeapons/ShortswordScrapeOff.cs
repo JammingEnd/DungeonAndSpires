@@ -15,7 +15,8 @@ public class ShortswordScrapeOff() : SimpleWeaponCard(2, CardType.Attack, CardRa
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CoreKeywords.Slashing
+        CoreKeywords.Slashing,
+        CoreKeywords.Finesse
     ];
 
     protected override IEnumerable<DynamicVar> CardVars =>
