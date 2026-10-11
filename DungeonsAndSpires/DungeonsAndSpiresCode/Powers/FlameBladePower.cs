@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -26,16 +27,18 @@ public class FlameBladePower : DungeonsAndSpiresPower
         return keywords.Add(CoreKeywords.Fire);
     }
 
-    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
+    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (target == Owner || dealer != Owner || cardSource == null)
+        if (cardPlay.Card.Owner != Owner.Player)
+            return;
+        if (cardPlay.Card.Type == CardType.Attack && cardPlay.Card.Tags.Contains(DASCoreCardtags.Weapon))
         {
-            return 0;
+            await DamageCmd.Attack(Amount).Targeting(cardPlay.Target).Unpowered().Execute(choiceContext);
         }
-        if (!cardSource.Tags.Contains(DASCoreCardtags.Weapon))
+        var frostbite = cardPlay.Target.GetPower<FrostbitePower>();
+        if (frostbite != null)
         {
-            return 0;
+            await PowerCmd.Decrement(frostbite);
         }
-        return Amount;
     }
 }

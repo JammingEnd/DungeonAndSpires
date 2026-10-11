@@ -1,4 +1,6 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
+using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using MegaCrit.Sts2.Core.CardSelection;
@@ -8,11 +10,12 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 
-public class ShortbowEnhancedQuiver() : SimpleWeaponCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class ShortbowSurvivalist() : SimpleWeaponCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags =>
     [
@@ -20,31 +23,27 @@ public class ShortbowEnhancedQuiver() : SimpleWeaponCard(2, CardType.Skill, Card
         DASCoreCardtags.Bow
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Exhaust
-    ];
-
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new CardsVar("Exhaust", 2)
+        new IntVar("DipTurns", 2)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<ShortbowEnhancedQuiverPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
-
-        var prefs = new CardSelectorPrefs(new LocString("cards", "DUNGEONSANDSPIRES-SHORTBOW_ENHANCED_QUIVER.exhaustPrompt"), 0, DynamicVars["Exhaust"].IntValue);
-        var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, null, this);
-        foreach (var card in selected)
+        var prefs = new CardSelectorPrefs(new LocString("cards", "DUNGEONSANDSPIRES-SHORTBOW_SURVIVALIST.DipPrompt"), 0, 1);
+        Func<CardModel, bool> filter = c => c.Tags.Contains(DASCoreCardtags.Weapon) && c.Type == CardType.Attack && !c.HasDip();
+        var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, filter, this);
+        var card = selected.FirstOrDefault();
+        if (card != null && card is CoreCard card_s)
         {
-            await CardCmd.Exhaust(choiceContext, card);
+            var dip = DipExtentions.GenerateRandomDip(DynamicVars["DipTurns"].IntValue, Owner, 2);
+            await DipCmd.Add(choiceContext, Owner,  card_s, dip);
         }
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<ShortbowEnhancedQuiverPower>()
+        HoverTipFactory.FromPower<ShortbowSurvivalistPower>()
     ];
 
     protected override void OnUpgrade()

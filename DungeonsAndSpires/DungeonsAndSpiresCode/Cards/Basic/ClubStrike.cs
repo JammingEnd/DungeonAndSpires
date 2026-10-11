@@ -30,4 +30,6 @@ public class ClubStrike() : SimpleWeaponCard(1, CardType.Attack, CardRarity.Basi
     {
         DynamicVars.Damage.UpgradeValueBy(3m);
     }
+    
+    
 }

@@ -1,5 +1,6 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.AbilityPotency;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Metamagic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using HarmonyLib;
@@ -14,6 +15,9 @@ internal class PlayerCombatStateConstructorPatch
     [HarmonyPostfix]
     private static void Postfix(Player player, PlayerCombatState __instance)
     {
+        // Weapon dips are available to every player.
+        DipField.State[__instance] = new DipState();
+
         AssignForSorcerer(player, __instance);
     }
 

@@ -15,6 +15,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using System.Text.RegularExpressions;
+using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
@@ -30,10 +31,6 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
     private string CardName() => SnakeRegex.Replace(GetType().Name, "$1_$2").ToLowerInvariant();
 
     public override string CustomPortraitPath => $"{CardName()}.png".CardImagePath();
-
-    //Smaller variants of card images for efficiency:
-    //Smaller variant of fullart: 250x350
-    //Smaller variant of normalart: 250x190
 
     //Uses card_portraits/card_name.png as image path. These should be smaller images.
     public override string PortraitPath => $"{CardName()}.png".CardImagePath();
@@ -82,6 +79,8 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         description.Add("HasPotencyStep", PotencyVars.Count > 0 || DynamicVars.ContainsKey("PotencyStep"));
     }
 
+    #region Potency Calculations 
+    
     /// <summary>
     /// Maps a DynamicVar name to its potency scaling: (step, mult). Every <c>step</c> Ability
     /// Potency, the var increases by <c>mult</c>. A step of 1 is "Potent 1".
@@ -141,6 +140,10 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         return result;
     }
 
+    #endregion
+
+    #region Imbued Effects
+    
     public virtual decimal GetElementEffectAmount(CardKeyword element)
     {
         var varName = GetElementEffectVarName(element);
@@ -263,10 +266,13 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
 
         return token;
     }
+    
+    #endregion
 
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource,
         CardPlay? cardPlay)
     {
+        int newAmount = 0;
         if (cardSource != this || dealer != Owner.Creature)
         {
             return 0;
@@ -277,12 +283,13 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
             int strength = Owner.Creature.GetPowerAmount<StrengthPower>();
             int vigor = Owner.Creature.GetPowerAmount<VigorPower>();
             int dexterity = Owner.Creature.GetPowerAmount<DexterityPower>();
-            return Math.Max(0, dexterity - (strength + vigor));
+            newAmount += Math.Max(0, dexterity - (strength + vigor));
         }
-        return 0;
+        return newAmount;
     }
 
     // Potent attack spells are unpowered, so Weak normally skips them; apply the reduction here.
+    // but the ui doesnt like..... update this. same for vulnerable
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
         if (cardSource != this || dealer != Owner.Creature || target == null)

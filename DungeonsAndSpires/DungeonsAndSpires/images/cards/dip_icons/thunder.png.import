@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://txc08ueafqx6"
-path="res://.godot/imported/shortbow_enhanced_quiver.png-b4f22cb7f429ea84d2203649c9c41bad.ctex"
+uid="uid://dfjqyyif0e37y"
+path="res://.godot/imported/thunder.png-9eace93943b39907270dbec10a2d4b80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DungeonsAndSpires/images/card_portraits/shortbow_enhanced_quiver.png"
-dest_files=["res://.godot/imported/shortbow_enhanced_quiver.png-b4f22cb7f429ea84d2203649c9c41bad.ctex"]
+source_file="res://DungeonsAndSpires/images/cards/dip_icons/thunder.png"
+dest_files=["res://.godot/imported/thunder.png-9eace93943b39907270dbec10a2d4b80.ctex"]
 
 [params]
 

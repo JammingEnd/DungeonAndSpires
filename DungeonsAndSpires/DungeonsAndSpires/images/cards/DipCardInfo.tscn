@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp2i4mlcmgccn"]
+
+[ext_resource type="Texture2D" uid="uid://ewdd3qmdvbil" path="res://DungeonsAndSpires/images/cards/DipBanner.png" id="2_6ltny"]
+[ext_resource type="Texture2D" uid="uid://cfx7wb4cwgrya" path="res://DungeonsAndSpires/images/cards/dip_icons/lightning.png" id="3_6ltny"]
+[ext_resource type="FontFile" uid="uid://cyf0sdexigbj5" path="res://DungeonsAndSpires/other/NotoSansSyriacWestern-VariableFont_wght.ttf" id="3_krd7v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x570c"]
+line_spacing = 1.0
+font = ExtResource("3_krd7v")
+font_size = 32
+font_color = Color(0.98039216, 0.94509804, 0.8627451, 1)
+outline_size = 4
+outline_color = Color(0.30129585, 0.28443113, 0.23688585, 1)
+
+[node name="DipCardInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -148.0
+offset_top = -248.99998
+offset_right = -148.0
+offset_bottom = -248.99998
+scale = Vector2(1.05, 1.05)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 32.65306
+offset_top = 4.0816345
+offset_right = 239.65306
+offset_bottom = 98.081635
+scale = Vector2(0.61904764, 0.5102041)
+texture = ExtResource("2_6ltny")
+
+[node name="TypeRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 121.088
+offset_top = 12.925
+offset_right = 185.08801
+offset_bottom = 76.92495
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6ltny")
+expand_mode = 1
+
+[node name="UseLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 46.258503
+offset_top = 9.523817
+offset_right = 82.993195
+offset_bottom = 58.52382
+text = "9"
+label_settings = SubResource("LabelSettings_x570c")
+horizontal_alignment = 1
+
+[node name="StrengthLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 96.59863
+offset_top = 9.523817
+offset_right = 133.33333
+offset_bottom = 58.52382
+text = "9"
+label_settings = SubResource("LabelSettings_x570c")
+horizontal_alignment = 1

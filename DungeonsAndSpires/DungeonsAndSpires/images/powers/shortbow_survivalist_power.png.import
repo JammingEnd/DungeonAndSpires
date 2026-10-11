@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmctax4taq323"
-path="res://.godot/imported/shortbow_enhanced_quiver_power.png-db5813043d9c4e383416d2b8e5a3430a.ctex"
+uid="uid://d2a0c0kvy277h"
+path="res://.godot/imported/shortbow_survivalist_power.png-7f613f50d7bc005ca8145b31a8c25997.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DungeonsAndSpires/images/powers/big/shortbow_enhanced_quiver_power.png"
-dest_files=["res://.godot/imported/shortbow_enhanced_quiver_power.png-db5813043d9c4e383416d2b8e5a3430a.ctex"]
+source_file="res://DungeonsAndSpires/images/powers/shortbow_survivalist_power.png"
+dest_files=["res://.godot/imported/shortbow_survivalist_power.png-7f613f50d7bc005ca8145b31a8c25997.ctex"]
 
 [params]
 

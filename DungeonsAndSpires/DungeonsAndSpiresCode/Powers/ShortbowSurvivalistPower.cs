@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 
-public class ShortbowEnhancedQuiverPower : DungeonsAndSpiresPower
+public class ShortbowSurvivalistPower : DungeonsAndSpiresPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
