@@ -1,9 +1,5 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
-using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
-using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
-using Godot;
 using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
@@ -13,6 +9,9 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 public static class DipCmd
 {
     public static event Action<Player>? OnChanged;
+
+    // Fired whenever a specific card's dip changed, so self-managing DipInfoControl can update.
+    public static event Action<CardModel>? OnDipChanged;
 
     public static async Task Add(PlayerChoiceContext context, Player player, CardModel card, DipInfo dipInfo)
     {
@@ -25,8 +24,7 @@ public static class DipCmd
 
         state.WeaponDips[card] = dipInfo;
 
-        card.SetUI(true);
-
+        OnDipChanged?.Invoke(card);
         OnChanged?.Invoke(player);
 
         var combatState = player.Creature.CombatState;
@@ -51,12 +49,9 @@ public static class DipCmd
         if (state.WeaponDips[card].DecreaseDuration())
         {
             state.WeaponDips.Remove(card);
-            card.SetUI(false);
         }
-        else
-        {
-            card.SetUI(true);
-        }
+
+        OnDipChanged?.Invoke(card);
     }
     public static async Task IncreaseDuration(PlayerChoiceContext context, Player player, CardModel card, int amount)
     {
@@ -71,7 +66,7 @@ public static class DipCmd
 
        state.WeaponDips[card].IncreaseDuration(amount);
 
-       card.SetUI(true);
+       OnDipChanged?.Invoke(card);
     }
     public static async Task ModifyStrength(PlayerChoiceContext context, Player player, CardModel card, int amount)
     {
@@ -86,7 +81,7 @@ public static class DipCmd
 
         state.WeaponDips[card].ModifyStrength(amount);
 
-        card.SetUI(true);
+        OnDipChanged?.Invoke(card);
     }
 
     public static async Task Remove(PlayerChoiceContext context, Player player, CardModel card, DipInfo dipInfo)
@@ -100,71 +95,11 @@ public static class DipCmd
 
         state.WeaponDips.Remove(card);
 
-        card.SetUI(false);
-
+        OnDipChanged?.Invoke(card);
         OnChanged?.Invoke(player);
         
         var combatState = player.Creature.CombatState;
         if (combatState != null)
             await DipHook.OnChanged(combatState, context, player, card, dipInfo);
-    }
-
-    internal static void SetUI(this CardModel card, bool enabled)
-    {
-        if (card == null)
-            return;
-
-        var display = DipField.UI[card];
-        if (display == null || !GodotObject.IsInstanceValid(display))
-            return;
-
-        // Only weapon cards can hold a dip; otherwise hide the overlay.
-        if (!card.Tags.Contains(DASCoreCardtags.Weapon))
-        {
-            display.Visible = false;
-            return;
-        }
-
-        display.Visible = enabled;
-        if (!enabled)
-            return;
-
-        var dip = card.Owner?.PlayerCombatState?.GetDip(card);
-        if (dip == null)
-        {
-            display.Visible = false;
-            return;
-        }
-
-        display.GetNodeOrNull<Label>("UseLabel")?.SetText(dip.UsesLeft.ToString());
-        display.GetNodeOrNull<Label>("StrengthLabel")?.SetText(dip.Strength.ToString());
-
-        var typeRect = display.GetNodeOrNull<TextureRect>("TypeRect");
-        if (typeRect != null)
-        {
-            var icon = $"{MainFile.ResPath}/images/cards/dip_icons/{GetDipTypeIcon(dip.Type)}.png";
-            var texture = GD.Load<Texture2D>(icon);
-            if (texture != null)
-            {
-                typeRect.Texture = texture;
-            }
-        }
-    }
-
-    private static string GetDipTypeIcon(CardKeyword type)
-    {
-        if (type == CoreKeywords.Cold)
-            return "cold";
-        if (type == CoreKeywords.Fire)
-            return "flamer";
-        if (type == CoreKeywords.Lightning)
-            return "lightning";
-        if (type == CoreKeywords.Poison)
-            return "poison";
-        if (type == CoreKeywords.Thunder)
-            return "thunder";
-        if (type == CoreKeywords.Acid)
-            return "acid";
-        return "lightning";
     }
 }

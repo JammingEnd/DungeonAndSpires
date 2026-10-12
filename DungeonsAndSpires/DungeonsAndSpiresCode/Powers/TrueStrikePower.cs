@@ -17,7 +17,8 @@ public class TrueStrikePower : DungeonsAndSpiresPower
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
-        if (Amount > 0 && dealer == Owner && isValid(cardSource))
+        // cardSource can be a canonical preview card (or null), whose Tags can't be read safely.
+        if (Amount > 0 && dealer == Owner && cardSource != null && cardSource.IsMutable && isValid(cardSource))
         {
             return 1.5m;
         }

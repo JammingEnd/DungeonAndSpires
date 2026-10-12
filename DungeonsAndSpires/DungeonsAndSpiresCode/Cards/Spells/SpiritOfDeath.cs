@@ -40,7 +40,6 @@ public class SpiritOfDeath() : SpellCard(4, 2, CardType.Attack, CardRarity.Uncom
 
     protected override void OnUpgrade()
     {
-        DynamicVars["DamageBase"].UpgradeValueBy(4m);
         AddKeyword(CoreKeywords.Ritual);
     }
 }

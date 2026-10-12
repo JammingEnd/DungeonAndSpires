@@ -23,6 +23,17 @@ public static class DipExtentions
         DipInfo newDip = new DipInfo(type, strength, turns);
         return newDip;
     }
+
+    /// <summary>
+    /// See possible types to select from, default is Cold
+    /// </summary>
+    public static DipInfo GenerateDip(CardKeyword type, int strength, int duration)
+    {
+        if(possibleTypes.Contains(type) == false)
+            type = CoreKeywords.Cold;
+        DipInfo newDip = new DipInfo(type, strength, duration);
+        return newDip;
+    }
     
     public static DipState? GetDipState(this PlayerCombatState state)
     {

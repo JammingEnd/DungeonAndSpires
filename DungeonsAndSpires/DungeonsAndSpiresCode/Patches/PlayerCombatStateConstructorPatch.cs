@@ -15,22 +15,24 @@ internal class PlayerCombatStateConstructorPatch
     [HarmonyPostfix]
     private static void Postfix(Player player, PlayerCombatState __instance)
     {
-        // Weapon dips are available to every player.
         DipField.State[__instance] = new DipState();
+        PotencyField.State[__instance] = new PotencyState();
 
         AssignForSorcerer(player, __instance);
     }
 
     private static void AssignForSorcerer(Player player, PlayerCombatState __instance)
     {
-        bool isHalfCaster = player.Character.CardPool is not SorcererCardPool;
-        SpellslotsField.State[__instance] = new SpellslotsState(isHalfCaster);
-
-        // Potency and Metamagic are Sorcerer-only.
-        if (!isHalfCaster)
+        bool IsSorcerer = player.Character.CardPool is SorcererCardPool;
+        
+        if (IsSorcerer)
         {
-            PotencyField.State[__instance] = new PotencyState();
             MetamagicField.State[__instance] = new MetamagicState();
         }
+        else
+        {
+            return;
+        }
+        SpellslotsField.State[__instance] = new SpellslotsState();
     }
 }

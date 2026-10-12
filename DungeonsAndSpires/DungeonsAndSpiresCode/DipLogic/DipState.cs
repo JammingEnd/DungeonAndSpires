@@ -8,18 +8,11 @@ public class DipState
    public Dictionary<CardModel, DipInfo> WeaponDips =  new Dictionary<CardModel, DipInfo>();
 }
 
-public class DipInfo
+public class DipInfo(CardKeyword type, int strength, int duration)
 {
-    public CardKeyword Type { get; private  set; }
-    public int Strength { get; private set; }
-    public int UsesLeft { get; private set; }
-
-    public DipInfo(CardKeyword type, int strength, int duration)
-    {
-        Type = type;
-        Strength = strength;
-        UsesLeft = duration;
-    }
+    public CardKeyword Type { get; private  set; } = type;
+    public int Strength { get; private set; } = strength;
+    public int UsesLeft { get; private set; } = duration;
 
     public bool DecreaseDuration()
     {

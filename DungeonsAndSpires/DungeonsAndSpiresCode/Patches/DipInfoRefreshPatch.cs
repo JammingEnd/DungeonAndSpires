@@ -1,31 +1,29 @@
-using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Nodes;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Patches;
 
-/// <summary>
-/// Refreshes a card view's DipCardInfo overlay whenever the view reloads (draw, redraw, turn-end
-/// reshuffle, etc.), so it stays tied to whatever card the view currently displays.
-/// </summary>
 [HarmonyPatch(typeof(NCard), "Reload")]
 internal static class DipInfoRefreshPatch
 {
     [HarmonyPostfix]
     private static void Postfix(NCard __instance)
     {
-        if (__instance.Model == null)
+        try
         {
-            return;
-        }
+            var control = AddDipInfoToCards.AddedNode[__instance];
+            if (control == null || !GodotObject.IsInstanceValid(control))
+            {
+                return;
+            }
 
-        var control = __instance.GetNodeOrNull<Control>("%CardContainer")?.GetNodeOrNull<Control>("DipCardInfo");
-        if (control == null)
+            control.Refresh();
+        }
+        catch (Exception e)
         {
-            return;
+            MainFile.Logger.Error($"DipInfoRefresh failed: {e}");
         }
-
-        DipCmd.SetUI(__instance.Model, true);
     }
 }

@@ -122,9 +122,9 @@
   "DUNGEONSANDSPIRES-SHORTBOW_ROPE_ARROW_DEXTERITY_POWER.title": "Rope Arrow",
   "DUNGEONSANDSPIRES-SHORTBOW_ROPE_ARROW_DEXTERITY_POWER.description": "Lose {Amount} [gold]Dexterity[/gold] until the end of your turn.",
   "DUNGEONSANDSPIRES-SHORTBOW_ROPE_ARROW_DEXTERITY_POWER.smartDescription": "Lose {Amount} [gold]Dexterity[/gold] until the end of your turn.",
-  "DUNGEONSANDSPIRES-SHORTBOW_SURVIVALIST_POWER.title": "Shortbow Survivalist",
-  "DUNGEONSANDSPIRES-SHORTBOW_SURVIVALIST_POWER.description": "Bow attacks this turn cost 1 less.",
-  "DUNGEONSANDSPIRES-SHORTBOW_SURVIVALIST_POWER.smartDescription": "Bow attacks this turn cost 1 less.",
+  "DUNGEONSANDSPIRES-SHORTBOW_POISON_ARROW_POWER.description": "The next weapon attack that hits this target gains a 1 use poison dip",
+  "DUNGEONSANDSPIRES-SHORTBOW_POISON_ARROW_POWER.smartDescription": "The next weapon attack that hits this target gains a 1 use, {Amount} strength, poison dip",
+  "DUNGEONSANDSPIRES-SHORTBOW_POISON_ARROW_POWER.title": "Poison Arrow",
   "DUNGEONSANDSPIRES-TIME_STOP_POWER.title": "Time Stop",
   "DUNGEONSANDSPIRES-TIME_STOP_POWER.description": "Take an extra turn.",
   "DUNGEONSANDSPIRES-TIME_STOP_POWER.smartDescription": "Take an extra turn.",
@@ -151,5 +151,8 @@
   "DUNGEONSANDSPIRES-ASTRAL_GATE_POWER.smartDescription": "At the start of your turn, {Amount} random spell is free to play and consumes no Spellslot.",
   "DUNGEONSANDSPIRES-WISH_POWER.title": "Wish",
   "DUNGEONSANDSPIRES-WISH_POWER.description": "While you hold this power, you may open the Compendium and select any card to add a copy to your hand.",
-  "DUNGEONSANDSPIRES-WISH_POWER.smartDescription": "While you hold this power, you may open the Compendium and select any card to add a copy to your hand."
+  "DUNGEONSANDSPIRES-WISH_POWER.smartDescription": "While you hold this power, you may open the Compendium and select any card to add a copy to your hand.",
+  "DUNGEONSANDSPIRES-SCIMITAR_HOMEBREW_POWER.description": "All dips have extra strength",
+  "DUNGEONSANDSPIRES-SCIMITAR_HOMEBREW_POWER.smartDescription": "All dips have {Amount} extra strength",
+  "DUNGEONSANDSPIRES-SCIMITAR_HOMEBREW_POWER.title": "Homebrew"
 }

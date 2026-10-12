@@ -17,7 +17,7 @@ public class ShortswordDisengage() : SimpleWeaponCard(0, CardType.Skill, CardRar
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PlayerCmd.GainEnergy(2, Owner);
+        await PlayerCmd.GainEnergy(1, Owner);
         await PowerCmd.Apply<ShortswordDisengagePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 

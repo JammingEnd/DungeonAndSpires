@@ -116,7 +116,7 @@ public class DraconicBloodlineRelic : SubclassRelic
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner != Owner)
+        if (cardPlay.Card.Owner != Owner || !unlockBlock)
             return;
         if(_blockedThisTurn)
             return;

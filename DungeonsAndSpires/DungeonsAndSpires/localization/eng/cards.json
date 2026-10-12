@@ -228,7 +228,7 @@
   "DUNGEONSANDSPIRES-SHORTBOW_POISON_ARROWS.title": "Shortbow Poison Arrows",
   "DUNGEONSANDSPIRES-SHORTBOW_INFUSED_TIPS.description": "Deal {Damage:diff()} damage.\nIf imbued with a damage element, gain +4 damage; if imbued with [gold]Acid[/gold] or [gold]Poison[/gold], double its effect.",
   "DUNGEONSANDSPIRES-SHORTBOW_INFUSED_TIPS.title": "Shortbow Infused Tips",
-  "DUNGEONSANDSPIRES-SHORTBOW_SURVIVALIST.description": "Select an Attack card in your hand, Apply a random dip type with a [gold]Duration[/gold] {DipTurns:diff()} and Strength 2.",
+  "DUNGEONSANDSPIRES-SHORTBOW_SURVIVALIST.description": "Select an Attack card in your hand, Apply a random dip type with a [gold]Use[/gold] {DipTurns:diff()} and Strength 2.",
   "DUNGEONSANDSPIRES-SHORTBOW_SURVIVALIST.title": "Shortbow Survivalist",
   "DUNGEONSANDSPIRES-SHORTBOW_SURVIVALIST.DipPrompt": "Choose card to Dip with a random effect.",
   "DUNGEONSANDSPIRES-SHORTBOW_BARBED_POINT.description": "Deal {Damage:diff()} damage.\nIf your first attack next turn is a non-[gold]Bow[/gold] attack, return this to your hand.",
