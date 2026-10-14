@@ -326,23 +326,33 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         return newAmount;
     }
 
-    // Potent attack spells are unpowered, so Weak normally skips them; apply the reduction here.
-    // but the ui doesnt like..... update this. same for vulnerable
+    // Potent attack spells are unpowered, so Weak normally skips them.
+    // but the ui doesnt like..... update this. same for vulnerable. 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
-        if (cardSource != this || dealer != Owner.Creature || target == null)
+        if (cardSource != this || dealer != Owner.Creature)
         {
             return 1m;
         }
-        // Weak already handles powered attacks; avoid double-applying.
-        if (props.IsPoweredAttack())
-        {
-            return 1m;
-        }
+            decimal multiplier = 1m;
         if (Type == CardType.Attack && Owner.Creature.GetPowerAmount<WeakPower>() > 0)
         {
-            return 0.75m;
+            multiplier *= 0.75m;
         }
-        return 1m;
+        if(target == null)
+        {
+            return 1m;
+        }
+        // Weak/Vulnerable already handle powered attacks; apply them manually for unpowered spells.
+        /*if (props.IsPoweredAttack())
+        {
+            return 1m;
+        }*/
+
+        if (target.GetPowerAmount<VulnerablePower>() > 0)
+        {
+            multiplier *= 1.5m;
+        }
+        return multiplier;
     }
 }

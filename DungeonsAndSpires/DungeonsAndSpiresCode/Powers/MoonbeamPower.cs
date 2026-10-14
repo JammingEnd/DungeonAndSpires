@@ -58,6 +58,8 @@ public class MoonbeamPower : DungeonsAndSpiresPower, IOnPotencyChanged
         DynamicVars["Damage"].BaseValue = (data.DamageBase + data.DamageMult * (Math.Floor(potency / (decimal)Step) + data.HeightenBonus)) * Amount;
     }
 
+    private bool _resolving;
+
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (power == this)
@@ -70,12 +72,25 @@ public class MoonbeamPower : DungeonsAndSpiresPower, IOnPotencyChanged
         {
             return;
         }
-        // Only fires when a power is reduced to 0.
+        // only fires when a power is reduced to 0.
         if (amount >= 0 || power.Amount > 0)
         {
             return;
         }
+        // so because this counts as unpowered, it enters a loop in Decrement for some reason. this should prevent it from looping aka... exploding slippery
+        if (_resolving)
+        {
+            return;
+        }
 
-        await CreatureCmd.Damage(choiceContext, power.Owner, DynamicVars["Damage"].IntValue, ValueProp.Unpowered, Owner, null, null);
+        _resolving = true;
+        try
+        {
+            await CreatureCmd.Damage(choiceContext, power.Owner, DynamicVars["Damage"].IntValue, ValueProp.Unpowered, Owner, null, null);
+        }
+        finally
+        {
+            _resolving = false;
+        }
     }
 }

@@ -35,6 +35,7 @@ public class ShockedPower : DungeonsAndSpiresPower
             return;
         }
 
-        await PowerCmd.Remove(this);
+        await PowerCmd.ModifyAmount(choiceContext, this, -Amount, null, null);
     }
+    
 }

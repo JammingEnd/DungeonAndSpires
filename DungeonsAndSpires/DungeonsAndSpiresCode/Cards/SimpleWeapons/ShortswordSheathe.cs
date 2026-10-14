@@ -16,7 +16,7 @@ public class ShortswordSheathe() : SimpleWeaponCard(1, CardType.Skill, CardRarit
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var prefs = new CardSelectorPrefs(new LocString("cards", "DUNGEONSANDSPIRES-SHORTSWORD_SHEATHE.selectionPrompt"), 1, 1);
-        Func<CardModel, bool> filter = c => c.Tags.Contains(DASCoreCardtags.Weapon);
+        Func<CardModel, bool> filter = c => c.Type == CardType.Attack;
         var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, filter, this);
         var target = selected.FirstOrDefault();
         if (target == null)

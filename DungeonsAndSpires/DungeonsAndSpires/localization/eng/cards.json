@@ -240,7 +240,7 @@
   "DUNGEONSANDSPIRES-SHORTBOW_BARBED_POINT.title": "Shortbow Barbed Point",
   "DUNGEONSANDSPIRES-SHORTSWORD_DUAL_WIELD.description": "Deal {Damage:diff()} damage.\nThe next time you draw a 0-cost attack card, play it and draw 1 card.",
   "DUNGEONSANDSPIRES-SHORTSWORD_DUAL_WIELD.title": "Shortsword Dual Wield",
-  "DUNGEONSANDSPIRES-SHORTSWORD_SHEATHE.description": "Discard a weapon card.\nGain {energyPrefix:energyIcons(1)} equal to its cost{IfUpgraded:cond:|, +1}.",
+  "DUNGEONSANDSPIRES-SHORTSWORD_SHEATHE.description": "Discard an Attack card.\nGain {energyPrefix:energyIcons(1)} equal to its cost{IfUpgraded:cond:|, +1}.",
   "DUNGEONSANDSPIRES-SHORTSWORD_SHEATHE.title": "Shortsword Sheathe",
   "DUNGEONSANDSPIRES-SHORTSWORD_SHEATHE.selectionPrompt": "Choose a weapon card to discard.",
   "DUNGEONSANDSPIRES-SHORTSWORD_SWITCH_HANDS.description": "Discard up to {Discard:diff()} weapon cards.\nScry {Scry:diff()}.",

@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
-public class ShockingGrasp() : SpellCard(0, 1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class ShockingGrasp() : SpellCard(0, 0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
