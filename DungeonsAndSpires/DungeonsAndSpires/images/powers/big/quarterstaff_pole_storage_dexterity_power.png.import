@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwum27406ombw"
-path="res://.godot/imported/quarterstaff_headhit_dexterity_power.png-15608bbdda622de1cc19d17f19266392.ctex"
+uid="uid://ck34qgf33i7kc"
+path="res://.godot/imported/quarterstaff_pole_storage_dexterity_power.png-b3207695187be34e8412ea7c202d4acc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DungeonsAndSpires/images/powers/big/quarterstaff_headhit_dexterity_power.png"
-dest_files=["res://.godot/imported/quarterstaff_headhit_dexterity_power.png-15608bbdda622de1cc19d17f19266392.ctex"]
+source_file="res://DungeonsAndSpires/images/powers/big/quarterstaff_pole_storage_dexterity_power.png"
+dest_files=["res://.godot/imported/quarterstaff_pole_storage_dexterity_power.png-b3207695187be34e8412ea7c202d4acc.ctex"]
 
 [params]
 

@@ -31,9 +31,9 @@ public class SorcererCharacter : PlaceholderCharacterModel
         ModelDb.Card<ClubDefend>(),
         ModelDb.Card<ClubDefend>(),
         ModelDb.Card<ClubDefend>(),
-        ModelDb.Card<ClubDefend>(),
+        ModelDb.Card<Resistance>(),
         ModelDb.Card<Firebolt>(),
-        ModelDb.Card<WitchBolt>()
+        ModelDb.Card<ChromaticOrb>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

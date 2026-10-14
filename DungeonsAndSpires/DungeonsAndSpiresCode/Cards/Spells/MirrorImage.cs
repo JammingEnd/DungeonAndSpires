@@ -16,13 +16,13 @@ public class MirrorImage() : SpellCard(2, 2, CardType.Skill, CardRarity.Common, 
 {
     public override Dictionary<string, (int step, int mult)> PotencyVars => new()
     {
-        { "Block", (3, 4) },
+        { "Block", (3, 3) },
         { "Cards", (3, 1) }
     };
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new BlockVar(9, ValueProp.Unpowered),
+        new BlockVar(8, ValueProp.Unpowered),
         new CardsVar(2)
     ];
 

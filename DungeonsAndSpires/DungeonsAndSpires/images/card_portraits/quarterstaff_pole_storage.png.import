@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1ptdcvq2bk6m"
-path="res://.godot/imported/quarterstaff_headhit.png-edf1c29477ee6f49f8647c0e9547fe19.ctex"
+uid="uid://84hguog8d67j"
+path="res://.godot/imported/quarterstaff_pole_storage.png-fef0767d3f7ee98cbde461be7ce723db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DungeonsAndSpires/images/card_portraits/quarterstaff_headhit.png"
-dest_files=["res://.godot/imported/quarterstaff_headhit.png-edf1c29477ee6f49f8647c0e9547fe19.ctex"]
+source_file="res://DungeonsAndSpires/images/card_portraits/quarterstaff_pole_storage.png"
+dest_files=["res://.godot/imported/quarterstaff_pole_storage.png-fef0767d3f7ee98cbde461be7ce723db.ctex"]
 
 [params]
 

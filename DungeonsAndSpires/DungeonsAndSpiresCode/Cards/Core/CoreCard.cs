@@ -14,8 +14,11 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Multiplayer.Game;
+using MegaCrit.Sts2.Core.Runs;
 using System.Text.RegularExpressions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
@@ -77,6 +80,7 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
     protected override void AddExtraArgsToDescription(LocString description)
     {
         description.Add("HasPotencyStep", PotencyVars.Count > 0 || DynamicVars.ContainsKey("PotencyStep"));
+        description.Add("IsMultiplayer", RunManager.Instance.NetService.Type.IsMultiplayer());
     }
 
     #region Potency Calculations 
@@ -155,6 +159,17 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
     // this shows when playing chromatic orb or when dipping a weapon
     public async Task<CardKeyword?> ChooseElement(PlayerChoiceContext choiceContext)
     {
+        var keyword = await SelectElement(choiceContext);
+        if (keyword.HasValue)
+        {
+            Imbue(keyword.Value);
+        }
+        return keyword;
+    }
+
+    // the player to pick one of this card's ElementOptions, without imbuing this card.
+    protected async Task<CardKeyword?> SelectElement(PlayerChoiceContext choiceContext)
+    {
         if (!ElementOptions.Any())
         {
             return null;
@@ -174,16 +189,12 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
             return null;
         }
 
-        var keyword = ElementOptions.FirstOrDefault(element => token.Keywords.Contains(element));
-        if (keyword != null)
-        {
-            Imbue(keyword);
-        }
-        return keyword;
+        return ElementOptions.FirstOrDefault(element => token.Keywords.Contains(element));
     }
     
     // so acid and poison arent a damage type, they apply something (poison and vulnerable), this is the method for that
-    public async Task ApplyImbuedElementEffect(PlayerChoiceContext choiceContext, Creature target)
+    // yeah this is for the associated effects
+    public async Task ApplyImbuedElementEffect(PlayerChoiceContext choiceContext, Creature target, bool isDip = false)
     {
         if (ImbuedElement is not CardKeyword element)
         {
@@ -204,6 +215,21 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         {
             await PowerCmd.Apply<VulnerablePower>(choiceContext, target, amount, Owner.Creature, this);
         }
+        else if (element == CoreKeywords.Cold)
+        {
+            await PowerCmd.Apply<FrostbitePower>(choiceContext, target, amount, Owner.Creature, this);
+        }
+        else if (element == CoreKeywords.Lightning)
+        {
+            await PowerCmd.Apply<ShockedPower>(choiceContext, target, amount, Owner.Creature, this);
+        }
+        else if (element == CoreKeywords.Thunder)
+        {
+            if (target.GetPowerAmount<Reverberation>() == 0)
+            {
+                await PowerCmd.Apply<Reverberation>(choiceContext, target, 1, Owner.Creature, this);
+            }
+        }
     }
 
     private static string? GetElementEffectVarName(CardKeyword element)
@@ -215,6 +241,18 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         if (element == CoreKeywords.Acid)
         {
             return "VulnerablePower";
+        }
+        if (element == CoreKeywords.Cold)
+        {
+            return "FrostbitePower";
+        }
+        if (element == CoreKeywords.Thunder)
+        {
+            return "Reverberation";
+        }
+        if (element == CoreKeywords.Lightning)
+        {
+            return "ShockedPower";
         }
         return null;
     }

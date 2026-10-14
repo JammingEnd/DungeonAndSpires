@@ -14,12 +14,17 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
-public class Sanctuary() : SpellCard(1, 2, CardType.Power, CardRarity.Common, TargetType.Self)
+public class Sanctuary() : SpellCard(1, 2, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new CardsVar(1),
-        new BlockVar(20, ValueProp.Unpowered)
+        new CardsVar(2),
+        new BlockVar(16, ValueProp.Unpowered)
+    ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

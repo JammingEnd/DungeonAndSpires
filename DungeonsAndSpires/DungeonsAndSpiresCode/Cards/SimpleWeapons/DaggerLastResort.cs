@@ -13,21 +13,11 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 public class DaggerLastResort() : SimpleWeaponCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CardVars =>
-    [
-        new PowerVar<VigorPower>("Vigor", 4)
-    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<DaggerLastResortPower>(choiceContext, Owner.Creature, DynamicVars["Vigor"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<DaggerLastResortPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<DaggerLastResortPower>(),
-        HoverTipFactory.FromPower<VigorPower>()
-    ];
 
     protected override void OnUpgrade()
     {

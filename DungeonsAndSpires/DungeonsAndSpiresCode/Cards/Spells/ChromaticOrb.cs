@@ -2,6 +2,7 @@ using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -31,7 +32,10 @@ public class ChromaticOrb() : SpellCard(1, 1, CardType.Attack, CardRarity.Common
     [
         new DamageVar(10, ValueProp.Unpowered),
         new PowerVar<PoisonPower>("PoisonPower", 2),
-        new PowerVar<VulnerablePower>("VulnerablePower", 1)
+        new PowerVar<VulnerablePower>("VulnerablePower", 1),
+        new PowerVar<FrostbitePower>("FrostbitePower", 1),
+        new PowerVar<Reverberation>("Reverberation", 1),
+        new PowerVar<ShockedPower>("ShockedPower", 2)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -44,13 +48,18 @@ public class ChromaticOrb() : SpellCard(1, 1, CardType.Attack, CardRarity.Common
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<PoisonPower>(),
-        HoverTipFactory.FromPower<VulnerablePower>()
+        HoverTipFactory.FromPower<VulnerablePower>(),
+        HoverTipFactory.FromPower<FrostbitePower>(),
+        HoverTipFactory.FromPower<Reverberation>(),
+        HoverTipFactory.FromPower<ShockedPower>()
     ];
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(6m);
         DynamicVars["PoisonPower"].UpgradeValueBy(2m);
         DynamicVars["VulnerablePower"].UpgradeValueBy(1m);
+        DynamicVars["FrostbitePower"].UpgradeValueBy(1m);
+        DynamicVars["ShockedPower"].UpgradeValueBy(1m);
     }
 }

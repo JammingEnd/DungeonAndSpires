@@ -2,6 +2,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -38,13 +39,15 @@ public class ThunderWave() : SpellCard(1, 1, CardType.Attack, CardRarity.Common,
         var enemies = CombatState!.HittableEnemies.ToArray();
         await DamageCmd.Attack(DynamicVars["Damage"].GetCalculatedValue()).FromCard(this, cardPlay).TargetingAllOpponents(CombatState).Execute(choiceContext);
         await PowerCmd.Apply<FrailPower>(choiceContext, enemies, DynamicVars["Frail"].GetCalculatedValue(), Owner.Creature, this);
+        await PowerCmd.Apply<Reverberation>(choiceContext, enemies, 1, Owner.Creature, this);
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(CoreKeywords.Potent),
         HoverTipFactory.FromPower<WeakPower>(),
-        HoverTipFactory.FromPower<FrailPower>()
+        HoverTipFactory.FromPower<FrailPower>(),
+        HoverTipFactory.FromPower<Reverberation>()
     ];
 
     protected override void OnUpgrade()

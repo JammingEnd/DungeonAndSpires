@@ -50,6 +50,10 @@ public class FrostbitePower : DungeonsAndSpiresPower
         {
             await Decrement(choiceContext);
         }
+        if (cardSource.Keywords.Contains(CoreKeywords.Cold))
+        {
+            await CreatureCmd.GainBlock(cardSource.Owner.Creature, Amount, ValueProp.Unpowered, null);
+        }
     }
 
     private async Task Decrement(PlayerChoiceContext choiceContext)

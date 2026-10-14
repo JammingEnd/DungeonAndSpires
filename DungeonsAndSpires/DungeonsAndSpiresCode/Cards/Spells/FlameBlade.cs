@@ -13,11 +13,10 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 
-public class FlameBlade() : SpellCard(2, 1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class FlameBlade() : SpellCard(2, 2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CoreKeywords.Fire,
         CoreKeywords.Ritual
     ];
 

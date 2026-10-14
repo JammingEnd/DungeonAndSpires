@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5u220hpblhi7"
-path="res://.godot/imported/quarterstaff_headhit_dexterity_power.png-2f363ee5b75a65cbe69faaf9fb9fa86f.ctex"
+uid="uid://b4eghjf1wl5l6"
+path="res://.godot/imported/shortbow_telekineses.png-872b92f75ae712185dbeb1881b889066.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DungeonsAndSpires/images/powers/quarterstaff_headhit_dexterity_power.png"
-dest_files=["res://.godot/imported/quarterstaff_headhit_dexterity_power.png-2f363ee5b75a65cbe69faaf9fb9fa86f.ctex"]
+source_file="res://DungeonsAndSpires/images/card_portraits/shortbow_telekineses.png"
+dest_files=["res://.godot/imported/shortbow_telekineses.png-872b92f75ae712185dbeb1881b889066.ctex"]
 
 [params]
 

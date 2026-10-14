@@ -28,5 +28,6 @@ public class Tongues() : SpellCard(3, 1, CardType.Skill, CardRarity.Uncommon, Ta
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);
+        DynamicVars["SpellLevels"].UpgradeValueBy(2);
     }
 }
