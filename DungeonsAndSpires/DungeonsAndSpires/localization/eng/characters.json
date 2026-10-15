@@ -12,5 +12,20 @@
   "DUNGEONSANDSPIRES-SORCERER_CHARACTER.pronounPossessive": "Her's",
   "DUNGEONSANDSPIRES-SORCERER_CHARACTER.pronounSubject": "She",
   "DUNGEONSANDSPIRES-SORCERER_CHARACTER.title": "The Sorcerer",
-  "DUNGEONSANDSPIRES-SORCERER_CHARACTER.titleObject": "the Sorcerer"
+  "DUNGEONSANDSPIRES-SORCERER_CHARACTER.titleObject": "the Sorcerer",
+  
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.aromaPrinciple": "Lore",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.banter.alive.endTurnPing": "Move it!",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.banter.dead.endTurnPing": "mmm... gold....",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.cardsModifierDescription": "Fighter cards will now appear in rewards and shops.",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.cardsModifierTitle": "Fighter Cards",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.description": "A heavily armored mercenary who goes long ways for getting a little bit of gold.",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.eventDeathPrevention": "Wraagh!!",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.goldMonologue": "Payday Baby!",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.possessiveAdjective": "His",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.pronounObject": "His",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.pronounPossessive": "His",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.pronounSubject": "He",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.title": "The Fighter",
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.titleObject": "the Fighter"
 }

@@ -76,11 +76,15 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         AddKeyword(keyword);
     }
 
+    // Multiplier applied to this card's Dip strength (Longsword Conduit doubles it).
+    public virtual int DipStrengthMultiplier => 1;
+
     // For Potentcy. only when potentcy is 1+ should it be visible and not dissapear
     protected override void AddExtraArgsToDescription(LocString description)
     {
         description.Add("HasPotencyStep", PotencyVars.Count > 0 || DynamicVars.ContainsKey("PotencyStep"));
-        description.Add("IsMultiplayer", RunManager.Instance.NetService.Type.IsMultiplayer());
+        var netService = RunManager.Instance.NetService;
+        description.Add("IsMultiplayer", netService != null && netService.Type.IsMultiplayer());
     }
 
     #region Potency Calculations 

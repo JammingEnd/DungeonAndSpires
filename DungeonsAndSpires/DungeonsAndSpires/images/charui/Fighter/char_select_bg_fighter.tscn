@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cts2bgcursed1"]
+
+[ext_resource type="Texture2D" uid="uid://u81hk2ppey3ku" path="res://DungeonsAndSpires/images/charui/Fighter/char_select_bg_fighter.png" id="1_bg"]
+
+[node name="CharSelectBg" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 115.0
+offset_right = 2213.5999
+offset_bottom = 1239.0
+texture = ExtResource("1_bg")
+expand_mode = 1

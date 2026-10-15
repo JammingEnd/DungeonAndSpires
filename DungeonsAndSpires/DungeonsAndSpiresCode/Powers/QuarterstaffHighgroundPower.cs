@@ -1,29 +1,47 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 
 public class QuarterstaffHighgroundPower : DungeonsAndSpiresPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override bool ShouldClearBlock(Creature creature)
+    private class Data
     {
-        return creature != Owner;
+        public bool HadBlock;
     }
 
-    public override async Task AfterPreventingBlockClear(AbstractModel preventer, Creature creature)
+    protected override object InitInternalData() => new Data();
+
+    // Block is cleared after this, so remember whether we started with any.
+    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
-        if (preventer != this)
+        GetInternalData<Data>().HadBlock = side == CombatSide.Player && participants.Contains(Owner) && Owner.Block > 0;
+        return Task.CompletedTask;
+    }
+
+    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+    {
+        if (player != Owner.Player)
         {
             return;
         }
 
-        creature.LoseBlockInternal(creature.Block / 2m);
-        await PowerCmd.Decrement(this);
+        var data = GetInternalData<Data>();
+        if (!data.HadBlock)
+        {
+            return;
+        }
+
+        data.HadBlock = false;
+        await PlayerCmd.GainEnergy(Amount, Owner.Player);
     }
 }

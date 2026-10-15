@@ -2,5 +2,11 @@
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-SORCERER_CHARACTER.0-0r.char": "You!, you hold power i want!",
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-SORCERER_CHARACTER.0-0r.next": "Intimidate (nat1)",
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-SORCERER_CHARACTER.0-1r.ancient": "You got power from birth, you'll lose it in death..",
-  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-SORCERER_CHARACTER.0-attack": "Architect"
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-SORCERER_CHARACTER.0-attack": "Architect",
+  
+  
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-FIGHTER_CHARACTER.0-0r.char": "I'm getting filthy rich after I slay you!",
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-FIGHTER_CHARACTER.0-0r.next": "Intimidate (nat1)",
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-FIGHTER_CHARACTER.0-1r.ancient": "Your peasantry endeavours are not my concern, shoo.",
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-FIGHTER_CHARACTER.0-attack": "Architect"
 }

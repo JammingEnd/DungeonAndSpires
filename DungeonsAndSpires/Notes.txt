@@ -35,7 +35,6 @@ Core features (WIP)
 Characters:
     Sorcerer:
     - a magic caster, [CORE]: spell slots, MetaMagic (points),  [Draconic bloodline, wild magic, Lunar sorcerer]
-    - starting relic: gain 2 sorcery points whenever you kill an enemy.
     - [Spell slots]: see 'Spells'
     - [MetaMagic]: Sorcery points can be spend when casting spells, for example, twin spell can turn a firebolt (single target) to a (target all). 
     or (heigthened spell) can be used to increase the damage of spell that deal Ability damage. these points can be gained from card effects and a potion or two.
@@ -44,6 +43,16 @@ Characters:
     (act2) ability potency is increased by the amount of status cards in all your piles, (act3) when you generate a status effect card, gain 1 energy. 
     - [Lunar Sorcerer]: (act1) once per combat, when metamagic reaches 0, gain 2 energy. (act2) heal 5hp when the last kill in an encounter is from spell damage. 
     (act3) playing a scrolled spell or a spell affected by your metamagic draw 1 card. 
+    
+    Fighter: 
+        - not innately a spellcaster
+        - Primary thing is action surge. though its hard for me to determine how to translate that. giving an extra turn sounds super strong. second thing is second wind. <- probs a innate 0 cost high block card
+        - Maybe, you can get an extra turn BUT you can only play 3 cards and draw none. that seems alright maybe?. then you can regain this by hitting enemies in combat. "after hitting enemies 10 times, gain back second wind"?
+        - [Battle Master] (act1) gain 6 vigor on turn 2. 
+        - [Eldritch Knight] (act1) Gain access to half caster spellslots, at the start of your turn, select one of 3 uncommon spells to add to your hand. 
+            (act2) Drawing a spell grants you 5 vigor strength. (act3) after playing a spell, gain 1 charge for your second wind.
+        - [Echo Knight] (act1) After using your second wind, your next attack is played twice. (act2) At the start of combat, play the bottom card of your draw pile. when your deck is shuffled, it's put on the bottom.
+            (act3) 
     
     [QUICK NOTES BEFORE I FORGOR]
     - Artificer (gain strength at the start of combat for each relic you have) 

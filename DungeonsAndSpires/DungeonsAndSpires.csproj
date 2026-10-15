@@ -66,6 +66,8 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="DungeonsAndSpiresCode\Cards\MartialWeapons\" />
+        <Folder Include="DungeonsAndSpiresCode\Character\Fighter\" />
         <Folder Include="DungeonsAndSpiresCode\DynamicVars\" />
         <Folder Include="DungeonsAndSpiresCode\Hooks\" />
         <Folder Include="DungeonsAndSpires\images\card_portraits\big\"/>

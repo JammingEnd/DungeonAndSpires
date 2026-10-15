@@ -23,8 +23,7 @@ public class ShortswordSwitchHands() : SimpleWeaponCard(1, CardType.Skill, CardR
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var discardPrefs = new CardSelectorPrefs(new LocString("cards", "DUNGEONSANDSPIRES-SHORTSWORD_SWITCH_HANDS.discardPrompt"), 0, DynamicVars["Discard"].IntValue);
-        Func<CardModel, bool> weaponFilter = c => c.Tags.Contains(DASCoreCardtags.Weapon);
-        var toDiscard = await CardSelectCmd.FromHand(choiceContext, Owner, discardPrefs, weaponFilter, this);
+        var toDiscard = await CardSelectCmd.FromHand(choiceContext, Owner, discardPrefs, null, this);
         foreach (var card in toDiscard)
         {
             await CardCmd.Discard(choiceContext, card);

@@ -2,6 +2,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.AbilityPotency;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Metamagic;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Fighter;
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -34,5 +35,17 @@ internal class PlayerCombatStateConstructorPatch
             return;
         }
         SpellslotsField.State[__instance] = new SpellslotsState();
+    }
+
+    private static void AssignForFighter(Player player, PlayerCombatState __instance)
+    {
+        bool isFighter = player.Character.CardPool is FighterCardPool;
+        if (!isFighter)
+            return;
+        bool isEldritch = player.Relics.Any(r => r is EldritchKnightRelic);
+        if (isEldritch)
+        {
+            SpellslotsField.State[__instance] = new SpellslotsState(true);
+        }
     }
 }

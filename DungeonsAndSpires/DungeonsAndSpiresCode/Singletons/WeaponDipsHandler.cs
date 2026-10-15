@@ -52,7 +52,8 @@ public class WeaponDipsHandler : CustomSingletonModel
             if (info.Type == CoreKeywords.Poison)
                 return 0;
             int homebrewAmount = dealer.GetPowerAmount<ScimitarHomebrewPower>();
-            return info.Strength + homebrewAmount;
+            int multiplier = cardSource is CoreCard core ? core.DipStrengthMultiplier : 1;
+            return info.Strength * multiplier + homebrewAmount;
         }
         return 0;
     }

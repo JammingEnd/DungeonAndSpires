@@ -19,7 +19,7 @@ public class DaggerStab() : SimpleWeaponCard(0, CardType.Attack, CardRarity.Comm
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(4, ValueProp.Move)
+        new DamageVar(6, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

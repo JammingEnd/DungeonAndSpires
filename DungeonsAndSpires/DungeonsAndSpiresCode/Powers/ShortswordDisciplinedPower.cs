@@ -12,18 +12,20 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 public class ShortswordDisciplinedPower : DungeonsAndSpiresPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
     
-
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var card = cardPlay.Card;
-        if (card.EnergyCost.Canonical >= 2 && card.Tags.Contains(DASCoreCardtags.Weapon))
+        if (card.EnergyCost.Canonical >= 2 && card.Type == CardType.Attack)
         {
-            var pile = Owner.Player.PlayerCombatState.DiscardPile.Cards;
-            var cheaps = pile.Where(c => c.Tags.Contains(DASCoreCardtags.Weapon) && c.EnergyCost.Canonical <= 1).ToArray();
-            var selected = Owner.CombatState.RunState.Rng.CombatCardSelection.NextItem(cheaps);
-            await CardPileCmd.Add(selected, PileType.Hand);
+            for (int i = 0; i < Amount; i++)
+            {
+                var pile = Owner.Player.PlayerCombatState.DiscardPile.Cards;
+                var cheaps = pile.Where(c => (c.Tags.Contains(DASCoreCardtags.Weapon) || c.Tags.Contains(DASCoreCardtags.Cantrip))&& c.EnergyCost.GetResolved() <= 1).ToArray();
+                var selected = Owner.CombatState.RunState.Rng.CombatCardSelection.NextItem(cheaps);
+                await CardPileCmd.Add(selected, PileType.Hand);
+            }
         }
     }
     
