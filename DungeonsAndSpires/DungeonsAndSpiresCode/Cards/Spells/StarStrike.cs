@@ -20,13 +20,12 @@ public class StarStrike() : SpellCard(0, 0, CardType.Attack, CardRarity.Rare, Ta
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CoreKeywords.Cold,
         CardKeyword.Exhaust
     ];
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(11, ValueProp.Unpowered),
+        new DamageVar(7, ValueProp.Unpowered),
         new PowerVar<FrostbitePower>("Frostbite", 1)
     ];
 
@@ -38,7 +37,9 @@ public class StarStrike() : SpellCard(0, 0, CardType.Attack, CardRarity.Rare, Ta
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
         DynamicVars["Frostbite"].UpgradeValueBy(1m);
+        AddKeyword(CoreKeywords.Cold);
+
     }
 }

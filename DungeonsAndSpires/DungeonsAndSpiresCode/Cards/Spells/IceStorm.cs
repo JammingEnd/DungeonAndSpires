@@ -30,7 +30,7 @@ public class IceStorm() : SpellCard(3, 2, CardType.Attack, CardRarity.Uncommon, 
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(11, ValueProp.Unpowered),
+        new DamageVar(8, ValueProp.Unpowered),
         new PowerVar<FrostbitePower>("Frostbite", 2)
     ];
 
@@ -49,7 +49,7 @@ public class IceStorm() : SpellCard(3, 2, CardType.Attack, CardRarity.Uncommon, 
 
     protected override void OnUpgrade()
     {
-        DynamicVars["DamageBase"].UpgradeValueBy(4m);
+        DynamicVars["DamageBase"].UpgradeValueBy(3m);
         DynamicVars["DamageExtra"].UpgradeValueBy(2m);
         DynamicVars["FrostbiteBase"].UpgradeValueBy(1m);
     }

@@ -19,11 +19,6 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 public class QuarterstaffPoleStorage() : SimpleWeaponCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CoreKeywords.Bludgeoning
-    ];
-
     // The dip types the player can choose from, same set Chromatic Orb offers.
     public override IEnumerable<CardKeyword> ElementOptions =>
     [

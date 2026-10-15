@@ -21,8 +21,10 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
 {
     public int Level { get; } = Level;
 
-    // Some card (primarily cards that apply powers) should not consume a spellslot
-    // the power 'Shield' Consumes a spellslot, the card who applies should not
+    /// <summary>If true, the card will use and consume vigor and use Strength</summary>
+    public virtual bool UsesPoweredAttack => false;
+
+    /// <summary> If false, the cardplay will not consume a spellslot (some powers like Shield of Faith) </summary>
     internal bool _shouldConsumeSpellslot = true;
 
     /// <summary>
@@ -30,12 +32,8 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
     /// is available). False for spells that shouldn't interact with spellslots (cards like Shield, since only the powers itself consumed spellslots).
     /// </summary>
     public virtual bool UsesSpellSlot => true;
-
-    /// <summary>
-    /// Animation the caster plays when this spell makes an attack. Applied to the spell's
-    /// <c>AttackCommand</c>, overriding the default "Attack" animation. Override per-card if a
-    /// different cast animation is wanted.
-    /// </summary>
+    
+    
     public virtual string AttackAnimName => "cast_2";
 
     // Spells with a spell level of 0 are cantrips.

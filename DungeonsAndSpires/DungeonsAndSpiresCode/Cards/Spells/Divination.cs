@@ -49,7 +49,6 @@ public class Divination() : SpellCard(4, 2, CardType.Skill, CardRarity.Uncommon,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
-        DynamicVars["AbilityPotency"].UpgradeValueBy(3m);
+        DynamicVars["AbilityPotency"].UpgradeValueBy(2m);
     }
 }

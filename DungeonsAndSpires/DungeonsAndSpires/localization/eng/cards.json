@@ -100,7 +100,7 @@
   "DUNGEONSANDSPIRES-STORM_SPHERE.title": "Storm Sphere",
   "DUNGEONSANDSPIRES-LIGHTNING_STRIKE.description": "Deal {Damage:diff()} damage.\nApply {Shocked:diff()} [gold]Shocked[/gold].",
   "DUNGEONSANDSPIRES-LIGHTNING_STRIKE.title": "Lightning Strike",
-  "DUNGEONSANDSPIRES-SPIRIT_OF_DEATH.description": "{HasPotencyStep:cond:[color=#42edce]Potent[/color] {PotencyStep:diff()}.\n|}Deal [color=#42edce]{Damage:diff()}[/color] damage.\nIf you didn't lose HP this turn, return this card and gain {energyPrefix:energyIcons(1)} next turn.",
+  "DUNGEONSANDSPIRES-SPIRIT_OF_DEATH.description": "{HasPotencyStep:cond:[color=#42edce]Potent[/color] {PotencyStep:diff()}.\n|}Deal [color=#42edce]{Damage:diff()}[/color] damage.\nAt the start of your turn, if you didn't lose HP, return this card and gain {energyPrefix:energyIcons(1)}.",
   "DUNGEONSANDSPIRES-SPIRIT_OF_DEATH.title": "Spirit of Death",
   "DUNGEONSANDSPIRES-LEAMUNDS_SECRET_CHEST.description": "Exhaust up to {Exhaust:diff()} non-spell cards.\nGain up to a Level {IfUpgraded:cond:1-5|1-6} Spellslot.\nGain 2 {energyPrefix:energyIcons(2)} next turn.",
   "DUNGEONSANDSPIRES-LEAMUNDS_SECRET_CHEST.title": "Leamund's Secret Chest",

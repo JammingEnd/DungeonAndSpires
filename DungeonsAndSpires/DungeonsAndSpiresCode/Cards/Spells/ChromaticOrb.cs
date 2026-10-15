@@ -30,7 +30,7 @@ public class ChromaticOrb() : SpellCard(1, 1, CardType.Attack, CardRarity.Common
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(10, ValueProp.Unpowered),
+        new DamageVar(5, ValueProp.Unpowered),
         new PowerVar<PoisonPower>("PoisonPower", 2),
         new PowerVar<VulnerablePower>("VulnerablePower", 1),
         new PowerVar<FrostbitePower>("FrostbitePower", 1),
@@ -56,7 +56,7 @@ public class ChromaticOrb() : SpellCard(1, 1, CardType.Attack, CardRarity.Common
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(6m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
         DynamicVars["PoisonPower"].UpgradeValueBy(2m);
         DynamicVars["VulnerablePower"].UpgradeValueBy(1m);
         DynamicVars["FrostbitePower"].UpgradeValueBy(1m);

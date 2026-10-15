@@ -334,24 +334,23 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         {
             return 1m;
         }
-            decimal multiplier = 1m;
+        decimal multiplier = 1m;
         if (Type == CardType.Attack && Owner.Creature.GetPowerAmount<WeakPower>() > 0)
         {
             multiplier *= 0.75m;
         }
         if(target == null)
         {
-            return 1m;
+            return multiplier;
         }
-        // Weak/Vulnerable already handle powered attacks; apply them manually for unpowered spells.
-        /*if (props.IsPoweredAttack())
-        {
-            return 1m;
-        }*/
-
         if (target.GetPowerAmount<VulnerablePower>() > 0)
         {
             multiplier *= 1.5m;
+        }
+        // non-spell cards already do this. so just 1
+        if (props.IsPoweredAttack())
+        {
+            return 1m;
         }
         return multiplier;
     }

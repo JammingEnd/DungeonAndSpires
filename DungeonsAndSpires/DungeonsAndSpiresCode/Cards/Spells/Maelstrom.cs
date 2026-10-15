@@ -13,6 +13,9 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 public class Maelstrom() : SpellCard(5, 1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
+    // Maelstrom is a thrown-weapon style spell: it is a real powered attack.
+    public override bool UsesPoweredAttack => true;
+
     protected override IEnumerable<DynamicVar> CardVars =>
     [
         new DamageVar(5, ValueProp.Move)

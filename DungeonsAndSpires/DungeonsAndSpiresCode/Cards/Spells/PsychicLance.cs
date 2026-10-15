@@ -50,7 +50,6 @@ public class PsychicLance() : SpellCard(4, 2, CardType.Attack, CardRarity.Uncomm
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
         DynamicVars["BonusHits"].UpgradeValueBy(1);
     }
 }

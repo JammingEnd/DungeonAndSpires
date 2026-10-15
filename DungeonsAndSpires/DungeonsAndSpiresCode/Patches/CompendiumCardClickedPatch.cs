@@ -39,13 +39,26 @@ internal static class CompendiumCardClickedPatch
                 return;
             }
 
-            var created = runState.CreateCard(ModelDb.GetById<CardModel>(card.Id), player);
-            if(created.Rarity == CardRarity.Ancient || created.Rarity == CardRarity.Curse ||  created.Rarity == CardRarity.Status)
+            var canonical = ModelDb.GetById<CardModel>(card.Id);
+            if (canonical.Rarity == CardRarity.Ancient || canonical.Rarity == CardRarity.Curse || canonical.Rarity == CardRarity.Status)
+            {
                 return;
+            }
+            
+            var combatState = player.Creature.CombatState;
+            if (combatState == null)
+            {
+                return;
+            }
+
+            var created = combatState.CreateCard(canonical, player);
             created.EnergyCost.SetThisTurn(0);
             await CardPileCmd.AddGeneratedCardToCombat(created, PileType.Hand, player);
             var wishPower = player.Creature.GetPower<WishPower>();
-            await PowerCmd.Remove(wishPower);
+            if (wishPower != null)
+            {
+                await PowerCmd.Remove(wishPower);
+            }
 
             MainFile.Logger.Info($"Wish: added {card.Id} to {player.NetId}'s hand.");
         }
