@@ -1,6 +1,8 @@
+using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -59,7 +61,10 @@ public partial class DipInfoControl : Control
         }
 
         GetNodeOrNull<Label>("UseLabel")?.SetText(dip.UsesLeft.ToString());
-        GetNodeOrNull<Label>("StrengthLabel")?.SetText(dip.Strength.ToString());
+        // Match WeaponDipsHandler's damage formula: dip strength * this card's multiplier + Homebrew.
+        int multiplier = card is CoreCard core ? core.DipStrengthMultiplier : 1;
+        int homebrew = card.Owner?.Creature?.GetPowerAmount<ScimitarHomebrewPower>() ?? 0;
+        GetNodeOrNull<Label>("StrengthLabel")?.SetText((dip.Strength * multiplier + homebrew).ToString());
 
         var typeRect = GetNodeOrNull<TextureRect>("TypeRect");
         if (typeRect != null)

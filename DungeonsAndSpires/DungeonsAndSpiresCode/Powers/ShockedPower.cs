@@ -15,6 +15,9 @@ public class ShockedPower : DungeonsAndSpiresPower
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
+    // Set by Scimitar Lightspeed so the stacks survive this turn's end-of-turn cleanup.
+    public bool NotRemovedThisTurn { get; set; }
+
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
         if (target != Owner || cardSource == null)
@@ -32,6 +35,12 @@ public class ShockedPower : DungeonsAndSpiresPower
     {
         if (side != CombatSide.Player)
         {
+            return;
+        }
+
+        if (NotRemovedThisTurn)
+        {
+            NotRemovedThisTurn = false;
             return;
         }
 

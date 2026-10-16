@@ -26,14 +26,14 @@ public class MetamagicSingleton() : CustomSingletonModel(HookType.Combat)
             {
                  newCard = player.Creature.CombatState.CreateCard<HeightenedSpell>(player);
             }
-            await CardPileCmd.AddGeneratedCardToCombat(newCard, PileType.Hand, player);
+            await CardPileCmd.AddGeneratedCardToCombat(newCard, PileType.Hand, player, CardPilePosition.Top);
         }
         else if (magik >= 4)
         {
             var quickend = player.Creature.CombatState.CreateCard<QuickendSpell>(player);
             var heightened = player.Creature.CombatState.CreateCard<HeightenedSpell>(player);
-            await CardPileCmd.AddGeneratedCardToCombat(quickend, PileType.Hand, player);
-            await CardPileCmd.AddGeneratedCardToCombat(heightened, PileType.Hand, player);
+            await CardPileCmd.AddGeneratedCardToCombat(heightened, PileType.Hand, player, CardPilePosition.Top);
+            await CardPileCmd.AddGeneratedCardToCombat(quickend, PileType.Hand, player, CardPilePosition.Top);
         }
        await MetamagicCmd.Set(choiceContext, player, 4);
     }

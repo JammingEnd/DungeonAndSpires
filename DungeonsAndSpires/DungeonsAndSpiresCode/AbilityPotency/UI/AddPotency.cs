@@ -16,20 +16,14 @@ public class AddPotency
         "res://DungeonsAndSpires/Scenes/Core/potency_control.tscn",
         (nEnergyCounter, display) =>
         {
-            // NEnergyCounter._player is private; grab it via reflection.
             var player = AccessTools.Field(typeof(NEnergyCounter), "_player").GetValue(nEnergyCounter) as Player;
             if (player == null)
             {
                 return;
             }
 
-            if (player.Character.CardPool is not SorcererCardPool)
-            {
-                // AddedNode attaches this display to every energy counter regardless of character;
-                // hide it so Potency is only visible to the Sorcerer.
-                display.Visible = false;
-                return;
-            }
+            // The Sorcerer always shows Potency; other characters reveal it once they have some.
+            bool alwaysVisible = player.Character.CardPool is SorcererCardPool;
 
             var label = display.GetNodeOrNull<Label>("potencyLabel");
             if (label == null)
@@ -39,7 +33,12 @@ public class AddPotency
 
             void Refresh()
             {
-                label.Text = player.PlayerCombatState?.GetPotency().ToString() ?? "0";
+                int potency = player.PlayerCombatState?.GetPotency() ?? 0;
+                label.Text = potency.ToString();
+                if (!alwaysVisible)
+                {
+                    display.Visible = potency > 0;
+                }
             }
 
             void OnPotencyChanged(Player changedPlayer)

@@ -13,6 +13,9 @@ public static class DipCmd
     // Fired whenever a specific card's dip changed, so self-managing DipInfoControl can update.
     public static event Action<CardModel>? OnDipChanged;
 
+    // Force a card's dip UI to refresh (e.g. when a modifier like Homebrew changes).
+    public static void RefreshCard(CardModel card) => OnDipChanged?.Invoke(card);
+
     public static async Task Add(PlayerChoiceContext context, Player player, CardModel card, DipInfo dipInfo)
     {
         var state = player.PlayerCombatState?.GetDipState();
@@ -85,8 +88,7 @@ public static class DipCmd
     }
 
     public static async Task Remove(PlayerChoiceContext context, Player player, CardModel card, DipInfo dipInfo)
-    {
-        var state = player.PlayerCombatState?.GetDipState();
+    {        var state = player.PlayerCombatState?.GetDipState();
         if (state == null || dipInfo == null)
             return;
 

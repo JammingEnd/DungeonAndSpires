@@ -4,6 +4,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Singletons;
 
@@ -20,6 +21,13 @@ public class TwoHandedHandler() : CustomSingletonModel(HookType.Combat)
             return;
         }
 
+        // Switching families: Switch keeps the bonus alive and is spent.
+        var switchPower = creature.GetPower<SwitchPower>();
+        if (current != null && switchPower != null)
+        {
+            await PowerCmd.ModifyAmount(choiceContext, switchPower, -1, null, null);
+        }
+
         if (current != null)
         {
             await PowerCmd.Remove(current);
@@ -27,7 +35,7 @@ public class TwoHandedHandler() : CustomSingletonModel(HookType.Combat)
 
         if (wanted != null)
         {
-            await PowerCmd.Apply(choiceContext, wanted, creature, 1, creature, cardPlay.Card);
+            await PowerCmd.Apply(choiceContext, (PowerModel)wanted.ToMutable(), creature, 1, creature, cardPlay.Card);
         }
     }
 }

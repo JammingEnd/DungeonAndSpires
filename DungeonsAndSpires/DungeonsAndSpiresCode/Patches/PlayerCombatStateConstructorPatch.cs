@@ -4,6 +4,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Metamagic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Fighter;
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
+using DungeonsAndSpires.DungeonsAndSpiresCode.WeaponPlays;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Players;
 
@@ -18,8 +19,10 @@ internal class PlayerCombatStateConstructorPatch
     {
         DipField.State[__instance] = new DipState();
         PotencyField.State[__instance] = new PotencyState();
+        WeaponPlayField.State[__instance] = new WeaponPlayState();
 
         AssignForSorcerer(player, __instance);
+        AssignForFighter(player, __instance);
     }
 
     private static void AssignForSorcerer(Player player, PlayerCombatState __instance)

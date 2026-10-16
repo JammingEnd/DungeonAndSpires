@@ -1,5 +1,6 @@
 using BaseLib.Abstracts;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
@@ -19,7 +20,7 @@ public class WeaponDipsHandler : CustomSingletonModel
 {
     public WeaponDipsHandler() : base(HookType.Combat)
     {
-        // Dips are a per-combat effect; clear any leftovers from a previous combat.
+        // for clearing dips on cards at combat start
         CombatManager.Instance.CombatSetUp += OnCombatSetUp;
     }
 
@@ -34,28 +35,36 @@ public class WeaponDipsHandler : CustomSingletonModel
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var card = cardPlay.Card;
-        if (CheckState(card.Owner.Creature, card, out var info))
+        if (CheckState(card.Owner.Creature, card, out var info) && info.Type == CoreKeywords.Poison)
         {
-            if (info.Type == CoreKeywords.Poison)
-            {
-                await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, info.Strength, card.Owner.Creature, card);
-            }
+            await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, EffectiveStrength(card, info, card.Owner.Creature), card.Owner.Creature, card);
         }
-        await DipCmd.Use(choiceContext, cardPlay.Card.Owner, cardPlay.Card);
+        bool skipDipUse = false;
+        if (cardPlay.Card is ScimitarQuickSlash quickSlash && !quickSlash.DipUsedThisTurn)
+        {
+            quickSlash.DipUsedThisTurn = true;
+            skipDipUse = true;
+        }
+        if (!skipDipUse)
+        {
+            await DipCmd.Use(choiceContext, cardPlay.Card.Owner, cardPlay.Card);
+        }
     }
 
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource,
         CardPlay? cardPlay)
     {
-        if (CheckState(dealer, cardSource, out var info))
+        if (CheckState(dealer, cardSource, out var info) && info.Type != CoreKeywords.Poison)
         {
-            if (info.Type == CoreKeywords.Poison)
-                return 0;
-            int homebrewAmount = dealer.GetPowerAmount<ScimitarHomebrewPower>();
-            int multiplier = cardSource is CoreCard core ? core.DipStrengthMultiplier : 1;
-            return info.Strength * multiplier + homebrewAmount;
+            return EffectiveStrength(cardSource!, info, dealer!);
         }
         return 0;
+    }
+    
+    private static int EffectiveStrength(CardModel card, DipInfo info, Creature dealer)
+    {
+        int multiplier = card is CoreCard core ? core.DipStrengthMultiplier : 1;
+        return info.Strength * multiplier + dealer.GetPowerAmount<ScimitarHomebrewPower>();
     }
 
     private bool CheckState(Creature? dealer, CardModel cardSource, out DipInfo dipInfo)
