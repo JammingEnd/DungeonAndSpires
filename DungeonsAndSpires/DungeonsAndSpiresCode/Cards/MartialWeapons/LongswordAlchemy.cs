@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -58,6 +59,11 @@ public class LongswordAlchemy() : MartialWeaponCard(1, CardType.Attack, CardRari
 
         await DipCmd.Add(choiceContext, Owner, card, new DipInfo(dipType, DynamicVars["DipStrength"].IntValue, DynamicVars["DipTurns"].IntValue));
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        DipTips.Dip
+    ];
 
     protected override void OnUpgrade()
     {

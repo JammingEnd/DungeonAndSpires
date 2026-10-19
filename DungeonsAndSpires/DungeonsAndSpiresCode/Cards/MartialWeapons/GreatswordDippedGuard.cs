@@ -26,12 +26,6 @@ public class GreatswordDippedGuard() : MartialWeaponCard(1, CardType.Power, Card
     {
         await PowerCmd.Apply<GreatswordDippedGuardPower>(choiceContext, Owner.Creature, DynamicVars["Block"].IntValue, Owner.Creature, this);
     }
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<GreatswordDippedGuardPower>()
-    ];
-
     protected override void OnUpgrade()
     {
         DynamicVars["Block"].UpgradeValueBy(1);

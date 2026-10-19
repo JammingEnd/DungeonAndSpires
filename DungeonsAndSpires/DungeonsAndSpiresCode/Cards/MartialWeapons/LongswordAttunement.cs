@@ -3,7 +3,6 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
@@ -14,8 +13,8 @@ public class LongswordAttunement() : MartialWeaponCard(2, CardType.Power, CardRa
         await PowerCmd.Apply<LongswordAttunementPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<LongswordAttunementPower>()
-    ];
+    protected override void OnUpgrade()
+    {
+        AddKeyword(CardKeyword.Innate);
+    }
 }

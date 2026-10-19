@@ -1,11 +1,10 @@
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
-using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
-using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
@@ -19,22 +18,22 @@ public class ActionSurge() : CoreCard(0, CardType.Skill, CardRarity.Token, Targe
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new IntVar("Plays", 3)
+        new IntVar("Cards", 1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var power = await PowerCmd.Apply<ActionSurgePower>(choiceContext, Owner.Creature, DynamicVars["Plays"].IntValue, Owner.Creature, this);
-        power?.Grant();
+        var prefs = new CardSelectorPrefs(new LocString("cards", "DUNGEONSANDSPIRES-ACTION_SURGE.selectionPrompt"), 0, DynamicVars["Cards"].IntValue);
+        Func<CardModel, bool> filter = c => !c.EnergyCost.CostsX && c.EnergyCost.GetResolved() > 0;
+        var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, filter, this);
+        foreach (var card in selected)
+        {
+            card.EnergyCost.SetThisTurnOrUntilPlayed(0);
+        }
     }
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<ActionSurgePower>()
-    ];
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Plays"].UpgradeValueBy(2);
+        DynamicVars["Cards"].UpgradeValueBy(1);
     }
 }

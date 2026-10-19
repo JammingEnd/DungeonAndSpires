@@ -1,5 +1,6 @@
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
+using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
@@ -43,7 +44,8 @@ public class ShortbowPoisonArrows() : SimpleWeaponCard(2, CardType.Attack, CardR
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<PoisonPower>()
+        HoverTipFactory.FromPower<PoisonPower>(),
+        DipTips.Dip
     ];
 
     protected override void OnUpgrade()

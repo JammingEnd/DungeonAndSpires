@@ -13,7 +13,7 @@ public class SecondWindPower : DungeonsAndSpiresPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
 
-    // One shot: the next time you lose HP, heal half of it.
+    // the next time you lose HP, heal half of it.
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (target != Owner || result.UnblockedDamage < 1m)

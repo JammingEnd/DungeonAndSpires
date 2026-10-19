@@ -41,6 +41,11 @@ public class ShortbowSurvivalist() : SimpleWeaponCard(0, CardType.Skill, CardRar
         }
     }
 
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        DipTips.Dip
+    ];
+
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);

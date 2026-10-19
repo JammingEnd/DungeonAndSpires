@@ -3,9 +3,12 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
@@ -33,4 +36,11 @@ public class CrossbowLoadedBolt() : MartialWeaponCard(2, CardType.Attack, CardRa
     {
         EnergyCost.UpgradeBy(-1);
     }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<PoisonPower>(),
+        HoverTipFactory.FromPower<FrostbitePower>(),
+        HoverTipFactory.FromPower<Reverberation>(),
+        HoverTipFactory.FromPower<ShockedPower>()
+    ];
 }

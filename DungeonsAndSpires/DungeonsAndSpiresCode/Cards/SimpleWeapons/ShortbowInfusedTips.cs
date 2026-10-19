@@ -36,7 +36,8 @@ public class ShortbowInfusedTips() : SimpleWeaponCard(1, CardType.Attack, CardRa
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var element = ImbuedElement;
+        // A dip counts as being imbued with its element.
+        var element = ImbuedElement ?? Owner.PlayerCombatState?.GetDip(this)?.Type;
 
         decimal damage = DynamicVars["Damage"].GetCalculatedValue();
         if (element != null && element != CoreKeywords.Poison && element != CoreKeywords.Acid)

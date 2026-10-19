@@ -41,7 +41,8 @@ protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CoreKeywords.Scrolled)
+        HoverTipFactory.FromKeyword(CoreKeywords.Scrolled),
+        HoverTipFactory.FromKeyword(CoreKeywords.Potent)
     ];
 
     private async Task GainRandomSpell(PlayerChoiceContext? choiceContext)

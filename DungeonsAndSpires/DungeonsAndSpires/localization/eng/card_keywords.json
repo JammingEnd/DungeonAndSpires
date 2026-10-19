@@ -30,5 +30,5 @@
   "DUNGEONSANDSPIRES-ACID.title": "Acid",
   "DUNGEONSANDSPIRES-ACID.description": "Acid damage type.",
   "DUNGEONSANDSPIRES-POISON.title": "Poison",
-  "DUNGEONSANDSPIRES-POISON.description": "Poison damage type."
+  "DUNGEONSANDSPIRES-POISON.description": "Poison damage type. Applies Poison to Equal to Dip Strength if this card has a Dip active"
 }

@@ -12,8 +12,7 @@ public partial class SubclassRelicPicker : Control
     public event Action<SubclassRelic>? RelicSelected;
 
     private readonly List<(TextureButton button, SubclassRelic relic)> _options = new();
-
-    //The dark backdrop container that holds the relic buttons.
+    
     private readonly ColorRect _background = new()
     {
         Color = new Color(0f, 0f, 0f, 0.25f),
@@ -24,6 +23,12 @@ public partial class SubclassRelicPicker : Control
     {
         _background.SetAnchorsPreset(LayoutPreset.FullRect);
         AddChild(_background);
+    }
+    
+    public static void SelectRandomFor(CharacterModel character)
+    {
+        var relics = character.RelicPool.AllRelics.OfType<SubclassRelic>().ToList();
+        SelectedSubclassRelic = relics.Count == 0 ? null : relics[Random.Shared.Next(relics.Count)];
     }
 
     public void UpdateFor(CharacterModel character)

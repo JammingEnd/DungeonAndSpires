@@ -6,11 +6,12 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Cards;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Statusses;
 
 [Pool(typeof(StatusCardPool))]
-public class ArcaneExhaustion() : CoreCard(0, CardType.Status, CardRarity.Status, TargetType.Self)
+public class ArcaneExhaustion() : CoreCard(-1, CardType.Status, CardRarity.Status, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [

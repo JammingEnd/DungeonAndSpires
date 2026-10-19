@@ -1,4 +1,6 @@
 {
+  "DUNGEONSANDSPIRES-DIP.title": "Dip",
+  "DUNGEONSANDSPIRES-DIP.description": "The weapon deals the Dip's Strength as extra damage and gains that element as damage type.\nEach play of the weapon uses up one use. the Dip ends at 0.",
   "DUNGEONSANDSPIRES-METAMAGIC.title": "Metamagic",
   "DUNGEONSANDSPIRES-METAMAGIC.description": "Your current Metamagic.\nGenerate [gold]Heightened Spell[/gold] or [gold]Quickened Spell[/gold] with leftover Metamagic.\nAdd a random with less than 4, create both with 4 leftover metamagic next turn.",
   "DUNGEONSANDSPIRES-POTENCY.title": "Ability Potency",

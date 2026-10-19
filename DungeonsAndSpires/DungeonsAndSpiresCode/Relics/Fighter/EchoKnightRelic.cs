@@ -1,8 +1,10 @@
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Fighter;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -39,16 +41,20 @@ public class EchoKnightRelic : SubclassRelic
         await CardCmd.AutoPlay(new BlockingPlayerChoiceContext(), bottom, null);
     }
 
+    // Act 1: gaining Second Wind echoes your next attack.
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    {
+        if (CurrentLevel >= 1 && amount > 0m && power is SecondWindPower && power.Owner == Owner.Creature)
+        {
+            _echoNextAttack = true;
+        }
+        return Task.CompletedTask;
+    }
+
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner != Owner)
         {
-            return;
-        }
-        
-        if (CurrentLevel >= 1 && cardPlay.Card is SecondWind)
-        {
-            _echoNextAttack = true;
             return;
         }
         

@@ -37,7 +37,17 @@ public class WeaponDipsHandler : CustomSingletonModel
         var card = cardPlay.Card;
         if (CheckState(card.Owner.Creature, card, out var info) && info.Type == CoreKeywords.Poison)
         {
-            await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, EffectiveStrength(card, info, card.Owner.Creature), card.Owner.Creature, card);
+            // AoE weapon attacks have no single target.
+            var targets = cardPlay.Target != null
+                ? new List<Creature> { cardPlay.Target }
+                : card.TargetType == TargetType.AllEnemies
+                    ? card.Owner.Creature.CombatState?.HittableEnemies.ToList() ?? new List<Creature>()
+                    : new List<Creature>();
+
+            foreach (var target in targets)
+            {
+                await PowerCmd.Apply<PoisonPower>(choiceContext, target, EffectiveStrength(card, info, card.Owner.Creature), card.Owner.Creature, card);
+            }
         }
         bool skipDipUse = false;
         if (cardPlay.Card is ScimitarQuickSlash quickSlash && !quickSlash.DipUsedThisTurn)

@@ -3,7 +3,6 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
@@ -14,11 +13,6 @@ public class ShortswordDisciplined() : SimpleWeaponCard(3, CardType.Power, CardR
     {
         await PowerCmd.Apply<ShortswordDisciplinedPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<ShortswordDisciplinedPower>()
-    ];
 
     protected override void OnUpgrade()
     {

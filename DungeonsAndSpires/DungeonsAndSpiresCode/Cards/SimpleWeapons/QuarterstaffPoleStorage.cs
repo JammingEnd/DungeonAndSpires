@@ -62,7 +62,8 @@ public class QuarterstaffPoleStorage() : SimpleWeaponCard(0, CardType.Skill, Car
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CoreKeywords.Bludgeoning)
+        HoverTipFactory.FromKeyword(CoreKeywords.Bludgeoning),
+        DipTips.Dip
     ];
 
     protected override void OnUpgrade()

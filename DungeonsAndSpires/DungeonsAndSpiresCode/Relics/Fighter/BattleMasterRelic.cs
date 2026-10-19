@@ -19,7 +19,7 @@ public class BattleMasterRelic : SubclassRelic
 {
     public override RelicRarity Rarity => RelicRarity.None;
 
-    //at the start of your turn, select a Maneuver.
+    //at the start of combat, select a Maneuver.
     public override async Task InitialBonus() { }
 
     // at the end of your turn, select a card to retain for a turn.
@@ -30,26 +30,29 @@ public class BattleMasterRelic : SubclassRelic
 
     private CardModel? _retainedByRelic;
 
+    public override async Task BeforeCombatStart()
+    {
+        if (CurrentLevel >= 1)
+        {
+            await OfferManeuver(new BlockingPlayerChoiceContext());
+        }
+    }
+
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner)
         {
             return;
         }
-        
+
         if (_retainedByRelic != null)
         {
             _retainedByRelic.RemoveKeyword(CardKeyword.Retain);
             _retainedByRelic = null;
         }
-
-        if (CurrentLevel >= 1)
-        {
-            await OfferManeuver(choiceContext);
-        }
     }
 
-    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
+    public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (side != CombatSide.Player || CurrentLevel < 2 || _retainedByRelic != null)
         {

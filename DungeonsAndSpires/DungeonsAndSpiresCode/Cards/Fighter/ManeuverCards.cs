@@ -3,6 +3,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
@@ -20,26 +21,58 @@ public abstract class ManeuverCard() : CoreCard(0, CardType.None, CardRarity.Tok
 // draw 2 cards
 public class BaitAndSwitch() : ManeuverCard()
 {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new CardsVar("amount", 1)
+    ];
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars["amount"].UpgradeValueBy(1);
+    }
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CardPileCmd.Draw(choiceContext, 2, Owner);
+        await CardPileCmd.Draw(choiceContext,  DynamicVars["amount"].IntValue, Owner);
     }
 }
 
 // gain 2 energy,
 public class QuickToss() : ManeuverCard()
 {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new EnergyVar("amount", 1)
+    ];
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars["amount"].UpgradeValueBy(1);
+    }
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PlayerCmd.GainEnergy(2, Owner);
+        
+        await PlayerCmd.GainEnergy( DynamicVars["amount"].IntValue, Owner);
     }
 }
 
-// gain 6 vigor
+// Apply 1 vulnerable
 public class MenacingAttack() : ManeuverCard()
 {
+    public override TargetType TargetType => TargetType.AnyEnemy;
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new PowerVar<VulnerablePower>("amount", 1)
+    ];
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars["amount"].UpgradeValueBy(1);
+    }
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<VigorPower>(choiceContext, Owner.Creature, 6, Owner.Creature, this);
+       
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars["amount"].IntValue, Owner.Creature, this);
     }
 }

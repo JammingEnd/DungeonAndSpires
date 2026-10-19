@@ -67,7 +67,7 @@ public class EldritchKnightRelic : SubclassRelic
             return;
         }
 
-        await PowerCmd.Apply<VigorPower>(choiceContext, Owner.Creature, 5, Owner.Creature, null);
+        await PowerCmd.Apply<VigorPower>(choiceContext, Owner.Creature, 3, Owner.Creature, null);
     }
 
     // after playing a spell, a random enemy gains 1 vulnerable.

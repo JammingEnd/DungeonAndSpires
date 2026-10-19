@@ -4,7 +4,6 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
@@ -20,11 +19,6 @@ public class ScimitarRegroup() : MartialWeaponCard(3, CardType.Power, CardRarity
     {
         await PowerCmd.Apply<ScimitarRegroupPower>(choiceContext, Owner.Creature, DynamicVars["Extra"].IntValue, Owner.Creature, this);
     }
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<ScimitarRegroupPower>()
-    ];
 
     protected override void OnUpgrade()
     {

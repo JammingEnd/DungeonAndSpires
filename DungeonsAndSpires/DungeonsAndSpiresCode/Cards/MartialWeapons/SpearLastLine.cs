@@ -13,7 +13,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
 public class SpearLastLine() : MartialWeaponCard(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Bludgeoning, CoreKeywords.TwoHanded];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Piering, CoreKeywords.TwoHanded];
 
     public override TwoHandedPower? TwoHandedPower => ModelDb.Power<SpearTwoHandedPower>();
 

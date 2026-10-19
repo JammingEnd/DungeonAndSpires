@@ -22,7 +22,7 @@ public class ShortswordDisciplinedPower : DungeonsAndSpiresPower
             for (int i = 0; i < Amount; i++)
             {
                 var pile = Owner.Player.PlayerCombatState.DiscardPile.Cards;
-                var cheaps = pile.Where(c => (c.Tags.Contains(DASCoreCardtags.Weapon) || c.Tags.Contains(DASCoreCardtags.Cantrip))&& c.EnergyCost.GetResolved() <= 1).ToArray();
+                var cheaps = pile.Where(c => (c.Tags.Contains(DASCoreCardtags.Weapon) || c.Tags.Contains(DASCoreCardtags.Cantrip))&& c.EnergyCost.GetResolved() < 1).ToArray();
                 var selected = Owner.CombatState.RunState.Rng.CombatCardSelection.NextItem(cheaps);
                 await CardPileCmd.Add(selected, PileType.Hand);
             }

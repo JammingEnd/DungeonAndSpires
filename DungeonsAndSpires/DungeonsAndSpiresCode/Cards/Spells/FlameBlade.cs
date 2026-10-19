@@ -6,7 +6,6 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 
@@ -29,11 +28,6 @@ public class FlameBlade() : SpellCard(2, 2, CardType.Power, CardRarity.Uncommon,
     {
         await PowerCmd.Apply<FlameBladePower>(choiceContext, Owner.Creature, DynamicVars["FlameBlade"].GetCalculatedValue(), Owner.Creature, this);
     }
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<FlameBladePower>()
-    ];
 
     protected override void OnUpgrade()
     {

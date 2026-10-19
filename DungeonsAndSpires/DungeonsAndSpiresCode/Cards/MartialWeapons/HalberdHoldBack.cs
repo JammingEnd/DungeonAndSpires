@@ -14,7 +14,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
 public class HalberdHoldBack() : MartialWeaponCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Slashing, CoreKeywords.TwoHanded];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.TwoHanded];
 
     public override TwoHandedPower? TwoHandedPower => ModelDb.Power<HalberdTwoHandedPower>();
 

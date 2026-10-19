@@ -10,7 +10,6 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
 public class ScimitarHomebrew() : MartialWeaponCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Innate];
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
@@ -22,13 +21,8 @@ public class ScimitarHomebrew() : MartialWeaponCard(2, CardType.Power, CardRarit
         await PowerCmd.Apply<ScimitarHomebrewPower>(choiceContext, Owner.Creature, DynamicVars["Extra"].IntValue, Owner.Creature, this);
     }
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<ScimitarHomebrewPower>()
-    ];
-
     protected override void OnUpgrade()
     {
-        DynamicVars["Extra"].UpgradeValueBy(1);
+        AddKeyword(CardKeyword.Innate);
     }
 }

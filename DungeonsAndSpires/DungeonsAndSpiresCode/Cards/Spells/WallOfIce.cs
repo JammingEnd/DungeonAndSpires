@@ -19,8 +19,7 @@ public class WallOfIce() : SpellCard(6, 2, CardType.Power, CardRarity.Rare, Targ
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<FrostbitePower>(),
-        HoverTipFactory.FromPower<WallOfIceDexterityPower>()
+        HoverTipFactory.FromPower<FrostbitePower>()
     ];
 
     protected override void OnUpgrade()

@@ -12,9 +12,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
-public class SpearStandby() : MartialWeaponCard(2, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class SpearStandby() : MartialWeaponCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Piering, CoreKeywords.TwoHanded];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.TwoHanded];
 
     public override TwoHandedPower? TwoHandedPower => ModelDb.Power<SpearTwoHandedPower>();
 

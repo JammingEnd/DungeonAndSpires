@@ -208,6 +208,9 @@
   "DUNGEONSANDSPIRES-SECOND_WIND_POWER.title": "Second Wind",
   "DUNGEONSANDSPIRES-SECOND_WIND_POWER.description": "The next time you lose HP, heal 50% of the damage taken.",
   "DUNGEONSANDSPIRES-SECOND_WIND_POWER.smartDescription": "The next time you lose HP, heal 50% of the damage taken.",
+  "DUNGEONSANDSPIRES-FIGHTER_SECOND_WIND_POWER.title": "Second Wind",
+  "DUNGEONSANDSPIRES-FIGHTER_SECOND_WIND_POWER.description": "Every few attacks, gain [gold]Second Wind[/gold].",
+  "DUNGEONSANDSPIRES-FIGHTER_SECOND_WIND_POWER.smartDescription": "After {Amount} attacks, gain [gold]Second Wind[/gold].",
   "DUNGEONSANDSPIRES-MAUL_CONCUSSION_POWER.title": "Maul Concussion",
   "DUNGEONSANDSPIRES-MAUL_CONCUSSION_POWER.description": "Your next bludgeoning attacks apply [gold]Weak[/gold]; the last also applies [gold]Vulnerable[/gold].",
   "DUNGEONSANDSPIRES-MAUL_CONCUSSION_POWER.smartDescription": "Your next {Amount} bludgeoning attacks apply [gold]Weak[/gold]; the last also applies [gold]Vulnerable[/gold].",
@@ -240,8 +243,5 @@
   "DUNGEONSANDSPIRES-GREATSWORD_OPPRESSIVE_STRENGTH_POWER.smartDescription": "Gain {Amount} [gold]Temporary Strength[/gold] until the end of your turn.",
   "DUNGEONSANDSPIRES-GREATSWORD_POISE_POWER.title": "Greatsword Poise",
   "DUNGEONSANDSPIRES-GREATSWORD_POISE_POWER.description": "Your next Attack is free to play.",
-  "DUNGEONSANDSPIRES-GREATSWORD_POISE_POWER.smartDescription": "Your next Attack is free to play.",
-  "DUNGEONSANDSPIRES-ACTION_SURGE_POWER.title": "Action Surge",
-  "DUNGEONSANDSPIRES-ACTION_SURGE_POWER.description": "You take an extra turn; during it you may play at most {Amount} cards and cannot draw more cards.",
-  "DUNGEONSANDSPIRES-ACTION_SURGE_POWER.smartDescription": "You take an extra turn; during it you may play at most {Amount} cards and cannot draw more cards."
+  "DUNGEONSANDSPIRES-GREATSWORD_POISE_POWER.smartDescription": "Your next Attack is free to play."
 }

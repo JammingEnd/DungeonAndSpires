@@ -35,8 +35,7 @@ public class Moonbeam() : SpellCard(2, 2, CardType.Power, CardRarity.Uncommon, T
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CoreKeywords.Potent),
-        HoverTipFactory.FromPower<MoonbeamPower>()
+        HoverTipFactory.FromKeyword(CoreKeywords.Potent)
     ];
 
     protected override void OnUpgrade()

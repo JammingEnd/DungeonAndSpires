@@ -18,7 +18,6 @@ public class ShortswordBloodrite() : SimpleWeaponCard(3, CardType.Power, CardRar
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<ShortswordBloodritePower>(),
         HoverTipFactory.FromPower<StrengthPower>()
     ];
 

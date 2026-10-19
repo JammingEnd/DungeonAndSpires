@@ -13,7 +13,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
 public class GreatswordPoise() : MartialWeaponCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Slashing, CoreKeywords.TwoHanded, CardKeyword.Exhaust];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.TwoHanded, CardKeyword.Exhaust];
 
     public override TwoHandedPower? TwoHandedPower => ModelDb.Power<GreatswordTwoHandedPower>();
 

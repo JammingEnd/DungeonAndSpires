@@ -15,7 +15,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 public class GreatswordDippedGuardPower : DungeonsAndSpiresPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

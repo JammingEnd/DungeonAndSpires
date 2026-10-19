@@ -37,7 +37,7 @@ public class WitchBolt() : SpellCard(1, 1, CardType.Attack, CardRarity.Common, T
     {
         decimal damage = DynamicVars["Damage"].GetCalculatedValue();
         await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
-        await PowerCmd.Apply<WitchBoltPower>(choiceContext, cardPlay.Target, damage, Owner.Creature, this);
+        await PowerCmd.Apply<WitchBoltPower>(choiceContext, cardPlay.Target, DynamicVars["AfterDamage"].IntValue, Owner.Creature, this);
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

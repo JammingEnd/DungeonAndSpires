@@ -10,8 +10,6 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
 public class CrossbowArcaneSync() : MartialWeaponCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Piering];
-
     protected override IEnumerable<DynamicVar> CardVars =>
     [
         new CardsVar(2)
