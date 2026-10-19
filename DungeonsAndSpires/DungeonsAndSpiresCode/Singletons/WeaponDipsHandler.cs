@@ -61,7 +61,7 @@ public class WeaponDipsHandler : CustomSingletonModel
         return 0;
     }
     
-    private static int EffectiveStrength(CardModel card, DipInfo info, Creature dealer)
+    public static int EffectiveStrength(CardModel card, DipInfo info, Creature dealer)
     {
         int multiplier = card is CoreCard core ? core.DipStrengthMultiplier : 1;
         return info.Strength * multiplier + dealer.GetPowerAmount<ScimitarHomebrewPower>();

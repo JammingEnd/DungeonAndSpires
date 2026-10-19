@@ -53,7 +53,7 @@ Characters:
         - [Eldritch Knight] (act1) Gain access to half caster spellslots, at the start of Combat, select 3 of 9 common or uncommon spells to add to your hand. 
             (act2) Drawing a spell grants you 5 vigor strength. (act3) after playing a spell, gain 1 charge for your second wind.
         - [Echo Knight] (act1) After using your second wind, your next attack is played twice. (act2) At the start of combat, play the bottom card of your draw pile. when your deck is shuffled, it's put on the bottom.
-            (act3) After playing action surge, copy the next card you play.
+            (act3) After playing action surge, copy the next card you play to your draw pile.
     
     [QUICK NOTES BEFORE I FORGOR]
     - Artificer (gain strength at the start of combat for each relic you have) 

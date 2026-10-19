@@ -1,4 +1,4 @@
-using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Nodes;
 using Godot;
 using HarmonyLib;
@@ -15,7 +15,8 @@ internal class NCombatUiSpellslotPatch
     private static void Postfix(NCombatUi __instance, CombatState state)
     {
         var me = LocalContext.GetMe(state);
-        if (me == null || me.Character is not SorcererCharacter)
+        
+        if (me?.PlayerCombatState?.GetSpellslotsState() == null)
         {
             return;
         }

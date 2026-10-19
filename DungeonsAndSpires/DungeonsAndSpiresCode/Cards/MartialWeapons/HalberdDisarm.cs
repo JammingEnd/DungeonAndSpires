@@ -11,9 +11,9 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
-public class HalberdDisarm() : MartialWeaponCard(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+public class HalberdDisarm() : MartialWeaponCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.TwoHanded, CardKeyword.Retain, CardKeyword.Exhaust];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.TwoHanded, CardKeyword.Retain];
 
     public override TwoHandedPower? TwoHandedPower => ModelDb.Power<HalberdTwoHandedPower>();
 

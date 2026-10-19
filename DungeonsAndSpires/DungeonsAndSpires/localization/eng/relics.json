@@ -9,13 +9,15 @@
   "DUNGEONSANDSPIRES-LUNAR_SORCERER_RELIC.flavor": "Power from the heavens, right in your veins!",
   "DUNGEONSANDSPIRES-LUNAR_SORCERER_RELIC.title": "Lunar Sorcerer",
 
-  "DUNGEONSANDSPIRES-BATTLE_MASTER_RELIC.description": "ACT1: no clue bruv.\nACT2: also nothing yet.\nACT3: you think i have something here too?",
+  "DUNGEONSANDSPIRES-BATTLE_MASTER_RELIC.description": "ACT1: At the start of your turn, select a [gold]Maneuver[/gold].\nACT2: At the end of your turn, select a card to [gold]Retain[/gold] for a turn.\nACT3: After playing [gold]Action Surge[/gold], gain a [gold]Maneuver[/gold].",
+  "DUNGEONSANDSPIRES-BATTLE_MASTER_RELIC.selectionPrompt": "Choose a Maneuver.",
   "DUNGEONSANDSPIRES-BATTLE_MASTER_RELIC.flavor": "He knows what kind of thing you are..",
   "DUNGEONSANDSPIRES-BATTLE_MASTER_RELIC.title": "Battle Master",
-  "DUNGEONSANDSPIRES-ECHO_KNIGHT_RELIC.description": "ACT1: no clue bruv.\nACT2: also nothing yet.\nACT3: you think i have something here too?",
+  "DUNGEONSANDSPIRES-ECHO_KNIGHT_RELIC.description": "ACT1: After using [gold]Second Wind[/gold], your next attack is played twice.\nACT2: At the start of combat, play the bottom card of your draw pile.\nACT3: After playing [gold]Action Surge[/gold], put a copy of the next card you play into your draw pile.",
   "DUNGEONSANDSPIRES-ECHO_KNIGHT_RELIC.flavor": "In and Out. In and Out.",
   "DUNGEONSANDSPIRES-ECHO_KNIGHT_RELIC.title": "Echo Knight",
-  "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.description": "ACT1: no clue bruv.\nACT2: also nothing yet.\nACT3: you think i have something here too?",
+  "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.description": "ACT1: Gain half-caster spellslots. At the start of combat, select 3 of 9 common or uncommon [gold]Spells[/gold] to add to your draw pile.\nACT2: Drawing a [gold]Spell[/gold] grants 5 [gold]Vigor[/gold].\nACT3: After playing a spell, gain a random enemy[gold]Vulnerable[/gold]", 
+  "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.selectionPrompt": "Choose 3 spells.",
   "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.flavor": "A little bit of magic can't hurt.",
   "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.title": "Eldritch Knight"
 }

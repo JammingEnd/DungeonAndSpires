@@ -14,7 +14,7 @@ internal class SubclassRelicChoicePatch
     [HarmonyPostfix]
     private static void Postfix(Player __instance)
     {
-        if (__instance.Character is not SorcererCharacter)
+        if (__instance.Character is not (SorcererCharacter or FighterCharacter))
         {
             return;
         }

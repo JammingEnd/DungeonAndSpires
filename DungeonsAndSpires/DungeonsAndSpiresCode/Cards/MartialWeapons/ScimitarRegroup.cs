@@ -11,8 +11,6 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
 public class ScimitarRegroup() : MartialWeaponCard(3, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Slashing, CoreKeywords.Finesse];
-
     protected override IEnumerable<DynamicVar> CardVars =>
     [
         new PowerVar<ScimitarRegroupPower>("Extra", 1)

@@ -29,16 +29,21 @@ public class FlameBladePower : DungeonsAndSpiresPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner != Owner.Player)
+        var card = cardPlay.Card;
+        if (card.Owner != Owner.Player || card.Type != CardType.Attack || !card.Tags.Contains(DASCoreCardtags.Weapon))
+        {
             return;
-        if (cardPlay.Card.Type == CardType.Attack && cardPlay.Card.Tags.Contains(DASCoreCardtags.Weapon))
-        {
-            await DamageCmd.Attack(Amount).Targeting(cardPlay.Target).Unpowered().Execute(choiceContext);
         }
-        var frostbite = cardPlay.Target.GetPower<FrostbitePower>();
-        if (frostbite != null)
+
+        await DamageCmd.Attack(Amount).FromCard(card, cardPlay).Targeting(cardPlay.Target).Unpowered().Execute(choiceContext);
+
+        if (cardPlay.Target != null)
         {
-            await PowerCmd.Decrement(frostbite);
+            var frostbite = cardPlay.Target.GetPower<FrostbitePower>();
+            if (frostbite != null)
+            {
+                await PowerCmd.Decrement(frostbite);
+            }
         }
     }
 }

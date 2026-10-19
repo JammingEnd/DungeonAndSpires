@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Singletons;
 
-// Per-turn counts of weapon attacks / two-handed weapons played, for Halberd payoffs.
 public class WeaponPlayTracker() : CustomSingletonModel(HookType.Combat)
 {
     public override Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
@@ -18,6 +17,8 @@ public class WeaponPlayTracker() : CustomSingletonModel(HookType.Combat)
         {
             state.WeaponAttacks = 0;
             state.TwoHanded = 0;
+            state.LastWasTwoHandedAttack = false;
+            state.EnergySpent = 0;
         }
         return Task.CompletedTask;
     }
@@ -25,13 +26,17 @@ public class WeaponPlayTracker() : CustomSingletonModel(HookType.Combat)
     public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var card = cardPlay.Card;
-        if (!card.Tags.Contains(DASCoreCardtags.Weapon))
+        var state = cardPlay.Player.PlayerCombatState?.GetWeaponPlay();
+        if (state == null)
         {
             return Task.CompletedTask;
         }
 
-        var state = cardPlay.Player.PlayerCombatState?.GetWeaponPlay();
-        if (state == null)
+        bool twoHandedAttack = card.Type == CardType.Attack
+            && card is MartialWeaponCard martial && martial.TwoHandedPower != null;
+        state.LastWasTwoHandedAttack = twoHandedAttack;
+
+        if (!card.Tags.Contains(DASCoreCardtags.Weapon))
         {
             return Task.CompletedTask;
         }
@@ -40,7 +45,7 @@ public class WeaponPlayTracker() : CustomSingletonModel(HookType.Combat)
         {
             state.WeaponAttacks += 1;
         }
-        if (card is MartialWeaponCard martial && martial.TwoHandedPower != null)
+        if (twoHandedAttack)
         {
             state.TwoHanded += 1;
         }
