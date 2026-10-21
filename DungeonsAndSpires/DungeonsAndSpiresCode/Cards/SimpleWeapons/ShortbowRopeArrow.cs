@@ -6,11 +6,12 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 
-public class ShortbowRopeArrow() : SimpleWeaponCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class ShortbowRopeArrow() : SimpleWeaponCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags =>
     [
@@ -25,7 +26,8 @@ public class ShortbowRopeArrow() : SimpleWeaponCard(1, CardType.Skill, CardRarit
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new IntVar("Dexterity", 2)
+        new IntVar("Dexterity", 2),
+        new BlockVar(10, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -34,13 +36,8 @@ public class ShortbowRopeArrow() : SimpleWeaponCard(1, CardType.Skill, CardRarit
         power?.SetDexterity(DynamicVars["Dexterity"].IntValue);
     }
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<ShortbowRopeArrowDexterityPower>()
-    ];
-
     protected override void OnUpgrade()
     {
-        DynamicVars["Dexterity"].UpgradeValueBy(-1);
+        RemoveKeyword(CardKeyword.Exhaust);
     }
 }

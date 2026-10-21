@@ -17,7 +17,7 @@ public class ShortswordDisciplinedPower : DungeonsAndSpiresPower
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var card = cardPlay.Card;
-        if (card.EnergyCost.Canonical >= 2 && card.Type == CardType.Attack)
+        if (card.EnergyCost.GetResolved() >= 2 && card.Type == CardType.Attack)
         {
             for (int i = 0; i < Amount; i++)
             {

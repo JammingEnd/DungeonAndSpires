@@ -8,16 +8,19 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 
-public class ShortswordSwitchHands() : SimpleWeaponCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class ShortswordSwitchHands() : SimpleWeaponCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new CardsVar("Discard", 1),
-        new IntVar("Scry", 2)
+        new BlockVar(11, ValueProp.Move),
+        new CardsVar("Discard", 2),
+        new CardsVar("Draw", 2),
+        new IntVar("Scry", 3)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -30,6 +33,7 @@ public class ShortswordSwitchHands() : SimpleWeaponCard(1, CardType.Skill, CardR
         }
 
         await ScryCmd.Execute(choiceContext, Owner, DynamicVars["Scry"].IntValue);
+        await CardPileCmd.Draw(choiceContext, DynamicVars["Draw"].IntValue, Owner);
     }
 
     protected override void OnUpgrade()

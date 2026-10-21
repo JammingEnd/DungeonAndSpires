@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 
-public class ShortbowPoisonArrows() : SimpleWeaponCard(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class ShortbowPoisonArrows() : SimpleWeaponCard(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags =>
     [
@@ -32,7 +32,7 @@ public class ShortbowPoisonArrows() : SimpleWeaponCard(2, CardType.Attack, CardR
     [
         new DamageVar(5, ValueProp.Move),
         new PowerVar<PoisonPower>("Poison", 3),
-        new PowerVar<ShortbowPoisonArrowPower>("PoisonDip", 3)
+        new PowerVar<ShortbowPoisonArrowPower>("PoisonDip", 5)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

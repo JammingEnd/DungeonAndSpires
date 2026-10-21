@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 
-public class DaggerSlice() : SimpleWeaponCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class DaggerSlice() : SimpleWeaponCard(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -26,7 +26,7 @@ public class DaggerSlice() : SimpleWeaponCard(1, CardType.Attack, CardRarity.Com
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int hits = PreviousCardWasDagger() ? 2 : 1;
+        int hits = PreviousCardWasDagger() ? 3 : 1;
         await CommonActions.CardAttack(this, cardPlay, hits).Execute(choiceContext);
     }
 

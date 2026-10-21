@@ -8,23 +8,21 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
-public class LongswordFence() : MartialWeaponCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+// new effect: gain 13 block
+public class LongswordFence() : MartialWeaponCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Slashing, CoreKeywords.Finesse];
-
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(4, ValueProp.Move),
-        new IntVar("Hits", 2)
+        new BlockVar(13, ValueProp.Move),
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CommonActions.CardAttack(this, cardPlay, DynamicVars["Hits"].IntValue).Execute(choiceContext);
+        await CommonActions.CardBlock(this, cardPlay);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Hits"].UpgradeValueBy(1);
+        DynamicVars.Block.UpgradeValueBy(4);
     }
 }

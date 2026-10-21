@@ -1,3 +1,4 @@
+using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using MegaCrit.Sts2.Core.CardSelection;
@@ -7,14 +8,21 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 
 public class ShortswordSheathe() : SimpleWeaponCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new BlockVar(7, ValueProp.Move)
+    ];
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CommonActions.CardBlock(this, cardPlay);
         var prefs = new CardSelectorPrefs(new LocString("cards", "DUNGEONSANDSPIRES-SHORTSWORD_SHEATHE.selectionPrompt"), 1, 1);
         Func<CardModel, bool> filter = c => c.Type == CardType.Attack;
         var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, filter, this);
