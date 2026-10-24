@@ -27,6 +27,4 @@ public class Firebolt() : SpellCard(0, 1, CardType.Attack, CardRarity.Basic, Tar
     {
         DynamicVars.Damage.UpgradeValueBy(3m);
     }
-    
-    
 }

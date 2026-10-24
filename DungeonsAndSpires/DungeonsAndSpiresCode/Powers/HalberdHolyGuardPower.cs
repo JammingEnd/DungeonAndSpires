@@ -11,13 +11,13 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 public class HalberdHolyGuardPower : DungeonsAndSpiresPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (power.Owner == Owner && power is StrengthPower && amount > 0)
+        if (power.Owner == Owner && amount > 0 && power is StrengthPower or VigorPower)
         {
-            await CreatureCmd.GainBlock(Owner, amount * 2m, ValueProp.Unpowered, null);
+            await CreatureCmd.GainBlock(Owner, amount * Amount, ValueProp.Unpowered, null);
         }
     }
 }

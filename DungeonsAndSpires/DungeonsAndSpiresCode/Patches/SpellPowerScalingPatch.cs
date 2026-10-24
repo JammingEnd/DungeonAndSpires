@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Patches;
 
-// Spell attacks are ability damage: no Strength/Vigor, no Vigor consumption, unless stated otherwise.
+// Spell attacks are ability damage: no Strength/Vigor, no Vigor consumption. some cards explicitely say to use Powered bonuses
 public static class SpellPowerScaling
 {
     public static bool IsAbilityDamage(CardModel? card)

@@ -19,11 +19,6 @@ public class ShortbowRopeArrow() : SimpleWeaponCard(1, CardType.Skill, CardRarit
         DASCoreCardtags.Bow
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Exhaust
-    ];
-
     protected override IEnumerable<DynamicVar> CardVars =>
     [
         new IntVar("Dexterity", 2),

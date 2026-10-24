@@ -27,7 +27,7 @@ internal class SubclassRelicChoicePatch
 
         async Task SwapRelic()
         {
-            // The Sorcerer starts with a default subclass relic; replace it with the picked one.
+           // it starts with the default one, so remove it. 
             var granted = __instance.Relics.OfType<SubclassRelic>().FirstOrDefault();
             if (granted != null && granted.GetType() != selected.GetType())
             {

@@ -254,7 +254,7 @@
   "DUNGEONSANDSPIRES-SHORTSWORD_SCRAPE_OFF.title": "Shortsword Scrape Off",
   "DUNGEONSANDSPIRES-SHORTSWORD_DISCIPLINED.description": "When playing a 2+ {energyPrefix:energyIcons(1)} Attack card, a random 0 cost Weapon or Cantrip from your discard pile is put into your hand.",
   "DUNGEONSANDSPIRES-SHORTSWORD_DISCIPLINED.title": "Shortsword Disciplined",
-  "DUNGEONSANDSPIRES-SHORTSWORD_CURSED.description": "Deal {Damage:diff()} damage.\nTransform a random [gold]Status[/gold] in your hand into a random [gold]Colorless[/gold] card.",
+  "DUNGEONSANDSPIRES-SHORTSWORD_CURSED.description": "Deal {Damage:diff()} damage.\nTransform a random [gold]Status[/gold] into a random [gold]Colorless[/gold] card.",
   "DUNGEONSANDSPIRES-SHORTSWORD_CURSED.title": "Shortsword Cursed",
   "DUNGEONSANDSPIRES-SHORTSWORD_BLOODRITE.description": "When you gain [gold]Strength[/gold], a random card in your hand costs 1 {energyPrefix:energyIcons(1)} less this turn or until played.",
   "DUNGEONSANDSPIRES-SHORTSWORD_BLOODRITE.title": "Shortsword Bloodrite",
@@ -309,7 +309,7 @@
   "DUNGEONSANDSPIRES-HALBERD_FLAWLESS_STRIKE.title": "Halberd Flawless Strike",
   "DUNGEONSANDSPIRES-HALBERD_FLAWLESS_STRIKE.description": "Deal {Damage:diff()} damage.\nGain 1 [gold]Strength[/gold] for each two-handed weapon played this turn ({Gain}).",
   "DUNGEONSANDSPIRES-HALBERD_HOLY_GUARD.title": "Halberd Holy Guard",
-  "DUNGEONSANDSPIRES-HALBERD_HOLY_GUARD.description": "Whenever you gain [gold]Strength[/gold], gain twice as much [gold]Block[/gold].",
+  "DUNGEONSANDSPIRES-HALBERD_HOLY_GUARD.description": "Whenever you gain [gold]Strength[/gold] or [gold]Vigor[/gold], gain twice as much [gold]Block[/gold].",
   "DUNGEONSANDSPIRES-MAUL_CONCUSSION.title": "Maul Concussion",
   "DUNGEONSANDSPIRES-MAUL_CONCUSSION.description": "Your next {Attacks} [gold]Bludgeoning[/gold] attacks apply [gold]Weak[/gold]. On the last, apply {Vulnerable:diff()} [gold]Vulnerable[/gold].",
   "DUNGEONSANDSPIRES-MAUL_STOMACH_BURST.title": "Maul Stomach Burst",
@@ -377,7 +377,7 @@
   "DUNGEONSANDSPIRES-GREATSWORD_DIPPED_GUARD.title": "Greatsword Dipped Guard",
   "DUNGEONSANDSPIRES-GREATSWORD_DIPPED_GUARD.description": "Whenever you play a card with a [gold]Dip[/gold], gain {Block:diff()} [gold]Block[/gold].",
   "DUNGEONSANDSPIRES-GREATSWORD_FOLLOW_THROUGH.title": "Greatsword Follow Through",
-  "DUNGEONSANDSPIRES-GREATSWORD_FOLLOW_THROUGH.description": "Deal {Damage:diff()} damage.\nIf your previous card was a two-handed attack, this hits twice.",
+  "DUNGEONSANDSPIRES-GREATSWORD_FOLLOW_THROUGH.description": "Deal {Damage:diff()} damage.\nGain 1 [gold]Strength[/gold] this turn.\nIf your previous card was a two-handed attack, this hits twice.",
   "DUNGEONSANDSPIRES-GREATSWORD_POISE.title": "Greatsword Poise",
   "DUNGEONSANDSPIRES-GREATSWORD_POISE.description": "Gain {Strength:diff()} [gold]Strength[/gold].\nYour next Attack is free to play.",
   "DUNGEONSANDSPIRES-GREATSWORD_MASSACRE.title": "Greatsword Massacre",
@@ -385,9 +385,6 @@
   "DUNGEONSANDSPIRES-GREATSWORD_EXECUTE.title": "Greatsword Execute",
   "DUNGEONSANDSPIRES-GREATSWORD_EXECUTE.description": "Deal {Damage:diff()} damage. Kill the target if it is below {Percent:diff()}% of its max HP.",
   "DUNGEONSANDSPIRES-GREATSWORD_OPPRESSIVE.title": "Greatsword Oppressive",
-  "DUNGEONSANDSPIRES-GREATSWORD_OPPRESSIVE.description": "Consecutive two-handed weapon attacks give 1 [gold]Strength[/gold] this turn."
-
-
-
-
+  "DUNGEONSANDSPIRES-GREATSWORD_OPPRESSIVE.description": "Consecutive two-handed weapon attacks give 1 [gold]Strength[/gold] this turn.",
+  "DUNGEONSANDSPIRES-ONE_TWO_PUNCH.selectionPrompt": "Choose 3 spells to give to your ally."
 }

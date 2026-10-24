@@ -11,8 +11,8 @@ public class ScimitarHomebrewPower : DungeonsAndSpiresPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-
-    // Homebrew changes every dip's effective strength, so refresh the dip overlays.
+    
+    // this is important, it refeshes the dip info
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (power == this)

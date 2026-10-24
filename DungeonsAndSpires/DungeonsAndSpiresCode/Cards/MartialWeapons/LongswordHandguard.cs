@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
-public class LongswordHandguard() : MartialWeaponCard(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+public class LongswordHandguard() : MartialWeaponCard(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Slashing];
 

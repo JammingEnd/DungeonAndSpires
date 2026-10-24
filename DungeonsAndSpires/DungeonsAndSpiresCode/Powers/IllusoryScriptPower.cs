@@ -64,8 +64,7 @@ public class IllusoryScriptPower : DungeonsAndSpiresPower
         {
             return;
         }
-
-        // Powers' AfterCardPlayed runs before the card's, so clear the spellslot flag first.
+        
         if (cardPlay.Card is SpellCard spell)
         {
             spell._shouldConsumeSpellslot = false;
