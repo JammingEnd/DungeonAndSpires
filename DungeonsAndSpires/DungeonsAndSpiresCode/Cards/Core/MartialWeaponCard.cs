@@ -20,6 +20,9 @@ public abstract class MartialWeaponCard(int cost, CardType type, CardRarity rari
     // Defines what Twohanded power belongs to this card.
     public virtual TwoHandedPower? TwoHandedPower => null;
 
+    // Damage multiplier while this weapon's two-handed stance is up.
+    public virtual decimal TwoHandedDamageMultiplier => 1.2m;
+
     // handles the 'next weapon attack does potent damage'.
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {

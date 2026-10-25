@@ -162,8 +162,8 @@
   "DUNGEONSANDSPIRES-SHORTBOW_TELEKINESIS_POWER.description": "At the start of your turn, play 1 random [gold]Cantrip[/gold] or [gold]Bow[/gold] card.",
   "DUNGEONSANDSPIRES-SHORTBOW_TELEKINESIS_POWER.smartDescription": "At the start of your turn, play {Amount} random [gold]Cantrip[/gold] or [gold]Bow[/gold] card.",
 
-  "DUNGEONSANDSPIRES-ALL_POWERFUL_POWER.description": "At the start of your turn, gain [gold]Switch[/gold]",
-  "DUNGEONSANDSPIRES-ALL_POWERFUL_POWER.smartDescription": "At the start of your turn, gain {Amount} [gold]Switch[/gold]",
+  "DUNGEONSANDSPIRES-ALL_POWERFUL_POWER.description": "Whenever you play a [gold]Two-Handed[/gold] weapon, draw a card.",
+  "DUNGEONSANDSPIRES-ALL_POWERFUL_POWER.smartDescription": "Whenever you play a [gold]Two-Handed[/gold] weapon, draw {Amount} cards.",
   "DUNGEONSANDSPIRES-ALL_POWERFUL_POWER.title": "All Powerful",
   
   "DUNGEONSANDSPIRES-HALBERD_TWO_HANDED_POWER.title": "Halberd Two-Handed",
@@ -243,5 +243,14 @@
   "DUNGEONSANDSPIRES-GREATSWORD_OPPRESSIVE_STRENGTH_POWER.smartDescription": "Gain {Amount} [gold]Temporary Strength[/gold] until the end of your turn.",
   "DUNGEONSANDSPIRES-GREATSWORD_POISE_POWER.title": "Greatsword Poise",
   "DUNGEONSANDSPIRES-GREATSWORD_POISE_POWER.description": "Your next Attack is free to play.",
-  "DUNGEONSANDSPIRES-GREATSWORD_POISE_POWER.smartDescription": "Your next Attack is free to play."
+  "DUNGEONSANDSPIRES-GREATSWORD_POISE_POWER.smartDescription": "Your next Attack is free to play.",
+  "DUNGEONSANDSPIRES-GREATSWORD_MAVERICK_POWER.title": "Greatsword Maverick",
+  "DUNGEONSANDSPIRES-GREATSWORD_MAVERICK_POWER.description": "This turn, if you lose [gold]Two-Handed[/gold], gain [gold]Vigor[/gold].",
+  "DUNGEONSANDSPIRES-GREATSWORD_MAVERICK_POWER.smartDescription": "This turn, if you lose [gold]Two-Handed[/gold], gain {Amount} [gold]Vigor[/gold].",
+  "DUNGEONSANDSPIRES-GREATSWORD_BATTLEFLOW_POWER.title": "Greatsword Battleflow",
+  "DUNGEONSANDSPIRES-GREATSWORD_BATTLEFLOW_POWER.description": "This turn, whenever you play a non-[gold]Two-Handed[/gold] card, gain {Amount} [gold]Strength[/gold].",
+  "DUNGEONSANDSPIRES-GREATSWORD_BATTLEFLOW_POWER.smartDescription": "This turn, whenever you play a non-[gold]Two-Handed[/gold] card, gain {Amount} [gold]Strength[/gold].",
+  "DUNGEONSANDSPIRES-GREATSWORD_BATTLEFLOW_STRENGTH_POWER.title": "Greatsword Battleflow",
+  "DUNGEONSANDSPIRES-GREATSWORD_BATTLEFLOW_STRENGTH_POWER.description": "Gain 1 [gold]Strength[/gold] until the end of your turn.",
+  "DUNGEONSANDSPIRES-GREATSWORD_BATTLEFLOW_STRENGTH_POWER.smartDescription": "Gain {Amount} [gold]Strength[/gold] until the end of your turn."
 }

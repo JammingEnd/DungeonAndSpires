@@ -1,6 +1,7 @@
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -13,6 +14,8 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 
 public class Firebolt() : SpellCard(0, 1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Fire];
+
     protected override IEnumerable<DynamicVar> CardVars =>
     [
         new DamageVar(8, ValueProp.Unpowered)

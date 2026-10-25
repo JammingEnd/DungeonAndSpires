@@ -1,6 +1,7 @@
 using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Basic;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Fighter;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
@@ -29,13 +30,13 @@ public class FighterCharacter : PlaceholderCharacterModel
         ModelDb.Card<ClubStrike>(),
         ModelDb.Card<ClubStrike>(),
         ModelDb.Card<ClubStrike>(),
-        ModelDb.Card<ClubStrike>(),
         ModelDb.Card<ClubDefend>(),
         ModelDb.Card<ClubDefend>(),
         ModelDb.Card<ClubDefend>(),
         ModelDb.Card<ClubDefend>(),
-        ModelDb.Card<GreatswordMomentumSwing>(),
-        ModelDb.Card<GreatswordEngage>()
+        ModelDb.Card<SpearJavalin>(),
+        ModelDb.Card<GreatswordMaverick>(),
+        ModelDb.Card<GreatswordExpertise>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

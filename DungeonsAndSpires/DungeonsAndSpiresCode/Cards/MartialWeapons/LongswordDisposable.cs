@@ -15,7 +15,7 @@ public class LongswordDisposable() : MartialWeaponCard(1, CardType.Skill, CardRa
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var weapons = PileType.Draw.GetPile(Owner).Cards
-            .Where(c => c.Tags.Contains(DASCoreCardtags.Weapon))
+            .Where(c => c.Tags.Contains(DASCoreCardtags.Weapon) && c.EnergyCost.Canonical > 0)
             .ToList();
         if (weapons.Count == 0)
         {

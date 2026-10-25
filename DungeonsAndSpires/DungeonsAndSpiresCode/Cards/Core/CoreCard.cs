@@ -197,41 +197,41 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
     }
     
     // so acid and poison arent a damage type, they apply something (poison and vulnerable), this is the method for that
-    // yeah this is for the associated effects
-    public async Task ApplyImbuedElementEffect(PlayerChoiceContext choiceContext, Creature target, bool isDip = false)
+    // yeah this is for the associated effects. allEffects applies every ElementOptions effect instead of the imbued one.
+    public async Task ApplyImbuedElementEffect(PlayerChoiceContext choiceContext, Creature target, bool isDip = false, bool allEffects = false)
     {
-        if (ImbuedElement is not CardKeyword element)
-        {
-            return;
-        }
+        IEnumerable<CardKeyword> elements = allEffects ? ElementOptions : ImbuedElement is CardKeyword imbued ? [imbued] : [];
 
-        decimal amount = GetElementEffectAmount(element);
-        if (amount <= 0)
+        foreach (var element in elements)
         {
-            return;
-        }
-
-        if (element == CoreKeywords.Poison)
-        {
-            await PowerCmd.Apply<PoisonPower>(choiceContext, target, amount, Owner.Creature, this);
-        }
-        else if (element == CoreKeywords.Acid)
-        {
-            await PowerCmd.Apply<VulnerablePower>(choiceContext, target, amount, Owner.Creature, this);
-        }
-        else if (element == CoreKeywords.Cold)
-        {
-            await PowerCmd.Apply<FrostbitePower>(choiceContext, target, amount, Owner.Creature, this);
-        }
-        else if (element == CoreKeywords.Lightning)
-        {
-            await PowerCmd.Apply<ShockedPower>(choiceContext, target, amount, Owner.Creature, this);
-        }
-        else if (element == CoreKeywords.Thunder)
-        {
-            if (target.GetPowerAmount<Reverberation>() == 0)
+            decimal amount = GetElementEffectAmount(element);
+            if (amount <= 0)
             {
-                await PowerCmd.Apply<Reverberation>(choiceContext, target, 1, Owner.Creature, this);
+                continue;
+            }
+
+            if (element == CoreKeywords.Poison)
+            {
+                await PowerCmd.Apply<PoisonPower>(choiceContext, target, amount, Owner.Creature, this);
+            }
+            else if (element == CoreKeywords.Acid)
+            {
+                await PowerCmd.Apply<VulnerablePower>(choiceContext, target, amount, Owner.Creature, this);
+            }
+            else if (element == CoreKeywords.Cold)
+            {
+                await PowerCmd.Apply<FrostbitePower>(choiceContext, target, amount, Owner.Creature, this);
+            }
+            else if (element == CoreKeywords.Lightning)
+            {
+                await PowerCmd.Apply<ShockedPower>(choiceContext, target, amount, Owner.Creature, this);
+            }
+            else if (element == CoreKeywords.Thunder)
+            {
+                if (!Keywords.Contains(CoreKeywords.Thunder))
+                {
+                    await PowerCmd.Apply<Reverberation>(choiceContext, target, amount, Owner.Creature, this);
+                }
             }
         }
     }

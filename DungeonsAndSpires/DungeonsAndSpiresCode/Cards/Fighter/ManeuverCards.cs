@@ -23,12 +23,12 @@ public class BaitAndSwitch() : ManeuverCard()
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar("amount", 1)
+        new CardsVar("amount", 2)
     ];
 
     protected override void OnUpgrade()
     {
-        DynamicVars["amount"].UpgradeValueBy(1);
+        DynamicVars["amount"].UpgradeValueBy(2);
     }
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

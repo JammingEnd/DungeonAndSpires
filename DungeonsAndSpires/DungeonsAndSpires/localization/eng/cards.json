@@ -159,6 +159,10 @@
   "DUNGEONSANDSPIRES-CATAPULT.selectionPrompt": "Choose a weapon to hurl.",
   "DUNGEONSANDSPIRES-CHROMATIC_ORB.description": "Deal {Damage:diff()} damage.\nChoose an element to imbue this card with.\nApply its associated effect.",
   "DUNGEONSANDSPIRES-CHROMATIC_ORB.title": "Chromatic Orb",
+  "DUNGEONSANDSPIRES-DRAGONS_BREATH.description": "Deal {Damage:diff()} damage to ALL enemies.\nChoose an element to imbue this card with.\nApply its associated effect.",
+  "DUNGEONSANDSPIRES-DRAGONS_BREATH.title": "Dragon's Breath",
+  "DUNGEONSANDSPIRES-CHAOS_ULTRA.title": "Chaos Ultra",
+  "DUNGEONSANDSPIRES-CHAOS_ULTRA.description": "Deal {Damage:diff()} damage to ALL enemies.\nApply all possible effects.",
 
   "DUNGEONSANDSPIRES-ELEMENTAL_SELECTION.selectionPrompt": "Choose an element to imbue this card with.",
   "DUNGEONSANDSPIRES-ELEMENT_FIRE.title": "Fire",
@@ -183,7 +187,7 @@
   "DUNGEONSANDSPIRES-HEIGHTENED_SPELL.selectionPrompt": "Choose a Potent spell to heighten.",
   "DUNGEONSANDSPIRES-LIGHT_OF_THE_NEW_AGE.description": "Metamagic also applies -1 {energyPrefix:energyIcons(1)} when used as spell consumption",
   "DUNGEONSANDSPIRES-LIGHT_OF_THE_NEW_AGE.title": "Light of the New Age",
-  "DUNGEONSANDSPIRES-ALL_POWERFUL.description": "At the start of your turn, gain 1 [gold]Switch[/gold]",
+  "DUNGEONSANDSPIRES-ALL_POWERFUL.description": "Whenever you play a [gold]Two-Handed[/gold] weapon, draw a card.",
   "DUNGEONSANDSPIRES-ALL_POWERFUL.title": "All Powerful",
 
   "DUNGEONSANDSPIRES-CLUB_STRIKE.description": "Deal {Damage:diff()} damage.",
@@ -386,5 +390,13 @@
   "DUNGEONSANDSPIRES-GREATSWORD_EXECUTE.description": "Deal {Damage:diff()} damage. Kill the target if it is below {Percent:diff()}% of its max HP.",
   "DUNGEONSANDSPIRES-GREATSWORD_OPPRESSIVE.title": "Greatsword Oppressive",
   "DUNGEONSANDSPIRES-GREATSWORD_OPPRESSIVE.description": "Consecutive two-handed weapon attacks give 1 [gold]Strength[/gold] this turn.",
-  "DUNGEONSANDSPIRES-ONE_TWO_PUNCH.selectionPrompt": "Choose 3 spells to give to your ally."
+  "DUNGEONSANDSPIRES-ONE_TWO_PUNCH.selectionPrompt": "Choose 3 spells to give to your ally.",
+  "DUNGEONSANDSPIRES-GREATSWORD_MAVERICK.title": "Greatsword Maverick",
+  "DUNGEONSANDSPIRES-GREATSWORD_MAVERICK.description": "Deal {Damage:diff()} damage.\nThis turn, if you lose [gold]Two-Handed[/gold], gain {Vigor:diff()} [gold]Vigor[/gold].",
+  "DUNGEONSANDSPIRES-GREATSWORD_EXPERTISE.title": "Greatsword Expertise",
+  "DUNGEONSANDSPIRES-GREATSWORD_EXPERTISE.description": "Gain {Block:diff()} [gold]Block[/gold].\nGain {Switch:diff()} [gold]Switch[/gold].",
+  "DUNGEONSANDSPIRES-SPEAR_JAVALIN.title": "Spear Javalin",
+  "DUNGEONSANDSPIRES-SPEAR_JAVALIN.description": "Deal {Damage:diff()} damage.\nGains 50% damage from [gold]Two-Handed[/gold] instead of 20%.",
+  "DUNGEONSANDSPIRES-GREATSWORD_BATTLEFLOW.title": "Greatsword Battleflow",
+  "DUNGEONSANDSPIRES-GREATSWORD_BATTLEFLOW.description": "Gain {Block:diff()} [gold]Block[/gold].\nGain {Switch:diff()} [gold]Switch[/gold].\nThis turn, whenever you play a non-[gold]Two-Handed[/gold] card, gain {Strength:diff()} [gold]Strength[/gold]."
 }

@@ -1,6 +1,7 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Basic;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Sorcerer;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Sorcerer;
@@ -33,7 +34,7 @@ public class SorcererCharacter : PlaceholderCharacterModel
         ModelDb.Card<ClubDefend>(),
         ModelDb.Card<Resistance>(),
         ModelDb.Card<Firebolt>(),
-        ModelDb.Card<ChromaticOrb>()
+        ModelDb.Card<DragonsBreath>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

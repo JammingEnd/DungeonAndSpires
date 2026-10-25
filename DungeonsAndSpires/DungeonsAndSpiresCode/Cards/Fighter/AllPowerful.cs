@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Fighter;
 
-// gain 1 switch every turn
+// draw a card every time a twohanded weapon is played
 [Pool(typeof(FighterCardPool))]
 public class AllPowerful() : CoreCard(2, CardType.Power, CardRarity.Ancient, TargetType.Self)
 {
@@ -22,9 +22,4 @@ public class AllPowerful() : CoreCard(2, CardType.Power, CardRarity.Ancient, Tar
     {
         AddKeyword(CardKeyword.Innate);
     }
-    
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<SwitchPower>()
-    ];
 }
