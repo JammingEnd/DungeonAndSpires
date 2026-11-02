@@ -123,21 +123,24 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
             if (PotencyVars.TryGetValue(item.Name, out var potency) && potency.step > 0)
             {
                 decimal baseValue = item.BaseValue;
-                result.AddRange(MakeCalculatedVar(
-                    item.Name,
-                    (int)baseValue,
-                    (model, creature) =>
+                Func<CardModel, Creature?, decimal> bonus = (model, creature) =>
+                {
+                    decimal playerPotency = model.Owner.PlayerCombatState?.GetPotency() ?? 0;
+                    decimal level = Math.Floor(playerPotency / potency.step);
+                    // Heightened cards have their potency level met by 1 (or gain 3 if their potency step is 1).
+                    if (model.Keywords.Contains(CoreKeywords.Heightened))
                     {
-                        decimal playerPotency = model.Owner.PlayerCombatState?.GetPotency() ?? 0;
-                        decimal level = Math.Floor(playerPotency / potency.step);
-                        // Heightened cards have their potency level met by 1 (or gain 3 if their potency step is 1).
-                        if (model.Keywords.Contains(CoreKeywords.Heightened))
-                        {
-                            level += potency.step == 1 ? 3 : 1;
-                        }
-                        return level;
-                    },
-                    potency.mult));
+                        level += potency.step == 1 ? 3 : 1;
+                    }
+                    return level;
+                };
+                
+                result.AddRange(item switch
+                {
+                    DamageVar damage => MakeCalculatedDamage(item.Name, (int)baseValue, bonus, potency.mult, damage.Props),
+                    BlockVar block => MakeCalculatedBlock(item.Name, (int)baseValue, bonus, potency.mult, block.Props),
+                    _ => MakeCalculatedVar(item.Name, (int)baseValue, bonus, potency.mult)
+                });
             }
             else
             {
