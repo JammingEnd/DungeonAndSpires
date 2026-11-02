@@ -11,16 +11,7 @@ public class ShortbowRopeArrowPower : DungeonsAndSpiresPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
-    private int _dexAmount;
-
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-        base.CanonicalVars.Concat([new IntVar("Dexterity", 0)]);
-
-    public void SetDexterity(int amount)
-    {
-        _dexAmount = amount;
-        DynamicVars["Dexterity"].BaseValue = amount;
-    }
+    
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
@@ -28,8 +19,6 @@ public class ShortbowRopeArrowPower : DungeonsAndSpiresPower
         {
             return;
         }
-
-        await PowerCmd.Apply<ShortbowRopeArrowDexterityPower>(choiceContext, Owner, _dexAmount, Owner, null);
         await PlayerCmd.GainEnergy(1, player);
 
         await PowerCmd.Decrement(this);

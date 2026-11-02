@@ -15,7 +15,7 @@ public class ShortswordDualWieldPower : DungeonsAndSpiresPower
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        if (card.Owner != Owner.Player || card.EnergyCost.Canonical != 0 || card.Type != CardType.Attack)
+        if (card.Owner != Owner.Player || card.EnergyCost.GetResolved() != 0 || card.Type != CardType.Attack)
         {
             return;
         }

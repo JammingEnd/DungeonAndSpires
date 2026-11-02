@@ -60,7 +60,8 @@ public class BattleMasterRelic : SubclassRelic
         }
 
         var prefs = new CardSelectorPrefs(new LocString("relics", "DUNGEONSANDSPIRES-BATTLE_MASTER_RELIC.selectionPrompt"), 0, 1);
-        var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, null, this);
+        Func<CardModel, bool> filter = c => !c.Keywords.Contains(CardKeyword.Retain);
+        var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, filter, this);
         var card = selected.FirstOrDefault();
         if (card == null)
         {

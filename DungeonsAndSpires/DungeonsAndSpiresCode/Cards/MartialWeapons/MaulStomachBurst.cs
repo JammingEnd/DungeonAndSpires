@@ -14,7 +14,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
 public class MaulStomachBurst() : MartialWeaponCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Bludgeoning, CoreKeywords.TwoHanded];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.TwoHanded];
 
     public override TwoHandedPower? TwoHandedPower => ModelDb.Power<MaulTwoHandedPower>();
 

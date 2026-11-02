@@ -33,7 +33,6 @@ public class QuarterstaffNonLethal() : SimpleWeaponCard(1, CardType.Attack, Card
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(CoreKeywords.Bludgeoning),
-        HoverTipFactory.FromPower<QuarterstaffNonLethalPower>()
     ];
 
     protected override void OnUpgrade()

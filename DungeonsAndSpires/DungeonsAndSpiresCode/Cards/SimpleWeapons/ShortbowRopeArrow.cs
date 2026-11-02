@@ -1,3 +1,4 @@
+using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
@@ -21,18 +22,18 @@ public class ShortbowRopeArrow() : SimpleWeaponCard(1, CardType.Skill, CardRarit
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new IntVar("Dexterity", 2),
+        new IntVar("Turns", 2),
         new BlockVar(10, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var power = await PowerCmd.Apply<ShortbowRopeArrowPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this);
-        power?.SetDexterity(DynamicVars["Dexterity"].IntValue);
+        await CommonActions.CardBlock(this, cardPlay);
+        await PowerCmd.Apply<ShortbowRopeArrowPower>(choiceContext, Owner.Creature, DynamicVars["Turns"].IntValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        DynamicVars["Turns"].UpgradeValueBy(1);
     }
 }

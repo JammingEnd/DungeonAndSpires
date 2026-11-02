@@ -26,7 +26,7 @@ public abstract class MartialWeaponCard(int cost, CardType type, CardRarity rari
     // handles the 'next weapon attack does potent damage'.
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
-        if (cardSource != this || dealer != Owner.Creature)
+        if (cardSource != this || dealer != Owner.Creature || target == dealer)
         {
             return 0;
         }

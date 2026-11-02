@@ -29,7 +29,7 @@ public class GreatswordFollowThrough() : MartialWeaponCard(2, CardType.Attack, C
     {
         bool chained = Owner.PlayerCombatState?.GetWeaponPlay()?.LastWasTwoHandedAttack ?? false;
         await CommonActions.CardAttack(this, cardPlay, chained ? 2 : 1).Execute(choiceContext);
-        await PowerCmd.Apply<GreatswordOppressiveStrengthPower>(choiceContext, cardPlay.Target, chained ? 2 : 1, Owner.Creature, this);
+        await PowerCmd.Apply<GreatswordOppressiveStrengthPower>(choiceContext, Owner.Creature, chained ? 2 : 1, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

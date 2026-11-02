@@ -17,6 +17,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
 public class SpearSpareTime() : MartialWeaponCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.TwoHanded];
     public override TwoHandedPower? TwoHandedPower => ModelDb.Power<SpearTwoHandedPower>();
 
     protected override IEnumerable<DynamicVar> CardVars =>

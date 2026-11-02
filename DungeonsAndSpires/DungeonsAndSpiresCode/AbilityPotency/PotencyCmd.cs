@@ -108,4 +108,13 @@ public static class PotencyCmd
             await PotencyHook.OnChanged(combatState, context, player, before, after);
         }
     }
+
+    public static async Task Reset(Player player)
+    {
+        var state = player.PlayerCombatState?.GetPotencyState();
+        if (state == null || state.Temp == 0)
+            return;
+        state.Current = 0;
+        MainFile.Logger.Info($"Potency Reset");
+    }
 }

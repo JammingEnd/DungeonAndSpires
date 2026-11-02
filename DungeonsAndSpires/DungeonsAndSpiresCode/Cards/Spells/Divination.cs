@@ -28,7 +28,7 @@ public class Divination() : SpellCard(4, 2, CardType.Skill, CardRarity.Uncommon,
     {
         await PotencyCmd.Add(choiceContext, Owner, DynamicVars["AbilityPotency"].IntValue);
 
-        var drawPile = PileType.Draw.GetPile(Owner).Cards.Where(x => x.Type is not CardType.Status or CardType.Curse or CardType.Quest).ToList();
+        var drawPile = PileType.Draw.GetPile(Owner).Cards.Where(x => x.Type is not CardType.Status or not CardType.Curse or not CardType.Quest).ToList();
         if (drawPile.Count == 0)
         {
             return;

@@ -64,6 +64,8 @@ public class WeaponDipsHandler : CustomSingletonModel
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource,
         CardPlay? cardPlay)
     {
+        if(target == dealer)
+            return 0;
         if (CheckState(dealer, cardSource, out var info) && info.Type != CoreKeywords.Poison)
         {
             return EffectiveStrength(cardSource!, info, dealer!);

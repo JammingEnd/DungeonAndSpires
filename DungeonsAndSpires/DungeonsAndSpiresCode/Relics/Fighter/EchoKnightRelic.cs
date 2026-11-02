@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Rooms;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Fighter;
 
@@ -51,6 +52,28 @@ public class EchoKnightRelic : SubclassRelic
         return Task.CompletedTask;
     }
 
+    // flashes the relic when the next card is echoed
+    public override Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner != Owner || cardPlay.Card.Type != CardType.Attack)
+        {
+            return Task.CompletedTask;
+        }
+
+        var pwer = Owner.Creature.GetPower<FighterSecondWindPower>();
+        if (pwer != null && pwer.DisplayAmount == 1)
+        {
+            this.Status = RelicStatus.Active;
+        }
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterCombatEnd(CombatRoom room)
+    {
+        this.Status = RelicStatus.Normal;
+        return  Task.CompletedTask;
+    }
+
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner != Owner)
@@ -83,6 +106,7 @@ public class EchoKnightRelic : SubclassRelic
         }
 
         _echoNextAttack = false;
+        this.Status = RelicStatus.Normal;
         await CardCmd.AutoPlay(choiceContext, cardPlay.Card, cardPlay.Target);
     }
 }

@@ -48,6 +48,6 @@ public class ShortbowSurvivalist() : SimpleWeaponCard(0, CardType.Skill, CardRar
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        AddKeyword(CardKeyword.Retain);
     }
 }

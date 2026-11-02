@@ -25,6 +25,8 @@ public class ShortbowBarbedPointTracker() : CustomSingletonModel(HookType.Combat
         {
             return;
         }
+        if(cardPlay.Card.Type != CardType.Attack)
+            return;
 
         if (!_pending.TryGetValue(cardPlay.Player, out var list))
         {
@@ -37,7 +39,7 @@ public class ShortbowBarbedPointTracker() : CustomSingletonModel(HookType.Combat
             if (ready && card.Pile?.Type == PileType.Discard)
             {
                 await CardPileCmd.Add(card, PileType.Hand);
-                // Consume so it isn't returned again on later attacks this turn.
+                // Consume so it isnt returned again on later attacks this turn.
                 list[i] = (card, false);
             }
         }

@@ -23,7 +23,7 @@ public class ShortbowPoisonArrowPower : DungeonsAndSpiresPower
     {
         if (target != Owner)
             return;
-        if(cardSource == null && cardSource is SpellCard)
+        if(cardSource == null || cardSource is SpellCard)
             return;
         if(!cardSource.Tags.Contains(DASCoreCardtags.Weapon))
             return;

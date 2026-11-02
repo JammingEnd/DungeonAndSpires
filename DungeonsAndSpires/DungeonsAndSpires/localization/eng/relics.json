@@ -13,10 +13,10 @@
   "DUNGEONSANDSPIRES-BATTLE_MASTER_RELIC.selectionPrompt": "Choose a card to [gold]Retain[/gold] this turn.",
   "DUNGEONSANDSPIRES-BATTLE_MASTER_RELIC.flavor": "He knows what kind of thing you are..",
   "DUNGEONSANDSPIRES-BATTLE_MASTER_RELIC.title": "Battle Master",
-  "DUNGEONSANDSPIRES-ECHO_KNIGHT_RELIC.description": "ACT1: After gaining [gold]Second Wind[/gold], your next attack is played twice.\nACT2: At the start of combat, play the bottom card of your draw pile.\nACT3: After playing [gold]Action Surge[/gold], put a copy of the next card you play into your draw pile.",
+  "DUNGEONSANDSPIRES-ECHO_KNIGHT_RELIC.description": "ACT1: After gaining [gold]Second Wind[/gold], your next attack is played twice (relic flash).\nACT2: At the start of combat, play the bottom card of your draw pile.\nACT3: After playing [gold]Action Surge[/gold], put a copy of the next card you play into your draw pile.",
   "DUNGEONSANDSPIRES-ECHO_KNIGHT_RELIC.flavor": "In and Out. In and Out.",
   "DUNGEONSANDSPIRES-ECHO_KNIGHT_RELIC.title": "Echo Knight",
-  "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.description": "ACT1: Gain half-caster spellslots. At the start of combat, select 3 of 9 common or uncommon [gold]Spells[/gold] to add to your draw pile.\nACT2: Drawing a [gold]Spell[/gold] grants 3 [gold]Vigor[/gold].\nACT3: After playing a spell, gain a random enemy[gold]Vulnerable[/gold]", 
+  "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.description": "ACT1: Gain half-caster spellslots. At the start of combat, select 3 of 9 common or uncommon [gold]Spells[/gold] to add to your draw pile.\nACT2: Drawing a [gold]Spell[/gold] grants 3 [gold]Vigor[/gold].\nACT3: After playing a [gold]Spell[/gold], give a random enemy [gold]Vulnerable[/gold]", 
   "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.selectionPrompt": "Choose 3 spells.",
   "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.flavor": "A little bit of magic can't hurt.",
   "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.title": "Eldritch Knight"

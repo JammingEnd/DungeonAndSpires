@@ -9,7 +9,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 public class AllPowerfulPower : DungeonsAndSpiresPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerStackType StackType => PowerStackType.Single;
 
     // draw for every twohanded weapon played.
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -19,6 +19,6 @@ public class AllPowerfulPower : DungeonsAndSpiresPower
             return;
         }
 
-        await CardPileCmd.Draw(choiceContext, Amount, Owner.Player);
+        await CardPileCmd.Draw(choiceContext, 1, Owner.Player);
     }
 }

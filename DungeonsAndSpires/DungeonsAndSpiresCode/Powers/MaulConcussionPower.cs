@@ -11,6 +11,7 @@ public class MaulConcussionPower : DungeonsAndSpiresPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
 
     private int _vulnerable = 2;
     public void SetVulnerable(int amount) => _vulnerable = amount;
@@ -39,7 +40,7 @@ public class MaulConcussionPower : DungeonsAndSpiresPower
         }
         else
         {
-            await PowerCmd.ModifyAmount(choiceContext, this, -1, null, null);
+            await PowerCmd.Decrement(this);
         }
     }
 }

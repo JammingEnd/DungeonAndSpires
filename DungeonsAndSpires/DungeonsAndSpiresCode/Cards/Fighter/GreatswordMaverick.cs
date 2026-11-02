@@ -32,6 +32,7 @@ public class GreatswordMaverick() : MartialWeaponCard(1, CardType.Attack, CardRa
 
     protected override void OnUpgrade()
     {
+        DynamicVars["Vigor"].UpgradeValueBy(2m);
         DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

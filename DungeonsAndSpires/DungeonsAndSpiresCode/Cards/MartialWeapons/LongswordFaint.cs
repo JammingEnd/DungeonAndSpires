@@ -22,6 +22,6 @@ public class LongswordFaint() : MartialWeaponCard(0, CardType.Skill, CardRarity.
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Strength"].UpgradeValueBy(1);
+        DynamicVars["Strength"].UpgradeValueBy(2);
     }
 }

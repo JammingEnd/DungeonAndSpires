@@ -15,7 +15,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 [Pool(typeof(TokenCardPool))]
 public abstract class ElementChoiceCard : CoreCard
 {
-    protected ElementChoiceCard() : base(0, CardType.Status, CardRarity.Token, TargetType.None)
+    protected ElementChoiceCard() : base(-1, CardType.None, CardRarity.Token, TargetType.None)
     {
     }
 
@@ -30,16 +30,46 @@ public class ElementFire : ElementChoiceCard
 public class ElementIce : ElementChoiceCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Cold];
+    
+    protected override IEnumerable<DynamicVar> CardVars =>
+    [
+        new PowerVar<VulnerablePower>("FrostbitePower", 1)
+    ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<FrostbitePower>()
+    ];
 }
 
 public class ElementLightning : ElementChoiceCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Lightning];
+    
+    protected override IEnumerable<DynamicVar> CardVars =>
+    [
+        new PowerVar<VulnerablePower>("ShockedPower", 1)
+    ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<ShockedPower>()
+    ];
 }
 
 public class ElementThunder : ElementChoiceCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Thunder];
+
+    protected override IEnumerable<DynamicVar> CardVars =>
+    [
+        new PowerVar<VulnerablePower>("Reverberation", 1)
+    ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<Reverberation>()
+    ];
 }
 
 public class ElementAcid : ElementChoiceCard

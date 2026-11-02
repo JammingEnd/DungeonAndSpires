@@ -28,11 +28,6 @@ public class MaulConcussion() : MartialWeaponCard(1, CardType.Skill, CardRarity.
         power?.SetVulnerable(DynamicVars["Vulnerable"].IntValue);
     }
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<MaulConcussionPower>()
-    ];
-
     protected override void OnUpgrade()
     {
         RemoveKeyword(CardKeyword.Exhaust);

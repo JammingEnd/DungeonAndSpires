@@ -232,6 +232,10 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
                 {
                     await PowerCmd.Apply<Reverberation>(choiceContext, target, amount, Owner.Creature, this);
                 }
+                else if (target.GetPowerAmount<Reverberation>() == 0)
+                {
+                    await PowerCmd.Apply<Reverberation>(choiceContext, target, amount, Owner.Creature, this);
+                }
             }
         }
     }

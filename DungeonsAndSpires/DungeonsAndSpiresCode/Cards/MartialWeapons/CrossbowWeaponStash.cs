@@ -10,8 +10,6 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
 public class CrossbowWeaponStash() : MartialWeaponCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Piering];
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PowerCmd.Apply<CrossbowWeaponStashPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
