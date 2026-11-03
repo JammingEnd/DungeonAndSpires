@@ -1,4 +1,5 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Spells;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -22,6 +23,8 @@ public class MagicWindsPower : DungeonsAndSpiresPower
     {
         if (cardPlay.Player != Owner.Player)
             return;
+        if(cardPlay.Card is MpMagicWinds)
+            return;
         if (cardPlay.Card is SpellCard spellCard)
         {
             if (spellCard.Level == 0)
@@ -30,12 +33,16 @@ public class MagicWindsPower : DungeonsAndSpiresPower
                 {
                     if(ally.IsDead)
                         continue;
+                    if(ally == Owner)
+                        return;
                     var card = cardPlay.Card.CreateCloneForPlayer(ally.Player);
                     if(_isFree)
                         card.EnergyCost.SetThisCombat(0);
                     
                     await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner.Player);
                 }
+
+                await PowerCmd.Remove(this);
             }
         }
     }
