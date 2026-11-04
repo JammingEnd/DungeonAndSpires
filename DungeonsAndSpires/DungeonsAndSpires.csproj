@@ -67,6 +67,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="DungeonsAndSpiresCode\Character\Druid\" />
         <Folder Include="DungeonsAndSpiresCode\Character\Fighter\" />
         <Folder Include="DungeonsAndSpiresCode\DynamicVars\" />
         <Folder Include="DungeonsAndSpiresCode\Hooks\" />

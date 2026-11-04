@@ -27,5 +27,19 @@
   "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.pronounPossessive": "His",
   "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.pronounSubject": "He",
   "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.title": "The Fighter",
-  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.titleObject": "the Fighter"
+  "DUNGEONSANDSPIRES-FIGHTER_CHARACTER.titleObject": "the Fighter",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.aromaPrinciple": "Lore",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.banter.alive.endTurnPing": "Nature endures.",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.banter.dead.endTurnPing": "...",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.cardsModifierDescription": "Druid cards will now appear in rewards and shops.",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.cardsModifierTitle": "Druid Cards",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.description": "A guardian of the wilds who draws power from nature.\n(WIP - no Druid mechanics yet.)",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.eventDeathPrevention": "Not yet!",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.goldMonologue": "The wilds provide.",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.possessiveAdjective": "His",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.pronounObject": "Him",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.pronounPossessive": "His",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.pronounSubject": "He",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.title": "The Druid",
+  "DUNGEONSANDSPIRES-DRUID_CHARACTER.titleObject": "the Druid"
 }
