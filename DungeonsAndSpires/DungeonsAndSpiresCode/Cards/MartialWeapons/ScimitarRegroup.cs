@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
 
-public class ScimitarRegroup() : MartialWeaponCard(3, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class ScimitarRegroup() : MartialWeaponCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CardVars =>
     [

@@ -24,6 +24,5 @@ public class StormSphere() : SpellCard(4, 3, CardType.Power, CardRarity.Uncommon
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromCard<LightningStrike>(),
-        HoverTipFactory.FromPower<ShortbowDrillTipPower>()
     ];
 }
