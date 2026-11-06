@@ -1,9 +1,11 @@
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
+using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -39,4 +41,9 @@ public class ScimitarQuickSlash() : MartialWeaponCard(1, CardType.Attack, CardRa
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        DipTips.Dip
+    ];
 }

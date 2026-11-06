@@ -6,6 +6,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -36,4 +37,8 @@ public class MaulStomachBurst() : MartialWeaponCard(1, CardType.Skill, CardRarit
         DynamicVars.Block.UpgradeValueBy(3m);
         DynamicVars["Extra"].UpgradeValueBy(1);
     }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        DipTips.Dip
+    ];
 }

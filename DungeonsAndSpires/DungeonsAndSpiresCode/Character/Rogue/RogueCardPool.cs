@@ -5,9 +5,9 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 
-public class DruidCardPool : CustomCardPoolModel
+public class RogueCardPool : CustomCardPoolModel
 {
-    public override string Title => DruidCharacter.CharacterId; //This is not a display name.
+    public override string Title => RogueCharacter.CharacterId; //This is not a display name.
 
     public override string BigEnergyIconPath => "charui/Core/big_energy.png".ImagePath();
     public override string TextEnergyIconPath => "charui/Core/text_energy.png".ImagePath();

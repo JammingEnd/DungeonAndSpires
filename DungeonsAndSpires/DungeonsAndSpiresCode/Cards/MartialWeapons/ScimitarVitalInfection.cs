@@ -1,10 +1,12 @@
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
+using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -41,4 +43,8 @@ public class ScimitarVitalInfection() : MartialWeaponCard(1, CardType.Attack, Ca
         DynamicVars["Vulnerable"].UpgradeValueBy(1);
         DynamicVars["Weak"].UpgradeValueBy(1);
     }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        DipTips.Dip
+    ];
 }

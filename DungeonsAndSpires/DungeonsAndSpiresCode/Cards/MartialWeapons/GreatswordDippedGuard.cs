@@ -1,4 +1,5 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
+using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
@@ -30,4 +31,8 @@ public class GreatswordDippedGuard() : MartialWeaponCard(1, CardType.Power, Card
     {
         DynamicVars["Block"].UpgradeValueBy(1);
     }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        DipTips.Dip
+    ];
 }

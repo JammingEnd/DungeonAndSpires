@@ -55,11 +55,13 @@ Characters:
         - [Echo Knight] (act1) After using your second wind, your next attack is played twice. (act2) At the start of combat, play the bottom card of your draw pile. when your deck is shuffled, it's put on the bottom.
             (act3) After playing action surge, copy the next card you play to your draw pile.
     
-    Druid:
+    Rogue:
+        Simple weapons + simple weapons extended
+    
+    Druis:
         -Full Spellcaster + simple weapons
         -Primary Feature is "Wild Shapes"; special power cards to turn into one
-        The player can do something to turn into an animal, when in this wild shape, the player can't cast spells. so any spell draw is going to be made impossible.
-        instead, 
+        The player can do something to turn into an animal, when in this wild shape, the player cant draw their weapon/spell cards. 
     
     [QUICK NOTES BEFORE I FORGOR]
     - Artificer (gain strength at the start of combat for each relic you have) 

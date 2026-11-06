@@ -17,6 +17,7 @@ public class CrossbowVolley() : MartialWeaponCard(3, CardType.Skill, CardRarity.
         foreach (var card in hand.Where(c => c.Type == CardType.Attack).ToList())
         {
             await CardCmd.AutoPlay(choiceContext, card, null);
+            
         }
 
         foreach (var card in Owner.PlayerCombatState?.Hand.Cards.ToList() ?? [])
@@ -24,7 +25,6 @@ public class CrossbowVolley() : MartialWeaponCard(3, CardType.Skill, CardRarity.
             await CardCmd.Exhaust(choiceContext, card);
         }
     }
-
     protected override void OnUpgrade()
     {
         AddKeyword(CardKeyword.Retain);

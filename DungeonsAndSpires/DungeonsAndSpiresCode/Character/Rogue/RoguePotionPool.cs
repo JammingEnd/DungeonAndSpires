@@ -4,9 +4,9 @@ using Godot;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 
-public class DruidRelicPool : CustomRelicPoolModel
+public class RoguePotionPool : CustomPotionPoolModel
 {
-    public override Color LabOutlineColor => DruidCharacter.Color;
+    public override Color LabOutlineColor => RogueCharacter.Color;
 
     public override string BigEnergyIconPath => "charui/Core/big_energy.png".ImagePath();
     public override string TextEnergyIconPath => "charui/Core/text_energy.png".ImagePath();
