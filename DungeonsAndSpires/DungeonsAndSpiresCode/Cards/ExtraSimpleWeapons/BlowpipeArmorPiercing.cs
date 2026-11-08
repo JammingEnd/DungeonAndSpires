@@ -30,7 +30,6 @@ public class BlowpipeArmorPiercing() : ExtraSimpleWeaponCard(2, CardType.Skill, 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromCard(ModelDb.Card<Dart>()),
-        HoverTipFactory.FromPower<BlowpipeArmorPiercingPower>()
     ];
 
     protected override void OnUpgrade()

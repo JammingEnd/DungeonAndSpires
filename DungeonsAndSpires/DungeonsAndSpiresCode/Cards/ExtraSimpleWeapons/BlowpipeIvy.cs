@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.ExtraSimpleWeapons;
 
@@ -24,7 +25,8 @@ public class BlowpipeIvy() : ExtraSimpleWeaponCard(2, CardType.Power, CardRarity
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        DipTips.Dip
+        DipTips.Dip,
+        HoverTipFactory.FromCard(ModelDb.Card<Dart>()),
     ];
 
     protected override void OnUpgrade()

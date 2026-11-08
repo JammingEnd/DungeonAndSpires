@@ -3,6 +3,8 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.ExtraSimpleWeapons;
 
@@ -42,6 +44,10 @@ public class BlowpipeUnload() : ExtraSimpleWeaponCard(1, CardType.Skill, CardRar
             await CardCmd.AutoPlay(choiceContext, dart, target);
         }
     }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromCard(ModelDb.Card<Dart>()),
+    ];
 
     protected override void OnUpgrade()
     {

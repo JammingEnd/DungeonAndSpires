@@ -5,6 +5,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -20,7 +21,6 @@ public class BlowpipeLongBarrel() : ExtraSimpleWeaponCard(3, CardType.Attack, Ca
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        // Preview assumes the draw-pile darts are about to be copied into the discard pile.
         ..MakeCalculatedDamage("Damage", BaseDamage,
             (card, _) => DamagePerDart * (DartsIn(card, PileType.Discard) + DartsIn(card, PileType.Draw)), 1, ValueProp.Move)
     ];
@@ -45,6 +45,7 @@ public class BlowpipeLongBarrel() : ExtraSimpleWeaponCard(3, CardType.Attack, Ca
         decimal damage = BaseDamage + DamagePerDart * DartsIn(this, PileType.Discard);
         await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(target).Execute(choiceContext);
     }
+    
 
     protected override void OnUpgrade()
     {

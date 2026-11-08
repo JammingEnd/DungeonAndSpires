@@ -43,7 +43,7 @@ public class BlowpipeSticknStones() : ExtraSimpleWeaponCard(1, CardType.Skill, C
     }
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromCard(ModelDb.Card<Dart>())
+        HoverTipFactory.FromCard(ModelDb.Card<Dart>(), this.IsUpgraded)
     ];
     protected override void OnUpgrade()
     {
