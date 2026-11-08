@@ -17,7 +17,7 @@ public class BladeOfDisaster() : SpellCard(8, 2, CardType.Attack, CardRarity.Rar
 {
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(12, ValueProp.Unpowered),
+        new DamageVar(9, ValueProp.Unpowered),
         new IntVar("Hits", 2)
     ];
 
