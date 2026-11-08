@@ -57,5 +57,12 @@ public class RogueCharacter : PlaceholderCharacterModel
 
     // Everything else uses PlaceholderCharacterModel's base game assets until Rogue art exists:
     // "Rogue/character_icon_rogue.png", "Rogue/char_select_bg_rogue.tscn", Scenes/Rogue/rogue_visuals.tscn, ...
+    public override string CustomIconTexturePath => "Rogue/character_icon_rogue.png".CharacterUiPath();
+    public override string CustomCharacterSelectIconPath => "Rogue/char_select_rogue.png".CharacterUiPath();
+    public override string CustomCharacterSelectLockedIconPath => "Rogue/char_select_rogue_locked.png".CharacterUiPath();
+    public override string CustomCharacterSelectBg => "Rogue/char_select_bg_rogue.tscn".CharacterUiPath();
+    public override string CustomMapMarkerPath => "Rogue/map_marker_rogue.png".CharacterUiPath();
     public override string CustomEnergyCounterPath => "res://DungeonsAndSpires/Scenes/Core/DAS_energy_counter.tscn";
+    public override string CustomVisualPath => "res://DungeonsAndSpires/Scenes/rogue/rogue_visuals.tscn";
+    public override string? CustomRestSiteAnimPath => "res://DungeonsAndSpires/Scenes/rogue/rogue_rest_site.tscn";
 }

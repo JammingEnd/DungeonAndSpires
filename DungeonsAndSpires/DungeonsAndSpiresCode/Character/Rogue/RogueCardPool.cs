@@ -22,6 +22,6 @@ public class RogueCardPool : CustomCardPoolModel
 
     protected override CardModel[] GenerateAllCards()
     {
-        return ModelDb.CardPool<DASSpellCardPool>().Add(ModelDb.CardPool<DASSimpleWeaponCardPool>()).ToArray();
+        return ModelDb.CardPool<DASExtraSimpleWeaponCardPool>().Add(ModelDb.CardPool<DASSimpleWeaponCardPool>()).ToArray();
     }
 }

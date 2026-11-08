@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://fybj7ko115k4"]
+
+[ext_resource type="Texture2D" uid="uid://du8doo5aw8m71" path="res://DungeonsAndSpires/images/charui/Rogue/char_select_bg_rogue.png" id="1_bky7w"]
+
+[node name="CharSelectBg" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 115.0
+offset_right = 2213.5999
+offset_bottom = 1239.0
+texture = ExtResource("1_bky7w")
+expand_mode = 1
