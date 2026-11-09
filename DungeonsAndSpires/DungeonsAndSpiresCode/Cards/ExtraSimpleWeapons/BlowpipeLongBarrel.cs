@@ -21,6 +21,7 @@ public class BlowpipeLongBarrel() : ExtraSimpleWeaponCard(3, CardType.Attack, Ca
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
+        // speculative damage
         ..MakeCalculatedDamage("Damage", BaseDamage,
             (card, _) => DamagePerDart * (DartsIn(card, PileType.Discard) + DartsIn(card, PileType.Draw)), 1, ValueProp.Move)
     ];
@@ -30,23 +31,20 @@ public class BlowpipeLongBarrel() : ExtraSimpleWeaponCard(3, CardType.Attack, Ca
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Target is not { } target)
-        {
+        // Maybe some shenanigans will cause the target to die
+        if(cardPlay.Target.IsDead)
             return;
-        }
-
-        // Copy every Dart in the draw pile into the discard pile.
+        
         foreach (var dart in PileType.Draw.GetPile(Owner).Cards.Where(c => c is Dart).ToList())
         {
             var copy = CombatState.CloneCard(dart);
             await CardPileCmd.Add(copy, PileType.Discard);
+            CardCmd.Preview(copy);
         }
 
         decimal damage = BaseDamage + DamagePerDart * DartsIn(this, PileType.Discard);
-        await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(target).Execute(choiceContext);
+        await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
     }
-    
-
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);

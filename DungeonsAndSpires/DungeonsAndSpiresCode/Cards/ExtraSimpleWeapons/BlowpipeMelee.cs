@@ -30,14 +30,9 @@ public class BlowpipeMelee() : ExtraSimpleWeaponCard(1, CardType.Attack, CardRar
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Target is not { } target)
-        {
-            return;
-        }
-
         await DamageCmd.Attack(DynamicVars["Damage"].GetCalculatedValue())
             .FromCard(this, cardPlay)
-            .Targeting(target)
+            .Targeting(cardPlay.Target)
             .Execute(choiceContext);
     }
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

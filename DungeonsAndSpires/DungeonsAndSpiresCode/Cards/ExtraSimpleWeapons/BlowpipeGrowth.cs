@@ -27,7 +27,7 @@ public class BlowpipeGrowth() : ExtraSimpleWeaponCard(2, CardType.Attack, CardRa
 
         for (int i = 0; i < DynamicVars["Darts"].IntValue; i++)
         {
-            await BlowpipeDarts.AddDart(CombatState, Owner, PileType.Draw, CardPilePosition.Random);
+            await BlowpipeDarts.AddDart(CombatState, Owner, PileType.Draw, CardPilePosition.Random, 0.5f);
         }
 
         // Every play shuffles one more dart for the rest of the combat.
