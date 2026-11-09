@@ -1,4 +1,5 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.CombatHistoryEntries;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
@@ -19,10 +20,7 @@ internal class FireDamageHistoryPatch
             return;
         }
 
-        var addMethod = AccessTools.Method(typeof(CombatHistory), "Add", [typeof(ICombatState), typeof(CombatHistoryEntry)]);
-        addMethod.Invoke(CombatManager.Instance.History, [
-            combatState,
-            new FireDamageEntry(dealer ?? receiver, combatState.RoundNumber, combatState.CurrentSide, CombatManager.Instance.History, combatState.Players)
-        ]);
+        CombatManager.Instance.History.Record(combatState,
+            new FireDamageEntry(dealer ?? receiver, combatState.RoundNumber, combatState.CurrentSide, CombatManager.Instance.History, combatState.Players));
     }
 }

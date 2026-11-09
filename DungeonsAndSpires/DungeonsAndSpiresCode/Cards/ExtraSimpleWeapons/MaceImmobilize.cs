@@ -35,6 +35,6 @@ public class MaceImmobilize() : ExtraSimpleWeaponCard(1, CardType.Attack, CardRa
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
     }
 }

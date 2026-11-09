@@ -291,6 +291,18 @@
   "DUNGEONSANDSPIRES-BLOWPIPE_CONDUCTIVE_POWER.description": "Your [gold]Darts[/gold] apply {Amount} [gold]Shocking[/gold].",
   "DUNGEONSANDSPIRES-BLOWPIPE_CONDUCTIVE_POWER.smartDescription": "Your [gold]Darts[/gold] apply {Amount} [gold]Shocking[/gold].",
   "DUNGEONSANDSPIRES-RESONANCE_POWER.title": "Resonance",
-  "DUNGEONSANDSPIRES-RESONANCE_POWER.description": "At 4, your next Attack gives 1 [gold]Strength[/gold], your next Skill gives 1 [gold]Dexterity[/gold], and your next Power gives both. Each also grants 1 energy, then 4 [gold]Resonance[/gold] is spent.",
-  "DUNGEONSANDSPIRES-RESONANCE_POWER.smartDescription": "At 4, your next Attack gives 1 [gold]Strength[/gold], your next Skill gives 1 [gold]Dexterity[/gold], and your next Power gives both. Each also grants 1 energy, then 4 [gold]Resonance[/gold] is spent."
+  "DUNGEONSANDSPIRES-RESONANCE_POWER.description": "At 4, your next Attack gives 1 [gold]Strength[/gold], your next Skill gives 1 [gold]Dexterity[/gold], and your next Power gives both. Each also grants 1 {energyPrefix:energyIcons(1)}, then 4 [gold]Resonance[/gold] is spent.",
+  "DUNGEONSANDSPIRES-RESONANCE_POWER.smartDescription": "At 4, your next Attack gives 1 [gold]Strength[/gold], your next Skill gives 1 [gold]Dexterity[/gold], and your next Power gives both. Each also grants {energy} {energyPrefix:energyIcons(1)}, then 4 [gold]Resonance[/gold] is spent.",
+  "DUNGEONSANDSPIRES-MACE_CONCENTRATE_POWER.title": "Mace Concentrate",
+  "DUNGEONSANDSPIRES-MACE_CONCENTRATE_POWER.description": "The next time you activate [gold]Resonance[/gold], draw {Amount} cards.",
+  "DUNGEONSANDSPIRES-MACE_CONCENTRATE_POWER.smartDescription": "The next time you activate [gold]Resonance[/gold], draw {Amount} cards.",
+  "DUNGEONSANDSPIRES-MACE_LOOKING_GLASS_POWER.title": "Mace Looking Glass",
+  "DUNGEONSANDSPIRES-MACE_LOOKING_GLASS_POWER.description": "Whenever you discard 3 cards, gain {Amount} [gold]Resonance[/gold].",
+  "DUNGEONSANDSPIRES-MACE_LOOKING_GLASS_POWER.smartDescription": "Whenever you discard 3 cards, gain {Amount} [gold]Resonance[/gold].",
+  "DUNGEONSANDSPIRES-MACE_RADIANCE_POWER.title": "Mace Radiance",
+  "DUNGEONSANDSPIRES-MACE_RADIANCE_POWER.description": "Whenever you activate [gold]Resonance[/gold], apply {Amount} [gold]Reverberation[/gold] to ALL enemies.",
+  "DUNGEONSANDSPIRES-MACE_RADIANCE_POWER.smartDescription": "Whenever you activate [gold]Resonance[/gold], apply {Amount} [gold]Reverberation[/gold] to ALL enemies.",
+  "DUNGEONSANDSPIRES-MACE_LEECHING_POWER.title": "Mace Leeching",
+  "DUNGEONSANDSPIRES-MACE_LEECHING_POWER.description": "Whenever you activate [gold]Resonance[/gold], gain {Amount} additional {energyPrefix:energyIcons(1)}.",
+  "DUNGEONSANDSPIRES-MACE_LEECHING_POWER.smartDescription": "Whenever you activate [gold]Resonance[/gold], gain {Amount} additional {energyPrefix:energyIcons(1)}."
 }
