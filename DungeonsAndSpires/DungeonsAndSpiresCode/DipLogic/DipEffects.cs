@@ -45,4 +45,35 @@ public static class DipEffects
             await PowerCmd.Apply<Reverberation>(choiceContext, target, 1, player.Creature, source);
         }
     }
+
+    // reagent applies the double of the assocaited effect. 
+    public static async Task ApplyReagent(PlayerChoiceContext choiceContext, Player player, CardModel card, Creature target, CardModel source)
+    {
+        var dip = player.PlayerCombatState?.GetDip(card);
+        if (dip == null)
+        {
+            return;
+        }
+
+        if (dip.Type == CoreKeywords.Poison)
+        {
+            int amount = WeaponDipsHandler.EffectiveStrength(card, dip, player.Creature);
+            if (amount > 0)
+            {
+                await PowerCmd.Apply<PoisonPower>(choiceContext, target, amount, player.Creature, source);
+            }
+        }
+        else if (dip.Type == CoreKeywords.Cold)
+        {
+            await PowerCmd.Apply<FrostbitePower>(choiceContext, target, 2, player.Creature, source);
+        }
+        else if (dip.Type == CoreKeywords.Lightning)
+        {
+            await PowerCmd.Apply<ShockedPower>(choiceContext, target, 2, player.Creature, source);
+        }
+        else if (dip.Type == CoreKeywords.Thunder)
+        {
+            await PowerCmd.Apply<Reverberation>(choiceContext, target, 2, player.Creature, source);
+        }
+    }
 }

@@ -37,7 +37,7 @@ public class WeaponDipsHandler : CustomSingletonModel
         var card = cardPlay.Card;
         if (CheckState(card.Owner.Creature, card, out var info) && info.Type == CoreKeywords.Poison)
         {
-            // AoE weapon attacks have no single target.
+            // Aoe hits all
             var targets = cardPlay.Target != null
                 ? new List<Creature> { cardPlay.Target }
                 : card.TargetType == TargetType.AllEnemies
@@ -49,6 +49,14 @@ public class WeaponDipsHandler : CustomSingletonModel
                 await PowerCmd.Apply<PoisonPower>(choiceContext, target, EffectiveStrength(card, info, card.Owner.Creature), card.Owner.Creature, card);
             }
         }
+        // Reagent
+        var reagent = card.Owner.Creature.GetPower<SlingshotReagentPower>();
+        if (reagent != null && cardPlay.Target != null && CheckState(card.Owner.Creature, card, out _))
+        {
+            await DipEffects.ApplyReagent(choiceContext, card.Owner, card, cardPlay.Target, card);
+            await PowerCmd.Decrement(reagent);
+        }
+
         bool skipDipUse = false;
         if (cardPlay.Card is ScimitarQuickSlash quickSlash && !quickSlash.DipUsedThisTurn)
         {
