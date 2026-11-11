@@ -318,6 +318,8 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
     
     #endregion
 
+    public virtual decimal FinesseStrength => 1;
+
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource,
         CardPlay? cardPlay)
     {
@@ -331,7 +333,7 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
         {
             int strength = Owner.Creature.GetPowerAmount<StrengthPower>();
             int vigor = Owner.Creature.GetPowerAmount<VigorPower>();
-            int dexterity = Owner.Creature.GetPowerAmount<DexterityPower>();
+            int dexterity = (int)(Owner.Creature.GetPowerAmount<DexterityPower>() * FinesseStrength);
             newAmount += Math.Max(0, dexterity - (strength + vigor));
         }
         return newAmount;

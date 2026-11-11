@@ -19,5 +19,15 @@
   "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.description": "ACT1: Gain half-caster spellslots. At the start of combat, select 3 of 9 common or uncommon [gold]Spells[/gold] to add to your draw pile.\nACT2: Drawing a [gold]Spell[/gold] grants 3 [gold]Vigor[/gold].\nACT3: After playing a [gold]Spell[/gold], give a random enemy [gold]Vulnerable[/gold]", 
   "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.selectionPrompt": "Choose 3 spells.",
   "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.flavor": "A little bit of magic can't hurt.",
-  "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.title": "Eldritch Knight"
+  "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.title": "Eldritch Knight",
+  "DUNGEONSANDSPIRES-ASSASSIN_RELIC.title": "Assassin",
+  "DUNGEONSANDSPIRES-ASSASSIN_RELIC.description": "ACT1: The first [gold]Attack[/gold] you play each combat deals double damage.\nACT2: Whenever you enter a [gold]?[/gold] room, gain 4 [gold]Vigor[/gold] at the start of your next combat.\nACT3: Entering [gold]Hidden[/gold] grants 1 [gold]Strength[/gold] and 1 [gold]Dexterity[/gold].",
+  "DUNGEONSANDSPIRES-ASSASSIN_RELIC.flavor": "Patient, precise, and always already behind you.",
+  "DUNGEONSANDSPIRES-ARCANE_TRICKSTER_RELIC.title": "Arcane Trickster",
+  "DUNGEONSANDSPIRES-ARCANE_TRICKSTER_RELIC.description": "ACT1: At the start of combat, choose 2 of 5 [gold]Cantrip[/gold] or level 1 spells. They gain [gold]Retain[/gold].\nACT2: While [gold]Hidden[/gold], you have 5 [gold]Ability Potency[/gold].\nACT3: After you cast a spell, all enemies lose 1 [gold]Strength[/gold] for a turn.",
+  "DUNGEONSANDSPIRES-ARCANE_TRICKSTER_RELIC.selectionPrompt": "Choose 2 spells to start combat with.",
+  "DUNGEONSANDSPIRES-ARCANE_TRICKSTER_RELIC.flavor": "Magic is just another lock to pick.",
+  "DUNGEONSANDSPIRES-THIEF_RELIC.title": "Thief",
+  "DUNGEONSANDSPIRES-THIEF_RELIC.description": "ACT1: Damage you take outside of combat is halved.\nACT2: If you end combat [gold]Hidden[/gold], gain 25% more [gold]Gold[/gold].\nACT3: At the start of an [gold]Elite[/gold] or [gold]Boss[/gold] combat, gain {energyPrefix:energyIcons(2)} and 20 [gold]Block[/gold].",
+  "DUNGEONSANDSPIRES-THIEF_RELIC.flavor": "What's yours is mine, and what's mine is also mine."
 }

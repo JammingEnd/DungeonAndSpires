@@ -58,6 +58,9 @@ public class ResonancePower : DungeonsAndSpiresPower
                     CombatManager.Instance.History, Owner.CombatState.Players));
         }
 
+        // farcry makes the party's cards cheaper
+        Owner.GetPower<MaceFarcryPower>()?.GrantDiscount();
+
         // the activation applies reverb
         var radiance = Owner.GetPower<MaceRadiancePower>();
         if (radiance != null && Owner.CombatState != null)

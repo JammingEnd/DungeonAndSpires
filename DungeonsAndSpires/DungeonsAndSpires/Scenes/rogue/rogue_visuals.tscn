@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://xsv0ldc62or5" path="res://DungeonsAndSpires/images/charui/Rogue/rogue_attack.png" id="1_p2fak"]
 [ext_resource type="Texture2D" uid="uid://c1ue25vvjexq3" path="res://DungeonsAndSpires/images/charui/Rogue/rogue_cast.png" id="2_v6frl"]
-[ext_resource type="Texture2D" uid="uid://iaueotfalwwv" path="res://DungeonsAndSpires/images/charui/Rogue/cast_2.png" id="3_l3mh2"]
+[ext_resource type="Texture2D" uid="uid://iaueotfalwwv" path="res://DungeonsAndSpires/images/charui/Sorcerer/cast_2.png" id="3_l3mh2"]
 [ext_resource type="Texture2D" uid="uid://cfinivvct5rqu" path="res://DungeonsAndSpires/images/charui/Rogue/rogue_death.png" id="4_038sd"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://b0355ccx00mo" path="res://DungeonsAndSpires/Scenes/rogue/rogue_visualtree.tres" id="4_sp7qd"]
 [ext_resource type="Texture2D" uid="uid://b43tjn8y4h0uf" path="res://DungeonsAndSpires/images/charui/Rogue/rogue_idle.png" id="5_7s8e1"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://b0355ccx00mo" path="res://DungeonsAndSpires/Scenes/rogue/rogue_visualtree.tres" id="6_v6frl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ti736"]
 animations = [{
@@ -244,7 +244,7 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="Visuals"]
 root_node = NodePath("%Visuals/..")
-tree_root = ExtResource("4_sp7qd")
+tree_root = ExtResource("6_v6frl")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="Bounds" type="Control" parent="."]

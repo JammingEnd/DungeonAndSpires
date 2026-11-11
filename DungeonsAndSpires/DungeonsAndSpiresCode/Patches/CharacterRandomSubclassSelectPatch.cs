@@ -23,7 +23,7 @@ internal static class CharacterRandomSubclassSelectPatch
             return;
         }
 
-        if (player.character is not (SorcererCharacter or FighterCharacter))
+        if (player.character is not (SorcererCharacter or FighterCharacter or RogueCharacter))
         {
             return;
         }

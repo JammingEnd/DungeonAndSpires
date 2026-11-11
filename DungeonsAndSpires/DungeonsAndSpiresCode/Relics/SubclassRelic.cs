@@ -42,6 +42,11 @@ public abstract class SubclassRelic : DungeonsAndSpiresRelic
         {
             await PowerCmd.Apply<FighterSecondWindPower>(choiceContext, Owner.Creature, FighterSecondWindPower.AttacksRequired, Owner.Creature, null);
         }
+
+        if (Owner.Character is RogueCharacter rogue)
+        {
+            await PowerCmd.Apply<RogueHidePower>(choiceContext, Owner.Creature, 1, Owner.Creature, null);
+        }
     }
     
 

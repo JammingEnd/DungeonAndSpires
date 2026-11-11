@@ -3,6 +3,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Metamagic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Fighter;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Rogue;
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using DungeonsAndSpires.DungeonsAndSpiresCode.WeaponPlays;
 using HarmonyLib;
@@ -23,6 +24,7 @@ internal class PlayerCombatStateConstructorPatch
 
         AssignForSorcerer(player, __instance);
         AssignForFighter(player, __instance);
+        AssignForRogue(player, __instance);
     }
 
     private static void AssignForSorcerer(Player player, PlayerCombatState __instance)
@@ -47,6 +49,18 @@ internal class PlayerCombatStateConstructorPatch
             return;
         bool isEldritch = player.Relics.Any(r => r is EldritchKnightRelic);
         if (isEldritch)
+        {
+            SpellslotsField.State[__instance] = new SpellslotsState(true);
+        }
+    }
+
+    private static void AssignForRogue(Player player, PlayerCombatState __instance)
+    {
+        bool isRogue = player.Character.CardPool is RogueCardPool;
+        if (!isRogue)
+            return;
+        bool isArcane = player.Relics.Any(r => r is ArcaneTricksterRelic);
+        if (isArcane)
         {
             SpellslotsField.State[__instance] = new SpellslotsState(true);
         }

@@ -57,6 +57,24 @@ Characters:
     
     Rogue:
         Simple weapons + simple weapons extended
+        -main gimmick: hide/sneak attack
+            Hide: Playing skills/powers and 0 cost attacks grants Hide progress, upon reaching ??? stacks, become hidden. 
+            While HIDDEN, the first attack you play each turn deals 50% more damage and you gain 20% damage resistance. hidden is removed whenever an enemy hits you
+        
+        [Assassin] 
+            (act1): The first attack played each combat deals double damage 
+            (act2): Whenever you enter a ?, gain 4 vigor thats applied at the start of your next combat
+            (act3): entering hidden grants 1 dex and 1 strength
+            
+        [Arcane Trickster]
+            (act1): at the start of combat, choose 2 of 5 cantrip or lvl 1 spells, they gain retain
+            (act2): While in Hidden stance, you have 5 Ability Potency
+            (act3): All enemies lose 1 strength for a turn after you cast a spell
+            
+        [Thief]
+            (act1): Damage from events is halved
+            (act2): if you end combat Hidden, gain 25% more gold
+            (act3): At the start of an elite or Boss combat, gain 2 energy and 20 block 
     
     Druis:
         -Full Spellcaster + simple weapons
@@ -68,5 +86,3 @@ Characters:
     - Barbarian (cannot get spells in cardpool. rage: token card, rage as a powers gives strength which is removed when rage ends)
     
     
-BUGGGSSS:
-disengage uses it for cantrips like prestifgidation
