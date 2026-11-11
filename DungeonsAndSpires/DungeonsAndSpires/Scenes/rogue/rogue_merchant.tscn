@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpvosowwbftf1"]
+
+[ext_resource type="Texture2D" uid="uid://dpqegetfrpivj" path="res://DungeonsAndSpires/images/charui/Rogue/rogue_merchant.png" id="1_7y5qx"]
+
+[node name="merchant" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8.999998, -171.00002)
+scale = Vector2(0.8695652, 0.9414414)
+texture = ExtResource("1_7y5qx")

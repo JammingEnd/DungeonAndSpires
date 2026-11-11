@@ -16,6 +16,11 @@ public class MaceEchoChamber() : ExtraSimpleWeaponCard(2, CardType.Power, CardRa
         await PowerCmd.Apply<MaceEchoChamberPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 
+    protected override void OnUpgrade()
+    {
+        EnergyCost.UpgradeBy(-1);
+    }
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<ResonancePower>(),

@@ -545,5 +545,7 @@
   "DUNGEONSANDSPIRES-DAGGER_THROAT.description": "Deal {Damage:diff()} damage. [gold]Finesse[/gold] is 3 times as effective on this card.",
   "DUNGEONSANDSPIRES-DAGGER_THROAT.title": "Dagger For The Throat",
   "DUNGEONSANDSPIRES-FIRST_AND_LAST.description": "Deal {Damage:diff()} damage. [gold]Finesse[/gold] is {scaling} times as effective on this card.",
-  "DUNGEONSANDSPIRES-FIRST_AND_LAST.title": "The first and last word"
+  "DUNGEONSANDSPIRES-FIRST_AND_LAST.title": "The first and last word",
+  "DUNGEONSANDSPIRES-ETERNAL_SHADE.title": "Eternal Shade",
+  "DUNGEONSANDSPIRES-ETERNAL_SHADE.description": "You no longer lose [gold]Hide[/gold] progress from attacks.\nWhenever you become [gold]Hidden[/gold], a random card in your hand costs 0 this turn or until played."
 }

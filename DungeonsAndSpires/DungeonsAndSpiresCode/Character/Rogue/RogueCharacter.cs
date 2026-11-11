@@ -64,4 +64,5 @@ public class RogueCharacter : PlaceholderCharacterModel
     public override string CustomEnergyCounterPath => "res://DungeonsAndSpires/Scenes/Core/DAS_energy_counter.tscn";
     public override string CustomVisualPath => "res://DungeonsAndSpires/Scenes/rogue/rogue_visuals.tscn";
     public override string? CustomRestSiteAnimPath => "res://DungeonsAndSpires/Scenes/rogue/rogue_rest_site.tscn";
+    public override string CustomMerchantAnimPath => "res://DungeonsAndSpires/Scenes/rogue/rogue_merchant.tscn";
 }

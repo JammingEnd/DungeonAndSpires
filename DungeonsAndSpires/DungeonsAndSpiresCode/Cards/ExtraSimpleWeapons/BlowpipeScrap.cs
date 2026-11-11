@@ -10,6 +10,8 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.ExtraSimpleWeapons;
 
 public class BlowpipeScrap() : ExtraSimpleWeaponCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
 {
+    public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var scrappie = CombatState.CreateCard(ModelDb.Card<Scrappie>(), cardPlay.Target.Player);

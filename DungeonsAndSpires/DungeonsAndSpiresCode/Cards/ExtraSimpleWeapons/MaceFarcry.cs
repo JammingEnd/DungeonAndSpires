@@ -10,6 +10,8 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.ExtraSimpleWeapons;
 
 public class MaceFarcry() : ExtraSimpleWeaponCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
+    public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PowerCmd.Apply<MaceFarcryPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);

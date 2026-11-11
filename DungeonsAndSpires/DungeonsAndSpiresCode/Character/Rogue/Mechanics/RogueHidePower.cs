@@ -23,7 +23,10 @@ public class RogueHidePower : DungeonsAndSpiresPower
         var card = cardPlay.Card;
         if (card.Type == CardType.Attack && card.EnergyCost.GetResolved() > 1)
         {
-            Decrease();
+            if (Owner.GetPower<EternalShadePower>() == null)
+            {
+                Decrease();
+            }
         }
         else if (card.Type == CardType.Power || card.Type == CardType.Skill || card.Type == CardType.Attack)
         {
@@ -32,6 +35,12 @@ public class RogueHidePower : DungeonsAndSpiresPower
             {
                 _stacks = 0;
                 await PowerCmd.Apply<RogueHiddenPower>(choiceContext, Owner, 1, Owner, null);
+
+                var shade = Owner.GetPower<EternalShadePower>();
+                if (shade != null)
+                {
+                    await shade.GrantFreeCard(choiceContext);
+                }
             }
         }
 

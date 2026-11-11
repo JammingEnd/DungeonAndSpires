@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dappbihy7ooqb"]
+
+[ext_resource type="Texture2D" uid="uid://27oqpt5yn7x5" path="res://DungeonsAndSpires/images/charui/Fighter/fighter_merchant.png" id="1_vylc4"]
+
+[node name="merchant" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8.999998, -171.00002)
+scale = Vector2(0.8695652, 0.9414414)
+texture = ExtResource("1_vylc4")

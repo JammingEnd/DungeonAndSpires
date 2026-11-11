@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://lvouk8vvjjyq"]
+
+[ext_resource type="Texture2D" uid="uid://cqgy347jdnmca" path="res://DungeonsAndSpires/images/charui/Sorcerer/sorcerer_merchant.png" id="1_t0svh"]
+
+[node name="merchant" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8.999998, -171.00002)
+scale = Vector2(0.8695652, 0.9414414)
+texture = ExtResource("1_t0svh")
