@@ -341,12 +341,6 @@
   "DUNGEONSANDSPIRES-SLINGSHOT_ENDURANCE_POWER.title": "Slingshot Endurance",
   "DUNGEONSANDSPIRES-SLINGSHOT_ENDURANCE_POWER.description": "Whenever you apply a [gold]Dip[/gold], gain {Amount} [gold]Block[/gold].",
   "DUNGEONSANDSPIRES-SLINGSHOT_ENDURANCE_POWER.smartDescription": "Whenever you apply a [gold]Dip[/gold], gain {Amount} [gold]Block[/gold].",
-  "DUNGEONSANDSPIRES-ROGUE_HIDE_POWER.title": "Hide",
-  "DUNGEONSANDSPIRES-ROGUE_HIDE_POWER.description": "Every [gold]Skill[/gold] or [gold]Power[/gold] you play grants 1 [gold]Hide[/gold].\nAt {max} [gold]Hide[/gold], become [gold]Hidden[/gold].\nAttacks that cost energy spend 1 [gold]Hide[/gold].",
-  "DUNGEONSANDSPIRES-ROGUE_HIDE_POWER.smartDescription": "Every [gold]Skill[/gold] or [gold]Power[/gold] you play grants 1 [gold]Hide[/gold].\nAt {max} [gold]Hide[/gold], become [gold]Hidden[/gold].\nAttacks that cost energy spend 1 [gold]Hide[/gold].",
-  "DUNGEONSANDSPIRES-ROGUE_HIDDEN_POWER.title": "Hidden",
-  "DUNGEONSANDSPIRES-ROGUE_HIDDEN_POWER.description": "You cannot be seen.\nReduce damage you take by 20%.\nYour next Attack deals 50% more damage, then [gold]Hidden[/gold] ends.\nEnds when you take unblocked damage.",
-  "DUNGEONSANDSPIRES-ROGUE_HIDDEN_POWER.smartDescription": "You cannot be seen.\nReduce damage you take by 20%.\nYour next Attack deals 50% more damage, then [gold]Hidden[/gold] ends.\nEnds when you take unblocked damage.",
   "DUNGEONSANDSPIRES-STRENGTH_SAP_POWER.title": "Strength Sap",
   "DUNGEONSANDSPIRES-STRENGTH_SAP_POWER.description": "This creature deals {Amount} less damage with attacks. Wears off at the start of your next turn.",
   "DUNGEONSANDSPIRES-STRENGTH_SAP_POWER.smartDescription": "This creature deals {Amount} less damage with attacks. Wears off at the start of your next turn.",
@@ -355,5 +349,12 @@
   "DUNGEONSANDSPIRES-DAGGER_RELIABLE_DEXTERITY_POWER.smartDescription": "Next turn, gain {Amount} [gold]Temporary Dexterity[/gold].",
   "DUNGEONSANDSPIRES-DAGGER_RELIABLE_POWER.title": "Dagger Reliable",
   "DUNGEONSANDSPIRES-DAGGER_RELIABLE_POWER.description": "Next turn, gain {Amount} [gold]Temporary Dexterity[/gold].",
-  "DUNGEONSANDSPIRES-DAGGER_RELIABLE_POWER.smartDescription": "Next turn, gain {Amount} [gold]Temporary Dexterity[/gold]."
+  "DUNGEONSANDSPIRES-DAGGER_RELIABLE_POWER.smartDescription": "Next turn, gain {Amount} [gold]Temporary Dexterity[/gold].",
+
+  "DUNGEONSANDSPIRES-ROGUE_HIDE_POWER.title": "Hide",
+  "DUNGEONSANDSPIRES-ROGUE_HIDE_POWER.description": "Every [gold]Skill[/gold] or [gold]Power[/gold] you play grants 1 [gold]Hide[/gold].\nAt {max} [gold]Hide[/gold], become [gold]Hidden[/gold].\nAttacks that cost energy spend 1 [gold]Hide[/gold].",
+  "DUNGEONSANDSPIRES-ROGUE_HIDE_POWER.smartDescription": "Every [gold]Skill[/gold] or [gold]Power[/gold] you play grants 1 [gold]Hide[/gold].\nAt {max} [gold]Hide[/gold], become [gold]Hidden[/gold].\nAttacks that cost energy spend 1 [gold]Hide[/gold].",
+  "DUNGEONSANDSPIRES-ROGUE_HIDDEN_POWER.title": "Hidden",
+  "DUNGEONSANDSPIRES-ROGUE_HIDDEN_POWER.description": "Reduce damage you take by 20%.\nYour first Attack each turn deals 50% more damage.\nEnds when you take unblocked damage.",
+  "DUNGEONSANDSPIRES-ROGUE_HIDDEN_POWER.smartDescription": "Reduce damage you take by 20%.\nYour first Attack each turn deals 50% more damage.\nEnds when you take unblocked damage."
 }

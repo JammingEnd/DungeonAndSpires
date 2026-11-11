@@ -3,8 +3,10 @@ using BaseLib.Utils.NodeFactories;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Basic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Fighter;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.MartialWeapons;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Rogue;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Fighter;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Rogue;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
@@ -27,18 +29,18 @@ public class RogueCharacter : PlaceholderCharacterModel
         ModelDb.Card<ClubStrike>(),
         ModelDb.Card<ClubStrike>(),
         ModelDb.Card<ClubStrike>(),
+        ModelDb.Card<ClubStrike>(),
         ModelDb.Card<ClubDefend>(),
         ModelDb.Card<ClubDefend>(),
         ModelDb.Card<ClubDefend>(),
         ModelDb.Card<ClubDefend>(),
-        ModelDb.Card<SpearJavalin>(),
-        ModelDb.Card<GreatswordMaverick>(),
-        ModelDb.Card<GreatswordExpertise>()
+        ModelDb.Card<DaggerReliable>(),
+        ModelDb.Card<DaggerThroat>(),
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BattleMasterRelic>()
+        ModelDb.Relic<AssassinRelic>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<RogueCardPool>();

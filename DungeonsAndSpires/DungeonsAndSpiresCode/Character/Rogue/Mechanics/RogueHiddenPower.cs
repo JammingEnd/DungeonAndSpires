@@ -23,7 +23,7 @@ public class RogueHiddenPower : DungeonsAndSpiresPower
         if (target == Owner)
         {
             // Damage resistance? who knows
-            return amount * 0.8m;
+            return 0.8m;
         }
         if (dealer != Owner || cardPlay == null)
         {
