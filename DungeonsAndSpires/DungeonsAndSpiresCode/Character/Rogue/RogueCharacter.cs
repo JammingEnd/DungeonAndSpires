@@ -21,9 +21,8 @@ public class RogueCharacter : PlaceholderCharacterModel
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Masculine;
-    public override int StartingHp => 75;
-
-    // Copied from the Fighter; swap in Rogue cards once they exist.
+    public override int StartingHp => 66;
+    
     public override IEnumerable<CardModel> StartingDeck =>
     [
         ModelDb.Card<ClubStrike>(),
@@ -56,9 +55,7 @@ public class RogueCharacter : PlaceholderCharacterModel
             return icon;
         }
     }
-
-    // Everything else uses PlaceholderCharacterModel's base game assets until Rogue art exists:
-    // "Rogue/character_icon_rogue.png", "Rogue/char_select_bg_rogue.tscn", Scenes/Rogue/rogue_visuals.tscn, ...
+    
     public override string CustomIconTexturePath => "Rogue/character_icon_rogue.png".CharacterUiPath();
     public override string CustomCharacterSelectIconPath => "Rogue/char_select_rogue.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "Rogue/char_select_rogue_locked.png".CharacterUiPath();

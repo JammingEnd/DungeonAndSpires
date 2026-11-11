@@ -22,12 +22,12 @@ public class BlowpipeSpread() : ExtraSimpleWeaponCard(1, CardType.Skill, CardRar
     {
         for (int i = 0; i < DynamicVars["Darts"].IntValue; i++)
         {
-            await BlowpipeDarts.AddDart(CombatState, Owner, PileType.Draw, CardPilePosition.Random);
+            await BlowpipeDarts.AddDart(CombatState, Owner, PileType.Draw, CardPilePosition.Random, 0.5f);
         }
 
         for (int i = 0; i < DynamicVars["Darts"].IntValue; i++)
         {
-            await BlowpipeDarts.AddDart(CombatState, Owner, PileType.Discard, CardPilePosition.Random);
+            await BlowpipeDarts.AddDart(CombatState, Owner, PileType.Discard, CardPilePosition.Random, 0.5f);
         }
     }
 

@@ -29,6 +29,6 @@ public class DaggerStab() : SimpleWeaponCard(0, CardType.Attack, CardRarity.Comm
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

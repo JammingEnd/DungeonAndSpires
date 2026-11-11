@@ -27,6 +27,8 @@ public static class DipCmd
 
         state.WeaponDips[card] = dipInfo;
 
+        MainFile.Logger.Info($"Dip applied: {card.Id.Entry}, uses {dipInfo.UsesLeft}, strength {dipInfo.Strength}, dips {state.WeaponDips.Count}");
+
         OnDipChanged?.Invoke(card);
         OnChanged?.Invoke(player);
 

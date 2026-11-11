@@ -34,10 +34,10 @@ public class ShortbowSurvivalist() : SimpleWeaponCard(0, CardType.Skill, CardRar
         Func<CardModel, bool> filter = c => c.Tags.Contains(DASCoreCardtags.Weapon) && c.Type == CardType.Attack && !c.HasDip();
         var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, filter, this);
         var card = selected.FirstOrDefault();
-        if (card != null && card is CoreCard card_s)
+        if (card != null)
         {
             var dip = DipExtentions.GenerateRandomDip(DynamicVars["DipTurns"].IntValue, Owner, 2);
-            await DipCmd.Add(choiceContext, Owner,  card_s, dip);
+            await DipCmd.Add(choiceContext, Owner,  card, dip);
         }
     }
 

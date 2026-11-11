@@ -21,23 +21,20 @@ public class RogueHidePower : DungeonsAndSpiresPower
         if (cardPlay.Card.Owner != Owner.Player)
             return;
         var card = cardPlay.Card;
-        if (card.Type == CardType.Attack && card.EnergyCost.GetResolved() > 0)
+        if (card.Type == CardType.Attack && card.EnergyCost.GetResolved() > 1)
         {
             Decrease();
         }
-
-        if (card.Type == CardType.Power || card.Type == CardType.Skill)
+        else if (card.Type == CardType.Power || card.Type == CardType.Skill || card.Type == CardType.Attack)
         {
             _stacks++;
             if (_stacks >= DynamicVars["max"].IntValue)
             {
+                _stacks = 0;
                 await PowerCmd.Apply<RogueHiddenPower>(choiceContext, Owner, 1, Owner, null);
             }
-            else
-            {
-                _stacks = 0;
-            }
         }
+
         InvokeDisplayAmountChanged();
     }
     

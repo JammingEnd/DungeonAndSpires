@@ -352,9 +352,9 @@
   "DUNGEONSANDSPIRES-DAGGER_RELIABLE_POWER.smartDescription": "Next turn, gain {Amount} [gold]Temporary Dexterity[/gold].",
 
   "DUNGEONSANDSPIRES-ROGUE_HIDE_POWER.title": "Hide",
-  "DUNGEONSANDSPIRES-ROGUE_HIDE_POWER.description": "Every [gold]Skill[/gold] or [gold]Power[/gold] you play grants 1 [gold]Hide[/gold].\nAt {max} [gold]Hide[/gold], become [gold]Hidden[/gold].\nAttacks that cost energy spend 1 [gold]Hide[/gold].",
-  "DUNGEONSANDSPIRES-ROGUE_HIDE_POWER.smartDescription": "Every [gold]Skill[/gold] or [gold]Power[/gold] you play grants 1 [gold]Hide[/gold].\nAt {max} [gold]Hide[/gold], become [gold]Hidden[/gold].\nAttacks that cost energy spend 1 [gold]Hide[/gold].",
+  "DUNGEONSANDSPIRES-ROGUE_HIDE_POWER.description": "Every [gold]Attack[/gold], [gold]Skill[/gold] or [gold]Power[/gold] you play grants 1 [gold]Hide[/gold].\nAt {max} [gold]Hide[/gold], become [gold]Hidden[/gold].\nAttacks that cost 2+ energy spend 1 [gold]Hide[/gold].",
+  "DUNGEONSANDSPIRES-ROGUE_HIDE_POWER.smartDescription": "Every [gold]Attack[/gold], [gold]Skill[/gold] or [gold]Power[/gold] you play grants 1 [gold]Hide[/gold].\nAt {max} [gold]Hide[/gold], become [gold]Hidden[/gold].\nAttacks that cost 2+ energy spend 1 [gold]Hide[/gold].",
   "DUNGEONSANDSPIRES-ROGUE_HIDDEN_POWER.title": "Hidden",
-  "DUNGEONSANDSPIRES-ROGUE_HIDDEN_POWER.description": "Reduce damage you take by 20%.\nYour first Attack each turn deals 50% more damage.\nEnds when you take unblocked damage.",
-  "DUNGEONSANDSPIRES-ROGUE_HIDDEN_POWER.smartDescription": "Reduce damage you take by 20%.\nYour first Attack each turn deals 50% more damage.\nEnds when you take unblocked damage."
+  "DUNGEONSANDSPIRES-ROGUE_HIDDEN_POWER.description": "Reduce damage you take by 20%.\nYour first Attack each turn deals 50% more damage.\nEnds when you take unblocked damage from an Attack.",
+  "DUNGEONSANDSPIRES-ROGUE_HIDDEN_POWER.smartDescription": "Reduce damage you take by 20%.\nYour first Attack each turn deals 50% more damage.\nEnds when you take unblocked damage from an Attack."
 }

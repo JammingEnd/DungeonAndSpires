@@ -31,10 +31,8 @@ public partial class DipInfoControl : Control
             return;
         }
 
-        if (card == _view?.Model)
-        {
-            Refresh();
-        }
+        // Deferred: the hand often rebuilds its card views right after a card play, which would undo a synchronous refresh.
+        Callable.From(Refresh).CallDeferred();
     }
 
     public void Refresh()

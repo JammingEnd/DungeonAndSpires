@@ -17,8 +17,8 @@ public class MaceEchoingBlow() : ExtraSimpleWeaponCard(1, CardType.Attack, CardR
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(5, ValueProp.Move),
-        new IntVar("Resonance", 1)
+        new DamageVar(7, ValueProp.Move),
+        new IntVar("Resonance", 2)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -44,7 +44,7 @@ public class MaceEchoingBlow() : ExtraSimpleWeaponCard(1, CardType.Attack, CardR
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(4m);
         DynamicVars["Resonance"].UpgradeValueBy(1);
     }
 }

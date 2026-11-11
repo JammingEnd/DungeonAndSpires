@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using MegaCrit.Sts2.Core.CardSelection;
@@ -46,7 +47,7 @@ public class QuarterstaffPoleStorage() : SimpleWeaponCard(0, CardType.Skill, Car
         CommonActions.CardBlock(this, cardPlay);
 
         var prefs = new CardSelectorPrefs(new LocString("cards", "DUNGEONSANDSPIRES-QUARTERSTAFF_POLE_STORAGE.selectionPrompt"), 1, 1);
-        Func<CardModel, bool> filter = c => c.Tags.Contains(DASCoreCardtags.Weapon) && c.Type == CardType.Attack;
+        Func<CardModel, bool> filter = c => c.Tags.Contains(DASCoreCardtags.Weapon) && c.Type == CardType.Attack && !c.HasDip();
         var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, filter, this);
         var target = selected.FirstOrDefault();
         if (target == null)
