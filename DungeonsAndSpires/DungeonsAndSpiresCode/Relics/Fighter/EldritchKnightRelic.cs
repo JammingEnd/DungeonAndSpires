@@ -1,3 +1,4 @@
+using MegaCrit.Sts2.Core.Extensions;
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Fighter;
@@ -34,7 +35,7 @@ public class EldritchKnightRelic : SubclassRelic
         var allSpells = ModelDb.CardPool<DASSpellCardPool>().AllCards
             .Where(c => c.Rarity is CardRarity.Common or CardRarity.Uncommon)
             .ToList();
-        Owner.RunState.Rng.CombatCardGeneration.Shuffle(allSpells);
+        allSpells.UnstableShuffle(Owner.RunState.Rng.CombatCardGeneration);
         var spells = allSpells.Take(9).ToList();
         if (spells.Count == 0)
         {

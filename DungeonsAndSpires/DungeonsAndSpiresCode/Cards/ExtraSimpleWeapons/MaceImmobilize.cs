@@ -17,7 +17,7 @@ public class MaceImmobilize() : ExtraSimpleWeaponCard(1, CardType.Attack, CardRa
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar("custom_name", 4, ValueProp.Move),
+        new DamageVar(4, ValueProp.Move),
         new PowerVar<WeakPower>("Weak", 1)
     ];
 

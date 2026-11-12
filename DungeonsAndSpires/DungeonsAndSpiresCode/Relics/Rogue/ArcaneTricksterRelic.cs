@@ -1,3 +1,4 @@
+using MegaCrit.Sts2.Core.Extensions;
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.AbilityPotency;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
@@ -43,7 +44,7 @@ public class ArcaneTricksterRelic : SubclassRelic
         var options = ModelDb.CardPool<DASSpellCardPool>().AllCards
             .Where(c => c.Rarity is CardRarity.Common or CardRarity.Uncommon && c is SpellCard spell && (spell.Level == 0 || spell.Level == 1))
             .ToList();
-        Owner.RunState.Rng.CombatCardGeneration.Shuffle(options);
+        options.UnstableShuffle(Owner.RunState.Rng.CombatCardGeneration);
         var spells = options.Take(5).ToList();
         var prefs = new CardSelectorPrefs(new LocString("relics", "DUNGEONSANDSPIRES-ARCANE_TRICKSTER_RELIC.selectionPrompt"), 2, 2);
         var picked = await CardSelectCmd.FromSimpleGrid(new BlockingPlayerChoiceContext(), spells, Owner, prefs);

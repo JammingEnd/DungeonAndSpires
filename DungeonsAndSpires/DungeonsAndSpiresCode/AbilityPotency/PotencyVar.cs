@@ -30,8 +30,4 @@ public class PotencyVar : DynamicVar
         PreviewValue = GetCurrentPotency(card);
     }
 
-    protected override decimal GetBaseValueForIConvertible()
-    {
-        return _owner is CardModel card ? GetCurrentPotency(card) : BaseValue;
-    }
 }

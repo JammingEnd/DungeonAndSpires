@@ -38,9 +38,14 @@ internal static class CharacterSelectSubclassPatch
 
     [HarmonyPatch("SelectCharacter")]
     [HarmonyPostfix]
-    private static void SelectCharacterPostfix(CharacterModel characterModel)
+    private static void SelectCharacterPostfix(NCharacterSelectButton charSelectButton)
     {
-        _picker?.UpdateFor(characterModel);
+        if (charSelectButton.IsRandom)
+        {
+            return;
+        }
+
+        _picker?.UpdateFor(charSelectButton.Character);
     }
 
     private static void UpdateDisplayedRelic(NCharacterSelectScreen screen, SubclassRelic relic)

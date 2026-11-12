@@ -30,8 +30,4 @@ public class MetamagicVar : DynamicVar
         PreviewValue = GetCurrentMetamagic(card);
     }
 
-    protected override decimal GetBaseValueForIConvertible()
-    {
-        return _owner is CardModel card ? GetCurrentMetamagic(card) : BaseValue;
-    }
 }

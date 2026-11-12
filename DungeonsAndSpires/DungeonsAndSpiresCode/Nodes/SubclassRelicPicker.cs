@@ -9,6 +9,11 @@ public partial class SubclassRelicPicker : Control
 {
     public static SubclassRelic? SelectedSubclassRelic { get; private set; }
 
+    /// <summary>True while the local player has the random character button selected.</summary>
+    public static bool RandomMode { get; set; }
+
+    public static void ClearSelection() => SelectedSubclassRelic = null;
+
     public event Action<SubclassRelic>? RelicSelected;
 
     private readonly List<(TextureButton button, SubclassRelic relic)> _options = new();

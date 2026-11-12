@@ -32,5 +32,6 @@ public class MaceVigil() : ExtraSimpleWeaponCard(1, CardType.Skill, CardRarity.C
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars["Resonance"].UpgradeValueBy(1m);
     }
 }

@@ -19,7 +19,22 @@ internal class SubclassRelicChoicePatch
             return;
         }
 
+        var character = __instance.Character;
         var selected = SubclassRelicPicker.SelectedSubclassRelic;
+        
+        bool belongsToCharacter = selected != null
+            && character.RelicPool.AllRelics.Any(r => r.GetType() == selected.GetType());
+
+        if (SubclassRelicPicker.RandomMode || !belongsToCharacter)
+        {
+            SubclassRelicPicker.SelectRandomFor(character);
+            SubclassRelicPicker.RandomMode = false;
+            selected = SubclassRelicPicker.SelectedSubclassRelic;
+
+            MainFile.Logger.Info(
+                $"Rolled subclass {selected?.GetType().Name ?? "none"} for {character.Id}");
+        }
+
         if (selected == null)
         {
             return;
