@@ -11,7 +11,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 public class DaggerOffhandPower : DungeonsAndSpiresPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     private CardModel? _sourceCard;
 
@@ -27,7 +27,7 @@ public class DaggerOffhandPower : DungeonsAndSpiresPower
             return;
         }
 
-        await PowerCmd.Remove(this);
         await CardCmd.AutoPlay(choiceContext, cardPlay.Card, cardPlay.Target);
+        await PowerCmd.Decrement(this);
     }
 }
