@@ -21,7 +21,7 @@ public class DaggerSlice() : SimpleWeaponCard(1, CardType.Attack, CardRarity.Rar
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(3, ValueProp.Move)
+        new DamageVar(8, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -38,7 +38,7 @@ public class DaggerSlice() : SimpleWeaponCard(1, CardType.Attack, CardRarity.Rar
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(4m);
     }
 
     private bool PreviousCardWasDagger()

@@ -4,6 +4,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.ExtraSimpleWeapons;
@@ -24,4 +25,8 @@ public class MaceLeeching() : ExtraSimpleWeaponCard(2, CardType.Power, CardRarit
     {
         AddKeyword(CardKeyword.Innate);
     }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<ResonancePower>(),
+    ];
 }

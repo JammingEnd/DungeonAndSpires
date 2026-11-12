@@ -20,11 +20,12 @@
   "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.selectionPrompt": "Choose 3 spells.",
   "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.flavor": "A little bit of magic can't hurt.",
   "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.title": "Eldritch Knight",
+  
   "DUNGEONSANDSPIRES-ASSASSIN_RELIC.title": "Assassin",
   "DUNGEONSANDSPIRES-ASSASSIN_RELIC.description": "ACT1: The first [gold]Attack[/gold] you play each combat deals double damage.\nACT2: Whenever you enter a [gold]?[/gold] room, gain 4 [gold]Vigor[/gold] at the start of your next combat.\nACT3: Entering [gold]Hidden[/gold] grants 1 [gold]Strength[/gold] and 1 [gold]Dexterity[/gold].",
   "DUNGEONSANDSPIRES-ASSASSIN_RELIC.flavor": "Patient, precise, and always already behind you.",
   "DUNGEONSANDSPIRES-ARCANE_TRICKSTER_RELIC.title": "Arcane Trickster",
-  "DUNGEONSANDSPIRES-ARCANE_TRICKSTER_RELIC.description": "ACT1: At the start of combat, choose 2 of 5 [gold]Cantrip[/gold] or level 1 spells. They gain [gold]Retain[/gold].\nACT2: While [gold]Hidden[/gold], you have 5 [gold]Ability Potency[/gold].\nACT3: After you cast a spell, all enemies lose 1 [gold]Strength[/gold] for a turn.",
+  "DUNGEONSANDSPIRES-ARCANE_TRICKSTER_RELIC.description": "ACT1: At the start of combat, choose 2 of 5 [gold]Cantrip[/gold] or level 1 spells. They gain [gold]Retain[/gold].\nACT2: While [gold]Hidden[/gold], you have 5 [gold]Ability Potency[/gold].\nACT3: After you cast a spell, all enemies lose 3 [gold]Strength[/gold] for a turn.",
   "DUNGEONSANDSPIRES-ARCANE_TRICKSTER_RELIC.selectionPrompt": "Choose 2 spells to start combat with.",
   "DUNGEONSANDSPIRES-ARCANE_TRICKSTER_RELIC.flavor": "Magic is just another lock to pick.",
   "DUNGEONSANDSPIRES-THIEF_RELIC.title": "Thief",

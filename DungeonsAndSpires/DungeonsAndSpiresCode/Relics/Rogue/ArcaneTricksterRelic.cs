@@ -43,9 +43,10 @@ public class ArcaneTricksterRelic : SubclassRelic
         var options = ModelDb.CardPool<DASSpellCardPool>().AllCards
             .Where(c => c.Rarity is CardRarity.Common or CardRarity.Uncommon && c is SpellCard spell && (spell.Level == 0 || spell.Level == 1))
             .ToList();
-
+        Owner.RunState.Rng.CombatCardGeneration.Shuffle(options);
+        var spells = options.Take(5).ToList();
         var prefs = new CardSelectorPrefs(new LocString("relics", "DUNGEONSANDSPIRES-ARCANE_TRICKSTER_RELIC.selectionPrompt"), 2, 2);
-        var picked = await CardSelectCmd.FromSimpleGrid(new BlockingPlayerChoiceContext(), options, Owner, prefs);
+        var picked = await CardSelectCmd.FromSimpleGrid(new BlockingPlayerChoiceContext(), spells, Owner, prefs);
 
         foreach (var chosen in picked)
         {
@@ -108,7 +109,7 @@ public class ArcaneTricksterRelic : SubclassRelic
         var enemies = Owner.Creature.CombatState?.HittableEnemies.ToList() ?? [];
         foreach (var enemy in enemies)
         {
-            await PowerCmd.Apply<StrengthSapPower>(choiceContext, enemy, 1, Owner.Creature, cardPlay.Card);
+            await PowerCmd.Apply<StrengthSapPower>(choiceContext, enemy, 3, Owner.Creature, cardPlay.Card);
         }
     }
 }

@@ -1,4 +1,5 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Rogue;
 using BaseLib.Utils;
 using Godot;
 using HarmonyLib;
@@ -21,9 +22,9 @@ public class AddPotency
             {
                 return;
             }
-
-            // The Sorcerer always shows Potency; other characters reveal it once they have some.
-            bool alwaysVisible = player.Character.CardPool is SorcererCardPool;
+            
+            bool alwaysVisible = player.Character.CardPool is SorcererCardPool
+                || player.Relics.Any(r => r is ArcaneTricksterRelic);
 
             var label = display.GetNodeOrNull<Label>("potencyLabel");
             if (label == null)
@@ -35,10 +36,7 @@ public class AddPotency
             {
                 int potency = player.PlayerCombatState?.GetPotency() ?? 0;
                 label.Text = potency.ToString();
-                if (!alwaysVisible)
-                {
-                    display.Visible = potency > 0;
-                }
+                display.Visible = alwaysVisible || potency > 0;
             }
 
             void OnPotencyChanged(Player changedPlayer)

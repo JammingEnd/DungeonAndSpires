@@ -35,5 +35,6 @@ public class ShortbowRopeArrow() : SimpleWeaponCard(1, CardType.Skill, CardRarit
     protected override void OnUpgrade()
     {
         DynamicVars["Turns"].UpgradeValueBy(1);
+        DynamicVars.Block.UpgradeValueBy(5);
     }
 }
