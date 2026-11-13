@@ -247,6 +247,11 @@ root_node = NodePath("%Visuals/..")
 tree_root = ExtResource("6_038sd")
 anim_player = NodePath("../AnimationPlayer")
 
+[node name="AnimationTree2" type="AnimationTree" parent="Visuals"]
+root_node = NodePath("../..")
+tree_root = ExtResource("6_038sd")
+anim_player = NodePath("../AnimationPlayer")
+
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
