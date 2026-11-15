@@ -10,7 +10,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 
-// Temporary Strength loss: the creature hits for less until the next player turn.
 public class StrengthSapPower : DungeonsAndSpiresPower, ITemporaryPower
 {
     public override PowerType Type => PowerType.Debuff;

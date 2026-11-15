@@ -18,7 +18,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Rogue;
 public class ThiefRelic : SubclassRelic
 {
     public override RelicRarity Rarity => RelicRarity.None;
-
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<GoldenKeyRelic>();
     public override async Task InitialBonus() { }
     public override async Task Act2Bonus() { }
     public override async Task Act3Bonus() { }

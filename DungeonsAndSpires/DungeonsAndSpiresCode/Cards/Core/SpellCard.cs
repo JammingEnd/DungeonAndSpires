@@ -8,6 +8,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
@@ -32,6 +33,12 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
     /// is available). False for spells that shouldn't interact with spellslots (cards like Shield, since only the powers itself consumed spellslots).
     /// </summary>
     public virtual bool UsesSpellSlot => true;
+
+    /// <summary>
+    /// Whether casting this spell without a slot/metamagic should leave an Arcane Exhaustion behind.
+    /// Override on a card, or veto it from a relic/power via <see cref="IShouldCreateExhaustion"/>.
+    /// </summary>
+    public virtual bool ShouldCreateExhaustion(PlayerChoiceContext choiceContext, Player player) => true;
     
     
     public virtual string AttackAnimName => "cast_2";
@@ -77,13 +84,13 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
         {
             await MetamagicCmd.Remove(choiceContext, cardPlay.Player, 1);
         }
-        else if (cardPlay.Card == this && Level > 0 && _shouldConsumeSpellslot && UsesSpellSlot)
+        else if (cardPlay.Card == this && Level > 0 && _shouldConsumeSpellslot && UsesSpellSlot && SpellExhaustionHook.ShouldCreate(CombatState, this, choiceContext, cardPlay.Player))
         {
-                var card = (ArcaneExhaustion)CombatState.CreateCard(ModelDb.Card<ArcaneExhaustion>(), cardPlay.Player);
-                SpellCard thisCard = cardPlay.Card as SpellCard;
-                card.SetLevel(thisCard.Level);
-                var cardview = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, cardPlay.Player);
-                CardCmd.PreviewCardPileAdd(cardview, 0.5f);
+            var card = (ArcaneExhaustion)CombatState.CreateCard(ModelDb.Card<ArcaneExhaustion>(), cardPlay.Player);
+            SpellCard thisCard = cardPlay.Card as SpellCard;
+            card.SetLevel(thisCard.Level);
+            var cardview = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, cardPlay.Player);
+            CardCmd.PreviewCardPileAdd(cardview, 0.5f);
         }
         if (cardPlay.Card == this && Keywords.Contains(CoreKeywords.Heightened))
         {

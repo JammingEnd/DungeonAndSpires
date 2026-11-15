@@ -19,6 +19,8 @@ public class AssassinRelic : SubclassRelic
 {
     public override RelicRarity Rarity => RelicRarity.None;
     
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<LeechingKnifeRelic>();
+    
     public override async Task InitialBonus() { }
     public override async Task Act2Bonus() { }
     public override async Task Act3Bonus() { }

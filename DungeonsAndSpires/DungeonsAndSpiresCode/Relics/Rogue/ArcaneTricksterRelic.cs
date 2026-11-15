@@ -23,7 +23,10 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Rogue;
 public class ArcaneTricksterRelic : SubclassRelic
 {
     public override RelicRarity Rarity => RelicRarity.None;
-    
+
+
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<GhostGlovesRelic>();
+
     public override async Task InitialBonus() { }
     public override async Task Act2Bonus() { }
     public override async Task Act3Bonus() { }
@@ -42,7 +45,7 @@ public class ArcaneTricksterRelic : SubclassRelic
         }
 
         var options = ModelDb.CardPool<DASSpellCardPool>().AllCards
-            .Where(c => c.Rarity is CardRarity.Common or CardRarity.Uncommon && c is SpellCard spell && (spell.Level == 0 || spell.Level == 1))
+            .Where(c => c.Rarity is CardRarity.Common or CardRarity.Uncommon && c is SpellCard spell && (spell.Level <= 3 && spell.MultiplayerConstraint != CardMultiplayerConstraint.MultiplayerOnly))
             .ToList();
         options.UnstableShuffle(Owner.RunState.Rng.CombatCardGeneration);
         var spells = options.Take(5).ToList();
