@@ -99,4 +99,36 @@ public static class SpellslotsCmd
 
         OnChanged?.Invoke(player);
     }
+    
+    /// <summary>
+    /// Change the max spellslots someone has, also refills said spellslots, so use it only at the start of combat
+    /// </summary>
+    public static async Task IncreaseMaxSpellslots(PlayerChoiceContext context, Player player, int level, int amount)
+    {
+        var state = player.PlayerCombatState?.GetSpellslotsState();
+        if (state == null || amount <= 0)
+            return;
+
+        if (CombatManager.Instance.IsOverOrEnding)
+            return;
+        state.Spellslots[level].IncreaseMax(amount);
+        state.Spellslots[level].Refill();
+        OnChanged?.Invoke(player);
+    }
+    public static async Task IncreaseMaxSpellslots(PlayerChoiceContext context, Player player, float multiplier)
+    {
+        var state = player.PlayerCombatState?.GetSpellslotsState();
+        if (state == null || multiplier <= 1)
+            return;
+
+        if (CombatManager.Instance.IsOverOrEnding)
+            return;
+        foreach (var (_, value) in state.Spellslots)
+        {
+            int newMax = (int)Math.Round(value.GetMax() * multiplier);
+            value.SetMax(newMax);
+            value.Refill();
+        }
+        OnChanged?.Invoke(player);
+    }
 }

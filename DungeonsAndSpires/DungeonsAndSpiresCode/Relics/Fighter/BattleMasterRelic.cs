@@ -18,6 +18,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Fighter;
 public class BattleMasterRelic : SubclassRelic
 {
     public override RelicRarity Rarity => RelicRarity.None;
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<MastersManualRelic>();
 
     //at the start of combat, select a Maneuver.
     public override async Task InitialBonus() { }
@@ -34,7 +35,7 @@ public class BattleMasterRelic : SubclassRelic
     {
         if (CurrentLevel >= 1)
         {
-            await OfferManeuver(new BlockingPlayerChoiceContext());
+            await GenerateManeuver(new BlockingPlayerChoiceContext());
         }
     }
 
@@ -79,10 +80,10 @@ public class BattleMasterRelic : SubclassRelic
             return;
         }
 
-        await AddManeuver(ModelDb.Card<BaitAndSwitch>());
+        await GenerateManeuver(choiceContext, true);
     }
 
-    private async Task OfferManeuver(PlayerChoiceContext choiceContext)
+    private async Task GenerateManeuver(PlayerChoiceContext choiceContext, bool random = false)
     {
         var options = new List<CardModel>
         {
@@ -90,14 +91,22 @@ public class BattleMasterRelic : SubclassRelic
             Owner.RunState.CreateCard(ModelDb.Card<QuickToss>(), Owner),
             Owner.RunState.CreateCard(ModelDb.Card<MenacingAttack>(), Owner)
         };
-
-        var prefs = new CardSelectorPrefs(new LocString("relics", "DUNGEONSANDSPIRES-BATTLE_MASTER_RELIC.selectionPrompt"), 1, 1);
-        var picked = await CardSelectCmd.FromSimpleGrid(choiceContext, options, Owner, prefs);
-        var chosen = picked.FirstOrDefault();
-        if (chosen == null)
+        CardModel chosen;
+        if (random)
         {
-            return;
+            chosen = Owner.RunState.Rng.CombatCardGeneration.NextItem(options);
         }
+        else
+        {
+            var prefs = new CardSelectorPrefs(new LocString("relics", "DUNGEONSANDSPIRES-BATTLE_MASTER_RELIC.selectionPrompt"), 1, 1);
+            var picked = await CardSelectCmd.FromSimpleGrid(choiceContext, options, Owner, prefs);
+            chosen = picked.FirstOrDefault();
+            if (chosen == null)
+            {
+                return;
+            }
+        }
+        
         
         await AddManeuver(ModelDb.GetById<CardModel>(chosen.Id));
     }

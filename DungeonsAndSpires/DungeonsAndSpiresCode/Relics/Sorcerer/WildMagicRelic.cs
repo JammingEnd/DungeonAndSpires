@@ -21,6 +21,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Sorcerer;
 public class WildMagicRelic : SubclassRelic, IOnSpellSlotAmountChanged
 {
     public override RelicRarity Rarity => RelicRarity.None;
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<FireOfCreationRelic>();
     public override async Task InitialBonus()
     {
         // spellslot thingy

@@ -43,9 +43,11 @@ public class Spellslot(int initialMax)
     private int current = initialMax;
 
     public void SetMax(int max) => this.max = max;
+    public void IncreaseMax(int amount) => this.max += amount;
     public void SetCurrent(int current) => this.current = current;
     public int GetMax() => max;
     public int GetCurrent() => current;
+    public void Refill() => current = max;
 
     public void Consume(int amount = 1)
     {

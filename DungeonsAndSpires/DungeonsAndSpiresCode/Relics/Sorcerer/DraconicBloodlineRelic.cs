@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Map;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Potions;
 using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Rooms;
@@ -23,7 +24,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Sorcerer;
 public class DraconicBloodlineRelic : SubclassRelic
 {
     public override RelicRarity Rarity => RelicRarity.None;
-    
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<DivineScalesRelic>();
     //max hp
     public override async Task InitialBonus()
     {

@@ -18,6 +18,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Sorcerer;
 public class LunarSorcererRelic: SubclassRelic, IOnMetamagicChanged
 {
     public override RelicRarity Rarity => RelicRarity.None;
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<MoonlightCrystalRelic>();
     public override async Task InitialBonus()
     {
         UnlockedEnergyGain = true;

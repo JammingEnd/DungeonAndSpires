@@ -17,7 +17,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Fighter;
 public class EchoKnightRelic : SubclassRelic
 {
     public override RelicRarity Rarity => RelicRarity.None;
-
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<PulsatingHandguardRelic>();
     public override async Task InitialBonus() { }
     public override async Task Act2Bonus() { }
     public override async Task Act3Bonus() { }
@@ -42,7 +42,7 @@ public class EchoKnightRelic : SubclassRelic
         await CardCmd.AutoPlay(new BlockingPlayerChoiceContext(), bottom, null);
     }
 
-    // Act 1: gaining Second Wind echoes your next attack.
+    // Act 1: gaining Second Wind replays your next attack.
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (CurrentLevel >= 1 && amount > 0m && power is SecondWindPower && power.Owner == Owner.Creature)
@@ -52,7 +52,7 @@ public class EchoKnightRelic : SubclassRelic
         return Task.CompletedTask;
     }
 
-    // flashes the relic when the next card is echoed
+    // flashes the relic when the next card is replayed
     public override Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner != Owner || cardPlay.Card.Type != CardType.Attack)

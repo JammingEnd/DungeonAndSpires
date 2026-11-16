@@ -15,6 +15,7 @@ public class ArcaneExhaustion() : CoreCard(-1, CardType.Status, CardRarity.Statu
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
+        CardKeyword.Ethereal,
         CardKeyword.Unplayable
     ];
 

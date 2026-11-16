@@ -19,6 +19,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Fighter;
 public class EldritchKnightRelic : SubclassRelic
 {
     public override RelicRarity Rarity => RelicRarity.None;
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<ClearmetalBladeRelic>();
     
     public override async Task InitialBonus() { }
     public override async Task Act2Bonus() { }
@@ -36,14 +37,26 @@ public class EldritchKnightRelic : SubclassRelic
             .Where(c => c.Rarity is CardRarity.Common or CardRarity.Uncommon)
             .ToList();
         allSpells.UnstableShuffle(Owner.RunState.Rng.CombatCardGeneration);
-        var spells = allSpells.Take(9).ToList();
+
+        bool noClearMetal = Owner.GetRelic<ClearmetalBladeRelic>() == null;
+        int total = noClearMetal ? 9 : 18;
+        
+        var spells = allSpells.Take(total).ToList();
         if (spells.Count == 0)
         {
             return;
         }
 
         var options = spells.Select(c => Owner.RunState.CreateCard(c, Owner)).ToList();
-        var prefs = new CardSelectorPrefs(new LocString("relics", "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.selectionPrompt"), 3, Math.Min(3, options.Count));
+        CardSelectorPrefs prefs;
+        if (noClearMetal)
+        {
+           prefs = new CardSelectorPrefs(new LocString("relics", "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.selectionPrompt"), 3, Math.Min(3, options.Count));
+        }
+        else
+        {
+            prefs = new CardSelectorPrefs(new LocString("relics", "DUNGEONSANDSPIRES-ELDRITCH_KNIGHT_RELIC.selectionPrompt"), 0, Math.Min(6, options.Count));
+        }
         var context = new BlockingPlayerChoiceContext();
         var picked = await CardSelectCmd.FromSimpleGrid(context, options, Owner, prefs);
 

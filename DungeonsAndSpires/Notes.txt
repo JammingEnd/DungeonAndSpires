@@ -75,6 +75,28 @@ Characters:
             (act1): Damage from events is halved
             (act2): if you end combat Hidden, gain 25% more gold
             (act3): At the start of an elite or Boss combat, gain 2 energy and 20 block 
+            
+    Barbarian:
+        Simple + martial
+        - Main gimmick: Rage.
+            Rage is all about hitting stuff. My idea for rage is, you have a button on the left side (next to potency), if you click it, you gain rage.
+            Rage: You gain 50% less block, you take 50% less damage from enemy attacks. While rage, you deal 1 extra damage for each turn you are in rage. 
+            You lose rage when you haven't played an attack that turn. playing a power lowers rage by 1. you have access to 2 rages on turn start. 
+            
+        [Totem Warrior]
+        ? better rage resistance
+        ? random rage type (bear/wolf/tiger) which do stuff lol
+        ? 
+        
+        [Beserker]
+        ? frenzy: ignore weak
+        ? free play a 0 cost card 
+        ? on taking damage play a random attack card
+        
+        [Giant]
+        ? cards imbued with thunder/lightning
+        ? applying reverb/shocked
+        ? 
     
     Druis:
         -Full Spellcaster + simple weapons
