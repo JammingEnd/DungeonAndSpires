@@ -1,6 +1,6 @@
 {
   "DUNGEONSANDSPIRES-SORCERER_CHARACTER.aromaPrinciple": "Lore",
-  "DUNGEONSANDSPIRES-SORCERER_CHARACTER.banter.alive.endTurnPing": "The magic flows.",
+  "DUNGEONSANDSPIRES-SORCERER_CHARACTER.banter.alive.endTurnPing": "The magic flows. You should too!",
   "DUNGEONSANDSPIRES-SORCERER_CHARACTER.banter.dead.endTurnPing": "...",
   "DUNGEONSANDSPIRES-SORCERER_CHARACTER.cardsModifierDescription": "Sorcerer cards will now appear in rewards and shops.",
   "DUNGEONSANDSPIRES-SORCERER_CHARACTER.cardsModifierTitle": "Sorcerer Cards",
@@ -45,5 +45,21 @@
   "DUNGEONSANDSPIRES-ROGUE_CHARACTER.pronounSubject": "He",
   "DUNGEONSANDSPIRES-ROGUE_CHARACTER.title": "The Rogue",
   "DUNGEONSANDSPIRES-ROGUE_CHARACTER.titleObject": "the Rogue",
-  "DUNGEONSANDSPIRES-ROGUE_CHARACTER.shortTitle": "Rogue"
+  "DUNGEONSANDSPIRES-ROGUE_CHARACTER.shortTitle": "Rogue",
+  
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.aromaPrinciple": "Lore",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.banter.alive.endTurnPing": "Can we.. Please?.",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.banter.dead.endTurnPing": "...",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.cardsModifierDescription": "Barbarian cards will now appear in rewards and shops.",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.cardsModifierTitle": "Barbarian Cards",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.description": "A gentle, loving tiefling... Who has a few anger issues..\nYou gain access to [gold]Rage[/gold].",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.eventDeathPrevention": "I.. I live!",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.goldMonologue": "Can't wait to share with someone.",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.possessiveAdjective": "Her",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.pronounObject": "Her",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.pronounPossessive": "Her",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.pronounSubject": "She",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.title": "The Barbarian",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.titleObject": "the Barbarian",
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.shortTitle": "Barbarian"
 }

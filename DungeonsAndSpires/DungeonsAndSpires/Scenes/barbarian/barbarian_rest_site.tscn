@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://DungeonsAndSpires/images/charui/Barbarian/barbarian_sitting.png" id="1_hylci"]
+
+[node name="SorcererRestSite" type="Node2D"]
+position = Vector2(0, 1)
+
+[node name="ControlRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 927.0
+offset_top = 64.0
+offset_right = 927.0
+offset_bottom = 64.0
+
+[node name="SelectionReticle" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -112.0
+offset_top = -137.0
+offset_right = -72.0
+offset_bottom = -115.53162
+scale = Vector2(8.397697, 13.415076)
+
+[node name="Hitbox" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -112.0
+offset_top = -106.000015
+offset_right = -72.0
+offset_bottom = -84.271095
+scale = Vector2(8.397697, 10.815077)
+
+[node name="ThoughtBubbleLeft" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -41.0
+offset_top = -110.0
+offset_right = -41.0
+offset_bottom = -110.0
+
+[node name="ThoughtBubbleRight" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 131.0
+offset_top = -146.0
+offset_right = 131.0
+offset_bottom = -146.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ControlRoot"]
+position = Vector2(16, -80)
+scale = Vector2(0.74, 0.74)
+texture = ExtResource("1_hylci")
