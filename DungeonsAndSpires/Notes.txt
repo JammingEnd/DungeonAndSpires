@@ -80,7 +80,7 @@ Characters:
         Simple + martial
         - Main gimmick: Rage.
             Rage is all about hitting stuff. My idea for rage is, you have a button on the left side (next to potency), if you click it, you gain rage.
-            Rage: You gain 50% less block, you take 50% less damage from enemy attacks. While rage, you deal 1 extra damage for each turn you are in rage. 
+            Rage: You gain 50% less block, you take 50% less damage from enemy attacks, you deal 1 extra damage for each turn you are in rage. 
             You lose rage when you haven't played an attack that turn. playing a power lowers rage by 1. you have access to 2 rages on turn start. 
             
         [Totem Warrior]

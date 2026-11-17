@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://3b077d3mm0r7"]
+
+[ext_resource type="Texture2D" uid="uid://cw65lgiksisik" path="res://DungeonsAndSpires/images/charui/Core/ability_button.png" id="1_yayof"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yayof"]
+font_size = 34
+
+[node name="AbilityButtonControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -41.0
+offset_right = -1.0
+offset_bottom = 40.0
+
+[node name="button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 13.999999
+offset_top = -91.0
+offset_right = 714.0
+offset_bottom = 920.11115
+scale = Vector2(0.09, 0.09)
+texture_normal = ExtResource("1_yayof")
+stretch_mode = 0
+
+[node name="icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = -76.0
+offset_right = 66.0
+offset_bottom = -19.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_top = -51.0
+offset_right = 96.0
+offset_bottom = -4.0
+text = "3"
+label_settings = SubResource("LabelSettings_yayof")
+vertical_alignment = 1

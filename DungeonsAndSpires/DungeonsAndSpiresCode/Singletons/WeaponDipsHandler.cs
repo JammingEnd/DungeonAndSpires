@@ -5,6 +5,7 @@ using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Barbarian;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -61,6 +62,16 @@ public class WeaponDipsHandler : CustomSingletonModel
         if (cardPlay.Card is ScimitarQuickSlash quickSlash && !quickSlash.DipUsedThisTurn)
         {
             quickSlash.DipUsedThisTurn = true;
+            skipDipUse = true;
+        }
+        // Giant's Path act3: lightning/thunder dips keep their use when the target is Shocked/has Reverberation.
+        if (!skipDipUse
+            && card.Owner.GetRelic<GiantRelic>() is { CurrentLevel: >= 3 }
+            && CheckState(card.Owner.Creature, card, out var giantDip)
+            && (giantDip.Type == CoreKeywords.Lightning || giantDip.Type == CoreKeywords.Thunder)
+            && cardPlay.Target != null
+            && (cardPlay.Target.GetPowerAmount<ShockedPower>() > 0 || cardPlay.Target.GetPowerAmount<Reverberation>() > 0))
+        {
             skipDipUse = true;
         }
         if (!skipDipUse)

@@ -57,5 +57,15 @@
   "DUNGEONSANDSPIRES-THIEF_RELIC.flavor": "What's yours is mine, and what's mine is also mine.",
   "DUNGEONSANDSPIRES-GOLDEN_KEY_RELIC.title": "Golden Key",
   "DUNGEONSANDSPIRES-GOLDEN_KEY_RELIC.description": "Whenever you enter [gold]Hidden[/gold], [gold]Upgrade[/gold] a random card in your hand.",
-  "DUNGEONSANDSPIRES-GOLDEN_KEY_RELIC.flavor": "It opens something, eventually."
+  "DUNGEONSANDSPIRES-GOLDEN_KEY_RELIC.flavor": "It opens something, eventually.",
+
+  "DUNGEONSANDSPIRES-BESERKER_RELIC.description": "ACT1: At the start of your turn while [gold]Raged[/gold], a random 1 cost attack in your hand is free to play.\nAct2: Weak is 50% less effective on your while [gold]Raged[/gold].\nAct3: once a turn, when losing HP from an enemy attack play a random attack card from your [gold]Discard Pile[/gold].",
+  "DUNGEONSANDSPIRES-BESERKER_RELIC.flavor": "You have mad.. and then you MAD!!!..",
+  "DUNGEONSANDSPIRES-BESERKER_RELIC.title": "Beserker",
+  "DUNGEONSANDSPIRES-GIANT_RELIC.description": "ACT1: At the start of your turn while [gold]Raged[/gold], a random attack in your hand gain a 1 [gold]Use[/gold] 2 strength Lightning or fire [gold]Dip[/gold].\nAct2: Applying [gold]Reverb[/gold] or [gold]Shocked[/gold] gives you 2 [gold]Block[/gold].\nAct3: Attacks with a [gold]Lightning/Thunder[/gold] [gold]Dip[/gold] don't lose Use when hitting targets with [gold]Shocked/Reverb[/gold].",
+  "DUNGEONSANDSPIRES-GIANT_RELIC.flavor": "My hand reaches the skies, for my might will strike you!",
+  "DUNGEONSANDSPIRES-GIANT_RELIC.title": "Giant's Path",
+  "DUNGEONSANDSPIRES-TOTEM_WARRIOR_RELIC.description": "ACT1: Upon entering [gold]Rage[/gold], gain a random [gold]Rage Spirit[/gold].\nAct2: Whenever you take damage outside of combat, you start the next two combats with 2 extra [gold]Energy[/gold].\nAct3: You [gold]Rage Spirits[/gold] are enhanced.",
+  "DUNGEONSANDSPIRES-TOTEM_WARRIOR_RELIC.flavor": "Omg I love animals!! VERSUS... THE SPIRITS GUIDE MY UNYIELDING RAGE!!!",
+  "DUNGEONSANDSPIRES-TOTEM_WARRIOR_RELIC.title": "Totem Warrior"
 }

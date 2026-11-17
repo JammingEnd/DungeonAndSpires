@@ -3,16 +3,19 @@
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-SORCERER_CHARACTER.0-0r.next": "Intimidate (nat1)",
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-SORCERER_CHARACTER.0-1r.ancient": "You got power from birth, you'll lose it in death..",
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-SORCERER_CHARACTER.0-attack": "Architect",
+  
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-FIGHTER_CHARACTER.0-0r.char": "I'm getting filthy rich after I slay you!",
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-FIGHTER_CHARACTER.0-0r.next": "Intimidate (nat1)",
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-FIGHTER_CHARACTER.0-1r.ancient": "Your peasantry endeavours are not my concern, shoo.",
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-FIGHTER_CHARACTER.0-attack": "Architect",
+  
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-ROGUE_CHARACTER.0-0r.char": "I'll be taking what's yours.",
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-ROGUE_CHARACTER.0-0r.next": "Intimidate (nat1)",
-  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-ROGUE_CHARACTER.0-1r.ancient": "Sneak all you like, little thief.",
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-ROGUE_CHARACTER.0-1r.ancient": "uhmmm... Who are you?.",
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-ROGUE_CHARACTER.0-attack": "Architect",
-  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.0-0r.char": "I'll be taking what's yours.",
-  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.0-0r.next": "Roar",
-  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.0-1r.ancient": "Rage all you like, little brute.",
+  
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.0-0r.char": "Please help me with my anger issues :(.",
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.0-0r.next": "Persuade (nat1)",
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.0-1r.ancient": "No women in the mancave! shoooo!.",
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.0-attack": "Architect"
 }
