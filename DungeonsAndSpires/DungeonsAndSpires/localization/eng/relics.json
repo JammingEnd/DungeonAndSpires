@@ -62,10 +62,19 @@
   "DUNGEONSANDSPIRES-BESERKER_RELIC.description": "ACT1: At the start of your turn while [gold]Raged[/gold], a random 1 cost attack in your hand is free to play.\nAct2: Weak is 50% less effective on your while [gold]Raged[/gold].\nAct3: once a turn, when losing HP from an enemy attack play a random attack card from your [gold]Discard Pile[/gold].",
   "DUNGEONSANDSPIRES-BESERKER_RELIC.flavor": "You have mad.. and then you MAD!!!..",
   "DUNGEONSANDSPIRES-BESERKER_RELIC.title": "Beserker",
+  "DUNGEONSANDSPIRES-HOPIUM_RELIC.description": "[gold]Weak[/gold] has no effect on you while [gold]Raged[/gold].\nInstead of losing [gold]Rage[/gold] when playing a power, you lose [gold]Weak[/gold] instead if present.",
+  "DUNGEONSANDSPIRES-HOPIUM_RELIC.flavor": "WE WILL MAKE IT!! I BELIEVE!!!!",
+  "DUNGEONSANDSPIRES-HOPIUM_RELIC.title": "Hopium",
   "DUNGEONSANDSPIRES-GIANT_RELIC.description": "ACT1: At the start of your turn while [gold]Raged[/gold], a random attack in your hand gain a 1 [gold]Use[/gold] 2 strength Lightning or fire [gold]Dip[/gold].\nAct2: Applying [gold]Reverb[/gold] or [gold]Shocked[/gold] gives you 2 [gold]Block[/gold].\nAct3: Attacks with a [gold]Lightning/Thunder[/gold] [gold]Dip[/gold] don't lose Use when hitting targets with [gold]Shocked/Reverb[/gold].",
   "DUNGEONSANDSPIRES-GIANT_RELIC.flavor": "My hand reaches the skies, for my might will strike you!",
   "DUNGEONSANDSPIRES-GIANT_RELIC.title": "Giant's Path",
+  "DUNGEONSANDSPIRES-MINIATURE_MOUNTAIN_RELIC.description": "When you Attack an enemy without [gold]Reverb[/gold], apply one [gold]Reverb[/gold] to it.",
+  "DUNGEONSANDSPIRES-MINIATURE_MOUNTAIN_RELIC.flavor": "Even on this tiny rock, the world beneath it trembles.",
+  "DUNGEONSANDSPIRES-MINIATURE_MOUNTAIN_RELIC.title": "Miniature Mountain",
   "DUNGEONSANDSPIRES-TOTEM_WARRIOR_RELIC.description": "ACT1: Upon entering [gold]Rage[/gold], gain a random [gold]Rage Spirit[/gold].\nAct2: Whenever you take damage outside of combat, you start the next two combats with 2 extra [gold]Energy[/gold].\nAct3: You [gold]Rage Spirits[/gold] are enhanced.",
   "DUNGEONSANDSPIRES-TOTEM_WARRIOR_RELIC.flavor": "Omg I love animals!! VERSUS... THE SPIRITS GUIDE MY UNYIELDING RAGE!!!",
-  "DUNGEONSANDSPIRES-TOTEM_WARRIOR_RELIC.title": "Totem Warrior"
+  "DUNGEONSANDSPIRES-TOTEM_WARRIOR_RELIC.title": "Totem Warrior",
+  "DUNGEONSANDSPIRES-FIFTH_COLUMN_RELIC.description": "upon reaching 5 [gold]Rage[/gold], gain another random [gold]Rage Spirit[/gold].",
+  "DUNGEONSANDSPIRES-FIFTH_COLUMN_RELIC.flavor": "Our ancestors... never forget them.",
+  "DUNGEONSANDSPIRES-FIFTH_COLUMN_RELIC.title": "The Fifth Column"
 }

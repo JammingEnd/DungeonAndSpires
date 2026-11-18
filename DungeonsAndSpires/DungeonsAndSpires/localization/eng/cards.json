@@ -523,7 +523,7 @@
   "DUNGEONSANDSPIRES-MP_ARCANE_SYNC.title": "Arcane Sync",
   "DUNGEONSANDSPIRES-MP_ARCANE_SYNC.description": "At the end of your turn, for each ally, gain 1 spellslot of a level equal to the number of cards they played this turn (up to 9).",
   "DUNGEONSANDSPIRES-MAUL_FULL_SWING.title": "Maul Full Swing",
-  "DUNGEONSANDSPIRES-MAUL_FULL_SWING.description": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} cards.",
+  "DUNGEONSANDSPIRES-MAUL_FULL_SWING.description": "Deal {Damage:diff()} damage {Repeat:diff()} times.\nDraw {Cards:diff()} cards.",
   "DUNGEONSANDSPIRES-MAUL_KNUCKLE.title": "Maul Knuckle",
   "DUNGEONSANDSPIRES-MAUL_KNUCKLE.description": "Apply {Frostbite:diff()} [gold]Frostbite[/gold].\nDeal {Damage:diff()} damage."
 }

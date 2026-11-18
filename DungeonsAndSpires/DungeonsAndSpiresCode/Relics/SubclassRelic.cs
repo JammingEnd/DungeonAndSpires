@@ -27,10 +27,21 @@ public abstract class SubclassRelic : DungeonsAndSpiresRelic
         }
     }
     
+    // The subclass relic can be swapped in asynchronously after the act-1 AfterActEntered already
+    // fired, which would leave CurrentLevel at 0. Guarantee act 1 is counted by the first combat.
+    public override Task BeforeCombatStart()
+    {
+        if (CurrentLevel < 1)
+        {
+            CurrentLevel = 1;
+        }
+
+        return Task.CompletedTask;
+    }
+
     //instead of a patch, im just gonna to class-specific combat starts here
     public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants,
-        ICombatState combatState)
-    {
+        ICombatState combatState)    {
         if (!participants.Contains<Creature>(this.Owner.Creature) || Owner.PlayerCombatState.TurnNumber > 1)
             return;
 

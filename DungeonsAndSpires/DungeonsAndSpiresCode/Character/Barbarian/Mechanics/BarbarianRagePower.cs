@@ -1,4 +1,5 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Barbarian;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -7,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Character;
@@ -59,6 +61,8 @@ public class BarbarianRagePower : DungeonsAndSpiresPower
     
     public override decimal ModifyBlockMultiplicative(Creature target, decimal block, ValueProp props, CardModel? cardSource, CardPlay? cardPlay)
     {
+        if (props == ValueProp.Unpowered)
+            return 1m;
         return target == Owner ? 0.5m : 1m;
     }
 
@@ -75,7 +79,15 @@ public class BarbarianRagePower : DungeonsAndSpiresPower
         }
         else if (cardPlay.Card.Type == CardType.Power)
         {
-            await PowerCmd.Decrement(this);
+            // Hopium: paying a Power cost while Weak sheds Weak instead of Rage.
+            if (Owner.Player.GetRelic<HopiumRelic>() != null && Owner.GetPowerAmount<WeakPower>() > 0)
+            {
+                await PowerCmd.Apply<WeakPower>(choiceContext, Owner, -1, Owner, null);
+            }
+            else
+            {
+                await PowerCmd.Decrement(this);
+            }
         }
     }
 
@@ -87,5 +99,17 @@ public class BarbarianRagePower : DungeonsAndSpiresPower
         }
 
         await PowerCmd.Remove(this);
+    }
+    
+    public override async Task AfterRemoved(Creature oldOwner)
+    {
+        await PowerCmd.Remove<BearSpirit>(oldOwner);
+        await PowerCmd.Remove<EagleSpirit>(oldOwner);
+        await PowerCmd.Remove<WolfSpirit>(oldOwner);
+        await PowerCmd.Remove<ElkSpirit>(oldOwner);
+        if (oldOwner.IsPlayer)
+        {
+            oldOwner.Player.GetRelic<TotemWarriorRelic>().SetGrantedSpirit(false);
+        }
     }
 }

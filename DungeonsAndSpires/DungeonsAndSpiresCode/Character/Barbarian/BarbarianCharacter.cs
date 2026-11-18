@@ -94,6 +94,7 @@ public class BarbarianCharacter : PlaceholderCharacterModel, IAbilityCast
 
     private async Task ApplyRage(Player player)
     {
+        DungeonsAndSpires.DungeonsAndSpiresCode.MainFile.Logger.Info("ApplyRage: applying BarbarianRagePower");
         await PowerCmd.Apply<BarbarianRagePower>(new ThrowingPlayerChoiceContext(), player.Creature, 1, player.Creature, null);
     }
 }

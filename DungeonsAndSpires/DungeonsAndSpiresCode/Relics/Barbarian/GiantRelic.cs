@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -19,7 +20,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Barbarian;
 public class GiantRelic : SubclassRelic
 {
     public override RelicRarity Rarity => RelicRarity.None;
-
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<MiniatureMountainRelic>();
     public override async Task InitialBonus() { }
     public override async Task Act2Bonus() { }
     public override async Task Act3Bonus() { }
@@ -45,7 +46,8 @@ public class GiantRelic : SubclassRelic
     }
 
     // act2: applying reverb or shocked gives you 2 block
-    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power,
+        decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (CurrentLevel < 2 || amount <= 0 || power is not (Reverberation or ShockedPower))
         {
@@ -53,8 +55,8 @@ public class GiantRelic : SubclassRelic
         }
 
         bool mine = applier == Owner.Creature
-            || power.Applier == Owner.Creature
-            || (cardSource != null && cardSource.Owner == Owner);
+                    || power.Applier == Owner.Creature
+                    || (cardSource != null && cardSource.Owner == Owner);
 
         if (!mine)
         {
@@ -63,4 +65,9 @@ public class GiantRelic : SubclassRelic
 
         await CreatureCmd.GainBlock(Owner.Creature, 2, ValueProp.Move, null);
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<BarbarianRagePower>()
+    ];
 }

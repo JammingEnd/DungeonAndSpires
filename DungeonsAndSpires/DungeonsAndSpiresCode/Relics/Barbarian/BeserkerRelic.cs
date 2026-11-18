@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -16,7 +17,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Barbarian;
 public class BeserkerRelic : SubclassRelic
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
-
+    public override RelicModel? GetUpgradeReplacement() => ModelDb.Relic<HopiumRelic>();
     public override async Task InitialBonus() { }
     public override async Task Act2Bonus() { }
     public override async Task Act3Bonus() { }
@@ -54,6 +55,10 @@ public class BeserkerRelic : SubclassRelic
         {
             return 1m;
         }
+        if (Owner.GetRelic<HopiumRelic>() != null)
+        {
+            return 1m;
+        }
 
         if (Owner.Creature.GetPower<BarbarianRagePower>() == null || dealer.GetPowerAmount<WeakPower>() <= 0 || !props.IsPoweredAttack())
         {
@@ -82,4 +87,8 @@ public class BeserkerRelic : SubclassRelic
         var card = Owner.RunState.Rng.CombatCardSelection.NextItem(attacks);
         await CardCmd.AutoPlay(choiceContext, card, null);
     }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<BarbarianRagePower>(),
+    ];
 }
