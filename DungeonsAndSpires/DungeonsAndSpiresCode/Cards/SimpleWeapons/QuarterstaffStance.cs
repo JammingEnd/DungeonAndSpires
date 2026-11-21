@@ -33,5 +33,6 @@ public class QuarterstaffStance() : SimpleWeaponCard(0, CardType.Skill, CardRari
     protected override void OnUpgrade()
     {
         DynamicVars["Strength"].UpgradeValueBy(1m);
+        DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

@@ -1,5 +1,7 @@
+using BaseLib.Abstracts;
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
@@ -12,8 +14,8 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Barbarian;
-
-public class MaulKnuckle() : MartialWeaponCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
+[Pool(typeof(BarbarianCardPool))]
+public class MaulKnuckle() : MartialWeaponCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy), ITranscendenceCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Bludgeoning, CoreKeywords.TwoHanded];
 
@@ -41,4 +43,7 @@ public class MaulKnuckle() : MartialWeaponCard(1, CardType.Attack, CardRarity.Ba
         DynamicVars["Frostbite"].UpgradeValueBy(1m);
         AddKeyword(CoreKeywords.Cold);
     }
+
+    public CardModel GetTranscendenceTransformedCard() => ModelDb.Get<WinterHowl>();
+
 }

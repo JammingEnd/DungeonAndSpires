@@ -97,4 +97,6 @@ public class BarbarianCharacter : PlaceholderCharacterModel, IAbilityCast
         DungeonsAndSpires.DungeonsAndSpiresCode.MainFile.Logger.Info("ApplyRage: applying BarbarianRagePower");
         await PowerCmd.Apply<BarbarianRagePower>(new ThrowingPlayerChoiceContext(), player.Creature, 1, player.Creature, null);
     }
+    
+    //TODO: introduce curse gen to rage, make it more balanced since it feels overtuned.
 }

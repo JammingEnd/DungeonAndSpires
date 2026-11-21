@@ -8,8 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Rogue;
 
-// finess scaling increases every time 
-//TODO: idk think of condition
+// finess scaling increases every time you play the card this combat
 public class FirstAndLast() : ExtraSimpleWeaponCard(0, CardType.Attack, CardRarity.Ancient, TargetType.AnyEnemy)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Finesse];
@@ -23,6 +22,22 @@ public class FirstAndLast() : ExtraSimpleWeaponCard(0, CardType.Attack, CardRari
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
+    }
+
+    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await base.AfterCardPlayed(choiceContext, cardPlay);
+        
+        if (cardPlay.Card == this)
+        {
+            DynamicVars["scaling"].BaseValue += 1;
+        }
+    }
+
+    public override Task BeforeCombatStart()
+    {
+        DynamicVars["scaling"].BaseValue = 4;
+        return Task.CompletedTask;
     }
     
     protected override void OnUpgrade()

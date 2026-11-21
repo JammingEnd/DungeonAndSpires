@@ -1,5 +1,6 @@
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -17,7 +18,7 @@ public class SlingshotDrop() : ExtraSimpleWeaponCard(0, CardType.Skill, CardRari
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        
+        await PowerCmd.Apply<ShortbowRopeArrowDexterityPower>(choiceContext, Owner.Creature, 2, Owner.Creature, this);
         var prefs = new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 0, DynamicVars.Cards.IntValue);
         var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, null, this);
 

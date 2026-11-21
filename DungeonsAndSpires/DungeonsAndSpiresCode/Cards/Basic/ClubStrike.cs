@@ -17,7 +17,7 @@ public class ClubStrike() : SimpleWeaponCard(1, CardType.Attack, CardRarity.Basi
         CardTag.Strike
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6, ValueProp.Move)];
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Bludgeoning];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CoreKeywords.Slashing];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

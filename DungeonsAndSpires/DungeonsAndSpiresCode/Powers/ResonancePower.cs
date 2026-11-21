@@ -5,9 +5,11 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
@@ -23,14 +25,43 @@ public class ResonancePower : DungeonsAndSpiresPower
     public override int DisplayAmount => Amount;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new IntVar("energy", 1)];
+    
+    // Set when the current card play crosses the threshold from below (it defers; a card played
+    // while already at 4+ still activates and keeps its newly-added stacks).
+    private bool _justReachedThreshold;
+
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    {
+        if (power == this && amount > 0)
+        {
+            decimal previous = power.Amount - amount;
+            if (previous < Threshold && power.Amount >= Threshold)
+            {
+                _justReachedThreshold = true;
+            }
+        }
+    }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Player != Owner.Player || Amount < Threshold)
+        if (cardPlay.Player != Owner.Player)
+        {
+            return;
+        }
+
+        if (_justReachedThreshold)
+        {
+            _justReachedThreshold = false;
+            DynamicVars["energy"].BaseValue = 1 + (Owner.GetPower<MaceLeechingPower>()?.Amount ?? 0);
+            return;
+        }
+
+        if (Amount < Threshold)
         {
             DynamicVars["energy"].BaseValue = 1 + (Owner.GetPower<MaceLeechingPower>()?.Amount ?? 0);
             return;
         }
+
         switch (cardPlay.Card.Type)
         {
             case CardType.Attack:
@@ -46,7 +77,7 @@ public class ResonancePower : DungeonsAndSpiresPower
             default:
                 return;
         }
-        
+
         // and uh Leeching gives extra energy
         int energy = 1 + (Owner.GetPower<MaceLeechingPower>()?.Amount ?? 0);
         await PlayerCmd.GainEnergy(energy, Owner.Player);

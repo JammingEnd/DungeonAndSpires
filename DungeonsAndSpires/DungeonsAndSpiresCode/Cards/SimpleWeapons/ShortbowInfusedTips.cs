@@ -1,14 +1,16 @@
+using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
-using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.DipLogic;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Extensions;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Singletons;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
@@ -29,41 +31,35 @@ public class ShortbowInfusedTips() : SimpleWeaponCard(1, CardType.Attack, CardRa
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(7, ValueProp.Move),
-        new PowerVar<PoisonPower>("PoisonPower", 2),
-        new PowerVar<VulnerablePower>("VulnerablePower", 1)
+        new DamageVar(7, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // A dip counts as being imbued with its element.
-        var element = ImbuedElement ?? Owner.PlayerCombatState?.GetDip(this)?.Type;
+        await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
 
-        decimal damage = DynamicVars["Damage"].GetCalculatedValue();
-        if (element != null && element != CoreKeywords.Poison && element != CoreKeywords.Acid)
+        var dip = Owner.PlayerCombatState?.GetDip(this);
+        if (dip == null)
         {
-            damage += 4;
+            return;
         }
-        await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
-        
-        if (element == CoreKeywords.Poison)
+
+        await DipEffects.Apply(choiceContext, Owner, this, cardPlay.Target, this);
+
+        int strength = WeaponDipsHandler.EffectiveStrength(this, dip, Owner.Creature);
+        if (strength > 0)
         {
-            await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, GetElementEffectAmount(element.Value) * 2, Owner.Creature, this);
-        }
-        else if (element == CoreKeywords.Acid)
-        {
-            await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, GetElementEffectAmount(element.Value) * 2, Owner.Creature, this);
+            await PowerCmd.Apply<ShortbowInfusedTipsDexterityPower>(choiceContext, Owner.Creature, strength, Owner.Creature, this);
         }
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<PoisonPower>(),
-        HoverTipFactory.FromPower<VulnerablePower>()
+        DipTips.Dip,
     ];
 
     protected override void OnUpgrade()
     {
-        this.AddKeyword(CardKeyword.Retain);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

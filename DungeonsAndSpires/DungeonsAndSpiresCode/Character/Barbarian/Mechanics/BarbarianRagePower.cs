@@ -1,5 +1,6 @@
 using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Relics.Barbarian;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Barbarian;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -7,14 +8,14 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 
-// Rage: halve block gained, halve incoming enemy damage, grow +1 damage per raging turn (Amount).
-// Powers spend 1; missing an Attack ends it.
+// rage: gain 1 strength each turn, reduce damage taken and block gained. unblocked damage gives a reckless
 public class BarbarianRagePower : DungeonsAndSpiresPower
 {
     public override PowerType Type => PowerType.Buff;
@@ -53,7 +54,7 @@ public class BarbarianRagePower : DungeonsAndSpiresPower
     {
         if (target == Owner && dealer != null && !dealer.IsPlayer)
         {
-            return 0.5m;
+            return 0.75m;
         }
 
         return 1m;
@@ -100,6 +101,18 @@ public class BarbarianRagePower : DungeonsAndSpiresPower
 
         await PowerCmd.Remove(this);
     }
+
+    // Taking unblocked damage while raging leaves a Reckless behind.
+    public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
+    {
+        if (target != Owner || result.UnblockedDamage <= 0)
+        {
+            return;
+        }
+
+        var reckless = Owner.CombatState.CreateCard(ModelDb.Card<Reckless>(), Owner.Player);
+        await CardPileCmd.AddGeneratedCardToCombat(reckless, PileType.Discard, Owner.Player, CardPilePosition.Random);
+    }
     
     public override async Task AfterRemoved(Creature oldOwner)
     {
@@ -107,9 +120,14 @@ public class BarbarianRagePower : DungeonsAndSpiresPower
         await PowerCmd.Remove<EagleSpirit>(oldOwner);
         await PowerCmd.Remove<WolfSpirit>(oldOwner);
         await PowerCmd.Remove<ElkSpirit>(oldOwner);
-        if (oldOwner.IsPlayer)
+        if (oldOwner.IsPlayer && oldOwner.Player.GetRelic<TotemWarriorRelic>() is { } totem)
         {
-            oldOwner.Player.GetRelic<TotemWarriorRelic>().SetGrantedSpirit(false);
+            totem.SetGrantedSpirit(false);
         }
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromCard<Reckless>()
+    ];
 }

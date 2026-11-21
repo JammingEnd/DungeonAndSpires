@@ -50,7 +50,7 @@ public class ShortbowPoisonArrows() : SimpleWeaponCard(2, CardType.Attack, CardR
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
-        DynamicVars["Poison"].UpgradeValueBy(1m);
+        DynamicVars["Poison"].UpgradeValueBy(2m);
+        DynamicVars["PoisonDip"].UpgradeValueBy(2m);
     }
 }

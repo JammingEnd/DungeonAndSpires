@@ -30,6 +30,8 @@ public class SlingshotBallsUponBalls() : ExtraSimpleWeaponCard(0, CardType.Attac
             return;
         }
 
+        await DipEffects.Apply(choiceContext, Owner, this, cardPlay.Target, this);
+        
         var copy = CombatState.CloneCard(this);
         await CardPileCmd.Add(copy, PileType.Draw, CardPilePosition.Random);
         CardCmd.Preview(copy);
