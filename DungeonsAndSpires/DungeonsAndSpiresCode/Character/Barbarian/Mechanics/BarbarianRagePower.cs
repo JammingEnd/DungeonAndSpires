@@ -102,7 +102,7 @@ public class BarbarianRagePower : DungeonsAndSpiresPower
         await PowerCmd.Remove(this);
     }
 
-    // Taking unblocked damage while raging leaves a Reckless behind.
+    // Taking unblocked damage while raging generates a reckless
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (target != Owner || result.UnblockedDamage <= 0)
@@ -112,6 +112,7 @@ public class BarbarianRagePower : DungeonsAndSpiresPower
 
         var reckless = Owner.CombatState.CreateCard(ModelDb.Card<Reckless>(), Owner.Player);
         await CardPileCmd.AddGeneratedCardToCombat(reckless, PileType.Discard, Owner.Player, CardPilePosition.Random);
+        CardCmd.Preview(reckless);
     }
     
     public override async Task AfterRemoved(Creature oldOwner)

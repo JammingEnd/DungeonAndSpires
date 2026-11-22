@@ -14,15 +14,15 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Barbarian;
 
 [Pool(typeof(StatusCardPool))]
-public class Reckless() : CoreCard(-1, CardType.Status, CardRarity.Status, TargetType.Self)
+public class Reckless() : CoreCard(1, CardType.Status, CardRarity.Status, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Unplayable];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
         if (dealer == Owner.Creature && cardSource != null && Pile?.Type == PileType.Hand)
         {
-            return IsUpgraded ? -1 : -2;
+            return IsUpgraded ? -2 : -3;
         }
 
         return 0;

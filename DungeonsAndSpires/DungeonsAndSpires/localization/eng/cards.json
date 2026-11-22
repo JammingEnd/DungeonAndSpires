@@ -531,7 +531,7 @@
   "DUNGEONSANDSPIRES-AFTER_PUNCH.title": "Afterpunch",
   "DUNGEONSANDSPIRES-AFTER_PUNCH.description": "Deal {Damage:diff()} damage.",
   "DUNGEONSANDSPIRES-RECKLESS.title": "Reckless",
-  "DUNGEONSANDSPIRES-RECKLESS.description": "Deal 1 less damage while this is in your hand.",
+  "DUNGEONSANDSPIRES-RECKLESS.description": "Deal 2 less damage while this is in your hand.",
   "DUNGEONSANDSPIRES-WINTER_HOWL.title": "Winter Howl",
   "DUNGEONSANDSPIRES-WINTER_HOWL.description": "Deal {Damage:diff()} damage.\nApply {Frostbite:diff()} [gold]Frostbite[/gold].\nWhenever [gold]Frostbite[/gold] reaches 10, set it to 1 and give ALL players 15 [gold]Block[/gold]."
 }

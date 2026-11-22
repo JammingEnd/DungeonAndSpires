@@ -41,7 +41,7 @@ public class GiantRelic : SubclassRelic
 
         var card = Owner.RunState.Rng.CombatCardSelection.NextItem(attacks);
         var type = Owner.RunState.Rng.CombatCardSelection.NextBool() ? CoreKeywords.Lightning : CoreKeywords.Thunder;
-        var dip = DipExtentions.GenerateDip(type, 3, 1);
+        var dip = DipExtentions.GenerateDip(type, 2, 1);
         await DipCmd.Add(choiceContext, Owner, card, dip);
     }
 
