@@ -20,11 +20,6 @@ public class MaulSkullcrusher() : MartialWeaponCard(2, CardType.Skill, CardRarit
         await PowerCmd.Apply<MaulSkullcrusherPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<MaulSkullcrusherPower>()
-    ];
-
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);

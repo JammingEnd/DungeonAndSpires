@@ -35,7 +35,7 @@ public class FlameBladePower : DungeonsAndSpiresPower
             return;
         }
 
-        await DamageCmd.Attack(Amount).FromCard(card, cardPlay).Targeting(cardPlay.Target).Unpowered().Execute(choiceContext);
+        await DamageCmd.Attack(Amount).Targeting(cardPlay.Target).Unpowered().Execute(choiceContext);
 
         if (cardPlay.Target != null)
         {

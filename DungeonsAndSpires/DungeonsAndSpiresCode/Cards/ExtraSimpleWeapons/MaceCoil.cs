@@ -13,13 +13,14 @@ public class MaceCoil() : ExtraSimpleWeaponCard(0, CardType.Skill, CardRarity.Co
 {
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new PowerVar<ShockedPower>("Shocked", 2)
+        new PowerVar<ShockedPower>("Shocked", 2),
+        new PowerVar<ResonancePower>("Resonance", 1),
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PowerCmd.Apply<ShockedPower>(choiceContext, cardPlay.Target, DynamicVars["Shocked"].IntValue, Owner.Creature, this);
-        await PowerCmd.Apply<ResonancePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<ResonancePower>(choiceContext, Owner.Creature, DynamicVars["Resonance"].IntValue, Owner.Creature, this);
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -31,5 +32,6 @@ public class MaceCoil() : ExtraSimpleWeaponCard(0, CardType.Skill, CardRarity.Co
     protected override void OnUpgrade()
     {
         DynamicVars["Shocked"].UpgradeValueBy(1);
+        DynamicVars["Resonance"].UpgradeValueBy(1);
     }
 }

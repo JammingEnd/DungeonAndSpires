@@ -28,7 +28,8 @@ public class MaulEarthshaker() : MartialWeaponCard(2, CardType.Power, CardRarity
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<FrostbitePower>()
+        HoverTipFactory.FromPower<FrostbitePower>(),
+        HoverTipFactory.FromPower<Reverberation>()
     ];
     protected override void OnUpgrade()
     {
