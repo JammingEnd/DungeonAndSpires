@@ -27,7 +27,7 @@ public class ShortbowBarbedPoint() : SimpleWeaponCard(1, CardType.Attack, CardRa
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(7, ValueProp.Move)
+        new DamageVar(10, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -37,6 +37,6 @@ public class ShortbowBarbedPoint() : SimpleWeaponCard(1, CardType.Attack, CardRa
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(5m);
     }
 }

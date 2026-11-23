@@ -18,7 +18,7 @@ public class MaulEarthshaker() : MartialWeaponCard(2, CardType.Power, CardRarity
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new IntVar("Damage", 5)
+        new IntVar("Damage", 1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -26,9 +26,12 @@ public class MaulEarthshaker() : MartialWeaponCard(2, CardType.Power, CardRarity
         await PowerCmd.Apply<MaulEarthshakerPower>(choiceContext, Owner.Creature, DynamicVars["Damage"].IntValue, Owner.Creature, this);
     }
     
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<FrostbitePower>()
+    ];
     protected override void OnUpgrade()
     {
-        DynamicVars["Damage"].UpgradeValueBy(2);
+        DynamicVars["Damage"].UpgradeValueBy(1);
     }
 }

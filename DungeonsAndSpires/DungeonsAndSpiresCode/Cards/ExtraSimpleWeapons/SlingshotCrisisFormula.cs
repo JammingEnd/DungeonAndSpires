@@ -33,6 +33,6 @@ public class SlingshotCrisisFormula() : ExtraSimpleWeaponCard(2, CardType.Power,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Strength"].UpgradeValueBy(-1m);
+        DynamicVars["Strength"].UpgradeValueBy(-2m);
     }
 }

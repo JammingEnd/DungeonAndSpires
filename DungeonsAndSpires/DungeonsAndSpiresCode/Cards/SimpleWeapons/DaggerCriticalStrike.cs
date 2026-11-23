@@ -40,5 +40,6 @@ public class DaggerCriticalStrike() : SimpleWeaponCard(2, CardType.Attack, CardR
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars["PierceBonus"].UpgradeValueBy(2m);
     }
 }

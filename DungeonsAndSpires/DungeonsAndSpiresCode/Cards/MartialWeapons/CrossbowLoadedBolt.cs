@@ -19,7 +19,7 @@ public class CrossbowLoadedBolt() : MartialWeaponCard(2, CardType.Attack, CardRa
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(9, ValueProp.Move)
+        new DamageVar(15, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -28,7 +28,10 @@ public class CrossbowLoadedBolt() : MartialWeaponCard(2, CardType.Attack, CardRa
 
         if (cardPlay.Target != null && this.HasDip())
         {
-            await DipEffects.Apply(choiceContext, Owner, this, cardPlay.Target, this);
+            foreach (var target in Owner.Creature.CombatState.HittableEnemies)
+            {
+                await DipEffects.Apply(choiceContext, Owner, this, target, this);
+            }
         }
     }
 

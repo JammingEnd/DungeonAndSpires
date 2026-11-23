@@ -40,5 +40,6 @@ public class ShortswordSwitchHands() : SimpleWeaponCard(1, CardType.Skill, CardR
     {
         DynamicVars["Discard"].UpgradeValueBy(1);
         DynamicVars["Scry"].UpgradeValueBy(1);
+        DynamicVars["Draw"].UpgradeValueBy(2);
     }
 }

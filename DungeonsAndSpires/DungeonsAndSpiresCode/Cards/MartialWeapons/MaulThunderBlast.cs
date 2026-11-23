@@ -49,5 +49,6 @@ public class MaulThunderBlast() : MartialWeaponCard(2, CardType.Skill, CardRarit
     protected override void OnUpgrade()
     {
         DynamicVars["DipStrength"].UpgradeValueBy(2);
+        DynamicVars.Cards.UpgradeValueBy(2m);
     }
 }

@@ -22,6 +22,6 @@ public class ScimitarRegroup() : MartialWeaponCard(1, CardType.Power, CardRarity
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars["Extra"].UpgradeValueBy(1m);
     }
 }

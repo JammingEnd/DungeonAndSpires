@@ -61,6 +61,10 @@ protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay
         var card = spells[Owner.RunState.Rng.CombatCardSelection.NextInt(spells.Count)];
         var created = CombatState.CreateCard(card, Owner);
         created.AddKeyword(CoreKeywords.Scrolled);
+        if (IsUpgraded)
+        {
+            CardCmd.Upgrade(created);
+        }
         await CardPileCmd.AddGeneratedCardToCombat(created, PileType.Hand, Owner);
     }
 

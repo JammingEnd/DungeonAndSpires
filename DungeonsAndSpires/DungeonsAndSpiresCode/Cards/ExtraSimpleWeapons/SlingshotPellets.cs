@@ -51,6 +51,6 @@ public class SlingshotPellets() : ExtraSimpleWeaponCard(2, CardType.Skill, CardR
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(2);
+        DynamicVars.Cards.UpgradeValueBy(3);
     }
 }

@@ -31,7 +31,7 @@ public class MaceParallel() : ExtraSimpleWeaponCard(0, CardType.Skill, CardRarit
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Innate);
+        DynamicVars.Block.UpgradeValueBy(6m);
     }
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

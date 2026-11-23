@@ -40,5 +40,6 @@ public class ScimitarLightspeed() : MartialWeaponCard(2, CardType.Attack, CardRa
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars["Shocked"].UpgradeValueBy(2m);
     }
 }

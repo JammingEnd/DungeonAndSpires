@@ -44,6 +44,6 @@ public class SlingshotBallsUponBalls() : ExtraSimpleWeaponCard(0, CardType.Attac
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(5m);
     }
 }

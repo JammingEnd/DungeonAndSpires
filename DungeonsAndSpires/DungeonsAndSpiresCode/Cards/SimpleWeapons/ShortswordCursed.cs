@@ -51,6 +51,10 @@ public class ShortswordCursed() : SimpleWeaponCard(1, CardType.Attack, CardRarit
         }
         var newCard = colorless[Owner.RunState.Rng.CombatCardSelection.NextInt(colorless.Count)];
         var card = CombatState.CreateCard(newCard, Owner);
+        if (IsUpgraded)
+        {
+            CardCmd.Upgrade(card);
+        }
         await CardCmd.Transform(status, card);
     }
 
