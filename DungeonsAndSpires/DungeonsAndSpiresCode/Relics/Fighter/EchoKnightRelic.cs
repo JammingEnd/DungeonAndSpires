@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rooms;
 
@@ -109,4 +110,8 @@ public class EchoKnightRelic : SubclassRelic
         this.Status = RelicStatus.Normal;
         await CardCmd.AutoPlay(choiceContext, cardPlay.Card, cardPlay.Target);
     }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<FighterSecondWindPower>(),
+    ];
 }

@@ -14,19 +14,15 @@ public class BeautyInAngerPower : DungeonsAndSpiresPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
-
-    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+    
+    public override async Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
     {
-        if (player != Owner.Player)
-        {
+        if (creator != Owner.Player)
             return;
-        }
-
-        var reckless = PileType.Hand.GetPile(player).Cards.OfType<Reckless>().Take(2).ToList();
-        foreach (var card in reckless)
+        if (card is Reckless)
         {
-            var punch = Owner.CombatState.CreateCard(ModelDb.Card<AfterPunch>(), player);
-            await CardCmd.Transform(card, punch);
+            await CardCmd.TransformTo<AfterPunch>(card);
+            
         }
     }
 }

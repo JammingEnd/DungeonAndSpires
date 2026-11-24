@@ -1,6 +1,7 @@
 using BaseLib.Utils;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Fighter;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -9,6 +10,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 
@@ -122,4 +124,8 @@ public class BattleMasterRelic : SubclassRelic
         var card = combatState.CreateCard(canonical, Owner);
         await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
     }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<FighterSecondWindPower>(),
+    ];
 }

@@ -12,32 +12,15 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.Cards.SimpleWeapons;
 
 
-public class QuarterstaffNonLethal() : SimpleWeaponCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+public class QuarterstaffNonLethal() : SimpleWeaponCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CoreKeywords.Bludgeoning
-    ];
-
-    protected override IEnumerable<DynamicVar> CardVars =>
-    [
-        new DamageVar(4, ValueProp.Move)
-    ];
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
         await PowerCmd.Apply<QuarterstaffNonLethalPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromKeyword(CoreKeywords.Bludgeoning),
-    ];
-
+    
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
         AddKeyword(CardKeyword.Retain);
     }
 }
