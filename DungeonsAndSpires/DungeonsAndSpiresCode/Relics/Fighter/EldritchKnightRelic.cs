@@ -16,7 +16,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Saves.Runs;
 
@@ -42,10 +41,7 @@ public class EldritchKnightRelic : SubclassRelic, IOnAncientDialogueDone, IOnRes
             return;
         }
 
-        if (ancient.Id == ModelDb.GetId<Neow>())
-        {
-           await OptionSelection();
-        }
+        await OptionSelection();
     }
     public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)
     {
@@ -60,19 +56,7 @@ public class EldritchKnightRelic : SubclassRelic, IOnAncientDialogueDone, IOnRes
     private async Task OptionSelection()
     {
         var picked = await GetPickedSpells();
-
-        foreach (var token in picked)
-        {
-            var result = await CardPileCmd.Add(token, PileType.Deck);
-            CardCmd.PreviewCardPileAdd(result); 
-            
-            PickedSpells.Add(result.cardAdded.ToSerializable());
-        }
-    }
-    public async Task OnRestSiteSpellSelected(Player player)
-    {
-        var picked = await GetPickedSpells();
-
+        
         foreach (var stored in PickedSpells)
         {
             if (stored.Id is not { } id)
@@ -94,6 +78,10 @@ public class EldritchKnightRelic : SubclassRelic, IOnAncientDialogueDone, IOnRes
             
             PickedSpells.Add(result.cardAdded.ToSerializable());
         }
+    }
+    public async Task OnRestSiteSpellSelected(Player player)
+    {
+        await OptionSelection();
     }
 
     private async Task<IEnumerable<CardModel>> GetPickedSpells()

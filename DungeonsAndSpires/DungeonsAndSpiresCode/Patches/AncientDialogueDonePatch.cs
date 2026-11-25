@@ -14,30 +14,42 @@ internal static class AncientDialogueDonePatch
 {
     private static readonly FieldInfo EventField = AccessTools.Field(typeof(NEventRoom), "_event");
 
-    [HarmonyPostfix]
-    private static void Postfix(NEventRoom __instance, EventOption option)
+    [HarmonyPrefix]
+    private static bool Prefix(NEventRoom __instance, EventOption option)
     {
-        if (option.IsLocked)
+        if (option.IsLocked || !option.IsProceed)
         {
-            return;
+            return true;
         }
 
         if (EventField.GetValue(__instance) is not AncientEventModel ancient)
         {
-            return;
+            return true;
         }
 
         var runState = RunManager.Instance.State;
         if (runState == null)
         {
-            return;
+            return true;
+        }
+        
+        if (!runState.IterateHookListeners(null).Any(l => l is IOnAncientDialogueDone))
+        {
+            return true;
         }
 
+        TaskHelper.RunSafely(Dispatch(ancient, runState));
+        return false;
+    }
+
+    private static async Task Dispatch(AncientEventModel ancient, RunState runState)
+    {
         foreach (var model in runState.IterateHookListeners(null).OfType<IOnAncientDialogueDone>())
         {
             var abstractModel = (AbstractModel)(object)model;
-            TaskHelper.RunSafely(model.OnAncientDialogueDone(ancient));
+            await model.OnAncientDialogueDone(ancient);
             abstractModel.InvokeExecutionFinished();
         }
+        RunManager.Instance.Proceed();
     }
 }

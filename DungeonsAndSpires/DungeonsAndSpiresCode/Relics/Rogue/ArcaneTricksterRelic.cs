@@ -19,7 +19,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Saves.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -50,10 +49,7 @@ public class ArcaneTricksterRelic : SubclassRelic, IOnAncientDialogueDone, IOnRe
             return;
         }
 
-        if (ancient.Id == ModelDb.GetId<Neow>())
-        {
-            await OptionSelection();
-        }
+        await OptionSelection();
     }
     public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)
     {
@@ -68,21 +64,7 @@ public class ArcaneTricksterRelic : SubclassRelic, IOnAncientDialogueDone, IOnRe
     private async Task OptionSelection()
     {
         var picked = await GetPickedSpells();
-
-        foreach (var token in picked)
-        {
-            var card = Owner.RunState.CreateCard(token, Owner);
-            card.AddKeyword(CardKeyword.Retain);
-            var result = await CardPileCmd.Add(card, PileType.Deck);
-            CardCmd.PreviewCardPileAdd(result); 
-            
-            PickedSpells.Add(result.cardAdded.ToSerializable());
-        }
-    }
-    public async Task OnRestSiteSpellSelected(Player player)
-    {
-        var picked = await GetPickedSpells();
-
+        
         foreach (var stored in PickedSpells)
         {
             if (stored.Id is not { } id)
@@ -106,6 +88,10 @@ public class ArcaneTricksterRelic : SubclassRelic, IOnAncientDialogueDone, IOnRe
             
             PickedSpells.Add(result.cardAdded.ToSerializable());
         }
+    }
+    public async Task OnRestSiteSpellSelected(Player player)
+    {
+        await OptionSelection();
     }
 
     private async Task<IEnumerable<CardModel>> GetPickedSpells()

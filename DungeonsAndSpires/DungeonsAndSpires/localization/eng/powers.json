@@ -345,7 +345,7 @@
   
   "DUNGEONSANDSPIRES-BARBARIAN_RAGE_POWER.title": "Rage",
   "DUNGEONSANDSPIRES-BARBARIAN_RAGE_POWER.description": "Gain 50% less [gold]Block[/gold].\nTake 25% less damage from enemy attacks.\nDeal 1 extra damage for each turn you've been [gold]Raged[/gold] and increase it by 1 each turn.\nPlaying a [gold]Power[/gold] lowers Rage by 1.\nLose Rage at the end of a turn you played no [gold]Attacks[/gold].\nTaking unblocked damage adds a [gold]Reckless[/gold] in your [gold]Discard Pile[/gold/].",
-  "DUNGEONSANDSPIRES-BARBARIAN_RAGE_POWER.smartDescription": "Gain 50% less [gold]Block[/gold].\nTake 25% less damage from enemy attacks.\nDeal 1 extra damage for each turn you've been [gold]Raged[/gold].\nPlaying a [gold]Power[/gold] lowers Rage by 1.\nLose Rage at the end of a turn you played no [gold]Attack[/gold].\nTaking unblocked damage adds a [gold]Reckless[/gold] in your [gold]Draw Pile[/gold].",
+  "DUNGEONSANDSPIRES-BARBARIAN_RAGE_POWER.smartDescription": "Gain 50% less [gold]Block[/gold].\nTake 25% less damage from enemy attacks.\nDeal 1 extra damage for each turn you've been [gold]Raged[/gold].\nPlaying a [gold]Power[/gold] lowers Rage by 1.\nLose Rage at the end of a turn you played no [gold]Attack[/gold].\nTaking unblocked damage adds a [gold]Reckless[/gold] in your [gold]Discard Pile[/gold].",
   "DUNGEONSANDSPIRES-BEAR_SPIRIT.title": "Bear Spirit",
   "DUNGEONSANDSPIRES-BEAR_SPIRIT.description": "Base: At the start of your turn, gain 4 [gold]Block[/gold].\nEnhanced: Take 1 less damage for every 2 [gold]Rage[/gold].",
   "DUNGEONSANDSPIRES-BEAR_SPIRIT.smartDescription": "Base: At the start of your turn, gain 4 [gold]Block[/gold].\nEnhanced: Take 1 less damage for every 2 [gold]Rage[/gold].",
