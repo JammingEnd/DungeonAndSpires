@@ -17,12 +17,11 @@ public class SlingshotEndurancePower : DungeonsAndSpiresPower, IOnDipChanged
 
     public async Task OnDipChanged(PlayerChoiceContext choiceContext, Player player, CardModel card, DipInfo dipInfo)
     {
-        // Add() stores the dip before the hook fires; Remove() clears it first.
         if (player != Owner.Player || !card.HasDip())
         {
             return;
         }
 
-        await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Move, null);
+        await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
     }
 }
