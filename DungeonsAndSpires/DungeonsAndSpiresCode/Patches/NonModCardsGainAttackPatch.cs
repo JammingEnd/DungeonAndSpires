@@ -13,9 +13,7 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.Patches;
 internal static class NonModCardTagging
 {
     private static readonly FieldInfo TagsField = AccessTools.Field(typeof(CardModel), "_tags");
-
-    // Vanilla cards are assumed to have immutable tags, so instead of mutating their shared
-    // canonical tag set, we swap in a tagged copy via the lazy-cached _tags field.
+    
     public static void TagWeaponIfForeign(CardModel? card)
     {
         if (card == null || card is CoreCard)
@@ -31,7 +29,6 @@ internal static class NonModCardTagging
     }
 }
 
-// Every generated card (rewards, combat generation, transformations) passes through AfterCreated.
 [HarmonyPatch(typeof(CardModel), nameof(CardModel.AfterCreated))]
 internal static class NonModGeneratedCardPatch
 {
@@ -39,7 +36,6 @@ internal static class NonModGeneratedCardPatch
     private static void Postfix(CardModel __instance) => NonModCardTagging.TagWeaponIfForeign(__instance);
 }
 
-// Cards added directly to the deck are tagged as well.
 [HarmonyPatch(typeof(CardPileCmd), nameof(CardPileCmd.Add),
     new[] { typeof(CardModel), typeof(PileType), typeof(CardPilePosition), typeof(AbstractModel), typeof(bool) })]
 internal static class NonModDeckAddPatch
@@ -54,8 +50,7 @@ internal static class NonModDeckAddPatch
     }
 }
 
-// Loading a save doesn't call AfterCreated; cards already in the deck come back through
-// RunState.LoadCard -> RunState.AddCard(CardModel, Player), so tag them there too.
+
 [HarmonyPatch(typeof(RunState), nameof(RunState.AddCard),
     new[] { typeof(CardModel), typeof(Player) })]
 internal static class NonModRunAddCardPatch

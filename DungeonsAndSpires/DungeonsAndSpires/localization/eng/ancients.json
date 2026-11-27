@@ -17,5 +17,10 @@
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.0-0r.char": "Please help me with my anger issues :(.",
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.0-0r.next": "Persuade (nat1)",
   "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.0-1r.ancient": "No women in the mancave! shoooo!.",
-  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.0-attack": "Architect"
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.0-attack": "Architect",
+  
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-WARLOCK_CHARACTER.0-0r.char": "My master wants you dead.",
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-WARLOCK_CHARACTER.0-0r.next": "Intimidate (nat1)",
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-WARLOCK_CHARACTER.0-1r.ancient": "A pact-bound puppet? He needs to bring something better that.",
+  "THE_ARCHITECT.talk.DUNGEONSANDSPIRES-WARLOCK_CHARACTER.0-attack": "Architect"
 }

@@ -31,6 +31,6 @@ public class FlameBlade() : SpellCard(2, 2, CardType.Power, CardRarity.Uncommon,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["FlameBlade"].UpgradeValueBy(2m);
+        DynamicVars["FlameBlade"].UpgradeValueBy(1m);
     }
 }

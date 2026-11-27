@@ -96,11 +96,12 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
     public virtual Dictionary<string, (int step, int mult)> PotencyVars => [];
 
     /// <summary>
-    /// The extra potency level granted to a <c>step</c> var by the Heightened keyword, matching
-    /// the bonus applied in <see cref="BuildCanonicalVars"/>.
+    /// The extra potency level granted to a <c>step</c> var by "heightening", matching
+    /// the bonus applied in <see cref="BuildCanonicalVars"/>. Now a graded amount stored on the
+    /// card via <see cref="HeightenedField.Level"/> (HeightenedSpell = 1, Warlock upcast = N).
     /// </summary>
     protected int HeightenedLevelBonus(int step) =>
-        Keywords.Contains(CoreKeywords.Heightened) ? (step == 1 ? 3 : 1) : 0;
+        HeightenedField.Level[this];
 
     /// <summary>
     /// The card's base (unscaled) vars. Potency scaling is applied automatically to any var whose
@@ -127,11 +128,7 @@ public abstract class CoreCard(int cost, CardType type, CardRarity rarity, Targe
                 {
                     decimal playerPotency = model.Owner.PlayerCombatState?.GetPotency() ?? 0;
                     decimal level = Math.Floor(playerPotency / potency.step);
-                    // Heightened cards have their potency level met by 1 (or gain 3 if their potency step is 1).
-                    if (model.Keywords.Contains(CoreKeywords.Heightened))
-                    {
-                        level += potency.step == 1 ? 3 : 1;
-                    }
+                    level += HeightenedField.Level[model];
                     return level;
                 };
                 

@@ -86,7 +86,7 @@ public static class PotencyCmd
         }
     }
 
-    // Removes all temporary potency at the end of the player's turn. 
+    // Removes all temporary potency at the end of the turn. 
     public static async Task FlushTurnTemp(PlayerChoiceContext context, Player player)
     {
         var state = player.PlayerCombatState?.GetPotencyState();

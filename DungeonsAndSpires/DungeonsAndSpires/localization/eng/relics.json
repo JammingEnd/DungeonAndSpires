@@ -76,5 +76,9 @@
   "DUNGEONSANDSPIRES-TOTEM_WARRIOR_RELIC.title": "Totem Warrior",
   "DUNGEONSANDSPIRES-FIFTH_COLUMN_RELIC.description": "upon reaching 5 [gold]Rage[/gold], gain another random [gold]Rage Spirit[/gold].",
   "DUNGEONSANDSPIRES-FIFTH_COLUMN_RELIC.flavor": "Our ancestors... never forget them.",
-  "DUNGEONSANDSPIRES-FIFTH_COLUMN_RELIC.title": "The Fifth Column"
+  "DUNGEONSANDSPIRES-FIFTH_COLUMN_RELIC.title": "The Fifth Column",
+
+  "DUNGEONSANDSPIRES-GREAT_ONE_RELIC.description": "ACT1: Whenever you spend energy playing a [gold]Cantrip[/gold], draw 1 card.\nACT2: Gain 2 extra [gold]Otherworldy Patron Slots[/gold].\nACT3: After playing 3 cantrips, gain a missing [gold]Spellslot[/gold].",
+  "DUNGEONSANDSPIRES-GREAT_ONE_RELIC.flavor": "I'm serving the greatest one with my upmost loyalty.",
+  "DUNGEONSANDSPIRES-GREAT_ONE_RELIC.title": "Great Old One"
 }

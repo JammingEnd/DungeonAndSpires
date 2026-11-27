@@ -6,10 +6,6 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace DungeonsAndSpires.DungeonsAndSpiresCode.AbilityPotency;
 
-/// <summary>
-/// A DynamicVar whose value is the player's current Ability Potency, read live from the
-/// combat state. Outside of combat (or with no potency state) it resolves to 0.
-/// </summary>
 public class PotencyVar : DynamicVar
 {
     public PotencyVar() : base("Potency", 0)

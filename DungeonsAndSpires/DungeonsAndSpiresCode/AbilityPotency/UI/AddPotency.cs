@@ -23,7 +23,7 @@ public class AddPotency
                 return;
             }
             
-            bool alwaysVisible = player.Character.CardPool is SorcererCardPool
+            bool alwaysVisible = player.Character.CardPool is (SorcererCardPool or WarlockCardPool)
                 || player.Relics.Any(r => r is ArcaneTricksterRelic);
 
             var label = display.GetNodeOrNull<Label>("potencyLabel");

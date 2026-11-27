@@ -61,5 +61,21 @@
   "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.pronounSubject": "She",
   "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.title": "The Barbarian",
   "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.titleObject": "the Barbarian",
-  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.shortTitle": "Barbarian"
+  "DUNGEONSANDSPIRES-BARBARIAN_CHARACTER.shortTitle": "Barbarian",
+  
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.aromaPrinciple": "Lore",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.banter.alive.endTurnPing": "We don't have time for this!",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.banter.dead.endTurnPing": "...",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.cardsModifierDescription": "Warlock cards will now appear in rewards and shops.",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.cardsModifierTitle": "Warlock Cards",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.description": "Forged by blood, bound in a pact. This spellcaster does everything for her Patreon.\nYou have a single [gold]Spellslot[/gold] pool. Playing cards increases [gold]Spellslot[/gold] level.",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.eventDeathPrevention": "...",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.goldMonologue": "...",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.possessiveAdjective": "Her",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.pronounObject": "Her",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.pronounPossessive": "Hers",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.pronounSubject": "She",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.title": "The Warlock",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.titleObject": "the Warlock",
+  "DUNGEONSANDSPIRES-WARLOCK_CHARACTER.shortTitle": "Warlock"
 }

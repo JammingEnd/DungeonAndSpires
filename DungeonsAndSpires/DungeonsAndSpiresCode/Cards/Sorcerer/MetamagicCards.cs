@@ -1,5 +1,6 @@
 using BaseLib.Abstracts;
 using BaseLib.Utils;
+using DungeonsAndSpires.DungeonsAndSpiresCode.AbilityPotency;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Core;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using MegaCrit.Sts2.Core.CardSelection;
@@ -80,6 +81,7 @@ public class HeightenedSpell : MetamagicCards
         if (target != null)
         {
             target.AddKeyword(CoreKeywords.Heightened);
+            HeightenedField.Level[target] += 1;
         }
     }
 

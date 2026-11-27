@@ -69,6 +69,7 @@
     <ItemGroup>
         <Folder Include="DungeonsAndSpiresCode\Cards\ExtraSimpleWeapons\" />
         <Folder Include="DungeonsAndSpiresCode\Character\Fighter\" />
+        <Folder Include="DungeonsAndSpiresCode\Character\Warlock\Mechanics\OtherworldyPatron\" />
         <Folder Include="DungeonsAndSpiresCode\DynamicVars\" />
         <Folder Include="DungeonsAndSpiresCode\Hooks\" />
         <Folder Include="DungeonsAndSpires\images\card_portraits\big\"/>

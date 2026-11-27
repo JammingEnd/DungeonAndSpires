@@ -12,6 +12,8 @@
   "DUNGEONSANDSPIRES-SHOCKING_GRASP.title": "Shocking Grasp",
   "DUNGEONSANDSPIRES-ELDRITCH_BLAST.description": "Deal {Damage:diff()} damage.",
   "DUNGEONSANDSPIRES-ELDRITCH_BLAST.title": "Eldritch Blast",
+  "DUNGEONSANDSPIRES-ARMOR_OF_AGATHYS.description": "{HasPotencyStep:cond:[color=#42edce]Potent[/color] {PotencyStep:diff()}.\n|}Gain {Block:diff()} [gold]Block[/gold].\nThis turn, while you have block, reflect [color=#42edce]{Thorns:diff()}[/color] Damage to the enemy as [gold]Cold[/gold] damage.",
+  "DUNGEONSANDSPIRES-ARMOR_OF_AGATHYS.title": "Armor of Agathys",
   "DUNGEONSANDSPIRES-MAGE_HAND.description": "Draw {Cards:diff()} cards.\nIf one of the drawn cards is a non-spell, gain {AbilityPotency:diff()} Ability Potency.",
   "DUNGEONSANDSPIRES-MAGE_HAND.title": "Mage Hand",
   "DUNGEONSANDSPIRES-POISON_SPRAY.description": "{HasPotencyStep:cond:[color=#42edce]Potent[/color] {PotencyStep:diff()}.\n|}Deal [color=#42edce]{Damage:diff()}[/color] damage and apply [color=#42edce]{Poison:diff()}[/color] [gold]Poison[/gold] to ALL enemies.",

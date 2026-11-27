@@ -1,8 +1,10 @@
 using BaseLib.Utils;
+using DungeonsAndSpires.DungeonsAndSpiresCode.AbilityPotency;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Cards.Statusses;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Keywords;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Metamagic;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using DungeonsAndSpires.DungeonsAndSpiresCode.Tags;
 using MegaCrit.Sts2.Core.Combat;
@@ -27,6 +29,12 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
 
     /// <summary> If false, the cardplay will not consume a spellslot (some powers like Shield of Faith) </summary>
     internal bool _shouldConsumeSpellslot = true;
+    
+    private bool _warlockAboveSlot;
+
+    private bool IsWarlock => Owner.Character.CardPool is WarlockCardPool;
+
+    private int WarlockSlotLevel => Owner.Creature.GetPower<EmpowerPatronPower>()?.Amount ?? 1;
 
     /// <summary>
     /// Whether playing this spell consumes a spellslot (and gets the -1 energy discount when one
@@ -55,7 +63,6 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
             return false;
         }
         // So like.... apparently TryModify is literally BeforeCardPlay
-        // pre-play energy for Ritual's spellslot decision.
         _shouldConsumeSpellslot = ShouldConsumeSpellslot();
         if (Keywords.Contains(CoreKeywords.Scrolled))
         {
@@ -63,39 +70,59 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
             modifiedCost = 0;
             return true;
         }
-        if (Level > 0 && UsesSpellSlot && Owner.PlayerCombatState?.HasAvailableSlotForLevel(Level) == true)
+        if (Level > 0 && UsesSpellSlot)
         {
-            modifiedCost = originalCost - 1;
-            return true;
+            bool hasSlot = IsWarlock ? Owner.PlayerCombatState?.HasAvailableSlotForLevel(1) == true : Owner.PlayerCombatState?.HasAvailableSlotForLevel(Level) == true;
+
+            if (IsWarlock)
+            {
+                ComputeWarlockCast(hasSlot);
+            }
+
+            if (hasSlot)
+            {
+                modifiedCost = originalCost - 1;
+                return true;
+            }
         }
         return false;
+    }
+
+    private void ComputeWarlockCast(bool hasSlot)
+    {
+        int slotLevel = WarlockSlotLevel;
+        _warlockAboveSlot = !hasSlot || Level > slotLevel;
+        int heightened = _warlockAboveSlot ? 0 : (slotLevel - Level) / 2;
+        HeightenedField.Level[this] = heightened;
+        if (heightened > 0 && !Keywords.Contains(CoreKeywords.Heightened))
+        {
+            this.AddKeyword(CoreKeywords.Heightened);
+        }
     }
 
     // Consume the spellslot when a leveled spell is cast.
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.AfterCardPlayed(choiceContext, cardPlay);
-        int Metamagic = cardPlay.Player.PlayerCombatState.GetMetamagic();
-        if (cardPlay.Card == this && Level > 0 && UsesSpellSlot && _shouldConsumeSpellslot && Owner.PlayerCombatState?.HasAvailableSlotForLevel(Level) == true)
+
+        if (cardPlay.Card == this && Level > 0 && UsesSpellSlot && _shouldConsumeSpellslot)
         {
-            await SpellslotsCmd.ConsumeSpellSlotForLevel(choiceContext, Owner, Level);
+            if (IsWarlock)
+            {
+                await HandleWarlockSpellCast(choiceContext, cardPlay);
+            }
+            else
+            {
+                await HandleStandardSpellCast(choiceContext, cardPlay);
+            }
         }
-        else if(cardPlay.Card == this && Level > 0 && UsesSpellSlot && _shouldConsumeSpellslot &&  Owner.PlayerCombatState?.HasAvailableSlotForLevel(Level) == false && Metamagic > 0)
-        {
-            await MetamagicCmd.Remove(choiceContext, cardPlay.Player, 1);
-        }
-        else if (cardPlay.Card == this && Level > 0 && _shouldConsumeSpellslot && UsesSpellSlot && SpellExhaustionHook.ShouldCreate(CombatState, this, choiceContext, cardPlay.Player))
-        {
-            var card = (ArcaneExhaustion)CombatState.CreateCard(ModelDb.Card<ArcaneExhaustion>(), cardPlay.Player);
-            SpellCard thisCard = cardPlay.Card as SpellCard;
-            card.SetLevel(thisCard.Level);
-            var cardview = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, cardPlay.Player);
-            CardCmd.PreviewCardPileAdd(cardview, 0.5f);
-        }
+
         if (cardPlay.Card == this && Keywords.Contains(CoreKeywords.Heightened))
         {
             this.RemoveKeyword(CoreKeywords.Heightened);
         }
+        HeightenedField.Level[this] = 0;
+        _warlockAboveSlot = false;
         // Quickened cards also deal their effects to a random enemy (or ally).
         if (cardPlay.Card == this && Keywords.Contains(CoreKeywords.Quickened))
         {
@@ -118,10 +145,8 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
                     return;
                 }
 
-                // Prefer a different enemy when there are multiple; otherwise hit the same one.
-                var candidates = hittable.Count > 1
-                    ? hittable.Where(e => e != cardPlay.Target).ToArray()
-                    : hittable.ToArray();
+                // quickened targets different enemy when more are present on the map
+                var candidates = hittable.Count > 1 ? hittable.Where(e => e != cardPlay.Target).ToArray() : hittable.ToArray();
                 if (candidates.Length == 0)
                 {
                     candidates = hittable.ToArray();
@@ -133,8 +158,8 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
                     await CardCmd.AutoPlay(choiceContext, this, enemy, AutoPlayType.Default, true);
                 }
             }
-        }
-        // Scrolled cards are free to play and exhaust after being played.
+        } 
+        
         if (cardPlay.Card == this && Keywords.Contains(CoreKeywords.Scrolled))
         {
             await CardCmd.Exhaust(choiceContext, this);
@@ -154,10 +179,12 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
         {
             this.RemoveKeyword(CoreKeywords.Quickened);
         }
+        HeightenedField.Level[this] = 0;
+        _warlockAboveSlot = false;
     }
 
 
-    // Ritual spells don't consume a spellslot when your energy is above half its maximum. when 3 is max, you need more than 2
+    // Ritual spells dont consume a spellslot when your energy is above half its maximum. when 3 is max, you need more than 2
     private bool ShouldConsumeSpellslot()
     {
         if (Keywords.Contains(CoreKeywords.Ritual))
@@ -170,6 +197,47 @@ public abstract class SpellCard(int Level, int cost, CardType type, CardRarity r
             }
         }
         return true;
+    }
+
+    private async Task HandleStandardSpellCast(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        int metamagic = cardPlay.Player.PlayerCombatState.GetMetamagic();
+        if (Owner.PlayerCombatState?.HasAvailableSlotForLevel(Level) == true)
+        {
+            await SpellslotsCmd.ConsumeSpellSlotForLevel(choiceContext, Owner, Level);
+        }
+        else if (metamagic > 0)
+        {
+            await MetamagicCmd.Remove(choiceContext, cardPlay.Player, 1);
+        }
+        else if (SpellExhaustionHook.ShouldCreate(CombatState, this, choiceContext, cardPlay.Player))
+        {
+            await CreateArcaneExhaustion(choiceContext, cardPlay, Level);
+        }
+    }
+    
+    // warlock uses only one spellslot. read notes for a better explaination
+    private async Task HandleWarlockSpellCast(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        
+        if (Owner.PlayerCombatState?.HasAvailableSlotForLevel(1) == true)
+        {
+            await SpellslotsCmd.ConsumeSpellSlotForLevel(choiceContext, Owner, 1);
+        }
+
+        
+        if (_warlockAboveSlot && SpellExhaustionHook.ShouldCreate(CombatState, this, choiceContext, cardPlay.Player))
+        {
+            await CreateArcaneExhaustion(choiceContext, cardPlay, Level);
+        }
+    }
+
+    private async Task CreateArcaneExhaustion(PlayerChoiceContext choiceContext, CardPlay cardPlay, int level)
+    {
+        var card = (ArcaneExhaustion)CombatState.CreateCard(ModelDb.Card<ArcaneExhaustion>(), cardPlay.Player);
+        card.SetLevel(level);
+        var cardview = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, cardPlay.Player);
+        CardCmd.PreviewCardPileAdd(cardview, 0.5f);
     }
 
     public override async Task OnEnqueuePlayVfx(Creature? target)

@@ -1,5 +1,8 @@
+using DungeonsAndSpires.DungeonsAndSpiresCode.Character;
+using DungeonsAndSpires.DungeonsAndSpiresCode.Powers;
 using DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 using Godot;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
@@ -28,7 +31,25 @@ public partial class DASSpellslotUI : Control
             return;
         }
 
-        // Highest level at the top, level 1 at the bottom.
+        if (player.Character.CardPool is WarlockCardPool)
+        {
+            InitializeWarlock(player, state);
+        }
+        else
+        {
+            InitializeStandard(state);
+        }
+
+        var hoverTip = new HoverTip(
+            new LocString("static_hover_tips", "DUNGEONSANDSPIRES-SPELLS.title"),
+            new LocString("static_hover_tips", "DUNGEONSANDSPIRES-SPELLS.description"));
+        this.MouseEntered += () =>
+            NHoverTipSet.CreateAndShow(this, hoverTip)?.SetGlobalPosition(this.GlobalPosition + new Vector2(50f, -50f));
+        this.MouseExited += () => NHoverTipSet.Remove(this);
+    }
+
+    private void InitializeStandard(SpellslotsState state)
+    {
         float y = 0f;
         foreach (var (level, slot) in state.Spellslots.OrderByDescending(kv => kv.Key))
         {
@@ -43,15 +64,23 @@ public partial class DASSpellslotUI : Control
         }
 
         Size = new Vector2(80f, y);
-        
-        var hoverTip = new HoverTip(
-            new LocString("static_hover_tips", "DUNGEONSANDSPIRES-SPELLS.title"),
-            new LocString("static_hover_tips", "DUNGEONSANDSPIRES-SPELLS.description"));
-        this.MouseEntered += () =>
-            NHoverTipSet.CreateAndShow(this, hoverTip)?.SetGlobalPosition(this.GlobalPosition + new Vector2(50f, -50f));
-        this.MouseExited += () => NHoverTipSet.Remove(this);
-
         SpellslotsCmd.OnChanged += OnSpellslotsChanged;
+    }
+
+    private void InitializeWarlock(Player player, SpellslotsState state)
+    {
+        var slot = state.Spellslots[1];
+        var label = new Label
+        {
+            Position = Vector2.Zero
+        };
+        _labels[1] = label;
+        AddChild(label);
+        UpdateWarlockLabel(player, slot);
+
+        Size = new Vector2(80f, RowHeight);
+        SpellslotsCmd.OnChanged += OnSpellslotsChanged;
+        EmpowerPatronPower.OnChanged += OnEmpowerChanged;
     }
 
     private void UpdateLabel(int level, Spellslot slot)
@@ -61,6 +90,19 @@ public partial class DASSpellslotUI : Control
             return;
         }
 
+        string roman = level >= 1 && level <= RomanNumerals.Length ? RomanNumerals[level - 1] : level.ToString();
+        label.Text = $"{roman} [{slot.GetCurrent()}]";
+        label.Modulate = slot.GetCurrent() <= 0 ? EmptyColor : NormalColor;
+    }
+
+    private void UpdateWarlockLabel(Player player, Spellslot slot)
+    {
+        if (!_labels.TryGetValue(1, out var label))
+        {
+            return;
+        }
+
+        int level = player.Creature.GetPower<EmpowerPatronPower>()?.Amount ?? 1;
         string roman = level >= 1 && level <= RomanNumerals.Length ? RomanNumerals[level - 1] : level.ToString();
         label.Text = $"{roman} [{slot.GetCurrent()}]";
         label.Modulate = slot.GetCurrent() <= 0 ? EmptyColor : NormalColor;
@@ -87,7 +129,36 @@ public partial class DASSpellslotUI : Control
 
         foreach (var (level, slot) in state.Spellslots)
         {
-            UpdateLabel(level, slot);
+            if (_player.Character.CardPool is WarlockCardPool)
+            {
+                UpdateWarlockLabel(_player, slot);
+            }
+            else
+            {
+                UpdateLabel(level, slot);
+            }
         }
+    }
+
+    private void OnEmpowerChanged(Player player)
+    {
+        if (!GodotObject.IsInstanceValid(this))
+        {
+            EmpowerPatronPower.OnChanged -= OnEmpowerChanged;
+            return;
+        }
+
+        if (_player == null || player != _player)
+        {
+            return;
+        }
+
+        var state = _player.PlayerCombatState?.GetSpellslotsState();
+        if (state == null)
+        {
+            return;
+        }
+
+        UpdateWarlockLabel(_player, state.Spellslots[1]);
     }
 }

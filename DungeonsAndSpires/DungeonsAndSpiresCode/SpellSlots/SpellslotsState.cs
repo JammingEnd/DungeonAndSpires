@@ -2,9 +2,16 @@ namespace DungeonsAndSpires.DungeonsAndSpiresCode.SpellSlots;
 
 public class SpellslotsState
 {
-    public SpellslotsState(bool isHalfcaster = false)
+    public SpellslotsState(bool isHalfcaster = false, bool isWarlock = false)
     {
-        if (isHalfcaster)
+        if (isWarlock)
+        {
+            Spellslots = new()
+            {
+                { 1, new Spellslot(7) },
+            };
+        }
+        else if (isHalfcaster)
         {
             // half caster spellslots 
             Spellslots = new()

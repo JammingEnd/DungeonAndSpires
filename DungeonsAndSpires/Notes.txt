@@ -97,6 +97,30 @@ Characters:
         ? cards imbued with thunder/lightning
         ? applying reverb/shocked
         ? 
+        
+        
+    Warlock:
+        warlock is a Spellcaster, so Spells + simple weapons
+        Main gimmicks
+            - Generalized spellslots: warlock does not use Spellslots per spell level, instead it uses one pool of slots for all spells. 
+            - Empower Pact: this feature stacks as you spend energy/play cards on your turn. increased stacks increase what spell level your spells cast at this turn. 
+            this also empowers spell, acting the same as heightened. this incentivizes to play a bunch of cards before playing your most powerful spells
+            - Otherwordly patreon: At chests and rest-sites, you will collect random relics that improve you as a warlock. some upgrade your Eldritch blast, others add other effects
+        
+        [Hexblade]
+            ? transform a simple weapon into a martial weapon of the same cost, it goes through planar binding
+            ? apply a curse on a random enemy, increasing weapon damage against it
+            ? add potency to damage
+        
+        [Fiend]
+            ? start combat with increased Empower Pact
+            ? fire damage increased, cold is no longer removed with fire damage
+            ? 
+    
+        [Great Old One]
+            ? Spending energy on Cantrips draws 1 card
+            ? Gain 2 extra Otherworldy patreon slots
+            ? playing 3 cantrips in a turn gives a missing spellslot
     
     Druis:
         -Full Spellcaster + simple weapons

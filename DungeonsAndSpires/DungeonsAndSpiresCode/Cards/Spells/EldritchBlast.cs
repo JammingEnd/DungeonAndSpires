@@ -16,7 +16,7 @@ public class EldritchBlast() : SpellCard(0, 1, CardType.Attack, CardRarity.Basic
 
     protected override IEnumerable<DynamicVar> CardVars =>
     [
-        new DamageVar(8, ValueProp.Unpowered)
+        new DamageVar(7, ValueProp.Unpowered)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -26,6 +26,6 @@ public class EldritchBlast() : SpellCard(0, 1, CardType.Attack, CardRarity.Basic
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

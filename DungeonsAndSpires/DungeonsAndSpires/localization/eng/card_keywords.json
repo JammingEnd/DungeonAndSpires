@@ -2,7 +2,7 @@
   "DUNGEONSANDSPIRES-POTENT.title": "Potent",
   "DUNGEONSANDSPIRES-POTENT.description": "Every Potent X, some stats increase.",
   "DUNGEONSANDSPIRES-HEIGHTENED.title": "Heightened",
-  "DUNGEONSANDSPIRES-HEIGHTENED.description": "Heightened cards have their potency requirement met by 1.\nCards with potency 1 gain 3 Ability Potency.",
+  "DUNGEONSANDSPIRES-HEIGHTENED.description": "This card has been heightened, gaining extra Ability Potency levels.",
   "DUNGEONSANDSPIRES-QUICKENED.title": "Quickened",
   "DUNGEONSANDSPIRES-QUICKENED.description": "Quickened cards also deal their effects to a random enemy (or ally when self).",
   "DUNGEONSANDSPIRES-RITUAL.title": "Ritual",

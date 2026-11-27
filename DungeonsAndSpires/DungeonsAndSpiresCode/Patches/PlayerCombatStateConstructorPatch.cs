@@ -25,6 +25,7 @@ internal class PlayerCombatStateConstructorPatch
         AssignForSorcerer(player, __instance);
         AssignForFighter(player, __instance);
         AssignForRogue(player, __instance);
+        AssignForWarlock(player, __instance);
     }
 
     private static void AssignForSorcerer(Player player, PlayerCombatState __instance)
@@ -64,5 +65,13 @@ internal class PlayerCombatStateConstructorPatch
         {
             SpellslotsField.State[__instance] = new SpellslotsState(true);
         }
+    }
+
+    private static void AssignForWarlock(Player player, PlayerCombatState __instance)
+    {
+        if (player.Character.CardPool is not WarlockCardPool)
+            return;
+
+        SpellslotsField.State[__instance] = new SpellslotsState(isWarlock: true);
     }
 }

@@ -58,6 +58,11 @@ public abstract class SubclassRelic : DungeonsAndSpiresRelic
         {
             await PowerCmd.Apply<RogueHidePower>(choiceContext, Owner.Creature, 1, Owner.Creature, null);
         }
+
+        if (Owner.Character is WarlockCharacter warlock)
+        {
+            await PowerCmd.Apply<EmpowerPatronPower>(choiceContext, Owner.Creature, 1, Owner.Creature, null);
+        }
     }
     
 
